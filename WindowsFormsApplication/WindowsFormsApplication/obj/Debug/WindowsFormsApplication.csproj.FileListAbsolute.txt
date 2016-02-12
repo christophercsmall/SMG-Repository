@@ -30,3 +30,7 @@ C:\Users\Christopher\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApp
 C:\Users\Christopher\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.EditForm.resources
 C:\Users\csmall\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.AddForm.resources
 C:\Users\csmall\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.EditForm.resources
+C:\Users\csmall\Documents\GitHub\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.exe.config
+C:\Users\csmall\Documents\GitHub\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.csproj.ResolveComReference.cache
+C:\Users\csmall\Documents\GitHub\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.exe
+C:\Users\csmall\Documents\GitHub\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.pdb
