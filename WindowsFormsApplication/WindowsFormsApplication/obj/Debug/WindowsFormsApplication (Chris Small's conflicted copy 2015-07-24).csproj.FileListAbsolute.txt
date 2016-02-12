@@ -1,0 +1,8 @@
+C:\Users\Christopher\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.exe.config
+C:\Users\Christopher\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication (Chris Small's conflicted copy 2015-07-24).csproj.ResolveComReference.cache
+C:\Users\Christopher\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.exe
+C:\Users\Christopher\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.pdb
+C:\Users\csmall\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.exe.config
+C:\Users\csmall\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication (Chris Small's conflicted copy 2015-07-24).csproj.ResolveComReference.cache
+C:\Users\csmall\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.exe
+C:\Users\csmall\Dropbox\VS Projects\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.pdb
