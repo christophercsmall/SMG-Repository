@@ -50,3 +50,19 @@ C:\Users\csmall\Documents\SMG-Repository\WindowsFormsApplication\WindowsFormsApp
 C:\Users\csmall\Documents\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.Form1.resources
 C:\Users\csmall\Documents\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.Properties.Resources.resources
 C:\Users\csmall\Documents\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.csproj.GenerateResource.Cache
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.exe.config
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.csproj.ResolveComReference.cache
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.exe
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.pdb
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.exe
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.pdb
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\EntityFramework.dll
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\EntityFramework.SqlServer.dll
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\EntityFramework.xml
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\bin\Debug\EntityFramework.SqlServer.xml
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.csprojResolveAssemblyReference.cache
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.AddForm.resources
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.EditForm.resources
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.Form1.resources
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.Properties.Resources.resources
+I:\GitHub Desktop\SMG-Repository\WindowsFormsApplication\WindowsFormsApplication\obj\Debug\WindowsFormsApplication.csproj.GenerateResource.Cache
