@@ -124,5 +124,10 @@ namespace WindowsFormsApplication
             form.Enabled = true;
             form.refreshData();   
         }
+
+        private void locComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

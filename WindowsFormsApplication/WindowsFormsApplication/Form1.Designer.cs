@@ -29,14 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.allTab = new System.Windows.Forms.TabPage();
-            this.stadiumTab = new System.Windows.Forms.TabPage();
-            this.stadAdminFocus = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.arenaTab = new System.Windows.Forms.TabPage();
             this.tucpaTab = new System.Windows.Forms.TabPage();
             this.poccTab = new System.Windows.Forms.TabPage();
             this.ritzTab = new System.Windows.Forms.TabPage();
@@ -56,12 +51,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.deleteButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.stadiumTab = new System.Windows.Forms.TabPage();
             this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.arenaTab = new System.Windows.Forms.TabPage();
+            this.allTab = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.stadiumTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stadAdminFocus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
@@ -85,9 +80,9 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1093, 381);
@@ -111,113 +106,70 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1097, 123);
+            this.tabControl1.Size = new System.Drawing.Size(1097, 96);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 4;
+            this.tabControl1.TabStop = false;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // allTab
-            // 
-            this.allTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.allTab.Location = new System.Drawing.Point(4, 25);
-            this.allTab.Name = "allTab";
-            this.allTab.Padding = new System.Windows.Forms.Padding(3);
-            this.allTab.Size = new System.Drawing.Size(1089, 94);
-            this.allTab.TabIndex = 3;
-            this.allTab.Text = "ALL";
-            this.allTab.UseVisualStyleBackColor = true;
-            // 
-            // stadiumTab
-            // 
-            this.stadiumTab.BackColor = System.Drawing.Color.Gainsboro;
-            this.stadiumTab.Controls.Add(this.stadAdminFocus);
-            this.stadiumTab.Controls.Add(this.pictureBox1);
-            this.stadiumTab.Location = new System.Drawing.Point(4, 25);
-            this.stadiumTab.Name = "stadiumTab";
-            this.stadiumTab.Padding = new System.Windows.Forms.Padding(3);
-            this.stadiumTab.Size = new System.Drawing.Size(1089, 94);
-            this.stadiumTab.TabIndex = 0;
-            this.stadiumTab.Text = "STADIUM";
-            // 
-            // stadAdminFocus
-            // 
-            this.stadAdminFocus.Image = global::WindowsFormsApplication.Properties.Resources.stadAdminFocus;
-            this.stadAdminFocus.Location = new System.Drawing.Point(60, 16);
-            this.stadAdminFocus.Name = "stadAdminFocus";
-            this.stadAdminFocus.Size = new System.Drawing.Size(14, 12);
-            this.stadAdminFocus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.stadAdminFocus.TabIndex = 2;
-            this.stadAdminFocus.TabStop = false;
-            this.stadAdminFocus.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApplication.Properties.Resources.Stadium_Seating;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // arenaTab
-            // 
-            this.arenaTab.Location = new System.Drawing.Point(4, 25);
-            this.arenaTab.Name = "arenaTab";
-            this.arenaTab.Padding = new System.Windows.Forms.Padding(3);
-            this.arenaTab.Size = new System.Drawing.Size(1089, 94);
-            this.arenaTab.TabIndex = 5;
-            this.arenaTab.Text = "ARENA";
-            this.arenaTab.UseVisualStyleBackColor = true;
             // 
             // tucpaTab
             // 
+            this.tucpaTab.BackColor = System.Drawing.Color.Transparent;
+            this.tucpaTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tucpaTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tucpaTab.Location = new System.Drawing.Point(4, 25);
             this.tucpaTab.Name = "tucpaTab";
             this.tucpaTab.Padding = new System.Windows.Forms.Padding(3);
-            this.tucpaTab.Size = new System.Drawing.Size(1089, 94);
+            this.tucpaTab.Size = new System.Drawing.Size(1089, 67);
             this.tucpaTab.TabIndex = 1;
             this.tucpaTab.Text = "TUCPA";
-            this.tucpaTab.UseVisualStyleBackColor = true;
             // 
             // poccTab
             // 
+            this.poccTab.BackColor = System.Drawing.Color.Transparent;
+            this.poccTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.poccTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.poccTab.Location = new System.Drawing.Point(4, 25);
             this.poccTab.Name = "poccTab";
             this.poccTab.Padding = new System.Windows.Forms.Padding(3);
-            this.poccTab.Size = new System.Drawing.Size(1089, 94);
+            this.poccTab.Size = new System.Drawing.Size(1089, 67);
             this.poccTab.TabIndex = 2;
             this.poccTab.Text = "POCC";
-            this.poccTab.UseVisualStyleBackColor = true;
             // 
             // ritzTab
             // 
+            this.ritzTab.BackColor = System.Drawing.Color.Transparent;
+            this.ritzTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ritzTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ritzTab.Location = new System.Drawing.Point(4, 25);
             this.ritzTab.Name = "ritzTab";
             this.ritzTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ritzTab.Size = new System.Drawing.Size(1089, 94);
+            this.ritzTab.Size = new System.Drawing.Size(1089, 67);
             this.ritzTab.TabIndex = 6;
             this.ritzTab.Text = "RITZ";
-            this.ritzTab.UseVisualStyleBackColor = true;
             // 
             // ballparkTab
             // 
+            this.ballparkTab.BackColor = System.Drawing.Color.Transparent;
+            this.ballparkTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ballparkTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ballparkTab.Location = new System.Drawing.Point(4, 25);
             this.ballparkTab.Name = "ballparkTab";
-            this.ballparkTab.Size = new System.Drawing.Size(1089, 94);
+            this.ballparkTab.Size = new System.Drawing.Size(1089, 67);
             this.ballparkTab.TabIndex = 7;
             this.ballparkTab.Text = "BALLPARK";
-            this.ballparkTab.UseVisualStyleBackColor = true;
             // 
             // storageTab
             // 
+            this.storageTab.BackColor = System.Drawing.Color.Transparent;
+            this.storageTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.storageTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.storageTab.Location = new System.Drawing.Point(4, 25);
             this.storageTab.Name = "storageTab";
             this.storageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.storageTab.Size = new System.Drawing.Size(1089, 94);
+            this.storageTab.Size = new System.Drawing.Size(1089, 67);
             this.storageTab.TabIndex = 4;
             this.storageTab.Text = "STORAGE";
-            this.storageTab.UseVisualStyleBackColor = true;
             // 
             // lastUpdateLabel
             // 
@@ -328,7 +280,7 @@
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Location = new System.Drawing.Point(12, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1097, 123);
+            this.panel1.Size = new System.Drawing.Size(1097, 96);
             this.panel1.TabIndex = 48;
             // 
             // panel2
@@ -364,9 +316,44 @@
             this.button1.Text = "Print";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // stadiumTab
+            // 
+            this.stadiumTab.BackColor = System.Drawing.Color.Transparent;
+            this.stadiumTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.stadiumTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.stadiumTab.Location = new System.Drawing.Point(4, 25);
+            this.stadiumTab.Name = "stadiumTab";
+            this.stadiumTab.Padding = new System.Windows.Forms.Padding(3);
+            this.stadiumTab.Size = new System.Drawing.Size(1089, 67);
+            this.stadiumTab.TabIndex = 0;
+            this.stadiumTab.Text = "STADIUM";
+            // 
             // form1BindingSource
             // 
             this.form1BindingSource.DataSource = typeof(WindowsFormsApplication.Form1);
+            // 
+            // arenaTab
+            // 
+            this.arenaTab.BackColor = System.Drawing.Color.Transparent;
+            this.arenaTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.arenaTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.arenaTab.Location = new System.Drawing.Point(4, 25);
+            this.arenaTab.Name = "arenaTab";
+            this.arenaTab.Padding = new System.Windows.Forms.Padding(3);
+            this.arenaTab.Size = new System.Drawing.Size(1089, 67);
+            this.arenaTab.TabIndex = 5;
+            this.arenaTab.Text = "ARENA";
+            // 
+            // allTab
+            // 
+            this.allTab.BackColor = System.Drawing.Color.Transparent;
+            this.allTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.allTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.allTab.Location = new System.Drawing.Point(4, 25);
+            this.allTab.Name = "allTab";
+            this.allTab.Size = new System.Drawing.Size(1089, 67);
+            this.allTab.TabIndex = 0;
+            this.allTab.Text = "ALL";
             // 
             // Form1
             // 
@@ -392,9 +379,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.stadiumTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.stadAdminFocus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
@@ -407,20 +391,15 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage stadiumTab;
         private System.Windows.Forms.TabPage tucpaTab;
         private System.Windows.Forms.TabPage poccTab;
         private System.Windows.Forms.Button loadInventoryButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.PictureBox stadAdminFocus;
         private System.Windows.Forms.Label filePathLabel;
-        private System.Windows.Forms.TabPage allTab;
         private System.Windows.Forms.TabPage storageTab;
         private System.Windows.Forms.BindingSource form1BindingSource;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button editButton;
-        private System.Windows.Forms.TabPage arenaTab;
         private System.Windows.Forms.TabPage ritzTab;
         private System.Windows.Forms.TabPage ballparkTab;
         private System.Windows.Forms.Button closeButton;
@@ -432,6 +411,9 @@
         private System.Windows.Forms.Label lastUpdateLabel;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage stadiumTab;
+        private System.Windows.Forms.TabPage arenaTab;
+        private System.Windows.Forms.TabPage allTab;
     }
 }
 

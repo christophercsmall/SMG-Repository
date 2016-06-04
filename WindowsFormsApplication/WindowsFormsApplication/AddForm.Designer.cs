@@ -58,10 +58,11 @@
             this.brandComboBox.Location = new System.Drawing.Point(95, 142);
             this.brandComboBox.Name = "brandComboBox";
             this.brandComboBox.Size = new System.Drawing.Size(159, 21);
-            this.brandComboBox.TabIndex = 47;
+            this.brandComboBox.TabIndex = 3;
             // 
             // locComboBox
             // 
+            this.locComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locComboBox.FormattingEnabled = true;
             this.locComboBox.Items.AddRange(new object[] {
             "STADIUM",
@@ -73,7 +74,8 @@
             this.locComboBox.Location = new System.Drawing.Point(95, 63);
             this.locComboBox.Name = "locComboBox";
             this.locComboBox.Size = new System.Drawing.Size(159, 21);
-            this.locComboBox.TabIndex = 46;
+            this.locComboBox.TabIndex = 1;
+            this.locComboBox.SelectedIndexChanged += new System.EventHandler(this.locComboBox_SelectedIndexChanged);
             // 
             // modelComboBox
             // 
@@ -86,10 +88,11 @@
             this.modelComboBox.Location = new System.Drawing.Point(95, 182);
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(159, 21);
-            this.modelComboBox.TabIndex = 45;
+            this.modelComboBox.TabIndex = 4;
             // 
             // invComboBox
             // 
+            this.invComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.invComboBox.FormattingEnabled = true;
             this.invComboBox.Items.AddRange(new object[] {
             "PC",
@@ -97,7 +100,7 @@
             this.invComboBox.Location = new System.Drawing.Point(95, 22);
             this.invComboBox.Name = "invComboBox";
             this.invComboBox.Size = new System.Drawing.Size(159, 21);
-            this.invComboBox.TabIndex = 44;
+            this.invComboBox.TabIndex = 0;
             // 
             // serialNumBox
             // 
@@ -105,7 +108,7 @@
             this.serialNumBox.Location = new System.Drawing.Point(95, 103);
             this.serialNumBox.Name = "serialNumBox";
             this.serialNumBox.Size = new System.Drawing.Size(159, 20);
-            this.serialNumBox.TabIndex = 48;
+            this.serialNumBox.TabIndex = 2;
             this.serialNumBox.TextChanged += new System.EventHandler(this.serialNumBox_TextChanged);
             // 
             // notesBox
@@ -114,7 +117,7 @@
             this.notesBox.Location = new System.Drawing.Point(95, 299);
             this.notesBox.Name = "notesBox";
             this.notesBox.Size = new System.Drawing.Size(159, 20);
-            this.notesBox.TabIndex = 49;
+            this.notesBox.TabIndex = 7;
             // 
             // label1
             // 
@@ -202,7 +205,7 @@
             this.addButton.Location = new System.Drawing.Point(12, 357);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(161, 61);
-            this.addButton.TabIndex = 56;
+            this.addButton.TabIndex = 9;
             this.addButton.Text = "Add to Inventory";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -213,7 +216,7 @@
             this.addAnotherCheckBox.Location = new System.Drawing.Point(12, 334);
             this.addAnotherCheckBox.Name = "addAnotherCheckBox";
             this.addAnotherCheckBox.Size = new System.Drawing.Size(84, 17);
-            this.addAnotherCheckBox.TabIndex = 57;
+            this.addAnotherCheckBox.TabIndex = 8;
             this.addAnotherCheckBox.Text = "Add another";
             this.addAnotherCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -223,7 +226,7 @@
             this.idBox.Location = new System.Drawing.Point(95, 222);
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(159, 20);
-            this.idBox.TabIndex = 58;
+            this.idBox.TabIndex = 5;
             // 
             // userNameBox
             // 
@@ -231,14 +234,14 @@
             this.userNameBox.Location = new System.Drawing.Point(95, 259);
             this.userNameBox.Name = "userNameBox";
             this.userNameBox.Size = new System.Drawing.Size(159, 20);
-            this.userNameBox.TabIndex = 58;
+            this.userNameBox.TabIndex = 6;
             // 
             // closeButton
             // 
             this.closeButton.Location = new System.Drawing.Point(179, 357);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 61);
-            this.closeButton.TabIndex = 59;
+            this.closeButton.TabIndex = 10;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);

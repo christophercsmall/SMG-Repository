@@ -19,6 +19,7 @@ namespace WindowsFormsApplication
         public string query = "SELECT * FROM [ALL$] WHERE [SERIAL_NUMBER] <> '-';";
         public string countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [SERIAL_NUMBER] <> '-';";
         public static string inv, loc, sn, brand, model, id, user, notes;
+        public List<Button> UsersBtns = new List<Button>();
         public Form1()
         {
             InitializeComponent();            
@@ -51,6 +52,7 @@ namespace WindowsFormsApplication
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var location = "";
             //make case on selected index number, then load from [sheet$]
             if (filePath != null)
             {                
@@ -60,7 +62,8 @@ namespace WindowsFormsApplication
                 {
                     case 0:
                         query = "SELECT * FROM [ALL$] WHERE [LOCATION] <> '-'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] <> '-'";                        
+                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] <> '-'";
+                        location = "ALL";
                         break;
                     case 1:
                         query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'STADIUM'";
@@ -95,6 +98,24 @@ namespace WindowsFormsApplication
                 if (dataGridView1.RowCount > 0)
                 {
                     lastUpdateLabel.Text = dataGridView1.Rows[0].Cells[8].Value.ToString();
+
+                    foreach(DataGridViewRow row in dataGridView1.Rows)
+                    {                        
+                        Button Btn = new Button();
+                        Btn.Text = row.Cells["LOCATION"].Value.ToString();
+                        UsersBtns.Add(Btn);
+                    }
+
+                    foreach(var item in UsersBtns)
+                    {
+                        switch (item.Text)
+                        {
+                            case "STADIUM":
+                                allTab.Controls.Add(item);                                
+                                break;
+
+                        }
+                    }
                 }
             }
         }
@@ -142,7 +163,6 @@ namespace WindowsFormsApplication
                 {
                     dataGridView1.DataSource = ds;
                     dataGridView1.DataMember = ds.Tables[0].ToString();
-
                 }
             }
             dataGridView1.Sort(dataGridView1.Columns["LAST_UPDATE"], ListSortDirection.Descending);
