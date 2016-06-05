@@ -52,7 +52,6 @@ namespace WindowsFormsApplication
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var location = "";
             //make case on selected index number, then load from [sheet$]
             if (filePath != null)
             {                
@@ -63,7 +62,6 @@ namespace WindowsFormsApplication
                     case 0:
                         query = "SELECT * FROM [ALL$] WHERE [LOCATION] <> '-'";
                         countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] <> '-'";
-                        location = "ALL";
                         break;
                     case 1:
                         query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'STADIUM'";
@@ -98,25 +96,34 @@ namespace WindowsFormsApplication
                 if (dataGridView1.RowCount > 0)
                 {
                     lastUpdateLabel.Text = dataGridView1.Rows[0].Cells[8].Value.ToString();
-
-                    foreach(DataGridViewRow row in dataGridView1.Rows)
-                    {                        
-                        Button Btn = new Button();
-                        Btn.Text = row.Cells["LOCATION"].Value.ToString();
-                        UsersBtns.Add(Btn);
-                    }
-
-                    foreach(var item in UsersBtns)
-                    {
-                        switch (item.Text)
-                        {
-                            case "STADIUM":
-                                allTab.Controls.Add(item);                                
-                                break;
-
-                        }
-                    }
+                    loadUserBtns(n);
                 }
+            }
+        }
+
+        private void loadUserBtns(int tabNum)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                Button Btn = new Button();
+                Btn.Name = row.Cells["SERIAL_NUMBER"].Value.ToString() + row.Cells["LOCATION"].Value.ToString();
+                Btn.Text = row.Cells["NOTES"].Value.ToString();
+                UsersBtns.Add(Btn);
+            }
+
+            //row.Cells["LOCATION"].Value.ToString()
+
+            switch (tabNum)
+            {
+                case 1:
+                    foreach(var btn in UsersBtns)
+                    {
+                        if (btn.Name.Contains("STADIUM"))
+                        {
+                            flowLayoutPanel2.Controls.Add(btn);
+                        }                        
+                    }
+                    break;
             }
         }
 
