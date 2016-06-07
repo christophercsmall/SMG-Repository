@@ -95,36 +95,55 @@ namespace WindowsFormsApplication
                 totalLabel.Text = load(query, countQuery).ToString();
                 if (dataGridView1.RowCount > 0)
                 {
-                    lastUpdateLabel.Text = dataGridView1.Rows[0].Cells[8].Value.ToString();
-                    loadUserBtns(n);
+                    lastUpdateLabel.Text = dataGridView1.Rows[0].Cells[8].Value.ToString();                    
                 }
             }
         }
 
-        private void loadUserBtns(int tabNum)
+        private void loadUserBtns()
         {
+            List<Button> notesBtns = new List<Button>();
+            List<string> notesList = new List<string>();
+            var text = "";
+
+            var tabIndex = tabControl1.SelectedIndex;
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                Button Btn = new Button();
-                Btn.Name = row.Cells["SERIAL_NUMBER"].Value.ToString() + row.Cells["LOCATION"].Value.ToString();
-                Btn.Text = row.Cells["NOTES"].Value.ToString();
-                UsersBtns.Add(Btn);
+                text = row.Cells["NOTES"].Value.ToString();
+                if (text.Contains(","))
+                {
+                    text = text.Substring(0, text.IndexOf(","));
+                }           
+
+                if (!notesList.Contains(text))
+                {
+                    notesList.Add(text);
+                }                
             }
 
-            //row.Cells["LOCATION"].Value.ToString()
-
-            switch (tabNum)
+            foreach (var note in notesList)
             {
-                case 1:
-                    foreach(var btn in UsersBtns)
-                    {
-                        if (btn.Name.Contains("STADIUM"))
-                        {
-                            flowLayoutPanel2.Controls.Add(btn);
-                        }                        
-                    }
-                    break;
+                switch (tabIndex)
+                {
+                    case 0:
+                        flowLayoutPanel1.Controls.Add(createNotesBtn(note));
+                        break;
+                    case 1:
+                        flowLayoutPanel2.Controls.Add(createNotesBtn(note));
+                        break;
+                    case 2:
+                        flowLayoutPanel3.Controls.Add(createNotesBtn(note));
+                        break;
+                }
             }
+        }
+
+        private Button createNotesBtn(string text)
+        {
+            Button Btn = new Button();
+            Btn.Text = text;
+            return Btn;
         }
 
         private int load(String query, String countQuery)
@@ -170,6 +189,7 @@ namespace WindowsFormsApplication
                 {
                     dataGridView1.DataSource = ds;
                     dataGridView1.DataMember = ds.Tables[0].ToString();
+                    loadUserBtns();
                 }
             }
             dataGridView1.Sort(dataGridView1.Columns["LAST_UPDATE"], ListSortDirection.Descending);
