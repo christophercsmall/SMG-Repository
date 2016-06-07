@@ -108,6 +108,14 @@ namespace WindowsFormsApplication
 
             var tabIndex = tabControl1.SelectedIndex;
 
+            flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel2.Controls.Clear();
+            flowLayoutPanel3.Controls.Clear();
+            //flowLayoutPanel4.Controls.Clear();
+            //flowLayoutPanel5.Controls.Clear();
+            //flowLayoutPanel6.Controls.Clear();
+            //flowLayoutPanel7.Controls.Clear();
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 text = row.Cells["NOTES"].Value.ToString();
