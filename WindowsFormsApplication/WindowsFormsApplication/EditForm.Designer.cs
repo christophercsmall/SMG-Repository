@@ -72,7 +72,7 @@
             this.closeButton.Location = new System.Drawing.Point(308, 358);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 61);
-            this.closeButton.TabIndex = 78;
+            this.closeButton.TabIndex = 20;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -84,7 +84,7 @@
             this.userNameBox.Location = new System.Drawing.Point(254, 274);
             this.userNameBox.Name = "userNameBox";
             this.userNameBox.Size = new System.Drawing.Size(129, 20);
-            this.userNameBox.TabIndex = 77;
+            this.userNameBox.TabIndex = 15;
             this.userNameBox.TextChanged += new System.EventHandler(this.userNameBox_TextChanged);
             // 
             // idBox
@@ -94,7 +94,7 @@
             this.idBox.Location = new System.Drawing.Point(254, 237);
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(129, 20);
-            this.idBox.TabIndex = 76;
+            this.idBox.TabIndex = 13;
             this.idBox.TextChanged += new System.EventHandler(this.idBox_TextChanged);
             // 
             // updateButton
@@ -103,7 +103,7 @@
             this.updateButton.Location = new System.Drawing.Point(12, 358);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(161, 61);
-            this.updateButton.TabIndex = 74;
+            this.updateButton.TabIndex = 18;
             this.updateButton.Text = "Update Inventory";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
@@ -195,7 +195,7 @@
             this.notesBox.Location = new System.Drawing.Point(254, 314);
             this.notesBox.Name = "notesBox";
             this.notesBox.Size = new System.Drawing.Size(129, 20);
-            this.notesBox.TabIndex = 65;
+            this.notesBox.TabIndex = 17;
             this.notesBox.TextChanged += new System.EventHandler(this.notesBox_TextChanged);
             // 
             // serialNumBox
@@ -205,7 +205,7 @@
             this.serialNumBox.Location = new System.Drawing.Point(254, 118);
             this.serialNumBox.Name = "serialNumBox";
             this.serialNumBox.Size = new System.Drawing.Size(129, 20);
-            this.serialNumBox.TabIndex = 64;
+            this.serialNumBox.TabIndex = 7;
             this.serialNumBox.TextChanged += new System.EventHandler(this.serialNumBox_TextChanged);
             // 
             // invComboBox
@@ -218,7 +218,7 @@
             this.invComboBox.Location = new System.Drawing.Point(254, 37);
             this.invComboBox.Name = "invComboBox";
             this.invComboBox.Size = new System.Drawing.Size(129, 21);
-            this.invComboBox.TabIndex = 60;
+            this.invComboBox.TabIndex = 1;
             this.invComboBox.SelectedIndexChanged += new System.EventHandler(this.invComboBox_SelectedIndexChanged);
             this.invComboBox.TextChanged += new System.EventHandler(this.invComboBox_TextChanged);
             // 
@@ -234,7 +234,7 @@
             this.modelComboBox.Location = new System.Drawing.Point(254, 197);
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(129, 21);
-            this.modelComboBox.TabIndex = 61;
+            this.modelComboBox.TabIndex = 11;
             this.modelComboBox.SelectedIndexChanged += new System.EventHandler(this.modelComboBox_SelectedIndexChanged);
             this.modelComboBox.TextChanged += new System.EventHandler(this.modelComboBox_TextChanged);
             // 
@@ -252,7 +252,7 @@
             this.locComboBox.Location = new System.Drawing.Point(254, 77);
             this.locComboBox.Name = "locComboBox";
             this.locComboBox.Size = new System.Drawing.Size(129, 21);
-            this.locComboBox.TabIndex = 62;
+            this.locComboBox.TabIndex = 3;
             this.locComboBox.SelectedIndexChanged += new System.EventHandler(this.locComboBox_SelectedIndexChanged);
             this.locComboBox.TextChanged += new System.EventHandler(this.locComboBox_TextChanged);
             // 
@@ -266,7 +266,7 @@
             this.brandComboBox.Location = new System.Drawing.Point(254, 157);
             this.brandComboBox.Name = "brandComboBox";
             this.brandComboBox.Size = new System.Drawing.Size(129, 21);
-            this.brandComboBox.TabIndex = 63;
+            this.brandComboBox.TabIndex = 9;
             this.brandComboBox.SelectedIndexChanged += new System.EventHandler(this.brandComboBox_SelectedIndexChanged);
             this.brandComboBox.TextChanged += new System.EventHandler(this.brandComboBox_TextChanged);
             // 
@@ -363,7 +363,7 @@
             this.clearButton.Location = new System.Drawing.Point(227, 358);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 61);
-            this.clearButton.TabIndex = 81;
+            this.clearButton.TabIndex = 19;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -375,7 +375,7 @@
             this.locArrowBtn.Location = new System.Drawing.Point(209, 75);
             this.locArrowBtn.Name = "locArrowBtn";
             this.locArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.locArrowBtn.TabIndex = 82;
+            this.locArrowBtn.TabIndex = 2;
             this.locArrowBtn.Text = " >> ";
             this.locArrowBtn.UseVisualStyleBackColor = true;
             this.locArrowBtn.Click += new System.EventHandler(this.locArrowBtn_Click);
@@ -387,7 +387,7 @@
             this.invArrowBtn.Location = new System.Drawing.Point(209, 35);
             this.invArrowBtn.Name = "invArrowBtn";
             this.invArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.invArrowBtn.TabIndex = 82;
+            this.invArrowBtn.TabIndex = 0;
             this.invArrowBtn.Text = " >> ";
             this.invArrowBtn.UseVisualStyleBackColor = true;
             this.invArrowBtn.Click += new System.EventHandler(this.invArrowBtn_Click);
@@ -399,7 +399,7 @@
             this.brandArrowBtn.Location = new System.Drawing.Point(209, 154);
             this.brandArrowBtn.Name = "brandArrowBtn";
             this.brandArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.brandArrowBtn.TabIndex = 82;
+            this.brandArrowBtn.TabIndex = 6;
             this.brandArrowBtn.Text = " >> ";
             this.brandArrowBtn.UseVisualStyleBackColor = true;
             this.brandArrowBtn.Click += new System.EventHandler(this.brandArrowBtn_Click);
@@ -411,7 +411,7 @@
             this.snArrowBtn.Location = new System.Drawing.Point(209, 115);
             this.snArrowBtn.Name = "snArrowBtn";
             this.snArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.snArrowBtn.TabIndex = 82;
+            this.snArrowBtn.TabIndex = 4;
             this.snArrowBtn.Text = " >> ";
             this.snArrowBtn.UseVisualStyleBackColor = true;
             this.snArrowBtn.Click += new System.EventHandler(this.snArrowBtn_Click);
@@ -423,7 +423,7 @@
             this.modelArrowBtn.Location = new System.Drawing.Point(209, 194);
             this.modelArrowBtn.Name = "modelArrowBtn";
             this.modelArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.modelArrowBtn.TabIndex = 82;
+            this.modelArrowBtn.TabIndex = 8;
             this.modelArrowBtn.Text = " >> ";
             this.modelArrowBtn.UseVisualStyleBackColor = true;
             this.modelArrowBtn.Click += new System.EventHandler(this.modelArrowBtn_Click);
@@ -435,7 +435,7 @@
             this.idArrowBtn.Location = new System.Drawing.Point(209, 235);
             this.idArrowBtn.Name = "idArrowBtn";
             this.idArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.idArrowBtn.TabIndex = 82;
+            this.idArrowBtn.TabIndex = 10;
             this.idArrowBtn.Text = " >> ";
             this.idArrowBtn.UseVisualStyleBackColor = true;
             this.idArrowBtn.Click += new System.EventHandler(this.idArrowBtn_Click);
@@ -447,7 +447,7 @@
             this.userArrowBtn.Location = new System.Drawing.Point(209, 272);
             this.userArrowBtn.Name = "userArrowBtn";
             this.userArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.userArrowBtn.TabIndex = 82;
+            this.userArrowBtn.TabIndex = 12;
             this.userArrowBtn.Text = " >> ";
             this.userArrowBtn.UseVisualStyleBackColor = true;
             this.userArrowBtn.Click += new System.EventHandler(this.userArrowBtn_Click);
@@ -459,7 +459,7 @@
             this.notesArrowBtn.Location = new System.Drawing.Point(209, 312);
             this.notesArrowBtn.Name = "notesArrowBtn";
             this.notesArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.notesArrowBtn.TabIndex = 82;
+            this.notesArrowBtn.TabIndex = 14;
             this.notesArrowBtn.Text = " >> ";
             this.notesArrowBtn.UseVisualStyleBackColor = true;
             this.notesArrowBtn.Click += new System.EventHandler(this.notesArrowBtn_Click);
