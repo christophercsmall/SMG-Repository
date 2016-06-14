@@ -24,13 +24,14 @@ namespace WindowsFormsApplication
         {
             String inv = invComboBox.Text;
             String loc = locComboBox.Text;
+            String ofc = ofcBox.Text;
             String sn = serialNumBox.Text;
             String brand = brandComboBox.Text;
             String model = modelComboBox.Text;
             String id = idBox.Text;
             String user = userNameBox.Text;
             String notes = notesBox.Text;
-            String query = "INSERT INTO [ALL$] ([INVENTORY], [LOCATION], [SERIAL_NUMBER], [BRAND], [MODEL_NUMBER], [SMG_ID], [USER_NAME], [NOTES], [LAST_UPDATE]) VALUES('" + inv + "', '"+loc+"', '"+sn+"', '"+brand+"', '"+model+"', '"+id+"', '"+user+"', '"+notes+"', '"+DateTime.Now+"')";
+            String query = "INSERT INTO [ALL$] ([INVENTORY], [LOCATION], [OFFICE], [SERIAL_NUMBER], [BRAND], [MODEL_NUMBER], [SMG_ID], [USER_NAME], [NOTES], [LAST_UPDATE]) VALUES('" + inv + "', '"+loc+"', '"+sn+"', '"+brand+"', '"+model+"', '"+id+"', '"+user+"', '"+notes+"', '"+DateTime.Now+"')";
 
             //String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;ReadOnly=False;HDR=Yes;\"";
             String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;HDR=YES;IMEX=0;MAXSCANROWS=10;READONLY=FALSE;\""; //IMEX=0;MAXSCANROWS=10;
@@ -63,6 +64,7 @@ namespace WindowsFormsApplication
         {
             invComboBox.Text = string.Empty;
             locComboBox.Text = string.Empty;
+            ofcBox.Text = string.Empty;
             serialNumBox.Text = string.Empty;
             brandComboBox.Text = string.Empty;
             modelComboBox.Text = string.Empty;
@@ -123,11 +125,6 @@ namespace WindowsFormsApplication
             Form1 form = (Form1)this.Owner;
             form.Enabled = true;
             form.refreshData();   
-        }
-
-        private void locComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -47,6 +47,8 @@
             this.idBox = new System.Windows.Forms.TextBox();
             this.userNameBox = new System.Windows.Forms.TextBox();
             this.closeButton = new System.Windows.Forms.Button();
+            this.ofcBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // brandComboBox
@@ -55,7 +57,7 @@
             this.brandComboBox.Items.AddRange(new object[] {
             "DELL",
             "LENOVO"});
-            this.brandComboBox.Location = new System.Drawing.Point(95, 142);
+            this.brandComboBox.Location = new System.Drawing.Point(95, 185);
             this.brandComboBox.Name = "brandComboBox";
             this.brandComboBox.Size = new System.Drawing.Size(159, 21);
             this.brandComboBox.TabIndex = 3;
@@ -75,7 +77,6 @@
             this.locComboBox.Name = "locComboBox";
             this.locComboBox.Size = new System.Drawing.Size(159, 21);
             this.locComboBox.TabIndex = 1;
-            this.locComboBox.SelectedIndexChanged += new System.EventHandler(this.locComboBox_SelectedIndexChanged);
             // 
             // modelComboBox
             // 
@@ -85,7 +86,7 @@
             "OPTIPLEX 3020",
             "OPTIPLEX 380",
             "THINKCENTRE"});
-            this.modelComboBox.Location = new System.Drawing.Point(95, 182);
+            this.modelComboBox.Location = new System.Drawing.Point(95, 225);
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(159, 21);
             this.modelComboBox.TabIndex = 4;
@@ -105,7 +106,7 @@
             // serialNumBox
             // 
             this.serialNumBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.serialNumBox.Location = new System.Drawing.Point(95, 103);
+            this.serialNumBox.Location = new System.Drawing.Point(95, 146);
             this.serialNumBox.Name = "serialNumBox";
             this.serialNumBox.Size = new System.Drawing.Size(159, 20);
             this.serialNumBox.TabIndex = 2;
@@ -114,7 +115,7 @@
             // notesBox
             // 
             this.notesBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.notesBox.Location = new System.Drawing.Point(95, 299);
+            this.notesBox.Location = new System.Drawing.Point(95, 342);
             this.notesBox.Name = "notesBox";
             this.notesBox.Size = new System.Drawing.Size(159, 20);
             this.notesBox.TabIndex = 7;
@@ -132,7 +133,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 302);
+            this.label6.Location = new System.Drawing.Point(11, 345);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
@@ -152,7 +153,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 106);
+            this.label3.Location = new System.Drawing.Point(9, 149);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
@@ -162,7 +163,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 145);
+            this.label4.Location = new System.Drawing.Point(9, 188);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
@@ -172,7 +173,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 185);
+            this.label5.Location = new System.Drawing.Point(9, 228);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
@@ -182,7 +183,7 @@
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(9, 225);
+            this.idLabel.Location = new System.Drawing.Point(9, 268);
             this.idLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(45, 13);
@@ -192,7 +193,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 262);
+            this.label8.Location = new System.Drawing.Point(9, 305);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
@@ -202,7 +203,7 @@
             // addButton
             // 
             this.addButton.Enabled = false;
-            this.addButton.Location = new System.Drawing.Point(12, 357);
+            this.addButton.Location = new System.Drawing.Point(12, 411);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(161, 61);
             this.addButton.TabIndex = 9;
@@ -213,7 +214,7 @@
             // addAnotherCheckBox
             // 
             this.addAnotherCheckBox.AutoSize = true;
-            this.addAnotherCheckBox.Location = new System.Drawing.Point(12, 334);
+            this.addAnotherCheckBox.Location = new System.Drawing.Point(12, 388);
             this.addAnotherCheckBox.Name = "addAnotherCheckBox";
             this.addAnotherCheckBox.Size = new System.Drawing.Size(84, 17);
             this.addAnotherCheckBox.TabIndex = 8;
@@ -223,7 +224,7 @@
             // idBox
             // 
             this.idBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.idBox.Location = new System.Drawing.Point(95, 222);
+            this.idBox.Location = new System.Drawing.Point(95, 265);
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(159, 20);
             this.idBox.TabIndex = 5;
@@ -231,14 +232,14 @@
             // userNameBox
             // 
             this.userNameBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.userNameBox.Location = new System.Drawing.Point(95, 259);
+            this.userNameBox.Location = new System.Drawing.Point(95, 302);
             this.userNameBox.Name = "userNameBox";
             this.userNameBox.Size = new System.Drawing.Size(159, 20);
             this.userNameBox.TabIndex = 6;
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(179, 357);
+            this.closeButton.Location = new System.Drawing.Point(179, 411);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 61);
             this.closeButton.TabIndex = 10;
@@ -246,11 +247,29 @@
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // ofcBox
+            // 
+            this.ofcBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.ofcBox.Location = new System.Drawing.Point(95, 105);
+            this.ofcBox.Name = "ofcBox";
+            this.ofcBox.Size = new System.Drawing.Size(159, 20);
+            this.ofcBox.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 108);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Office";
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 440);
+            this.ClientSize = new System.Drawing.Size(266, 488);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.userNameBox);
             this.Controls.Add(this.idBox);
@@ -262,7 +281,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.ofcBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.notesBox);
             this.Controls.Add(this.serialNumBox);
@@ -303,5 +324,7 @@
         private System.Windows.Forms.TextBox idBox;
         private System.Windows.Forms.TextBox userNameBox;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.TextBox ofcBox;
+        private System.Windows.Forms.Label label7;
     }
 }

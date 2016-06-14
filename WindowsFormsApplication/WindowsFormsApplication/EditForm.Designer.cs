@@ -65,11 +65,15 @@
             this.notesArrowBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ofcLabelBox = new System.Windows.Forms.TextBox();
+            this.ofcArrowBtn = new System.Windows.Forms.Button();
+            this.ofcBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(308, 358);
+            this.closeButton.Location = new System.Drawing.Point(308, 393);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 61);
             this.closeButton.TabIndex = 20;
@@ -81,7 +85,7 @@
             // 
             this.userNameBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.userNameBox.Enabled = false;
-            this.userNameBox.Location = new System.Drawing.Point(254, 274);
+            this.userNameBox.Location = new System.Drawing.Point(254, 310);
             this.userNameBox.Name = "userNameBox";
             this.userNameBox.Size = new System.Drawing.Size(129, 20);
             this.userNameBox.TabIndex = 15;
@@ -91,7 +95,7 @@
             // 
             this.idBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.idBox.Enabled = false;
-            this.idBox.Location = new System.Drawing.Point(254, 237);
+            this.idBox.Location = new System.Drawing.Point(254, 273);
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(129, 20);
             this.idBox.TabIndex = 13;
@@ -100,7 +104,7 @@
             // updateButton
             // 
             this.updateButton.Enabled = false;
-            this.updateButton.Location = new System.Drawing.Point(12, 358);
+            this.updateButton.Location = new System.Drawing.Point(12, 393);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(161, 61);
             this.updateButton.TabIndex = 18;
@@ -111,7 +115,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 277);
+            this.label8.Location = new System.Drawing.Point(9, 313);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
@@ -121,7 +125,7 @@
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(9, 240);
+            this.idLabel.Location = new System.Drawing.Point(9, 276);
             this.idLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(45, 13);
@@ -131,7 +135,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 200);
+            this.label5.Location = new System.Drawing.Point(9, 236);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
@@ -141,7 +145,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 160);
+            this.label4.Location = new System.Drawing.Point(9, 196);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
@@ -151,7 +155,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 121);
+            this.label3.Location = new System.Drawing.Point(9, 157);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
@@ -171,7 +175,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 317);
+            this.label6.Location = new System.Drawing.Point(11, 353);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
@@ -192,7 +196,7 @@
             // 
             this.notesBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.notesBox.Enabled = false;
-            this.notesBox.Location = new System.Drawing.Point(254, 314);
+            this.notesBox.Location = new System.Drawing.Point(254, 350);
             this.notesBox.Name = "notesBox";
             this.notesBox.Size = new System.Drawing.Size(129, 20);
             this.notesBox.TabIndex = 17;
@@ -202,7 +206,7 @@
             // 
             this.serialNumBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.serialNumBox.Enabled = false;
-            this.serialNumBox.Location = new System.Drawing.Point(254, 118);
+            this.serialNumBox.Location = new System.Drawing.Point(254, 154);
             this.serialNumBox.Name = "serialNumBox";
             this.serialNumBox.Size = new System.Drawing.Size(129, 20);
             this.serialNumBox.TabIndex = 7;
@@ -231,7 +235,7 @@
             "OPTIPLEX 3020",
             "OPTIPLEX 380",
             "THINKCENTRE"});
-            this.modelComboBox.Location = new System.Drawing.Point(254, 197);
+            this.modelComboBox.Location = new System.Drawing.Point(254, 233);
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(129, 21);
             this.modelComboBox.TabIndex = 11;
@@ -263,7 +267,7 @@
             this.brandComboBox.Items.AddRange(new object[] {
             "DELL",
             "LENOVO"});
-            this.brandComboBox.Location = new System.Drawing.Point(254, 157);
+            this.brandComboBox.Location = new System.Drawing.Point(254, 193);
             this.brandComboBox.Name = "brandComboBox";
             this.brandComboBox.Size = new System.Drawing.Size(129, 21);
             this.brandComboBox.TabIndex = 9;
@@ -297,7 +301,7 @@
             this.snLabelBox.BackColor = System.Drawing.SystemColors.Info;
             this.snLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.snLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.snLabelBox.Location = new System.Drawing.Point(74, 118);
+            this.snLabelBox.Location = new System.Drawing.Point(74, 154);
             this.snLabelBox.Name = "snLabelBox";
             this.snLabelBox.ReadOnly = true;
             this.snLabelBox.Size = new System.Drawing.Size(129, 20);
@@ -308,7 +312,7 @@
             this.brandLabelBox.BackColor = System.Drawing.SystemColors.Info;
             this.brandLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.brandLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.brandLabelBox.Location = new System.Drawing.Point(74, 157);
+            this.brandLabelBox.Location = new System.Drawing.Point(74, 193);
             this.brandLabelBox.Name = "brandLabelBox";
             this.brandLabelBox.ReadOnly = true;
             this.brandLabelBox.Size = new System.Drawing.Size(129, 20);
@@ -319,7 +323,7 @@
             this.modelLabelBox.BackColor = System.Drawing.SystemColors.Info;
             this.modelLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.modelLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.modelLabelBox.Location = new System.Drawing.Point(74, 197);
+            this.modelLabelBox.Location = new System.Drawing.Point(74, 233);
             this.modelLabelBox.Name = "modelLabelBox";
             this.modelLabelBox.ReadOnly = true;
             this.modelLabelBox.Size = new System.Drawing.Size(129, 20);
@@ -330,7 +334,7 @@
             this.idLabelBox.BackColor = System.Drawing.SystemColors.Info;
             this.idLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.idLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.idLabelBox.Location = new System.Drawing.Point(74, 237);
+            this.idLabelBox.Location = new System.Drawing.Point(74, 273);
             this.idLabelBox.Name = "idLabelBox";
             this.idLabelBox.ReadOnly = true;
             this.idLabelBox.Size = new System.Drawing.Size(129, 20);
@@ -341,7 +345,7 @@
             this.userLabelBox.BackColor = System.Drawing.SystemColors.Info;
             this.userLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.userLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.userLabelBox.Location = new System.Drawing.Point(74, 274);
+            this.userLabelBox.Location = new System.Drawing.Point(74, 310);
             this.userLabelBox.Name = "userLabelBox";
             this.userLabelBox.ReadOnly = true;
             this.userLabelBox.Size = new System.Drawing.Size(129, 20);
@@ -352,7 +356,7 @@
             this.notesLabelBox.BackColor = System.Drawing.SystemColors.Info;
             this.notesLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.notesLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.notesLabelBox.Location = new System.Drawing.Point(74, 314);
+            this.notesLabelBox.Location = new System.Drawing.Point(74, 350);
             this.notesLabelBox.Name = "notesLabelBox";
             this.notesLabelBox.ReadOnly = true;
             this.notesLabelBox.Size = new System.Drawing.Size(129, 20);
@@ -360,7 +364,7 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(227, 358);
+            this.clearButton.Location = new System.Drawing.Point(227, 393);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 61);
             this.clearButton.TabIndex = 19;
@@ -396,7 +400,7 @@
             // 
             this.brandArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.brandArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brandArrowBtn.Location = new System.Drawing.Point(209, 154);
+            this.brandArrowBtn.Location = new System.Drawing.Point(209, 190);
             this.brandArrowBtn.Name = "brandArrowBtn";
             this.brandArrowBtn.Size = new System.Drawing.Size(39, 25);
             this.brandArrowBtn.TabIndex = 6;
@@ -408,7 +412,7 @@
             // 
             this.snArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.snArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.snArrowBtn.Location = new System.Drawing.Point(209, 115);
+            this.snArrowBtn.Location = new System.Drawing.Point(209, 151);
             this.snArrowBtn.Name = "snArrowBtn";
             this.snArrowBtn.Size = new System.Drawing.Size(39, 25);
             this.snArrowBtn.TabIndex = 4;
@@ -420,7 +424,7 @@
             // 
             this.modelArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modelArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modelArrowBtn.Location = new System.Drawing.Point(209, 194);
+            this.modelArrowBtn.Location = new System.Drawing.Point(209, 230);
             this.modelArrowBtn.Name = "modelArrowBtn";
             this.modelArrowBtn.Size = new System.Drawing.Size(39, 25);
             this.modelArrowBtn.TabIndex = 8;
@@ -432,7 +436,7 @@
             // 
             this.idArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.idArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idArrowBtn.Location = new System.Drawing.Point(209, 235);
+            this.idArrowBtn.Location = new System.Drawing.Point(209, 271);
             this.idArrowBtn.Name = "idArrowBtn";
             this.idArrowBtn.Size = new System.Drawing.Size(39, 25);
             this.idArrowBtn.TabIndex = 10;
@@ -444,7 +448,7 @@
             // 
             this.userArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.userArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userArrowBtn.Location = new System.Drawing.Point(209, 272);
+            this.userArrowBtn.Location = new System.Drawing.Point(209, 308);
             this.userArrowBtn.Name = "userArrowBtn";
             this.userArrowBtn.Size = new System.Drawing.Size(39, 25);
             this.userArrowBtn.TabIndex = 12;
@@ -456,7 +460,7 @@
             // 
             this.notesArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.notesArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notesArrowBtn.Location = new System.Drawing.Point(209, 312);
+            this.notesArrowBtn.Location = new System.Drawing.Point(209, 348);
             this.notesArrowBtn.Name = "notesArrowBtn";
             this.notesArrowBtn.Size = new System.Drawing.Size(39, 25);
             this.notesArrowBtn.TabIndex = 14;
@@ -484,11 +488,54 @@
             this.label9.TabIndex = 83;
             this.label9.Text = "Update";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 119);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 71;
+            this.label10.Text = "Office";
+            // 
+            // ofcLabelBox
+            // 
+            this.ofcLabelBox.BackColor = System.Drawing.SystemColors.Info;
+            this.ofcLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ofcLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ofcLabelBox.Location = new System.Drawing.Point(74, 116);
+            this.ofcLabelBox.Name = "ofcLabelBox";
+            this.ofcLabelBox.ReadOnly = true;
+            this.ofcLabelBox.Size = new System.Drawing.Size(129, 20);
+            this.ofcLabelBox.TabIndex = 80;
+            // 
+            // ofcArrowBtn
+            // 
+            this.ofcArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ofcArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ofcArrowBtn.Location = new System.Drawing.Point(209, 113);
+            this.ofcArrowBtn.Name = "ofcArrowBtn";
+            this.ofcArrowBtn.Size = new System.Drawing.Size(39, 25);
+            this.ofcArrowBtn.TabIndex = 2;
+            this.ofcArrowBtn.Text = " >> ";
+            this.ofcArrowBtn.UseVisualStyleBackColor = true;
+            this.ofcArrowBtn.Click += new System.EventHandler(this.ofcArrowBtn_Click);
+            // 
+            // ofcBox
+            // 
+            this.ofcBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.ofcBox.Enabled = false;
+            this.ofcBox.Location = new System.Drawing.Point(254, 116);
+            this.ofcBox.Name = "ofcBox";
+            this.ofcBox.Size = new System.Drawing.Size(129, 20);
+            this.ofcBox.TabIndex = 7;
+            this.ofcBox.TextChanged += new System.EventHandler(this.ofcBox_TextChanged);
+            // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 440);
+            this.ClientSize = new System.Drawing.Size(396, 467);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.snArrowBtn);
@@ -498,6 +545,7 @@
             this.Controls.Add(this.idArrowBtn);
             this.Controls.Add(this.modelArrowBtn);
             this.Controls.Add(this.brandArrowBtn);
+            this.Controls.Add(this.ofcArrowBtn);
             this.Controls.Add(this.locArrowBtn);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.notesLabelBox);
@@ -506,6 +554,7 @@
             this.Controls.Add(this.modelLabelBox);
             this.Controls.Add(this.brandLabelBox);
             this.Controls.Add(this.snLabelBox);
+            this.Controls.Add(this.ofcLabelBox);
             this.Controls.Add(this.locLabelBox);
             this.Controls.Add(this.invLabelBox);
             this.Controls.Add(this.closeButton);
@@ -517,10 +566,12 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.notesBox);
+            this.Controls.Add(this.ofcBox);
             this.Controls.Add(this.serialNumBox);
             this.Controls.Add(this.invComboBox);
             this.Controls.Add(this.modelComboBox);
@@ -578,5 +629,9 @@
         private System.Windows.Forms.Button notesArrowBtn;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox ofcLabelBox;
+        private System.Windows.Forms.Button ofcArrowBtn;
+        private System.Windows.Forms.TextBox ofcBox;
     }
 }

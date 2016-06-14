@@ -27,6 +27,7 @@ namespace WindowsFormsApplication
 
             string invQry = "UPDATE [ALL$] SET INVENTORY = '" + invComboBox.Text + "' WHERE SERIAL_NUMBER = '" + Form1.sn + "'";
             string locQry = "UPDATE [ALL$] SET LOCATION = '" + locComboBox.Text + "' WHERE SERIAL_NUMBER = '" + Form1.sn + "'";
+            string ofcQry = "UPDATE [ALL$] SET OFFICE = '" + ofcBox.Text + "' WHERE SERIAL_NUMBER = '" + Form1.sn + "'";
             string snQry = "UPDATE [ALL$] SET SERIAL_NUMBER = '" + serialNumBox.Text + "' WHERE SERIAL_NUMBER = '" + Form1.sn + "'";
             string brandQry = "UPDATE [ALL$] SET BRAND = '" + brandComboBox.Text + "' WHERE SERIAL_NUMBER = '" + Form1.sn + "'";
             string modelQry = "UPDATE [ALL$] SET MODEL_NUMBER = '" + modelComboBox.Text + "' WHERE SERIAL_NUMBER = '" + Form1.sn + "'";
@@ -48,6 +49,7 @@ namespace WindowsFormsApplication
                 //create command object    
                 OleDbCommand invCmd = new OleDbCommand(invQry, conn);
                 OleDbCommand locCmd = new OleDbCommand(locQry, conn);
+                OleDbCommand ofcCmd = new OleDbCommand(ofcQry, conn);
                 OleDbCommand snCmd = new OleDbCommand(snQry, conn);
                 OleDbCommand brandCmd = new OleDbCommand(brandQry, conn);
                 OleDbCommand modelCmd = new OleDbCommand(modelQry, conn);
@@ -57,7 +59,8 @@ namespace WindowsFormsApplication
                 OleDbCommand updateCmd = new OleDbCommand(updateQry, conn);
 
                 if (invComboBox.Enabled == true) { int n = invCmd.ExecuteNonQuery(); }
-                if (locComboBox.Enabled == true) { int n2 = locCmd.ExecuteNonQuery(); }
+                if (locComboBox.Enabled == true) { int n1 = locCmd.ExecuteNonQuery(); }
+                if (ofcBox.Enabled == true) { int n2 = ofcCmd.ExecuteNonQuery(); }
                 if (brandComboBox.Enabled == true) { int n4 = brandCmd.ExecuteNonQuery(); }
                 if (modelComboBox.Enabled == true) { int n5 = modelCmd.ExecuteNonQuery(); }
                 if (idBox.Enabled == true) { int n6 = idCmd.ExecuteNonQuery(); }
@@ -80,6 +83,7 @@ namespace WindowsFormsApplication
         {
             invLabelBox.Text = Form1.inv;
             locLabelBox.Text = Form1.loc;
+            ofcLabelBox.Text = Form1.ofc;
             snLabelBox.Text = Form1.sn;
             brandLabelBox.Text = Form1.brand;
             modelLabelBox.Text = Form1.model;
@@ -113,12 +117,13 @@ namespace WindowsFormsApplication
         {
             if (x != 0 & invComboBox.Text == "") { invComboBox.Enabled = false; }
             if (x != 1 & locComboBox.Text == "") { locComboBox.Enabled = false; }
-            if (x != 2 & serialNumBox.Text == "") { serialNumBox.Enabled = false; }
-            if (x != 3 & brandComboBox.Text == "") { brandComboBox.Enabled = false; }
-            if (x != 4 & modelComboBox.Text == "") { modelComboBox.Enabled = false; }
-            if (x != 5 & idBox.Text == "") { idBox.Enabled = false; }
-            if (x != 6 & userNameBox.Text == "") { userNameBox.Enabled = false; }
-            if (x != 7 & notesBox.Text == "") { notesBox.Enabled = false; }
+            if (x != 2 & ofcBox.Text == "") { ofcBox.Enabled = false; }
+            if (x != 3 & serialNumBox.Text == "") { serialNumBox.Enabled = false; }
+            if (x != 4 & brandComboBox.Text == "") { brandComboBox.Enabled = false; }
+            if (x != 5 & modelComboBox.Text == "") { modelComboBox.Enabled = false; }
+            if (x != 6 & idBox.Text == "") { idBox.Enabled = false; }
+            if (x != 7 & userNameBox.Text == "") { userNameBox.Enabled = false; }
+            if (x != 8 & notesBox.Text == "") { notesBox.Enabled = false; }
         }
 
         private void invArrowBtn_Click(object sender, EventArgs e)
@@ -133,46 +138,53 @@ namespace WindowsFormsApplication
             int x = 1;
             if (!locComboBox.Enabled) { locComboBox.Enabled = true; }
             disableEmptyFields(x);
-        }     
+        }
+
+        private void ofcArrowBtn_Click(object sender, EventArgs e)
+        {
+            int x = 2;
+            if (!ofcBox.Enabled) { ofcBox.Enabled = true; }
+            disableEmptyFields(x);
+        }
 
         private void snArrowBtn_Click(object sender, EventArgs e)
         {
-            int x = 2;
+            int x = 3;
             if (!serialNumBox.Enabled) { serialNumBox.Enabled = true; }
             disableEmptyFields(x);
         }
 
         private void brandArrowBtn_Click(object sender, EventArgs e)
         {
-            int x = 3;
+            int x = 4;
             if (!brandComboBox.Enabled) { brandComboBox.Enabled = true; }
             disableEmptyFields(x);
         }
 
         private void modelArrowBtn_Click(object sender, EventArgs e)
         {
-            int x = 4;
+            int x = 5;
             if (!modelComboBox.Enabled) { modelComboBox.Enabled = true; }
             disableEmptyFields(x);
         }
 
         private void idArrowBtn_Click(object sender, EventArgs e)
         {
-            int x = 5;
+            int x = 6;
             if (!idBox.Enabled) { idBox.Enabled = true; }
             disableEmptyFields(x);
         }
 
         private void userArrowBtn_Click(object sender, EventArgs e)
         {
-            int x = 6;
+            int x = 7;
             if (!userNameBox.Enabled) { userNameBox.Enabled = true; }
             disableEmptyFields(x);
         }
 
         private void notesArrowBtn_Click(object sender, EventArgs e)
         {
-            int x = 7;
+            int x = 8;
             if (!notesBox.Enabled) { notesBox.Enabled = true; }
             disableEmptyFields(x);
         }        
@@ -181,7 +193,7 @@ namespace WindowsFormsApplication
         {
             int inputResult = isUnique(serialNumBox.Text);
 
-            if (invComboBox.Text != "" || locComboBox.Text != "" || brandComboBox.Text != "" || modelComboBox.Text != "" || idBox.Text != "" || userNameBox.Text != "" || notesBox.Text != "")
+            if (invComboBox.Text != "" || locComboBox.Text != "" || ofcBox.Text != "" || brandComboBox.Text != "" || modelComboBox.Text != "" || idBox.Text != "" || userNameBox.Text != "" || notesBox.Text != "")
             {
                 updateButton.Enabled = true;
             }            
@@ -195,7 +207,7 @@ namespace WindowsFormsApplication
                 updateButton.Enabled = false;
             }
 
-            if (invComboBox.Text == "" & locComboBox.Text == "" & serialNumBox.Text == "" & brandComboBox.Text == "" & modelComboBox.Text == "" & idBox.Text == "" & userNameBox.Text == "" & notesBox.Text == "")
+            if (invComboBox.Text == "" & locComboBox.Text == "" & ofcBox.Text == "" & serialNumBox.Text == "" & brandComboBox.Text == "" & modelComboBox.Text == "" & idBox.Text == "" & userNameBox.Text == "" & notesBox.Text == "")
             {
                 updateButton.Enabled = false;
             }
@@ -261,10 +273,15 @@ namespace WindowsFormsApplication
             checkIfValid();
         }
 
+        private void ofcBox_TextChanged(object sender, EventArgs e)
+        {
+            checkIfValid();
+        }
+
         private void clearButton_Click(object sender, EventArgs e)
         {
             int x = -1;
-            invComboBox.Text = ""; locComboBox.Text = ""; serialNumBox.Text = ""; brandComboBox.Text = ""; modelComboBox.Text = ""; idBox.Text = ""; userNameBox.Text = ""; notesBox.Text = "";
+            invComboBox.Text = ""; locComboBox.Text = ""; ofcBox.Text = ""; serialNumBox.Text = ""; brandComboBox.Text = ""; modelComboBox.Text = ""; idBox.Text = ""; userNameBox.Text = ""; notesBox.Text = "";
             disableEmptyFields(x);
             updateButton.Enabled = false;
         }
@@ -280,7 +297,6 @@ namespace WindowsFormsApplication
         {
             Close();
         }
-
     }
 
 
