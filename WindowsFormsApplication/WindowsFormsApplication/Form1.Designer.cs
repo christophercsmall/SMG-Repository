@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.allTab = new System.Windows.Forms.TabPage();
@@ -39,10 +39,15 @@
             this.arenaTab = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.tucpaTab = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.poccTab = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.ritzTab = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.ballparkTab = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             this.storageTab = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.lastUpdateLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
@@ -57,11 +62,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.deleteButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reloadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -97,9 +97,9 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1093, 381);
@@ -216,6 +216,19 @@
             this.tucpaTab.TabIndex = 1;
             this.tucpaTab.Text = "TUCPA";
             // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.AutoScroll = true;
+            this.flowLayoutPanel4.AutoSize = true;
+            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel4.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel4.TabIndex = 1;
+            // 
             // poccTab
             // 
             this.poccTab.BackColor = System.Drawing.Color.White;
@@ -228,6 +241,19 @@
             this.poccTab.Size = new System.Drawing.Size(1089, 97);
             this.poccTab.TabIndex = 2;
             this.poccTab.Text = "POCC";
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.AutoScroll = true;
+            this.flowLayoutPanel5.AutoSize = true;
+            this.flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel5.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel5.TabIndex = 1;
             // 
             // ritzTab
             // 
@@ -242,6 +268,19 @@
             this.ritzTab.TabIndex = 6;
             this.ritzTab.Text = "RITZ";
             // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.AutoScroll = true;
+            this.flowLayoutPanel6.AutoSize = true;
+            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel6.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel6.TabIndex = 1;
+            // 
             // ballparkTab
             // 
             this.ballparkTab.BackColor = System.Drawing.Color.White;
@@ -253,6 +292,19 @@
             this.ballparkTab.Size = new System.Drawing.Size(1089, 97);
             this.ballparkTab.TabIndex = 7;
             this.ballparkTab.Text = "BALLPARK";
+            // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.AutoScroll = true;
+            this.flowLayoutPanel7.AutoSize = true;
+            this.flowLayoutPanel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel7.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(1085, 93);
+            this.flowLayoutPanel7.TabIndex = 1;
             // 
             // storageTab
             // 
@@ -267,10 +319,23 @@
             this.storageTab.TabIndex = 4;
             this.storageTab.Text = "STORAGE";
             // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.AutoScroll = true;
+            this.flowLayoutPanel8.AutoSize = true;
+            this.flowLayoutPanel8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel8.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel8.TabIndex = 1;
+            // 
             // lastUpdateLabel
             // 
             this.lastUpdateLabel.AutoSize = true;
-            this.lastUpdateLabel.Location = new System.Drawing.Point(254, 188);
+            this.lastUpdateLabel.Location = new System.Drawing.Point(90, 188);
             this.lastUpdateLabel.Name = "lastUpdateLabel";
             this.lastUpdateLabel.Size = new System.Drawing.Size(22, 13);
             this.lastUpdateLabel.TabIndex = 3;
@@ -279,7 +344,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(177, 188);
+            this.label9.Location = new System.Drawing.Point(13, 188);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 13);
             this.label9.TabIndex = 2;
@@ -288,7 +353,7 @@
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
-            this.totalLabel.Location = new System.Drawing.Point(254, 210);
+            this.totalLabel.Location = new System.Drawing.Point(90, 210);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(22, 13);
             this.totalLabel.TabIndex = 1;
@@ -297,7 +362,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(177, 210);
+            this.label1.Location = new System.Drawing.Point(13, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 0;
@@ -405,77 +470,12 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(177, 12);
+            this.button1.Location = new System.Drawing.Point(950, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(159, 33);
             this.button1.TabIndex = 51;
             this.button1.Text = "Print";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.AutoScroll = true;
-            this.flowLayoutPanel4.AutoSize = true;
-            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel4.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(1079, 87);
-            this.flowLayoutPanel4.TabIndex = 1;
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.AutoScroll = true;
-            this.flowLayoutPanel5.AutoSize = true;
-            this.flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel5.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(1079, 87);
-            this.flowLayoutPanel5.TabIndex = 1;
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.AutoScroll = true;
-            this.flowLayoutPanel6.AutoSize = true;
-            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel6.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(1079, 87);
-            this.flowLayoutPanel6.TabIndex = 1;
-            // 
-            // flowLayoutPanel7
-            // 
-            this.flowLayoutPanel7.AutoScroll = true;
-            this.flowLayoutPanel7.AutoSize = true;
-            this.flowLayoutPanel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel7.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(1085, 93);
-            this.flowLayoutPanel7.TabIndex = 1;
-            // 
-            // flowLayoutPanel8
-            // 
-            this.flowLayoutPanel8.AutoScroll = true;
-            this.flowLayoutPanel8.AutoSize = true;
-            this.flowLayoutPanel8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel8.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
-            this.flowLayoutPanel8.Size = new System.Drawing.Size(1079, 87);
-            this.flowLayoutPanel8.TabIndex = 1;
             // 
             // form1BindingSource
             // 
@@ -483,9 +483,9 @@
             // 
             // reloadBtn
             // 
-            this.reloadBtn.Location = new System.Drawing.Point(12, 183);
+            this.reloadBtn.Location = new System.Drawing.Point(177, 12);
             this.reloadBtn.Name = "reloadBtn";
-            this.reloadBtn.Size = new System.Drawing.Size(159, 43);
+            this.reloadBtn.Size = new System.Drawing.Size(159, 33);
             this.reloadBtn.TabIndex = 52;
             this.reloadBtn.Text = "Refresh";
             this.reloadBtn.UseVisualStyleBackColor = true;

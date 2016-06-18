@@ -214,6 +214,7 @@
             // 
             // invComboBox
             // 
+            this.invComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.invComboBox.Enabled = false;
             this.invComboBox.FormattingEnabled = true;
             this.invComboBox.Items.AddRange(new object[] {
@@ -244,6 +245,7 @@
             // 
             // locComboBox
             // 
+            this.locComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.locComboBox.Enabled = false;
             this.locComboBox.FormattingEnabled = true;
             this.locComboBox.Items.AddRange(new object[] {
