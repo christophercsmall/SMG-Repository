@@ -61,9 +61,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reloadBtn = new System.Windows.Forms.Button();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.allTab.SuspendLayout();
@@ -102,7 +103,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1093, 381);
+            this.dataGridView1.Size = new System.Drawing.Size(1093, 415);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 3;
             // 
@@ -122,7 +123,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1097, 123);
+            this.tabControl1.Size = new System.Drawing.Size(1097, 102);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 4;
             this.tabControl1.TabStop = false;
@@ -136,7 +137,7 @@
             this.allTab.Controls.Add(this.flowLayoutPanel1);
             this.allTab.Location = new System.Drawing.Point(4, 22);
             this.allTab.Name = "allTab";
-            this.allTab.Size = new System.Drawing.Size(1089, 97);
+            this.allTab.Size = new System.Drawing.Size(1089, 76);
             this.allTab.TabIndex = 0;
             this.allTab.Text = "ALL";
             // 
@@ -149,7 +150,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1085, 93);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1085, 72);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // stadiumTab
@@ -161,7 +162,7 @@
             this.stadiumTab.Location = new System.Drawing.Point(4, 22);
             this.stadiumTab.Name = "stadiumTab";
             this.stadiumTab.Padding = new System.Windows.Forms.Padding(3);
-            this.stadiumTab.Size = new System.Drawing.Size(1089, 97);
+            this.stadiumTab.Size = new System.Drawing.Size(1089, 76);
             this.stadiumTab.TabIndex = 0;
             this.stadiumTab.Text = "STADIUM";
             // 
@@ -174,7 +175,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1079, 66);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // arenaTab
@@ -186,7 +187,7 @@
             this.arenaTab.Location = new System.Drawing.Point(4, 22);
             this.arenaTab.Name = "arenaTab";
             this.arenaTab.Padding = new System.Windows.Forms.Padding(3);
-            this.arenaTab.Size = new System.Drawing.Size(1089, 97);
+            this.arenaTab.Size = new System.Drawing.Size(1089, 76);
             this.arenaTab.TabIndex = 5;
             this.arenaTab.Text = "ARENA";
             // 
@@ -200,7 +201,7 @@
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1079, 66);
             this.flowLayoutPanel3.TabIndex = 0;
             // 
             // tucpaTab
@@ -212,7 +213,7 @@
             this.tucpaTab.Location = new System.Drawing.Point(4, 22);
             this.tucpaTab.Name = "tucpaTab";
             this.tucpaTab.Padding = new System.Windows.Forms.Padding(3);
-            this.tucpaTab.Size = new System.Drawing.Size(1089, 97);
+            this.tucpaTab.Size = new System.Drawing.Size(1089, 76);
             this.tucpaTab.TabIndex = 1;
             this.tucpaTab.Text = "TUCPA";
             // 
@@ -226,7 +227,7 @@
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(1079, 66);
             this.flowLayoutPanel4.TabIndex = 1;
             // 
             // poccTab
@@ -238,7 +239,7 @@
             this.poccTab.Location = new System.Drawing.Point(4, 22);
             this.poccTab.Name = "poccTab";
             this.poccTab.Padding = new System.Windows.Forms.Padding(3);
-            this.poccTab.Size = new System.Drawing.Size(1089, 97);
+            this.poccTab.Size = new System.Drawing.Size(1089, 76);
             this.poccTab.TabIndex = 2;
             this.poccTab.Text = "POCC";
             // 
@@ -252,7 +253,7 @@
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(1079, 66);
             this.flowLayoutPanel5.TabIndex = 1;
             // 
             // ritzTab
@@ -264,7 +265,7 @@
             this.ritzTab.Location = new System.Drawing.Point(4, 22);
             this.ritzTab.Name = "ritzTab";
             this.ritzTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ritzTab.Size = new System.Drawing.Size(1089, 97);
+            this.ritzTab.Size = new System.Drawing.Size(1089, 76);
             this.ritzTab.TabIndex = 6;
             this.ritzTab.Text = "RITZ";
             // 
@@ -278,7 +279,7 @@
             this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(1079, 66);
             this.flowLayoutPanel6.TabIndex = 1;
             // 
             // ballparkTab
@@ -289,7 +290,7 @@
             this.ballparkTab.Controls.Add(this.flowLayoutPanel7);
             this.ballparkTab.Location = new System.Drawing.Point(4, 22);
             this.ballparkTab.Name = "ballparkTab";
-            this.ballparkTab.Size = new System.Drawing.Size(1089, 97);
+            this.ballparkTab.Size = new System.Drawing.Size(1089, 76);
             this.ballparkTab.TabIndex = 7;
             this.ballparkTab.Text = "BALLPARK";
             // 
@@ -303,7 +304,7 @@
             this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(1085, 93);
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(1085, 72);
             this.flowLayoutPanel7.TabIndex = 1;
             // 
             // storageTab
@@ -315,7 +316,7 @@
             this.storageTab.Location = new System.Drawing.Point(4, 22);
             this.storageTab.Name = "storageTab";
             this.storageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.storageTab.Size = new System.Drawing.Size(1089, 97);
+            this.storageTab.Size = new System.Drawing.Size(1089, 76);
             this.storageTab.TabIndex = 4;
             this.storageTab.Text = "STORAGE";
             // 
@@ -329,13 +330,13 @@
             this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
-            this.flowLayoutPanel8.Size = new System.Drawing.Size(1079, 87);
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(1079, 66);
             this.flowLayoutPanel8.TabIndex = 1;
             // 
             // lastUpdateLabel
             // 
             this.lastUpdateLabel.AutoSize = true;
-            this.lastUpdateLabel.Location = new System.Drawing.Point(90, 188);
+            this.lastUpdateLabel.Location = new System.Drawing.Point(313, 179);
             this.lastUpdateLabel.Name = "lastUpdateLabel";
             this.lastUpdateLabel.Size = new System.Drawing.Size(22, 13);
             this.lastUpdateLabel.TabIndex = 3;
@@ -344,7 +345,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 188);
+            this.label9.Location = new System.Drawing.Point(236, 179);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 13);
             this.label9.TabIndex = 2;
@@ -353,7 +354,7 @@
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
-            this.totalLabel.Location = new System.Drawing.Point(90, 210);
+            this.totalLabel.Location = new System.Drawing.Point(313, 162);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(22, 13);
             this.totalLabel.TabIndex = 1;
@@ -362,7 +363,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 210);
+            this.label1.Location = new System.Drawing.Point(236, 162);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 0;
@@ -387,7 +388,7 @@
             // 
             this.filePathLabel.AutoSize = true;
             this.filePathLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.filePathLabel.Location = new System.Drawing.Point(342, 22);
+            this.filePathLabel.Location = new System.Drawing.Point(342, 30);
             this.filePathLabel.Name = "filePathLabel";
             this.filePathLabel.Size = new System.Drawing.Size(70, 15);
             this.filePathLabel.TabIndex = 7;
@@ -441,7 +442,7 @@
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Location = new System.Drawing.Point(12, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1097, 123);
+            this.panel1.Size = new System.Drawing.Size(1097, 102);
             this.panel1.TabIndex = 48;
             // 
             // panel2
@@ -451,9 +452,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(12, 232);
+            this.panel2.Location = new System.Drawing.Point(12, 199);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1097, 385);
+            this.panel2.Size = new System.Drawing.Size(1097, 419);
             this.panel2.TabIndex = 49;
             // 
             // deleteButton
@@ -468,19 +469,6 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(950, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 33);
-            this.button1.TabIndex = 51;
-            this.button1.Text = "Print";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // form1BindingSource
-            // 
-            this.form1BindingSource.DataSource = typeof(WindowsFormsApplication.Form1);
-            // 
             // reloadBtn
             // 
             this.reloadBtn.Location = new System.Drawing.Point(177, 12);
@@ -491,17 +479,42 @@
             this.reloadBtn.UseVisualStyleBackColor = true;
             this.reloadBtn.Click += new System.EventHandler(this.reloadBtn_Click);
             // 
+            // searchBox
+            // 
+            this.searchBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.searchBox.Enabled = false;
+            this.searchBox.Location = new System.Drawing.Point(77, 168);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(153, 20);
+            this.searchBox.TabIndex = 53;
+            this.searchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 171);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Quick Find";
+            // 
+            // form1BindingSource
+            // 
+            this.form1BindingSource.DataSource = typeof(WindowsFormsApplication.Form1);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1121, 670);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.reloadBtn);
             this.Controls.Add(this.lastUpdateLabel);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.totalLabel);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.closeButton);
@@ -563,7 +576,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lastUpdateLabel;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage stadiumTab;
         private System.Windows.Forms.TabPage arenaTab;
         private System.Windows.Forms.TabPage allTab;
@@ -576,6 +588,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.Button reloadBtn;
+        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Label label2;
     }
 }
 

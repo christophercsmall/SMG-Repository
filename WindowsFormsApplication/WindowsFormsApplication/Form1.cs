@@ -15,11 +15,8 @@ namespace WindowsFormsApplication
 {
     public partial class Form1 : Form
     {
-        public static string filePath;
-        public string query = "SELECT * FROM [ALL$] WHERE [SERIAL_NUMBER] <> '-';";
-        public string countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [SERIAL_NUMBER] <> '-';";
-        public static string inv, loc, ofc, sn, brand, model, id, user, notes;
-        public List<Button> UsersBtns = new List<Button>();
+        public static string filePath;        
+
         public Form1()
         {
             InitializeComponent();            
@@ -49,20 +46,22 @@ namespace WindowsFormsApplication
             {
                 try
                 {
+                    var query = "SELECT * FROM [ALL$] WHERE [SERIAL_NUMBER] <> '-';";
+                    var countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [SERIAL_NUMBER] <> '-';";
+
                     totalLabel.Text = load(query, countQuery).ToString();
                     dataGridView1.Sort(dataGridView1.Columns["LAST_UPDATE"], ListSortDirection.Descending);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("File Containes Invalid Header Format \n\n" + ex.ToString());
-                }
-                
+                }                
             }
-
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            searchBox.Clear();
             refreshData();
         }
 
@@ -129,6 +128,33 @@ namespace WindowsFormsApplication
         private void reloadBtn_Click(object sender, EventArgs e)
         {
             refreshData();
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            var qry = "";
+            var countQry = "";
+            var tab = tabControl1.SelectedTab.Text;
+            var text = searchBox.Text.ToString();
+
+            if (text == "")
+            {
+                refreshData();
+            }
+            else
+            {
+                if (tab == "ALL")
+                {
+                    qry = "SELECT * FROM [ALL$] WHERE ([INVENTORY] LIKE '%" + text + "%' OR [OFFICE] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
+                    countQry = "SELECT COUNT(*) FROM [ALL$] WHERE ([INVENTORY] LIKE '%" + text + "%' OR [OFFICE] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
+                }
+                else
+                {
+                    qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + text + "%' OR [OFFICE] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
+                    countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + text + "%' OR [OFFICE] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";                    
+                }
+                totalLabel.Text = load(qry, countQry).ToString();
+            }
         }
 
         private Button createOfcBtn(string text)
@@ -201,6 +227,7 @@ namespace WindowsFormsApplication
                     addButton.Enabled = true;
                     editButton.Enabled = true;
                     deleteButton.Enabled = true;
+                    searchBox.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -222,6 +249,7 @@ namespace WindowsFormsApplication
                     addButton.Enabled = false;
                     editButton.Enabled = false;
                     deleteButton.Enabled = false;
+                    searchBox.Enabled = false;
                     MessageBox.Show("An error occured while trying to process this file. \n\n" + ex);
                 }
                 finally
@@ -259,23 +287,23 @@ namespace WindowsFormsApplication
             {
                 int selectedrowindex = dataGridView1.SelectedCells[2].RowIndex;
 
-                inv = dataGridView1.Rows[selectedrowindex].Cells[0].Value.ToString();
-                loc = dataGridView1.Rows[selectedrowindex].Cells[1].Value.ToString();
-                ofc = dataGridView1.Rows[selectedrowindex].Cells[2].Value.ToString();
-                sn = dataGridView1.Rows[selectedrowindex].Cells[3].Value.ToString();
-                brand = dataGridView1.Rows[selectedrowindex].Cells[4].Value.ToString();
-                model = dataGridView1.Rows[selectedrowindex].Cells[5].Value.ToString();
-                id = dataGridView1.Rows[selectedrowindex].Cells[6].Value.ToString();
-                user = dataGridView1.Rows[selectedrowindex].Cells[7].Value.ToString();
-                notes = dataGridView1.Rows[selectedrowindex].Cells[8].Value.ToString();
+                var inv = dataGridView1.Rows[selectedrowindex].Cells[0].Value.ToString();
+                var loc = dataGridView1.Rows[selectedrowindex].Cells[1].Value.ToString();
+                var ofc = dataGridView1.Rows[selectedrowindex].Cells[2].Value.ToString();
+                var sn = dataGridView1.Rows[selectedrowindex].Cells[3].Value.ToString();
+                var brand = dataGridView1.Rows[selectedrowindex].Cells[4].Value.ToString();
+                var model = dataGridView1.Rows[selectedrowindex].Cells[5].Value.ToString();
+                var id = dataGridView1.Rows[selectedrowindex].Cells[6].Value.ToString();
+                var user = dataGridView1.Rows[selectedrowindex].Cells[7].Value.ToString();
+                var notes = dataGridView1.Rows[selectedrowindex].Cells[8].Value.ToString();
 
-                EditForm form = new EditForm();
+                EditForm form = new EditForm(inv, loc, ofc, sn, brand, model, id, user, notes);
                 form.Owner = this;
                 form.Show();
                 this.Enabled = false;
             }
             
-        }        
+        }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
@@ -289,15 +317,15 @@ namespace WindowsFormsApplication
 
                     int selectedrowindex = dataGridView1.SelectedCells[2].RowIndex;
 
-                    inv = dataGridView1.Rows[selectedrowindex].Cells[0].Value.ToString();
-                    loc = dataGridView1.Rows[selectedrowindex].Cells[1].Value.ToString();
-                    ofc = dataGridView1.Rows[selectedrowindex].Cells[2].Value.ToString();
-                    sn = dataGridView1.Rows[selectedrowindex].Cells[3].Value.ToString();
-                    brand = dataGridView1.Rows[selectedrowindex].Cells[4].Value.ToString();
-                    model = dataGridView1.Rows[selectedrowindex].Cells[5].Value.ToString();
-                    id = dataGridView1.Rows[selectedrowindex].Cells[6].Value.ToString();
-                    user = dataGridView1.Rows[selectedrowindex].Cells[7].Value.ToString();
-                    notes = dataGridView1.Rows[selectedrowindex].Cells[8].Value.ToString();
+                    var inv = dataGridView1.Rows[selectedrowindex].Cells[0].Value.ToString();
+                    var loc = dataGridView1.Rows[selectedrowindex].Cells[1].Value.ToString();
+                    var ofc = dataGridView1.Rows[selectedrowindex].Cells[2].Value.ToString();
+                    var sn = dataGridView1.Rows[selectedrowindex].Cells[3].Value.ToString();
+                    var brand = dataGridView1.Rows[selectedrowindex].Cells[4].Value.ToString();
+                    var model = dataGridView1.Rows[selectedrowindex].Cells[5].Value.ToString();
+                    var id = dataGridView1.Rows[selectedrowindex].Cells[6].Value.ToString();
+                    var user = dataGridView1.Rows[selectedrowindex].Cells[7].Value.ToString();
+                    var notes = dataGridView1.Rows[selectedrowindex].Cells[8].Value.ToString();
 
                     string selectedRecordString = "[" + inv + "] " + "[" + loc + "] " + "[" + ofc + "] " + "[" + sn + "] " + "[" + brand + "] " + "[" + model + "] " + "[" + id + "] " + "[" + user + "] " + "[" + notes + "] ";
                     string invQry = "UPDATE [ALL$] SET INVENTORY = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
@@ -315,7 +343,7 @@ namespace WindowsFormsApplication
 
                     try
                     {
-                        String connstr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;HDR=YES;IMEX=0;MAXSCANROWS=10;READONLY=FALSE;\""; //IMEX=0;MAXSCANROWS=10;
+                        String connstr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties=\"Excel 12.0;HDR=YES;IMEX=0;MAXSCANROWS=10;READONLY=FALSE;\""; //IMEX=0;MAXSCANROWS=10;
                         OleDbConnection conn = new OleDbConnection(connstr);
 
                         if (conn.State == ConnectionState.Closed)
@@ -366,46 +394,66 @@ namespace WindowsFormsApplication
 
         public void refreshData()
         {
-            if (filePath != null)
-            {
-                int n = tabControl1.SelectedIndex;
+            var qry = "";
+            var countQry = "";
 
-                switch (n)
+            var tab = tabControl1.SelectedTab.Text;
+            var searchText = searchBox.Text.ToString();
+
+            if (filePath != null)
+            {                
+                if (searchText == "")
                 {
-                    case 0:
-                        query = "SELECT * FROM [ALL$] WHERE [LOCATION] <> '-'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] <> '-'";
-                        break;
-                    case 1:
-                        query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'STADIUM'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'STADIUM'";
-                        break;
-                    case 2:
-                        query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'ARENA'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'ARENA'";
-                        break;
-                    case 3:
-                        query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'TUCPA'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'TUCPA'";
-                        break;
-                    case 4:
-                        query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'POCC'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'POCC'";
-                        break;
-                    case 5:
-                        query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'RITZ'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'RITZ'";
-                        break;
-                    case 6:
-                        query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'BALLPARK'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'BALLPARK'";
-                        break;
-                    case 7:
-                        query = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'STORAGE'";
-                        countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'STORAGE'";
-                        break;
+                    switch (tab)
+                    {
+                        case "ALL":
+                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] <> '-'";
+                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] <> '-'";
+                            break;
+                        case "STADIUM":
+                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'STADIUM'";
+                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'STADIUM'";
+                            break;
+                        case "ARENA":
+                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'ARENA'";
+                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'ARENA'";
+                            break;
+                        case "TUCPA":
+                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'TUCPA'";
+                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'TUCPA'";
+                            break;
+                        case "POCC":
+                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'POCC'";
+                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'POCC'";
+                            break;
+                        case "RITZ":
+                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'RITZ'";
+                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'RITZ'";
+                            break;
+                        case "BALLPARK":
+                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'BALLPARK'";
+                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'BALLPARK'";
+                            break;
+                        case "STORAGE":
+                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'STORAGE'";
+                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'STORAGE'";
+                            break;
+                    }
                 }
-                totalLabel.Text = load(query, countQuery).ToString();
+                else
+                {
+                    if (tab == "ALL")
+                    {
+                        qry = "SELECT * FROM [ALL$] WHERE ([INVENTORY] LIKE '%" + searchText + "%' OR [OFFICE] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
+                        countQry = "SELECT COUNT(*) FROM [ALL$] WHERE ([INVENTORY] LIKE '%" + searchText + "%' OR [OFFICE] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
+                    }
+                    else
+                    {
+                        qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + searchText + "%' OR [OFFICE] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
+                        countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + searchText + "%' OR [OFFICE] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
+                    }
+                }
+                totalLabel.Text = load(qry, countQry).ToString();
             }
         }
     }
