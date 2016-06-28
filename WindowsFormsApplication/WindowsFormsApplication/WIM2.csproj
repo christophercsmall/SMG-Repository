@@ -7,8 +7,8 @@
     <ProjectGuid>{8E1F1C41-E6D2-4C54-A645-3289B208DB3A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsFormsApplication</RootNamespace>
-    <AssemblyName>WindowsFormsApplication</AssemblyName>
+    <RootNamespace>WIM2</RootNamespace>
+    <AssemblyName>WIM2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
