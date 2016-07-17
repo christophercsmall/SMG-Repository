@@ -97,7 +97,19 @@
             this.invComboBox.FormattingEnabled = true;
             this.invComboBox.Items.AddRange(new object[] {
             "PC",
-            "LAPTOP"});
+            "LAPTOP",
+            "SERVER",
+            "MONITOR",
+            "PRINTER",
+            "CELLPHONE",
+            "TABLET",
+            "RADIO",
+            "SWITCH",
+            "ROUTER",
+            "ACCESS POINT",
+            "TV",
+            "RF EQUIP",
+            "AV EQUIP"});
             this.invComboBox.Location = new System.Drawing.Point(95, 22);
             this.invComboBox.Name = "invComboBox";
             this.invComboBox.Size = new System.Drawing.Size(159, 21);
