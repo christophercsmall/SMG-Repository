@@ -143,7 +143,7 @@ namespace WindowsFormsApplication
             }
             else
             {
-                if (tab == "INVENTORY")
+                if (tab == "ALL")
                 {
                     qry = "SELECT * FROM [INVENTORY$] WHERE ([INVENTORY] LIKE '%" + text + "%' OR [AREA] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
                     countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE ([INVENTORY] LIKE '%" + text + "%' OR [AREA] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
