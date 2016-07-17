@@ -24,14 +24,14 @@ namespace WindowsFormsApplication
         {
             string inv = invComboBox.Text;
             string loc = locComboBox.Text;
-            string ofc = ofcBox.Text;
+            string area = areaBox.Text;
             string sn = serialNumBox.Text;
             string brand = brandComboBox.Text;
             string model = modelComboBox.Text;
             string id = idBox.Text;
             string user = userNameBox.Text;
             string notes = notesBox.Text;
-            string query = "INSERT INTO [ALL$] ([INVENTORY], [LOCATION], [OFFICE], [SERIAL_NUMBER], [BRAND], [MODEL_NUMBER], [SMG_ID], [USER_NAME], [NOTES], [LAST_UPDATE]) VALUES('" + inv + "', '"+loc+"', '"+ofc+"', '"+sn+"', '"+brand+"', '"+model+"', '"+id+"', '"+user+"', '"+notes+"', '"+DateTime.Now+"')";
+            string query = "INSERT INTO [INVENTORY$] ([INVENTORY], [LOCATION], [AREA], [SERIAL_NUMBER], [BRAND], [MODEL_NUMBER], [SMG_ID], [USER_NAME], [NOTES], [LAST_UPDATE]) VALUES('" + inv + "', '"+loc+"', '"+area+"', '"+sn+"', '"+brand+"', '"+model+"', '"+id+"', '"+user+"', '"+notes+"', '"+DateTime.Now+"')";
 
             //String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;ReadOnly=False;HDR=Yes;\"";
             String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;HDR=YES;IMEX=0;MAXSCANROWS=10;READONLY=FALSE;\""; //IMEX=0;MAXSCANROWS=10;
@@ -64,7 +64,7 @@ namespace WindowsFormsApplication
         {
             invComboBox.SelectedIndex = -1;
             locComboBox.SelectedIndex = -1;
-            ofcBox.Text = string.Empty;
+            areaBox.Text = string.Empty;
             serialNumBox.Text = string.Empty;
             brandComboBox.Text = string.Empty;
             modelComboBox.Text = string.Empty;
@@ -99,7 +99,7 @@ namespace WindowsFormsApplication
 
         private int isUnique(string sn)
         {            
-            string query = "SELECT COUNT(*) FROM [ALL$] WHERE [SERIAL_NUMBER] = '"+sn+"'";
+            string query = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [SERIAL_NUMBER] = '"+sn+"'";
 
             //String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;ReadOnly=False;HDR=Yes;\"";
             String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;HDR=YES;IMEX=0;MAXSCANROWS=10;READONLY=FALSE;\""; //IMEX=0;MAXSCANROWS=10;

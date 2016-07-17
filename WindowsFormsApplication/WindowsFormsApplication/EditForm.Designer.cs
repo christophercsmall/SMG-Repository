@@ -66,9 +66,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.ofcLabelBox = new System.Windows.Forms.TextBox();
-            this.ofcArrowBtn = new System.Windows.Forms.Button();
-            this.ofcBox = new System.Windows.Forms.TextBox();
+            this.areaLabelBox = new System.Windows.Forms.TextBox();
+            this.areaArrowBtn = new System.Windows.Forms.Button();
+            this.areaBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // closeButton
@@ -496,42 +496,42 @@
             this.label10.Location = new System.Drawing.Point(9, 119);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.Size = new System.Drawing.Size(29, 13);
             this.label10.TabIndex = 71;
-            this.label10.Text = "Office";
+            this.label10.Text = "Area";
             // 
-            // ofcLabelBox
+            // areaLabelBox
             // 
-            this.ofcLabelBox.BackColor = System.Drawing.SystemColors.Info;
-            this.ofcLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ofcLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ofcLabelBox.Location = new System.Drawing.Point(74, 116);
-            this.ofcLabelBox.Name = "ofcLabelBox";
-            this.ofcLabelBox.ReadOnly = true;
-            this.ofcLabelBox.Size = new System.Drawing.Size(129, 20);
-            this.ofcLabelBox.TabIndex = 80;
+            this.areaLabelBox.BackColor = System.Drawing.SystemColors.Info;
+            this.areaLabelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.areaLabelBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.areaLabelBox.Location = new System.Drawing.Point(74, 116);
+            this.areaLabelBox.Name = "areaLabelBox";
+            this.areaLabelBox.ReadOnly = true;
+            this.areaLabelBox.Size = new System.Drawing.Size(129, 20);
+            this.areaLabelBox.TabIndex = 80;
             // 
-            // ofcArrowBtn
+            // areaArrowBtn
             // 
-            this.ofcArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ofcArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ofcArrowBtn.Location = new System.Drawing.Point(209, 113);
-            this.ofcArrowBtn.Name = "ofcArrowBtn";
-            this.ofcArrowBtn.Size = new System.Drawing.Size(39, 25);
-            this.ofcArrowBtn.TabIndex = 2;
-            this.ofcArrowBtn.Text = " >> ";
-            this.ofcArrowBtn.UseVisualStyleBackColor = true;
-            this.ofcArrowBtn.Click += new System.EventHandler(this.ofcArrowBtn_Click);
+            this.areaArrowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.areaArrowBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.areaArrowBtn.Location = new System.Drawing.Point(209, 113);
+            this.areaArrowBtn.Name = "areaArrowBtn";
+            this.areaArrowBtn.Size = new System.Drawing.Size(39, 25);
+            this.areaArrowBtn.TabIndex = 2;
+            this.areaArrowBtn.Text = " >> ";
+            this.areaArrowBtn.UseVisualStyleBackColor = true;
+            this.areaArrowBtn.Click += new System.EventHandler(this.areaArrowBtn_Click);
             // 
-            // ofcBox
+            // areaBox
             // 
-            this.ofcBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.ofcBox.Enabled = false;
-            this.ofcBox.Location = new System.Drawing.Point(254, 116);
-            this.ofcBox.Name = "ofcBox";
-            this.ofcBox.Size = new System.Drawing.Size(129, 20);
-            this.ofcBox.TabIndex = 7;
-            this.ofcBox.TextChanged += new System.EventHandler(this.ofcBox_TextChanged);
+            this.areaBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.areaBox.Enabled = false;
+            this.areaBox.Location = new System.Drawing.Point(254, 116);
+            this.areaBox.Name = "areaBox";
+            this.areaBox.Size = new System.Drawing.Size(129, 20);
+            this.areaBox.TabIndex = 7;
+            this.areaBox.TextChanged += new System.EventHandler(this.areaBox_TextChanged);
             // 
             // EditForm
             // 
@@ -547,7 +547,7 @@
             this.Controls.Add(this.idArrowBtn);
             this.Controls.Add(this.modelArrowBtn);
             this.Controls.Add(this.brandArrowBtn);
-            this.Controls.Add(this.ofcArrowBtn);
+            this.Controls.Add(this.areaArrowBtn);
             this.Controls.Add(this.locArrowBtn);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.notesLabelBox);
@@ -556,7 +556,7 @@
             this.Controls.Add(this.modelLabelBox);
             this.Controls.Add(this.brandLabelBox);
             this.Controls.Add(this.snLabelBox);
-            this.Controls.Add(this.ofcLabelBox);
+            this.Controls.Add(this.areaLabelBox);
             this.Controls.Add(this.locLabelBox);
             this.Controls.Add(this.invLabelBox);
             this.Controls.Add(this.closeButton);
@@ -573,7 +573,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.notesBox);
-            this.Controls.Add(this.ofcBox);
+            this.Controls.Add(this.areaBox);
             this.Controls.Add(this.serialNumBox);
             this.Controls.Add(this.invComboBox);
             this.Controls.Add(this.modelComboBox);
@@ -632,8 +632,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox ofcLabelBox;
-        private System.Windows.Forms.Button ofcArrowBtn;
-        private System.Windows.Forms.TextBox ofcBox;
+        private System.Windows.Forms.TextBox areaLabelBox;
+        private System.Windows.Forms.Button areaArrowBtn;
+        private System.Windows.Forms.TextBox areaBox;
     }
 }

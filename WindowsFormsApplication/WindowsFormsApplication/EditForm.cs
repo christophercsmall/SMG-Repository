@@ -15,16 +15,16 @@ namespace WindowsFormsApplication
 {
     public partial class EditForm : Form
     {
-        public static string filePath, inv, loc, ofc, sn, brand, model, id, user, notes;
+        public static string filePath, inv, loc, area, sn, brand, model, id, user, notes;
         public bool snValid = true;
 
-        public EditForm(string invAttr, string locAttr, string ofcAttr, string snAttr, string brandAttr, string modelAttr, string idAttr, string userAttr, string notesAttr)
+        public EditForm(string invAttr, string locAttr, string areaAttr, string snAttr, string brandAttr, string modelAttr, string idAttr, string userAttr, string notesAttr)
         {
             InitializeComponent();
             filePath = Form1.filePath;
             inv = invAttr;
             loc = locAttr;
-            ofc = ofcAttr;
+            area = areaAttr;
             sn = snAttr;
             brand = brandAttr;
             model = modelAttr;
@@ -38,16 +38,16 @@ namespace WindowsFormsApplication
             int x = -1;
             disableEmptyFields(x);
 
-            string invQry = "UPDATE [ALL$] SET INVENTORY = '" + invComboBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string locQry = "UPDATE [ALL$] SET LOCATION = '" + locComboBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string ofcQry = "UPDATE [ALL$] SET OFFICE = '" + ofcBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string snQry = "UPDATE [ALL$] SET SERIAL_NUMBER = '" + serialNumBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string brandQry = "UPDATE [ALL$] SET BRAND = '" + brandComboBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string modelQry = "UPDATE [ALL$] SET MODEL_NUMBER = '" + modelComboBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string idQry = "UPDATE [ALL$] SET SMG_ID = '" + idBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string userQry = "UPDATE [ALL$] SET USER_NAME = '" + userNameBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string notesQry = "UPDATE [ALL$] SET NOTES = '" + notesBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string updateQry = "UPDATE [ALL$] SET LAST_UPDATE = '" + DateTime.Now + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string invQry = "UPDATE [INVENTORY$] SET INVENTORY = '" + invComboBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string locQry = "UPDATE [INVENTORY$] SET LOCATION = '" + locComboBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string areaQry = "UPDATE [INVENTORY$] SET AREA = '" + areaBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string snQry = "UPDATE [INVENTORY$] SET SERIAL_NUMBER = '" + serialNumBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string brandQry = "UPDATE [INVENTORY$] SET BRAND = '" + brandComboBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string modelQry = "UPDATE [INVENTORY$] SET MODEL_NUMBER = '" + modelComboBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string idQry = "UPDATE [INVENTORY$] SET SMG_ID = '" + idBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string userQry = "UPDATE [INVENTORY$] SET USER_NAME = '" + userNameBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string notesQry = "UPDATE [INVENTORY$] SET NOTES = '" + notesBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string updateQry = "UPDATE [INVENTORY$] SET LAST_UPDATE = '" + DateTime.Now + "' WHERE SERIAL_NUMBER = '" + sn + "'";
 
             try
             {
@@ -62,7 +62,7 @@ namespace WindowsFormsApplication
                 //create command object    
                 OleDbCommand invCmd = new OleDbCommand(invQry, conn);
                 OleDbCommand locCmd = new OleDbCommand(locQry, conn);
-                OleDbCommand ofcCmd = new OleDbCommand(ofcQry, conn);
+                OleDbCommand areaCmd = new OleDbCommand(areaQry, conn);
                 OleDbCommand snCmd = new OleDbCommand(snQry, conn);
                 OleDbCommand brandCmd = new OleDbCommand(brandQry, conn);
                 OleDbCommand modelCmd = new OleDbCommand(modelQry, conn);
@@ -73,7 +73,7 @@ namespace WindowsFormsApplication
 
                 if (invComboBox.Enabled == true) { int n = invCmd.ExecuteNonQuery(); }
                 if (locComboBox.Enabled == true) { int n1 = locCmd.ExecuteNonQuery(); }
-                if (ofcBox.Enabled == true) { int n2 = ofcCmd.ExecuteNonQuery(); }
+                if (areaBox.Enabled == true) { int n2 = areaCmd.ExecuteNonQuery(); }
                 if (brandComboBox.Enabled == true) { int n4 = brandCmd.ExecuteNonQuery(); }
                 if (modelComboBox.Enabled == true) { int n5 = modelCmd.ExecuteNonQuery(); }
                 if (idBox.Enabled == true) { int n6 = idCmd.ExecuteNonQuery(); }
@@ -96,7 +96,7 @@ namespace WindowsFormsApplication
         {
             invLabelBox.Text = inv;
             locLabelBox.Text = loc;
-            ofcLabelBox.Text = ofc;
+            areaLabelBox.Text = area;
             snLabelBox.Text = sn;
             brandLabelBox.Text = brand;
             modelLabelBox.Text = model;
@@ -107,7 +107,7 @@ namespace WindowsFormsApplication
 
         private int isUnique(string sn)
         {
-            string query = "SELECT COUNT(*) FROM [ALL$] WHERE [SERIAL_NUMBER] = '" + sn + "'";
+            string query = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [SERIAL_NUMBER] = '" + sn + "'";
 
             String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties=\"Excel 12.0;ReadOnly=False;HDR=Yes;\"";
             OleDbConnection conn = new OleDbConnection(connString);
@@ -130,7 +130,7 @@ namespace WindowsFormsApplication
         {
             if (x != 0 & invComboBox.SelectedIndex == -1) { invComboBox.Enabled = false; }
             if (x != 1 & locComboBox.SelectedIndex == -1) { locComboBox.Enabled = false; }
-            if (x != 2 & ofcBox.Text == "") { ofcBox.Enabled = false; }
+            if (x != 2 & areaBox.Text == "") { areaBox.Enabled = false; }
             if (x != 3 & serialNumBox.Text == "") { serialNumBox.Enabled = false; }
             if (x != 4 & brandComboBox.Text == "") { brandComboBox.Enabled = false; }
             if (x != 5 & modelComboBox.Text == "") { modelComboBox.Enabled = false; }
@@ -153,10 +153,10 @@ namespace WindowsFormsApplication
             disableEmptyFields(x);
         }
 
-        private void ofcArrowBtn_Click(object sender, EventArgs e)
+        private void areaArrowBtn_Click(object sender, EventArgs e)
         {
             int x = 2;
-            if (!ofcBox.Enabled) { ofcBox.Enabled = true; ofcBox.Focus(); }
+            if (!areaBox.Enabled) { areaBox.Enabled = true; areaBox.Focus(); }
             disableEmptyFields(x);
         }
 
@@ -206,12 +206,12 @@ namespace WindowsFormsApplication
         {
             if (snValid)
             {
-                if (invComboBox.SelectedIndex != -1 || locComboBox.SelectedIndex != -1 || ofcBox.Text != "" || brandComboBox.Text != "" || modelComboBox.Text != "" || idBox.Text != "" || userNameBox.Text != "" || notesBox.Text != "")
+                if (invComboBox.SelectedIndex != -1 || locComboBox.SelectedIndex != -1 || areaBox.Text != "" || brandComboBox.Text != "" || modelComboBox.Text != "" || idBox.Text != "" || userNameBox.Text != "" || notesBox.Text != "")
                 {
                     updateButton.Enabled = true;
                 }
 
-                if (invComboBox.SelectedIndex == -1 & locComboBox.SelectedIndex == -1 & ofcBox.Text == "" & serialNumBox.Text == "" & brandComboBox.Text == "" & modelComboBox.Text == "" & idBox.Text == "" & userNameBox.Text == "" & notesBox.Text == "")
+                if (invComboBox.SelectedIndex == -1 & locComboBox.SelectedIndex == -1 & areaBox.Text == "" & serialNumBox.Text == "" & brandComboBox.Text == "" & modelComboBox.Text == "" & idBox.Text == "" & userNameBox.Text == "" & notesBox.Text == "")
                 {
                     updateButton.Enabled = false;
                 }
@@ -303,7 +303,7 @@ namespace WindowsFormsApplication
             checkIfValid();
         }
 
-        private void ofcBox_TextChanged(object sender, EventArgs e)
+        private void areaBox_TextChanged(object sender, EventArgs e)
         {
             checkIfValid();
         }
@@ -312,7 +312,7 @@ namespace WindowsFormsApplication
         {
             invComboBox.SelectedIndex = -1;
             locComboBox.SelectedIndex = -1;
-            ofcBox.Text = "";
+            areaBox.Text = "";
             serialNumBox.Text = "";
             brandComboBox.Text = "";
             modelComboBox.Text = "";
@@ -322,7 +322,7 @@ namespace WindowsFormsApplication
 
             invComboBox.Enabled = false;
             locComboBox.Enabled = false; 
-            ofcBox.Enabled = false; 
+            areaBox.Enabled = false; 
             serialNumBox.Enabled = false; 
             brandComboBox.Enabled = false;
             modelComboBox.Enabled = false; 

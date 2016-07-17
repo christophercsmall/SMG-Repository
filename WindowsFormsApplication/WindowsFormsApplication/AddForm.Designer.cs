@@ -47,7 +47,7 @@
             this.idBox = new System.Windows.Forms.TextBox();
             this.userNameBox = new System.Windows.Forms.TextBox();
             this.closeButton = new System.Windows.Forms.Button();
-            this.ofcBox = new System.Windows.Forms.TextBox();
+            this.areaBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -247,13 +247,13 @@
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // ofcBox
+            // areaBox
             // 
-            this.ofcBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.ofcBox.Location = new System.Drawing.Point(95, 105);
-            this.ofcBox.Name = "ofcBox";
-            this.ofcBox.Size = new System.Drawing.Size(159, 20);
-            this.ofcBox.TabIndex = 7;
+            this.areaBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.areaBox.Location = new System.Drawing.Point(95, 105);
+            this.areaBox.Name = "areaBox";
+            this.areaBox.Size = new System.Drawing.Size(159, 20);
+            this.areaBox.TabIndex = 7;
             // 
             // label7
             // 
@@ -261,9 +261,9 @@
             this.label7.Location = new System.Drawing.Point(11, 108);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.Size = new System.Drawing.Size(29, 13);
             this.label7.TabIndex = 54;
-            this.label7.Text = "Office";
+            this.label7.Text = "Area";
             // 
             // AddForm
             // 
@@ -283,7 +283,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.ofcBox);
+            this.Controls.Add(this.areaBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.notesBox);
             this.Controls.Add(this.serialNumBox);
@@ -324,7 +324,7 @@
         private System.Windows.Forms.TextBox idBox;
         private System.Windows.Forms.TextBox userNameBox;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.TextBox ofcBox;
+        private System.Windows.Forms.TextBox areaBox;
         private System.Windows.Forms.Label label7;
     }
 }

@@ -46,8 +46,8 @@ namespace WindowsFormsApplication
             {
                 try
                 {
-                    var query = "SELECT * FROM [ALL$] WHERE [SERIAL_NUMBER] <> '-';";
-                    var countQuery = "SELECT COUNT(*) FROM [ALL$] WHERE [SERIAL_NUMBER] <> '-';";
+                    var query = "SELECT * FROM [INVENTORY$] WHERE [SERIAL_NUMBER] <> '-';";
+                    var countQuery = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [SERIAL_NUMBER] <> '-';";
 
                     totalLabel.Text = load(query, countQuery).ToString();
                     dataGridView1.Sort(dataGridView1.Columns["LAST_UPDATE"], ListSortDirection.Descending);
@@ -67,7 +67,7 @@ namespace WindowsFormsApplication
 
         private void loadUserBtns()
         {
-            List<string> ofcList = new List<string>();
+            List<string> areaList = new List<string>();
             var text = "";
 
             var tabIndex = tabControl1.SelectedIndex;
@@ -83,43 +83,43 @@ namespace WindowsFormsApplication
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                text = row.Cells["OFFICE"].Value.ToString();    
+                text = row.Cells["AREA"].Value.ToString();    
 
-                if (!ofcList.Contains(text))
+                if (!areaList.Contains(text))
                 {
-                    ofcList.Add(text);
+                    areaList.Add(text);
                 }                
             }
 
-            ofcList = ofcList.OrderBy(n => n).ToList();
+            areaList = areaList.OrderBy(n => n).ToList();
 
-            foreach (var ofc in ofcList)
+            foreach (var area in areaList)
             {
                 switch (tabIndex)
                 {
                     case 0:
-                        flowLayoutPanel1.Controls.Add(createOfcBtn(ofc));
+                        flowLayoutPanel1.Controls.Add(createAreaBtn(area));
                         break;
                     case 1:
-                        flowLayoutPanel2.Controls.Add(createOfcBtn(ofc));
+                        flowLayoutPanel2.Controls.Add(createAreaBtn(area));
                         break;
                     case 2:
-                        flowLayoutPanel3.Controls.Add(createOfcBtn(ofc));
+                        flowLayoutPanel3.Controls.Add(createAreaBtn(area));
                         break;
                     case 3:
-                        flowLayoutPanel4.Controls.Add(createOfcBtn(ofc));
+                        flowLayoutPanel4.Controls.Add(createAreaBtn(area));
                         break;
                     case 4:
-                        flowLayoutPanel5.Controls.Add(createOfcBtn(ofc));
+                        flowLayoutPanel5.Controls.Add(createAreaBtn(area));
                         break;
                     case 5:
-                        flowLayoutPanel6.Controls.Add(createOfcBtn(ofc));
+                        flowLayoutPanel6.Controls.Add(createAreaBtn(area));
                         break;
                     case 6:
-                        flowLayoutPanel7.Controls.Add(createOfcBtn(ofc));
+                        flowLayoutPanel7.Controls.Add(createAreaBtn(area));
                         break;
                     case 7:
-                        flowLayoutPanel8.Controls.Add(createOfcBtn(ofc));
+                        flowLayoutPanel8.Controls.Add(createAreaBtn(area));
                         break;
                 }
             }
@@ -143,21 +143,21 @@ namespace WindowsFormsApplication
             }
             else
             {
-                if (tab == "ALL")
+                if (tab == "INVENTORY")
                 {
-                    qry = "SELECT * FROM [ALL$] WHERE ([INVENTORY] LIKE '%" + text + "%' OR [OFFICE] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
-                    countQry = "SELECT COUNT(*) FROM [ALL$] WHERE ([INVENTORY] LIKE '%" + text + "%' OR [OFFICE] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
+                    qry = "SELECT * FROM [INVENTORY$] WHERE ([INVENTORY] LIKE '%" + text + "%' OR [AREA] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
+                    countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE ([INVENTORY] LIKE '%" + text + "%' OR [AREA] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
                 }
                 else
                 {
-                    qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + text + "%' OR [OFFICE] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
-                    countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + text + "%' OR [OFFICE] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";                    
+                    qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + text + "%' OR [AREA] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";
+                    countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + text + "%' OR [AREA] LIKE '%" + text + "%' OR [SERIAL_NUMBER] LIKE '%" + text + "%' OR [BRAND] LIKE '%" + text + "%' OR [MODEL_NUMBER] LIKE '%" + text + "%' OR [SMG_ID] LIKE '%" + text + "%' OR [USER_NAME] LIKE '%" + text + "%' OR [NOTES] LIKE '%" + text + "%'); ";                    
                 }
                 totalLabel.Text = load(qry, countQry).ToString();
             }
         }
 
-        private Button createOfcBtn(string text)
+        private Button createAreaBtn(string text)
         {   
             Button Btn = new Button();
             Btn.Text = text;
@@ -178,26 +178,26 @@ namespace WindowsFormsApplication
             {
                 if (text == "")
                 {
-                    qry = "SELECT * FROM [ALL$] WHERE [OFFICE] IS NULL AND [SERIAL_NUMBER] <> '-';";
-                    cntQry = "SELECT COUNT(*) FROM [ALL$] WHERE [OFFICE] IS NULL AND [SERIAL_NUMBER] <> '-';";
+                    qry = "SELECT * FROM [INVENTORY$] WHERE [AREA] IS NULL AND [SERIAL_NUMBER] <> '-';";
+                    cntQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [AREA] IS NULL AND [SERIAL_NUMBER] <> '-';";
                 }
                 else
                 {
-                    qry = "SELECT * FROM [ALL$] WHERE [OFFICE] = '" + text + "' AND [SERIAL_NUMBER] <> '-';";
-                    cntQry = "SELECT COUNT(*) FROM [ALL$] WHERE [OFFICE] = '" + text + "' AND [SERIAL_NUMBER] <> '-';";
+                    qry = "SELECT * FROM [INVENTORY$] WHERE [AREA] = '" + text + "' AND [SERIAL_NUMBER] <> '-';";
+                    cntQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [AREA] = '" + text + "' AND [SERIAL_NUMBER] <> '-';";
                 }                
             }
             else
             {
                 if (text == "")
                 {
-                    qry = "SELECT * FROM [ALL$] WHERE [OFFICE] IS NULL AND [LOCATION] = '"+ tabName +"';";
-                    cntQry = "SELECT COUNT(*) FROM [ALL$] WHERE [OFFICE] IS NULL AND [LOCATION] = '" + tabName + "';";
+                    qry = "SELECT * FROM [INVENTORY$] WHERE [AREA] IS NULL AND [LOCATION] = '"+ tabName +"';";
+                    cntQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [AREA] IS NULL AND [LOCATION] = '" + tabName + "';";
                 }
                 else
                 {
-                    qry = "SELECT * FROM [ALL$] WHERE [OFFICE] = '" + text + "' AND [LOCATION] = '" + tabName + "';";
-                    cntQry = "SELECT COUNT(*) FROM [ALL$] WHERE [OFFICE] = '" + text + "' AND [LOCATION] = '" + tabName + "';";
+                    qry = "SELECT * FROM [INVENTORY$] WHERE [AREA] = '" + text + "' AND [LOCATION] = '" + tabName + "';";
+                    cntQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [AREA] = '" + text + "' AND [LOCATION] = '" + tabName + "';";
                 }                
             }           
 
@@ -289,7 +289,7 @@ namespace WindowsFormsApplication
 
                 var inv = dataGridView1.Rows[selectedrowindex].Cells[0].Value.ToString();
                 var loc = dataGridView1.Rows[selectedrowindex].Cells[1].Value.ToString();
-                var ofc = dataGridView1.Rows[selectedrowindex].Cells[2].Value.ToString();
+                var area = dataGridView1.Rows[selectedrowindex].Cells[2].Value.ToString();
                 var sn = dataGridView1.Rows[selectedrowindex].Cells[3].Value.ToString();
                 var brand = dataGridView1.Rows[selectedrowindex].Cells[4].Value.ToString();
                 var model = dataGridView1.Rows[selectedrowindex].Cells[5].Value.ToString();
@@ -297,7 +297,7 @@ namespace WindowsFormsApplication
                 var user = dataGridView1.Rows[selectedrowindex].Cells[7].Value.ToString();
                 var notes = dataGridView1.Rows[selectedrowindex].Cells[8].Value.ToString();
 
-                EditForm form = new EditForm(inv, loc, ofc, sn, brand, model, id, user, notes);
+                EditForm form = new EditForm(inv, loc, area, sn, brand, model, id, user, notes);
                 form.Owner = this;
                 form.Show();
                 this.Enabled = false;
@@ -319,7 +319,7 @@ namespace WindowsFormsApplication
 
                     var inv = dataGridView1.Rows[selectedrowindex].Cells[0].Value.ToString();
                     var loc = dataGridView1.Rows[selectedrowindex].Cells[1].Value.ToString();
-                    var ofc = dataGridView1.Rows[selectedrowindex].Cells[2].Value.ToString();
+                    var area = dataGridView1.Rows[selectedrowindex].Cells[2].Value.ToString();
                     var sn = dataGridView1.Rows[selectedrowindex].Cells[3].Value.ToString();
                     var brand = dataGridView1.Rows[selectedrowindex].Cells[4].Value.ToString();
                     var model = dataGridView1.Rows[selectedrowindex].Cells[5].Value.ToString();
@@ -327,17 +327,17 @@ namespace WindowsFormsApplication
                     var user = dataGridView1.Rows[selectedrowindex].Cells[7].Value.ToString();
                     var notes = dataGridView1.Rows[selectedrowindex].Cells[8].Value.ToString();
 
-                    string selectedRecordString = "[" + inv + "] " + "[" + loc + "] " + "[" + ofc + "] " + "[" + sn + "] " + "[" + brand + "] " + "[" + model + "] " + "[" + id + "] " + "[" + user + "] " + "[" + notes + "] ";
-                    string invQry = "UPDATE [ALL$] SET INVENTORY = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string locQry = "UPDATE [ALL$] SET LOCATION = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string ofcQry = "UPDATE [ALL$] SET OFFICE = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string snQry = "UPDATE [ALL$] SET SERIAL_NUMBER = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string brandQry = "UPDATE [ALL$] SET BRAND = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string modelQry = "UPDATE [ALL$] SET MODEL_NUMBER = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string idQry = "UPDATE [ALL$] SET SMG_ID = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string userQry = "UPDATE [ALL$] SET USER_NAME = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string notesQry = "UPDATE [ALL$] SET NOTES = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string updateQry = "UPDATE [ALL$] SET LAST_UPDATE = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string selectedRecordString = "[" + inv + "] " + "[" + loc + "] " + "[" + area + "] " + "[" + sn + "] " + "[" + brand + "] " + "[" + model + "] " + "[" + id + "] " + "[" + user + "] " + "[" + notes + "] ";
+                    string invQry = "UPDATE [INVENTORY$] SET INVENTORY = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string locQry = "UPDATE [INVENTORY$] SET LOCATION = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string areaQry = "UPDATE [INVENTORY$] SET AREA = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string snQry = "UPDATE [INVENTORY$] SET SERIAL_NUMBER = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string brandQry = "UPDATE [INVENTORY$] SET BRAND = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string modelQry = "UPDATE [INVENTORY$] SET MODEL_NUMBER = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string idQry = "UPDATE [INVENTORY$] SET SMG_ID = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string userQry = "UPDATE [INVENTORY$] SET USER_NAME = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string notesQry = "UPDATE [INVENTORY$] SET NOTES = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string updateQry = "UPDATE [INVENTORY$] SET LAST_UPDATE = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
 
                     this.Enabled = false;
 
@@ -353,7 +353,7 @@ namespace WindowsFormsApplication
                         //create command object    
                         OleDbCommand invCmd = new OleDbCommand(invQry, conn);
                         OleDbCommand locCmd = new OleDbCommand(locQry, conn);
-                        OleDbCommand ofcCmd = new OleDbCommand(ofcQry, conn);
+                        OleDbCommand areaCmd = new OleDbCommand(areaQry, conn);
                         OleDbCommand brandCmd = new OleDbCommand(brandQry, conn);
                         OleDbCommand modelCmd = new OleDbCommand(modelQry, conn);
                         OleDbCommand idCmd = new OleDbCommand(idQry, conn);
@@ -364,7 +364,7 @@ namespace WindowsFormsApplication
 
                         int n = invCmd.ExecuteNonQuery();
                         int n1 = locCmd.ExecuteNonQuery();
-                        int n2 = ofcCmd.ExecuteNonQuery();
+                        int n2 = areaCmd.ExecuteNonQuery();
                         int n4 = brandCmd.ExecuteNonQuery();
                         int n5 = modelCmd.ExecuteNonQuery();
                         int n6 = idCmd.ExecuteNonQuery();
@@ -407,36 +407,36 @@ namespace WindowsFormsApplication
                     switch (tab)
                     {
                         case "ALL":
-                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] <> '-'";
-                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] <> '-'";
+                            qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] <> '-'";
+                            countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] <> '-'";
                             break;
                         case "STADIUM":
-                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'STADIUM'";
-                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'STADIUM'";
+                            qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = 'STADIUM'";
+                            countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = 'STADIUM'";
                             break;
                         case "ARENA":
-                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'ARENA'";
-                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'ARENA'";
+                            qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = 'ARENA'";
+                            countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = 'ARENA'";
                             break;
                         case "TUCPA":
-                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'TUCPA'";
-                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'TUCPA'";
+                            qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = 'TUCPA'";
+                            countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = 'TUCPA'";
                             break;
                         case "POCC":
-                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'POCC'";
-                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'POCC'";
+                            qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = 'POCC'";
+                            countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = 'POCC'";
                             break;
                         case "RITZ":
-                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'RITZ'";
-                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'RITZ'";
+                            qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = 'RITZ'";
+                            countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = 'RITZ'";
                             break;
                         case "BALLPARK":
-                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'BALLPARK'";
-                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'BALLPARK'";
+                            qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = 'BALLPARK'";
+                            countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = 'BALLPARK'";
                             break;
                         case "STORAGE":
-                            qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = 'STORAGE'";
-                            countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = 'STORAGE'";
+                            qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = 'STORAGE'";
+                            countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = 'STORAGE'";
                             break;
                     }
                 }
@@ -444,13 +444,13 @@ namespace WindowsFormsApplication
                 {
                     if (tab == "ALL")
                     {
-                        qry = "SELECT * FROM [ALL$] WHERE ([INVENTORY] LIKE '%" + searchText + "%' OR [OFFICE] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
-                        countQry = "SELECT COUNT(*) FROM [ALL$] WHERE ([INVENTORY] LIKE '%" + searchText + "%' OR [OFFICE] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
+                        qry = "SELECT * FROM [INVENTORY$] WHERE ([INVENTORY] LIKE '%" + searchText + "%' OR [AREA] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
+                        countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE ([INVENTORY] LIKE '%" + searchText + "%' OR [AREA] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
                     }
                     else
                     {
-                        qry = "SELECT * FROM [ALL$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + searchText + "%' OR [OFFICE] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
-                        countQry = "SELECT COUNT(*) FROM [ALL$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + searchText + "%' OR [OFFICE] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
+                        qry = "SELECT * FROM [INVENTORY$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + searchText + "%' OR [AREA] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
+                        countQry = "SELECT COUNT(*) FROM [INVENTORY$] WHERE [LOCATION] = '" + tab + "' AND ([INVENTORY] LIKE '%" + searchText + "%' OR [AREA] LIKE '%" + searchText + "%' OR [SERIAL_NUMBER] LIKE '%" + searchText + "%' OR [BRAND] LIKE '%" + searchText + "%' OR [MODEL_NUMBER] LIKE '%" + searchText + "%' OR [SMG_ID] LIKE '%" + searchText + "%' OR [USER_NAME] LIKE '%" + searchText + "%' OR [NOTES] LIKE '%" + searchText + "%'); ";
                     }
                 }
                 totalLabel.Text = load(qry, countQry).ToString();
