@@ -32,9 +32,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportVisibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -56,12 +62,14 @@
             this.patchPanelNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patchPanelPortNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.query2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.exportVisibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backupDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.queryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createNewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.phoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.switchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.patchPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.patchToSwitchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.officeJackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.query2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ciscoPhoneSystemDBDataSetBindingSource)).BeginInit();
@@ -76,7 +84,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.optionsToolStripMenuItem,
-            this.queryToolStripMenuItem});
+            this.queryToolStripMenuItem,
+            this.addToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1043, 24);
@@ -101,10 +110,16 @@
             this.fileToolStripMenuItem.Text = "Database Connect...";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.printToolStripMenuItem.Text = "Print";
+            // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.closeToolStripMenuItem.Text = "Close";
             // 
             // optionsToolStripMenuItem
@@ -117,11 +132,44 @@
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
+            // backupDatabaseToolStripMenuItem
+            // 
+            this.backupDatabaseToolStripMenuItem.Name = "backupDatabaseToolStripMenuItem";
+            this.backupDatabaseToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.backupDatabaseToolStripMenuItem.Text = "Backup Database...";
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.settingsToolStripMenuItem.Text = "Export All Records";
+            // 
+            // exportVisibleToolStripMenuItem
+            // 
+            this.exportVisibleToolStripMenuItem.Name = "exportVisibleToolStripMenuItem";
+            this.exportVisibleToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.exportVisibleToolStripMenuItem.Text = "Export Visible";
+            // 
+            // queryToolStripMenuItem
+            // 
+            this.queryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createNewToolStripMenuItem,
+            this.runToolStripMenuItem});
+            this.queryToolStripMenuItem.Name = "queryToolStripMenuItem";
+            this.queryToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.queryToolStripMenuItem.Text = "Query";
+            // 
+            // createNewToolStripMenuItem
+            // 
+            this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
+            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.createNewToolStripMenuItem.Text = "Create New";
+            // 
+            // runToolStripMenuItem
+            // 
+            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.runToolStripMenuItem.Text = "Run...";
             // 
             // comboBox1
             // 
@@ -147,9 +195,9 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(161, 54);
+            this.button1.Location = new System.Drawing.Point(317, 27);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 23);
+            this.button1.Size = new System.Drawing.Size(150, 48);
             this.button1.TabIndex = 4;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
@@ -159,7 +207,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 54);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 20);
+            this.textBox1.Size = new System.Drawing.Size(299, 20);
             this.textBox1.TabIndex = 5;
             // 
             // query2BindingSource
@@ -299,44 +347,63 @@
             this.query2BindingSource1.DataMember = "Query2";
             this.query2BindingSource1.DataSource = this.ciscoPhoneSystemDBDataSetBindingSource;
             // 
-            // exportVisibleToolStripMenuItem
+            // addToolStripMenuItem
             // 
-            this.exportVisibleToolStripMenuItem.Name = "exportVisibleToolStripMenuItem";
-            this.exportVisibleToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.exportVisibleToolStripMenuItem.Text = "Export Visible";
+            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createNewToolStripMenuItem1});
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.addToolStripMenuItem.Text = "Records";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
-            // printToolStripMenuItem
+            // createNewToolStripMenuItem1
             // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.printToolStripMenuItem.Text = "Print";
+            this.createNewToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userToolStripMenuItem,
+            this.phoneToolStripMenuItem,
+            this.switchToolStripMenuItem,
+            this.patchPanelToolStripMenuItem,
+            this.patchToSwitchToolStripMenuItem,
+            this.officeJackToolStripMenuItem});
+            this.createNewToolStripMenuItem1.Name = "createNewToolStripMenuItem1";
+            this.createNewToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.createNewToolStripMenuItem1.Text = "Create New";
             // 
-            // backupDatabaseToolStripMenuItem
+            // userToolStripMenuItem
             // 
-            this.backupDatabaseToolStripMenuItem.Name = "backupDatabaseToolStripMenuItem";
-            this.backupDatabaseToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.backupDatabaseToolStripMenuItem.Text = "Backup Database...";
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.userToolStripMenuItem.Text = "User";
             // 
-            // queryToolStripMenuItem
+            // phoneToolStripMenuItem
             // 
-            this.queryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createNewToolStripMenuItem,
-            this.runToolStripMenuItem});
-            this.queryToolStripMenuItem.Name = "queryToolStripMenuItem";
-            this.queryToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.queryToolStripMenuItem.Text = "Query";
+            this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
+            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.phoneToolStripMenuItem.Text = "Phone";
             // 
-            // createNewToolStripMenuItem
+            // switchToolStripMenuItem
             // 
-            this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.createNewToolStripMenuItem.Text = "Create New";
+            this.switchToolStripMenuItem.Name = "switchToolStripMenuItem";
+            this.switchToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.switchToolStripMenuItem.Text = "Switch";
             // 
-            // runToolStripMenuItem
+            // patchPanelToolStripMenuItem
             // 
-            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.runToolStripMenuItem.Text = "Run";
+            this.patchPanelToolStripMenuItem.Name = "patchPanelToolStripMenuItem";
+            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.patchPanelToolStripMenuItem.Text = "Patch Panel";
+            // 
+            // patchToSwitchToolStripMenuItem
+            // 
+            this.patchToSwitchToolStripMenuItem.Name = "patchToSwitchToolStripMenuItem";
+            this.patchToSwitchToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.patchToSwitchToolStripMenuItem.Text = "Patch To Switch";
+            // 
+            // officeJackToolStripMenuItem
+            // 
+            this.officeJackToolStripMenuItem.Name = "officeJackToolStripMenuItem";
+            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.officeJackToolStripMenuItem.Text = "Office Jack";
             // 
             // Form1
             // 
@@ -402,6 +469,14 @@
         private System.Windows.Forms.ToolStripMenuItem queryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createNewToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem phoneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem switchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem patchPanelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem patchToSwitchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem officeJackToolStripMenuItem;
     }
 }
 

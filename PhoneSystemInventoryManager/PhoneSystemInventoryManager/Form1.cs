@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,21 @@ namespace PhoneSystemInventoryManager
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string connetionString = null;
+            SqlConnection cnn;
+            connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
 
+            cnn = new SqlConnection(connetionString);
+            try
+            {
+                cnn.Open();
+                MessageBox.Show("Connection Open ! ");
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! ");
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,6 +72,11 @@ namespace PhoneSystemInventoryManager
                         break;
                     }
             }            
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
