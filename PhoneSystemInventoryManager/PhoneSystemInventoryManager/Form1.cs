@@ -12,6 +12,8 @@ namespace PhoneSystemInventoryManager
 {
     public partial class Form1 : Form
     {
+        public static string searchParam;
+
         public Form1()
         {
             InitializeComponent();
@@ -25,8 +27,36 @@ namespace PhoneSystemInventoryManager
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'ciscoPhoneSystemDBDataSet.Query2' table. You can move, or remove it, as needed.
-            this.query2TableAdapter.Fill(this.ciscoPhoneSystemDBDataSet.Query2);
+            
 
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchParam = comboBox1.SelectedItem.ToString();
+
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            switch (searchParam)
+            {
+                case "ALL":
+                    {
+                        this.query2TableAdapter.Fill(this.ciscoPhoneSystemDBDataSet.Query2);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }            
         }
     }
 }
