@@ -20,7 +20,6 @@ namespace PhoneSystemInventoryManager
         public static string dbFilePath;
         public static string dbFileName;
         public static bool connected = false;
-        public static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data" + " Source=" + dbFilePath + ";";
 
         public Form1()
         {
@@ -41,16 +40,14 @@ namespace PhoneSystemInventoryManager
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Access Files | *.accdb;";
-            ofd.FilterIndex = 1;
-
-            OleDbConnection conn = new OleDbConnection(connectionString);
+            ofd.FilterIndex = 1;            
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 dbFilePath = ofd.FileName;
                 dbFileName = ofd.SafeFileName;
-
-                dbConnect(conn);
+                
+                var conn = dbConnect();
                 MessageBox.Show("Connected to " + dbFileName);
                 dbClose(conn);
             }
@@ -58,55 +55,84 @@ namespace PhoneSystemInventoryManager
             {
                 dbFilePath = null;
                 dbFileName = null;
-            }           
-        }   
-        
-        private void dbConnect(OleDbConnection conn)
+            }
+        }
+
+        private OleDbConnection dbConnect()
         {
+
+            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data" + " Source=" + dbFilePath + ";";
+            OleDbConnection conn = new OleDbConnection(connectionString);
+
             try
             {
                 //Open Database Connection
                 conn.Open();
-                connected = true;                
+                connected = true;
+                connectedLabelUpdate();        
             }
             catch (OleDbException exp)
             {
                 connected = false;
+                connectedLabelUpdate();                
                 MessageBox.Show("Database Error:" + exp.Message.ToString());
-            }            
+            }
+
+            return conn;           
         }     
 
         private void dbClose(OleDbConnection conn)
         {
             conn.Close();
         }
-        
-        private void dataGridUpdate(string query)
+
+        private void connectedLabelUpdate()
         {
             if (connected)
             {
-                OleDbConnection conn = new OleDbConnection(connectionString);
+                connectedLabel.BackColor = Color.Green;
+                connectedLabel.Text = "Connected";
+            }
+            else
+            {
+                connectedLabel.BackColor = Color.Red;
+                connectedLabel.Text = "No Connection";
+            }
+        }
+        
+        private void dataGridUpdate(string query)
+        {
+            var conn = dbConnect();
 
+            if (connected)
+            {
                 OleDbDataAdapter da = new OleDbDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 //var dsList = ds.Tables[0].AsEnumerable();
                 da.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
-                MessageBox.Show("(" + dataGridView1.Rows.Count.ToString() + ")" + "Records Found");
+                MessageBox.Show("(" + dataGridView1.Rows.Count.ToString() + ") " + "Record(s) Found");
             }
+
+            dbClose(conn);
         }   
 
         private void button1_Click(object sender, EventArgs e)
         {
             string query = "";
 
-            if(comboBox1.SelectedItem != null)
+            if(comboBox1.SelectedItem != null && connected)
             {
                 switch (comboBox1.SelectedItem.ToString())
                 {
                     case "ALL":
                         {
                             query = "SELECT User.FName, User.LName, User.Company, User.ExtensionNum, Phone.MAC, Phone.Type, IDF.IDFName, Switch.DNSName, SwitchPort.SwitchPortNum, PatchPanel.PatchPanelName, PatchPanelPort.PatchPanelPortNum FROM [User], [Phone], [UserPhone], [IDF], [Switch], [SwitchPort], [PatchPanel], [PatchPanelPort], [PatchToSwitch], [OfficeJack] WHERE User.ExtensionNum = UserPhone.ExtensionNum AND Phone.PhoneID = UserPhone.PhoneID AND Switch.SwitchID = SwitchPort.SwitchID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = Switch.IDFID AND IDF.IDFID = PatchPanel.IDFID AND UserPhone.PhoneID = OfficeJack.PhoneID AND SwitchPort.SwitchPortID = PatchToSwitch.SwitchPortID AND PatchPanelPort.PatchPanelPortID = PatchToSwitch.PatchPanelPortID AND Switch.SwitchID = SwitchPort.SwitchID;";
+                            break;
+                        }
+                    case "Switch Name (DNS)":
+                        {
+                            query = "SELECT Phone.MAC, Phone.Type, Phone.Registered, Phone.JackInfo FROM [Phone], [UserPhone], [OfficeJack] WHERE Phone.PhoneID = UserPhone.PhoneID AND Phone.PhoneID = OfficeJack.PhoneID;";
                             break;
                         }
                     default:

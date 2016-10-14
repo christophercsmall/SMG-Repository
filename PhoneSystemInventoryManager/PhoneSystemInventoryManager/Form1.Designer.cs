@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,9 +51,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.connectedLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -177,37 +177,37 @@
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.userToolStripMenuItem.Text = "User";
             // 
             // phoneToolStripMenuItem
             // 
             this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
-            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.phoneToolStripMenuItem.Text = "Phone";
             // 
             // switchToolStripMenuItem
             // 
             this.switchToolStripMenuItem.Name = "switchToolStripMenuItem";
-            this.switchToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.switchToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.switchToolStripMenuItem.Text = "Switch";
             // 
             // patchPanelToolStripMenuItem
             // 
             this.patchPanelToolStripMenuItem.Name = "patchPanelToolStripMenuItem";
-            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.patchPanelToolStripMenuItem.Text = "Patch Panel";
             // 
             // patchToSwitchToolStripMenuItem
             // 
             this.patchToSwitchToolStripMenuItem.Name = "patchToSwitchToolStripMenuItem";
-            this.patchToSwitchToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.patchToSwitchToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.patchToSwitchToolStripMenuItem.Text = "Patch To Switch";
             // 
             // officeJackToolStripMenuItem
             // 
             this.officeJackToolStripMenuItem.Name = "officeJackToolStripMenuItem";
-            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.officeJackToolStripMenuItem.Text = "Office Jack";
             // 
             // comboBox1
@@ -248,18 +248,6 @@
             this.textBox1.Size = new System.Drawing.Size(299, 20);
             this.textBox1.TabIndex = 5;
             // 
-            // query2BindingSource
-            // 
-            // 
-            // ciscoPhoneSystemDBDataSetBindingSource
-            // 
-            // 
-            // ciscoPhoneSystemDBDataSet
-            // 
-            // 
-            // query2TableAdapter
-            // 
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
@@ -282,8 +270,29 @@
             this.dataGridView1.Size = new System.Drawing.Size(1020, 338);
             this.dataGridView1.TabIndex = 0;
             // 
-            // query2BindingSource1
+            // label1
             // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(877, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Database:";
+            // 
+            // connectedLabel
+            // 
+            this.connectedLabel.AutoSize = true;
+            this.connectedLabel.BackColor = System.Drawing.Color.Red;
+            this.connectedLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.connectedLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.connectedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectedLabel.ForeColor = System.Drawing.Color.White;
+            this.connectedLabel.Location = new System.Drawing.Point(939, 27);
+            this.connectedLabel.Name = "connectedLabel";
+            this.connectedLabel.Size = new System.Drawing.Size(93, 15);
+            this.connectedLabel.TabIndex = 8;
+            this.connectedLabel.Text = "No Connection";
+            this.connectedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -291,6 +300,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1043, 433);
+            this.Controls.Add(this.connectedLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
@@ -337,6 +348,8 @@
         private System.Windows.Forms.ToolStripMenuItem patchPanelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem patchToSwitchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem officeJackToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label connectedLabel;
     }
 }
 
