@@ -1,6 +1,6 @@
 ﻿namespace PhoneSystemInventoryManager
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,11 +49,14 @@
             this.officeJackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.connectedLabel = new System.Windows.Forms.Label();
+            this.dbLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.recordsCountLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -77,7 +79,6 @@
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.printToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
@@ -90,12 +91,6 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.fileToolStripMenuItem.Text = "Database Connect...";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.printToolStripMenuItem.Text = "Print";
             // 
             // closeToolStripMenuItem
             // 
@@ -159,7 +154,6 @@
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.addToolStripMenuItem.Text = "Records";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // createNewToolStripMenuItem1
             // 
@@ -171,43 +165,44 @@
             this.patchToSwitchToolStripMenuItem,
             this.officeJackToolStripMenuItem});
             this.createNewToolStripMenuItem1.Name = "createNewToolStripMenuItem1";
-            this.createNewToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.createNewToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.createNewToolStripMenuItem1.Text = "Create New";
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.userToolStripMenuItem.Text = "User";
             // 
             // phoneToolStripMenuItem
             // 
             this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
-            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.phoneToolStripMenuItem.Text = "Phone";
             // 
             // switchToolStripMenuItem
             // 
             this.switchToolStripMenuItem.Name = "switchToolStripMenuItem";
-            this.switchToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.switchToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.switchToolStripMenuItem.Text = "Switch";
             // 
             // patchPanelToolStripMenuItem
             // 
             this.patchPanelToolStripMenuItem.Name = "patchPanelToolStripMenuItem";
-            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.patchPanelToolStripMenuItem.Text = "Patch Panel";
             // 
             // patchToSwitchToolStripMenuItem
             // 
             this.patchToSwitchToolStripMenuItem.Name = "patchToSwitchToolStripMenuItem";
-            this.patchToSwitchToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.patchToSwitchToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.patchToSwitchToolStripMenuItem.Text = "Patch To Switch";
+            this.patchToSwitchToolStripMenuItem.Click += new System.EventHandler(this.patchToSwitchToolStripMenuItem_Click);
             // 
             // officeJackToolStripMenuItem
             // 
             this.officeJackToolStripMenuItem.Name = "officeJackToolStripMenuItem";
-            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.officeJackToolStripMenuItem.Text = "Office Jack";
             // 
             // comboBox1
@@ -225,7 +220,7 @@
             "IDF Name",
             "Switch Name (DNS)",
             "Patch Panel Name"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 27);
+            this.comboBox1.Location = new System.Drawing.Point(576, 27);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(299, 21);
             this.comboBox1.TabIndex = 3;
@@ -233,7 +228,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(317, 27);
+            this.button1.Location = new System.Drawing.Point(881, 27);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 48);
             this.button1.TabIndex = 4;
@@ -241,12 +236,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // searchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(299, 20);
-            this.textBox1.TabIndex = 5;
+            this.searchBox.Location = new System.Drawing.Point(576, 54);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(299, 20);
+            this.searchBox.TabIndex = 5;
             // 
             // panel1
             // 
@@ -273,7 +268,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(877, 27);
+            this.label1.Location = new System.Drawing.Point(12, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 7;
@@ -287,31 +282,61 @@
             this.connectedLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.connectedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.connectedLabel.ForeColor = System.Drawing.Color.White;
-            this.connectedLabel.Location = new System.Drawing.Point(939, 27);
+            this.connectedLabel.Location = new System.Drawing.Point(74, 35);
             this.connectedLabel.Name = "connectedLabel";
             this.connectedLabel.Size = new System.Drawing.Size(93, 15);
             this.connectedLabel.TabIndex = 8;
             this.connectedLabel.Text = "No Connection";
             this.connectedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // dbLabel
+            // 
+            this.dbLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dbLabel.AutoSize = true;
+            this.dbLabel.Location = new System.Drawing.Point(12, 57);
+            this.dbLabel.Name = "dbLabel";
+            this.dbLabel.Size = new System.Drawing.Size(0, 13);
+            this.dbLabel.TabIndex = 9;
+            this.dbLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 428);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Records: ";
+            // 
+            // recordsCountLabel
+            // 
+            this.recordsCountLabel.AutoSize = true;
+            this.recordsCountLabel.Location = new System.Drawing.Point(72, 428);
+            this.recordsCountLabel.Name = "recordsCountLabel";
+            this.recordsCountLabel.Size = new System.Drawing.Size(0, 13);
+            this.recordsCountLabel.TabIndex = 11;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1043, 433);
+            this.ClientSize = new System.Drawing.Size(1043, 448);
+            this.Controls.Add(this.recordsCountLabel);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dbLabel);
             this.Controls.Add(this.connectedLabel);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "Phone System Inventory Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -331,10 +356,9 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportVisibleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem queryToolStripMenuItem;
@@ -350,6 +374,9 @@
         private System.Windows.Forms.ToolStripMenuItem officeJackToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label connectedLabel;
+        private System.Windows.Forms.Label dbLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label recordsCountLabel;
     }
 }
 

@@ -15,13 +15,13 @@ using System.Globalization;
 
 namespace PhoneSystemInventoryManager
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         public static string dbFilePath;
         public static string dbFileName;
         public static bool connected = false;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -48,7 +48,6 @@ namespace PhoneSystemInventoryManager
                 dbFileName = ofd.SafeFileName;
                 
                 var conn = dbConnect();
-                MessageBox.Show("Connected to " + dbFileName);
                 dbClose(conn);
             }
             else
@@ -92,11 +91,13 @@ namespace PhoneSystemInventoryManager
             {
                 connectedLabel.BackColor = Color.Green;
                 connectedLabel.Text = "Connected";
+                dbLabel.Text = dbFileName;
             }
             else
             {
                 connectedLabel.BackColor = Color.Red;
                 connectedLabel.Text = "No Connection";
+                dbLabel.Text = "";
             }
         }
         
@@ -108,10 +109,19 @@ namespace PhoneSystemInventoryManager
             {
                 OleDbDataAdapter da = new OleDbDataAdapter(query, conn);
                 DataSet ds = new DataSet();
-                //var dsList = ds.Tables[0].AsEnumerable();
-                da.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
-                MessageBox.Show("(" + dataGridView1.Rows.Count.ToString() + ") " + "Record(s) Found");
+
+                try
+                {
+                    da.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                    recordsCountLabel.Text = dataGridView1.Rows.Count.ToString();
+                }
+                catch (OleDbException exp)
+                {
+                    MessageBox.Show("Database Error:" + exp.Message.ToString());
+                }
+                
+                //MessageBox.Show("(" + dataGridView1.Rows.Count.ToString() + ") " + "Record(s) Found");
             }
 
             dbClose(conn);
@@ -120,6 +130,7 @@ namespace PhoneSystemInventoryManager
         private void button1_Click(object sender, EventArgs e)
         {
             string query = "";
+            string filter = searchBox.Text;
 
             if(comboBox1.SelectedItem != null && connected)
             {
@@ -130,9 +141,14 @@ namespace PhoneSystemInventoryManager
                             query = "SELECT User.FName, User.LName, User.Company, User.ExtensionNum, Phone.MAC, Phone.Type, IDF.IDFName, Switch.DNSName, SwitchPort.SwitchPortNum, PatchPanel.PatchPanelName, PatchPanelPort.PatchPanelPortNum FROM [User], [Phone], [UserPhone], [IDF], [Switch], [SwitchPort], [PatchPanel], [PatchPanelPort], [PatchToSwitch], [OfficeJack] WHERE User.ExtensionNum = UserPhone.ExtensionNum AND Phone.PhoneID = UserPhone.PhoneID AND Switch.SwitchID = SwitchPort.SwitchID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = Switch.IDFID AND IDF.IDFID = PatchPanel.IDFID AND UserPhone.PhoneID = OfficeJack.PhoneID AND SwitchPort.SwitchPortID = PatchToSwitch.SwitchPortID AND PatchPanelPort.PatchPanelPortID = PatchToSwitch.PatchPanelPortID AND Switch.SwitchID = SwitchPort.SwitchID;";
                             break;
                         }
-                    case "Switch Name (DNS)":
+                    case "Phone MAC":
                         {
-                            query = "SELECT Phone.MAC, Phone.Type, Phone.Registered, Phone.JackInfo FROM [Phone], [UserPhone], [OfficeJack] WHERE Phone.PhoneID = UserPhone.PhoneID AND Phone.PhoneID = OfficeJack.PhoneID;";
+                            query = "SELECT Phone.MAC, Phone.Type, Phone.Registered, Phone.JackInfo FROM [Phone], [UserPhone], [OfficeJack] WHERE Phone.PhoneID = UserPhone.PhoneID AND Phone.PhoneID = OfficeJack.PhoneID";
+
+                            if (searchBox.Text != "")
+                            {
+                                query += " AND Phone.MAC = " + "'" + filter + "'" + ";";
+                            }
                             break;
                         }
                     default:
@@ -149,7 +165,7 @@ namespace PhoneSystemInventoryManager
             }
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        private void patchToSwitchToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
