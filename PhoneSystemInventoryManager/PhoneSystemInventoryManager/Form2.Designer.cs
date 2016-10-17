@@ -1,6 +1,6 @@
 ﻿namespace PhoneSystemInventoryManager
 {
-    partial class Form2
+    partial class PatchToSwitchForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.venueBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.idfBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.PPBox = new System.Windows.Forms.ComboBox();
+            this.PPPort = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.switchBox = new System.Windows.Forms.ComboBox();
+            this.switchPortBox = new System.Windows.Forms.ComboBox();
+            this.connectBtn = new System.Windows.Forms.Button();
+            this.venueSpaceBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.connectLabel = new System.Windows.Forms.Label();
+            this.connectedLabel = new System.Windows.Forms.Label();
+            this.clearBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // venueBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(83, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.venueBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.venueBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.venueBox.FormattingEnabled = true;
+            this.venueBox.Location = new System.Drawing.Point(90, 12);
+            this.venueBox.Name = "venueBox";
+            this.venueBox.Size = new System.Drawing.Size(121, 21);
+            this.venueBox.TabIndex = 0;
+            this.venueBox.SelectedIndexChanged += new System.EventHandler(this.venueBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -65,13 +68,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Venue";
             // 
-            // comboBox2
+            // idfBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(83, 66);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 0;
+            this.idfBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.idfBox.Enabled = false;
+            this.idfBox.FormattingEnabled = true;
+            this.idfBox.Location = new System.Drawing.Point(90, 66);
+            this.idfBox.Name = "idfBox";
+            this.idfBox.Size = new System.Drawing.Size(121, 21);
+            this.idfBox.TabIndex = 0;
             // 
             // label2
             // 
@@ -82,26 +87,29 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "IDF";
             // 
-            // comboBox4
+            // PPBox
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(6, 19);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 0;
+            this.PPBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PPBox.FormattingEnabled = true;
+            this.PPBox.Location = new System.Drawing.Point(6, 19);
+            this.PPBox.Name = "PPBox";
+            this.PPBox.Size = new System.Drawing.Size(121, 21);
+            this.PPBox.TabIndex = 0;
             // 
-            // comboBox5
+            // PPPort
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(133, 19);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(34, 21);
-            this.comboBox5.TabIndex = 0;
+            this.PPPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PPPort.FormattingEnabled = true;
+            this.PPPort.Location = new System.Drawing.Point(133, 19);
+            this.PPPort.Name = "PPPort";
+            this.PPPort.Size = new System.Drawing.Size(34, 21);
+            this.PPPort.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.comboBox5);
+            this.groupBox1.Controls.Add(this.PPBox);
+            this.groupBox1.Controls.Add(this.PPPort);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(12, 128);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(174, 48);
@@ -111,8 +119,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Controls.Add(this.comboBox6);
+            this.groupBox2.Controls.Add(this.switchBox);
+            this.groupBox2.Controls.Add(this.switchPortBox);
+            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(273, 128);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(174, 48);
@@ -120,96 +129,101 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Switch Port";
             // 
-            // comboBox3
+            // switchBox
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(46, 19);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 0;
+            this.switchBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.switchBox.FormattingEnabled = true;
+            this.switchBox.Location = new System.Drawing.Point(46, 19);
+            this.switchBox.Name = "switchBox";
+            this.switchBox.Size = new System.Drawing.Size(121, 21);
+            this.switchBox.TabIndex = 0;
             // 
-            // comboBox6
+            // switchPortBox
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(6, 19);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(34, 21);
-            this.comboBox6.TabIndex = 0;
+            this.switchPortBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.switchPortBox.FormattingEnabled = true;
+            this.switchPortBox.Location = new System.Drawing.Point(6, 19);
+            this.switchPortBox.Name = "switchPortBox";
+            this.switchPortBox.Size = new System.Drawing.Size(34, 21);
+            this.switchPortBox.TabIndex = 0;
             // 
-            // button1
+            // connectBtn
             // 
-            this.button1.Location = new System.Drawing.Point(192, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "|---->      <----|";
-            this.button1.UseVisualStyleBackColor = true;
+            this.connectBtn.Enabled = false;
+            this.connectBtn.Location = new System.Drawing.Point(192, 144);
+            this.connectBtn.Name = "connectBtn";
+            this.connectBtn.Size = new System.Drawing.Size(75, 24);
+            this.connectBtn.TabIndex = 3;
+            this.connectBtn.Text = "|---->      <----|";
+            this.connectBtn.UseVisualStyleBackColor = true;
             // 
-            // comboBox7
+            // venueSpaceBox
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(83, 39);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 21);
-            this.comboBox7.TabIndex = 0;
+            this.venueSpaceBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.venueSpaceBox.Enabled = false;
+            this.venueSpaceBox.FormattingEnabled = true;
+            this.venueSpaceBox.Location = new System.Drawing.Point(90, 39);
+            this.venueSpaceBox.Name = "venueSpaceBox";
+            this.venueSpaceBox.Size = new System.Drawing.Size(121, 21);
+            this.venueSpaceBox.TabIndex = 0;
+            this.venueSpaceBox.SelectedIndexChanged += new System.EventHandler(this.areaBox_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Area";
+            this.label3.Text = "Venue Space";
             // 
-            // label4
+            // connectLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(206, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Connect";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.connectLabel.AutoSize = true;
+            this.connectLabel.Location = new System.Drawing.Point(206, 128);
+            this.connectLabel.Name = "connectLabel";
+            this.connectLabel.Size = new System.Drawing.Size(47, 13);
+            this.connectLabel.TabIndex = 4;
+            this.connectLabel.Text = "Connect";
             // 
-            // label5
+            // connectedLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(200, 171);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Connected";
-            this.label5.Click += new System.EventHandler(this.label4_Click);
+            this.connectedLabel.AutoSize = true;
+            this.connectedLabel.Location = new System.Drawing.Point(200, 171);
+            this.connectedLabel.Name = "connectedLabel";
+            this.connectedLabel.Size = new System.Drawing.Size(59, 13);
+            this.connectedLabel.TabIndex = 4;
+            this.connectedLabel.Text = "Connected";
             // 
-            // button2
+            // clearBtn
             // 
-            this.button2.Location = new System.Drawing.Point(326, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = true;
+            this.clearBtn.Location = new System.Drawing.Point(373, 12);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(75, 23);
+            this.clearBtn.TabIndex = 5;
+            this.clearBtn.Text = "Clear";
+            this.clearBtn.UseVisualStyleBackColor = true;
             // 
-            // Form2
+            // PatchToSwitchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 190);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.clearBtn);
+            this.Controls.Add(this.connectedLabel);
+            this.Controls.Add(this.connectLabel);
+            this.Controls.Add(this.connectBtn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox7);
+            this.Controls.Add(this.venueSpaceBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.idfBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Controls.Add(this.venueBox);
+            this.Name = "PatchToSwitchForm";
+            this.Text = "Create New Patch To Switch";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -219,21 +233,21 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox venueBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox idfBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox PPBox;
+        private System.Windows.Forms.ComboBox PPPort;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox switchBox;
+        private System.Windows.Forms.ComboBox switchPortBox;
+        private System.Windows.Forms.Button connectBtn;
+        private System.Windows.Forms.ComboBox venueSpaceBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label connectLabel;
+        private System.Windows.Forms.Label connectedLabel;
+        private System.Windows.Forms.Button clearBtn;
     }
 }

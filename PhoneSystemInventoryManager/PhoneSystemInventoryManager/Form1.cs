@@ -17,8 +17,14 @@ namespace PhoneSystemInventoryManager
 {
     public partial class MainForm : Form
     {
-        public static string dbFilePath;
-        public static string dbFileName;
+        public static class dbConnection
+        {
+            public static string dbFilePath { get; set; }
+            public static string  dbFileName { get; set; }
+            public static string  connectionString { get; set; }
+            public static OleDbConnection conn { get; set; }
+        }
+
         public static bool connected = false;
 
         public MainForm()
@@ -32,8 +38,8 @@ namespace PhoneSystemInventoryManager
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {            
-
+        {
+            
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,29 +50,27 @@ namespace PhoneSystemInventoryManager
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                dbFilePath = ofd.FileName;
-                dbFileName = ofd.SafeFileName;
-                
-                var conn = dbConnect();
-                dbClose(conn);
+                dbConnection.dbFilePath = ofd.FileName;
+                dbConnection.dbFileName = ofd.SafeFileName;
+                dbConnection.connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data" + " Source=" + dbConnection.dbFilePath + ";";
+                dbConnection.conn = new OleDbConnection(dbConnection.connectionString);
+                createNewToolStripMenuItem1.Enabled = true;
+                dbConnect();
+                dbClose();
             }
             else
             {
-                dbFilePath = null;
-                dbFileName = null;
+                dbConnection.dbFilePath = null;
+                dbConnection.dbFileName = null;
             }
         }
 
-        private OleDbConnection dbConnect()
+        public void dbConnect()
         {
-
-            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data" + " Source=" + dbFilePath + ";";
-            OleDbConnection conn = new OleDbConnection(connectionString);
-
             try
             {
                 //Open Database Connection
-                conn.Open();
+                dbConnection.conn.Open();
                 connected = true;
                 connectedLabelUpdate();        
             }
@@ -76,13 +80,11 @@ namespace PhoneSystemInventoryManager
                 connectedLabelUpdate();                
                 MessageBox.Show("Database Error:" + exp.Message.ToString());
             }
-
-            return conn;           
         }     
 
-        private void dbClose(OleDbConnection conn)
+        public void dbClose()
         {
-            conn.Close();
+            dbConnection.conn.Close();
         }
 
         private void connectedLabelUpdate()
@@ -91,7 +93,7 @@ namespace PhoneSystemInventoryManager
             {
                 connectedLabel.BackColor = Color.Green;
                 connectedLabel.Text = "Connected";
-                dbLabel.Text = dbFileName;
+                dbLabel.Text = dbConnection.dbFileName;
             }
             else
             {
@@ -103,11 +105,11 @@ namespace PhoneSystemInventoryManager
         
         private void dataGridUpdate(string query)
         {
-            var conn = dbConnect();
+            dbConnect();
 
             if (connected)
             {
-                OleDbDataAdapter da = new OleDbDataAdapter(query, conn);
+                OleDbDataAdapter da = new OleDbDataAdapter(query, dbConnection.conn);
                 DataSet ds = new DataSet();
 
                 try
@@ -120,11 +122,9 @@ namespace PhoneSystemInventoryManager
                 {
                     MessageBox.Show("Database Error:" + exp.Message.ToString());
                 }
-                
-                //MessageBox.Show("(" + dataGridView1.Rows.Count.ToString() + ") " + "Record(s) Found");
             }
 
-            dbClose(conn);
+            dbClose();
         }   
 
         private void button1_Click(object sender, EventArgs e)
@@ -167,7 +167,8 @@ namespace PhoneSystemInventoryManager
 
         private void patchToSwitchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            PatchToSwitchForm newForm2 = new PatchToSwitchForm(this);            
+            newForm2.ShowDialog();
         }
     }
 }

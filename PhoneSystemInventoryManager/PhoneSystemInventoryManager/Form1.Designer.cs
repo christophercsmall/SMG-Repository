@@ -164,6 +164,7 @@
             this.patchPanelToolStripMenuItem,
             this.patchToSwitchToolStripMenuItem,
             this.officeJackToolStripMenuItem});
+            this.createNewToolStripMenuItem1.Enabled = false;
             this.createNewToolStripMenuItem1.Name = "createNewToolStripMenuItem1";
             this.createNewToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.createNewToolStripMenuItem1.Text = "Create New";
@@ -171,38 +172,38 @@
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.userToolStripMenuItem.Text = "User";
             // 
             // phoneToolStripMenuItem
             // 
             this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
-            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.phoneToolStripMenuItem.Text = "Phone";
             // 
             // switchToolStripMenuItem
             // 
             this.switchToolStripMenuItem.Name = "switchToolStripMenuItem";
-            this.switchToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.switchToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.switchToolStripMenuItem.Text = "Switch";
             // 
             // patchPanelToolStripMenuItem
             // 
             this.patchPanelToolStripMenuItem.Name = "patchPanelToolStripMenuItem";
-            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.patchPanelToolStripMenuItem.Text = "Patch Panel";
             // 
             // patchToSwitchToolStripMenuItem
             // 
             this.patchToSwitchToolStripMenuItem.Name = "patchToSwitchToolStripMenuItem";
-            this.patchToSwitchToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.patchToSwitchToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.patchToSwitchToolStripMenuItem.Text = "Patch To Switch";
             this.patchToSwitchToolStripMenuItem.Click += new System.EventHandler(this.patchToSwitchToolStripMenuItem_Click);
             // 
             // officeJackToolStripMenuItem
             // 
             this.officeJackToolStripMenuItem.Name = "officeJackToolStripMenuItem";
-            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.officeJackToolStripMenuItem.Text = "Office Jack";
             // 
             // comboBox1
