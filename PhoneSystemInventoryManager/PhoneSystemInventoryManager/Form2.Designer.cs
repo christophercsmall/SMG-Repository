@@ -166,7 +166,7 @@
             this.venueSpaceBox.Name = "venueSpaceBox";
             this.venueSpaceBox.Size = new System.Drawing.Size(121, 21);
             this.venueSpaceBox.TabIndex = 0;
-            this.venueSpaceBox.SelectedIndexChanged += new System.EventHandler(this.areaBox_SelectedIndexChanged);
+            this.venueSpaceBox.SelectedIndexChanged += new System.EventHandler(this.venueSpaceBox_SelectedIndexChanged);
             // 
             // label3
             // 
