@@ -63,23 +63,11 @@ namespace PhoneSystemInventoryManager
         private MainForm mf;
         public FormSelection fs = new FormSelection();
 
-        
-        List<string> PPBoxList = new List<string>();
-        List<string> switchBoxList = new List<string>();
-
         List<Venue> venueList = new List<Venue>();
         List<VenueSpace> venueSpaceList = new List<VenueSpace>();
         List<IDF> idfList = new List<IDF>();
         List<PatchPanel> PPList = new List<PatchPanel>();
         List<Switch> switchList = new List<Switch>();
-
-        string venueQuery = "SELECT Venue.VenueID, Venue.VenueName FROM [Venue];";
-        string venueSpaceQuery = "SELECT VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, VenueSpace.VenueID FROM [VenueSpace];";
-        string idfQuery = "SELECT IDF.IDFID, IDF.IDFName, IDF.VenueSpaceID FROM [IDF];";
-        string ppQuery;
-        string switchQuery;
-        string ppPortQuery;
-        string switchPortQuery;
 
         public PatchToSwitchForm(MainForm mainForm)
         {            
@@ -89,156 +77,173 @@ namespace PhoneSystemInventoryManager
 
         private void Form2_Load(object sender, EventArgs e) //load venues into combobox
         {
-            loadForm();
+            string venueQuery = "SELECT Venue.VenueID, Venue.VenueName FROM [Venue];";
+            string venueSpaceQuery = "SELECT VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, VenueSpace.VenueID FROM [VenueSpace];";
+            string idfQuery = "SELECT IDF.IDFID, IDF.IDFName, IDF.VenueSpaceID FROM [IDF];";
+            string ppQuery;
+            string switchQuery;
+            string ppPortQuery;
+            string switchPortQuery;
+
+            DataSet venDS = getDataSet(venueQuery);
+            DataSet vsDS = getDataSet(venueSpaceQuery);
+            DataSet idfDS = getDataSet(idfQuery);
+
+            try
+            {
+                foreach (DataRow dr in venDS.Tables[0].Rows)
+                {
+                    Venue venue = new Venue();
+                    venue.venueID = (int)dr.ItemArray.GetValue(0);
+                    venue.venueName = dr.ItemArray.GetValue(1).ToString();
+                    venueList.Add(venue);
+                }
+                foreach (DataRow dr in vsDS.Tables[0].Rows)
+                {
+                    VenueSpace venueSpace = new VenueSpace();
+                    venueSpace.venueSpaceID = (int)dr.ItemArray.GetValue(0);
+                    venueSpace.venueSpaceName = dr.ItemArray.GetValue(1).ToString();
+                    venueSpace.venueID = (int)dr.ItemArray.GetValue(2);
+                    venueSpaceList.Add(venueSpace);
+                }
+                foreach (DataRow dr in idfDS.Tables[0].Rows)
+                {
+                    IDF idf = new IDF();
+                    idf.idfID = (int)dr.ItemArray.GetValue(0);
+                    idf.idfName = dr.ItemArray.GetValue(1).ToString();
+                    idf.venueSpaceID = (int)dr.ItemArray.GetValue(2);
+                    idfList.Add(idf);
+                }
+            }
+            catch (OleDbException exp)
+            {
+                MessageBox.Show("Database Error:" + exp.Message.ToString());
+            }
+
+            updateVenueBoxList(venueList);
         }
 
-        private void loadForm()
+        public DataSet getDataSet(string query)
         {
             mf.dbConnect();
 
+            OleDbDataAdapter da = new OleDbDataAdapter(query, MainForm.dbConnection.conn);
+            DataSet ds = new DataSet();
+
             if (MainForm.connected)
             {
-                List<string> venueBoxList = new List<string>();
-
-                OleDbDataAdapter VenDA = new OleDbDataAdapter(venueQuery, MainForm.dbConnection.conn);
-                DataSet VenDS = new DataSet();
-
                 try
                 {
-                    venueBoxList.Add("");
-                    VenDA.Fill(VenDS);
-                    foreach (DataRow dr in VenDS.Tables[0].Rows)
-                    {
-                        Venue venue = new Venue();
-                        venue.venueID = (int)dr.ItemArray.GetValue(0);
-                        venue.venueName = dr.ItemArray.GetValue(1).ToString();
-                        venueList.Add(venue);
-                        venueBoxList.Add(venue.venueName);
-                    }
-
-                    venueBox.DataSource = venueBoxList;      
-
-                    mf.dbClose();
+                    da.Fill(ds);
                 }
                 catch (OleDbException exp)
                 {
                     MessageBox.Show("Database Error:" + exp.Message.ToString());
                 }
             }
-        }
+            mf.dbClose();
+
+            return ds;
+        }        
 
         private void venueBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OleDbDataAdapter VenSpaceDA = new OleDbDataAdapter(venueSpaceQuery, MainForm.dbConnection.conn);
-            DataSet VenSpaDS = new DataSet();
+            List<VenueSpace> vsFilteredList = new List<VenueSpace>();
 
-            VenSpaceDA.Fill(VenSpaDS);
-            foreach (DataRow dr in VenSpaDS.Tables[0].Rows)
+            foreach (Venue v in venueList)
             {
-                VenueSpace venueSpace = new VenueSpace();
-                venueSpace.venueSpaceID = (int)dr.ItemArray.GetValue(0);
-                venueSpace.venueSpaceName = dr.ItemArray.GetValue(1).ToString();
-                venueSpace.venueID = (int)dr.ItemArray.GetValue(2);
-                venueSpaceList.Add(venueSpace);
+                if (v.venueName == venueBox.SelectedValue.ToString())
+                {
+                    fs.ven = v; //add to FormSelection object
+                }
             }
-
-            List<VenueSpace> vsList = new List<VenueSpace>();
-            List<string> venueSpaceBoxList = new List<string>();
 
             if (venueBox.SelectedValue.ToString() != "")
             {
                 venueSpaceBox.Enabled = true;
 
-                foreach (Venue v in venueList)
+                foreach (VenueSpace vs in venueSpaceList)
                 {
-                    if (v.venueName == venueBox.SelectedValue.ToString())
+                    if (vs.venueID == fs.ven.venueID)
                     {
-                        fs.ven = v; //add to FormSelection object
+                        vsFilteredList.Add(vs); //relevant list of venue spaces
                     }
                 }
 
-                mf.dbConnect();
-
-                if (MainForm.connected)
-                {
-                    venueSpaceBoxList.Add("");
-
-                    foreach (VenueSpace vs in venueSpaceList)
-                    {
-                        if (vs.venueID == fs.ven.venueID)
-                        {
-                            vsList.Add(vs); //relevant list of venue spaces
-                            venueSpaceBoxList.Add(vs.venueSpaceName); //create list for combobox
-                        }
-                    }
-
-                    venueSpaceList = vsList;
-                    venueSpaceBox.DataSource = venueSpaceBoxList; //bind to combobox
-                }
-
-                mf.dbClose();
+                updateVenueSpaceBoxList(vsFilteredList);
             }
             else
-            {
+            {                
                 venueSpaceBox.Enabled = false;
             }
         }
-
+        
         private void venueSpaceBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OleDbDataAdapter IDFDA = new OleDbDataAdapter(idfQuery, MainForm.dbConnection.conn);
-            DataSet IDFDS = new DataSet();
+            List<IDF> idfFilteredList = new List<IDF>();
 
-            IDFDA.Fill(IDFDS);
-            foreach (DataRow dr in IDFDS.Tables[0].Rows)
+            foreach (VenueSpace vs in venueSpaceList)
             {
-                IDF idf = new IDF();
-                idf.idfID = (int)dr.ItemArray.GetValue(0);
-                idf.idfName = dr.ItemArray.GetValue(1).ToString();
-                idf.venueSpaceID = (int)dr.ItemArray.GetValue(2);
-                idfList.Add(idf);
+                if (vs.venueSpaceName == venueSpaceBox.SelectedValue.ToString())
+                {
+                    fs.vs = vs; //add to FormSelection object
+                }
             }
-
-            List<IDF> _idfList = new List<IDF>();
-            List<string> idfBoxList = new List<string>();
 
             if (venueSpaceBox.SelectedValue.ToString() != "")
             {
                 idfBox.Enabled = true;
 
-                foreach (VenueSpace vs in venueSpaceList)
+                foreach (IDF idf in idfList)
                 {
-                    if (vs.venueSpaceName == venueSpaceBox.SelectedValue.ToString())
+                    if (idf.venueSpaceID == fs.vs.venueSpaceID)
                     {
-                        fs.vs = vs; //add to FormSelection object
+                        idfFilteredList.Add(idf); //relevant list of venue spaces
                     }
                 }
 
-                mf.dbConnect();
-
-                if (MainForm.connected)
-                {
-                    idfBoxList.Add("");
-
-                    foreach (IDF idf in idfList)
-                    {
-                        if (idf.venueSpaceID == fs.vs.venueSpaceID)
-                        {
-                            _idfList.Add(idf); //relevant list of venue spaces
-                            idfBoxList.Add(idf.idfName); //create list for combobox
-                        }
-                    }
-
-                    idfList = _idfList;
-                    idfBox.DataSource = idfBoxList; //bind to combobox
-                }
-
-                mf.dbClose();
+                updateIDFBoxList(idfFilteredList);
             }
             else
             {
                 idfBox.Enabled = false;
+            }            
+        }
+
+        public void updateVenueBoxList(List<Venue> v)
+        {
+            List<string> venueNameList = new List<string>();
+            venueNameList.Add("");
+
+            foreach (Venue ven in venueList)
+            {
+                venueNameList.Add(ven.venueName);
             }
+            venueBox.DataSource = venueNameList;
+        }
+
+        public void updateVenueSpaceBoxList(List<VenueSpace> vsFilteredList)
+        {
+            List<string> vsNameList = new List<string>();
+            vsNameList.Add("");
+
+            foreach (VenueSpace vs in vsFilteredList)
+            {
+                vsNameList.Add(vs.venueSpaceName);
+            }
+            venueSpaceBox.DataSource = vsNameList;
+        }
+
+        public void updateIDFBoxList(List<IDF> idfFilteredList)
+        {
+            List<string> idfNameList = new List<string>();
+            idfNameList.Add("");
+
+            foreach (IDF idf in idfFilteredList)
+            {
+                idfNameList.Add(idf.idfName);
+            }
+            idfBox.DataSource = idfNameList;
         }
     }    
 }
