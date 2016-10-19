@@ -50,14 +50,15 @@ namespace PhoneSystemInventoryManager
         {
             public int switchID;
             public string switchNameDNS;
-            List<int> switchPortsOpen = new List<int>();
+            public int idfID;
+            public List<int> switchPortsOpen = new List<int>();
         }
 
         public class PatchPanel
         {
             public int patchPanelID;
             public string patchPanelName;
-            List<int> patchPanelPortsOpen = new List<int>();
+            public List<int> patchPanelPortsOpen = new List<int>();
         }
 
         private MainForm mf;
@@ -81,13 +82,14 @@ namespace PhoneSystemInventoryManager
             string venueSpaceQuery = "SELECT VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, VenueSpace.VenueID FROM [VenueSpace];";
             string idfQuery = "SELECT IDF.IDFID, IDF.IDFName, IDF.VenueSpaceID FROM [IDF];";
             string ppQuery;
-            string switchQuery;
+            string switchQuery = "SELECT Switch.SwitchID, Switch.DNSName, Switch.IDFID FROM [Switch];";
             string ppPortQuery;
             string switchPortQuery;
 
             DataSet venDS = getDataSet(venueQuery);
             DataSet vsDS = getDataSet(venueSpaceQuery);
             DataSet idfDS = getDataSet(idfQuery);
+            DataSet swDS = getDataSet(switchQuery);
 
             try
             {
@@ -113,6 +115,14 @@ namespace PhoneSystemInventoryManager
                     idf.idfName = dr.ItemArray.GetValue(1).ToString();
                     idf.venueSpaceID = (int)dr.ItemArray.GetValue(2);
                     idfList.Add(idf);
+                }
+                foreach (DataRow dr in swDS.Tables[0].Rows)
+                {
+                    Switch sw = new Switch();
+                    sw.switchID = (int)dr.ItemArray.GetValue(0);
+                    sw.switchNameDNS = dr.ItemArray.GetValue(1).ToString();
+                    sw.idfID = (int)dr.ItemArray.GetValue(2);                    
+                    switchList.Add(sw);
                 }
             }
             catch (OleDbException exp)
@@ -210,6 +220,40 @@ namespace PhoneSystemInventoryManager
             }            
         }
 
+        private void idfBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Switch> switchFilteredList = new List<Switch>();
+            List<PatchPanel> patchPanelFilteredList = new List<PatchPanel>();
+
+            foreach (IDF idf in idfList)
+            {
+                if (idf.idfName == idfBox.SelectedValue.ToString())
+                {
+                    fs.idf = idf; //add to FormSelection object
+                }
+            }
+
+            if (idfBox.SelectedValue.ToString() != "")
+            {
+                switchBox.Enabled = true;
+                PPBox.Enabled = true;
+
+                foreach (Switch sw in switchList)
+                {
+                    if (sw.idfID == fs.idf.idfID)
+                    {
+                        switchFilteredList.Add(sw); //relevant list of venue spaces
+                    }
+                }
+
+                updateSwitchBoxList(switchFilteredList);
+            }
+            else
+            {
+                switchBox.Enabled = false;
+            }
+        }
+
         public void updateVenueBoxList(List<Venue> v)
         {
             List<string> venueNameList = new List<string>();
@@ -244,6 +288,18 @@ namespace PhoneSystemInventoryManager
                 idfNameList.Add(idf.idfName);
             }
             idfBox.DataSource = idfNameList;
+        }
+
+        public void updateSwitchBoxList(List<Switch> switchFilteredList)
+        {
+            List<string> switchNameList = new List<string>();
+            switchNameList.Add("");
+
+            foreach (Switch sw in switchFilteredList)
+            {
+                switchNameList.Add(sw.switchNameDNS);
+            }
+            switchBox.DataSource = switchNameList;
         }
     }    
 }

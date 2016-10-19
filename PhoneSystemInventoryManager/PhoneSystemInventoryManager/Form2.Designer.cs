@@ -77,6 +77,7 @@
             this.idfBox.Name = "idfBox";
             this.idfBox.Size = new System.Drawing.Size(121, 21);
             this.idfBox.TabIndex = 0;
+            this.idfBox.SelectedIndexChanged += new System.EventHandler(this.idfBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -109,7 +110,6 @@
             // 
             this.groupBox1.Controls.Add(this.PPBox);
             this.groupBox1.Controls.Add(this.PPPort);
-            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(12, 128);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(174, 48);
@@ -121,7 +121,6 @@
             // 
             this.groupBox2.Controls.Add(this.switchBox);
             this.groupBox2.Controls.Add(this.switchPortBox);
-            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(273, 128);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(174, 48);
