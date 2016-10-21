@@ -12,9 +12,7 @@ using System.Windows.Forms;
 namespace PhoneSystemInventoryManager
 {
     public partial class PatchToSwitchForm : Form
-    {
-        
-
+    {        
         public class FormSelection
         {
             public Venue ven;
@@ -58,7 +56,22 @@ namespace PhoneSystemInventoryManager
         {
             public int patchPanelID;
             public string patchPanelName;
+            public int idfID;
             public List<int> patchPanelPortsOpen = new List<int>();
+        }
+
+        public class SwitchPort
+        {
+            public int switchPortID;
+            public int switchPortNum;
+            public int switchID;
+        }
+
+        public class PatchPanelPort
+        {
+            public int patchPanelPortID;
+            public int patchPanelPortNum;
+            public int patchPanelID;
         }
 
         private MainForm mf;
@@ -69,6 +82,8 @@ namespace PhoneSystemInventoryManager
         List<IDF> idfList = new List<IDF>();
         List<PatchPanel> PPList = new List<PatchPanel>();
         List<Switch> switchList = new List<Switch>();
+        List<SwitchPort> switchPortList = new List<SwitchPort>();
+        List<PatchPanelPort> PPPList = new List<PatchPanelPort>();
 
         public PatchToSwitchForm(MainForm mainForm)
         {            
@@ -81,15 +96,18 @@ namespace PhoneSystemInventoryManager
             string venueQuery = "SELECT Venue.VenueID, Venue.VenueName FROM [Venue];";
             string venueSpaceQuery = "SELECT VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, VenueSpace.VenueID FROM [VenueSpace];";
             string idfQuery = "SELECT IDF.IDFID, IDF.IDFName, IDF.VenueSpaceID FROM [IDF];";
-            string ppQuery;
+            string ppQuery = "SELECT PatchPanel.PatchPanelID, PatchPanel.PatchPanelName, PatchPanel.IDFID FROM [PatchPanel];";
             string switchQuery = "SELECT Switch.SwitchID, Switch.DNSName, Switch.IDFID FROM [Switch];";
-            string ppPortQuery;
-            string switchPortQuery;
+            string ppPortQuery = "SELECT PatchPanelPort.PatchPanelPortID, PatchPanelPort.PatchPanelPortNum, PatchPanelPort.PatchPanelID FROM [PatchPanelPort];";
+            string switchPortQuery = "SELECT SwitchPort.SwitchPortID, SwitchPort.SwitchPortNum, SwitchPort.SwitchID FROM [SwitchPort];";
 
             DataSet venDS = getDataSet(venueQuery);
             DataSet vsDS = getDataSet(venueSpaceQuery);
             DataSet idfDS = getDataSet(idfQuery);
             DataSet swDS = getDataSet(switchQuery);
+            DataSet ppDS = getDataSet(ppQuery);
+            DataSet swpDS = getDataSet(switchPortQuery);
+            DataSet pppDS = getDataSet(ppPortQuery);
 
             try
             {
@@ -124,6 +142,31 @@ namespace PhoneSystemInventoryManager
                     sw.idfID = (int)dr.ItemArray.GetValue(2);                    
                     switchList.Add(sw);
                 }
+                foreach (DataRow dr in ppDS.Tables[0].Rows)
+                {
+                    PatchPanel pp = new PatchPanel();
+                    pp.patchPanelID = (int)dr.ItemArray.GetValue(0);
+                    pp.patchPanelName = dr.ItemArray.GetValue(1).ToString();
+                    pp.idfID = (int)dr.ItemArray.GetValue(2);
+                    PPList.Add(pp);
+                }
+                foreach (DataRow dr in swpDS.Tables[0].Rows)
+                {
+                    SwitchPort swp = new SwitchPort();
+                    swp.switchPortID = (int)dr.ItemArray.GetValue(0);
+                    swp.switchPortNum = (int)dr.ItemArray.GetValue(1);
+                    swp.switchID = (int)dr.ItemArray.GetValue(2);
+                    switchPortList.Add(swp);
+                }
+                foreach (DataRow dr in pppDS.Tables[0].Rows)
+                {
+                    PatchPanelPort ppp = new PatchPanelPort();
+                    ppp.patchPanelPortID = (int)dr.ItemArray.GetValue(0);
+                    ppp.patchPanelPortNum = (int)dr.ItemArray.GetValue(1);
+                    ppp.patchPanelID = (int)dr.ItemArray.GetValue(2);
+                    PPPList.Add(ppp);
+                }
+
             }
             catch (OleDbException exp)
             {
@@ -156,7 +199,7 @@ namespace PhoneSystemInventoryManager
             return ds;
         }        
 
-        private void venueBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void venueBox_SelectedValueChanged(object sender, EventArgs e)
         {
             List<VenueSpace> vsFilteredList = new List<VenueSpace>();
 
@@ -181,6 +224,8 @@ namespace PhoneSystemInventoryManager
                 }
 
                 updateVenueSpaceBoxList(vsFilteredList);
+
+                updateFormControls("venue");
             }
             else
             {                
@@ -188,7 +233,7 @@ namespace PhoneSystemInventoryManager
             }
         }
         
-        private void venueSpaceBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void venueSpaceBox_SelectedValueChanged(object sender, EventArgs e)
         {
             List<IDF> idfFilteredList = new List<IDF>();
 
@@ -213,6 +258,8 @@ namespace PhoneSystemInventoryManager
                 }
 
                 updateIDFBoxList(idfFilteredList);
+
+                updateFormControls("venueSpace");
             }
             else
             {
@@ -220,7 +267,7 @@ namespace PhoneSystemInventoryManager
             }            
         }
 
-        private void idfBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void idfBox_SelectedValueChanged(object sender, EventArgs e)
         {
             List<Switch> switchFilteredList = new List<Switch>();
             List<PatchPanel> patchPanelFilteredList = new List<PatchPanel>();
@@ -245,13 +292,115 @@ namespace PhoneSystemInventoryManager
                         switchFilteredList.Add(sw); //relevant list of venue spaces
                     }
                 }
-
+                foreach (PatchPanel pp in PPList)
+                {
+                    if (pp.idfID == fs.idf.idfID)
+                    {
+                        patchPanelFilteredList.Add(pp); //relevant list of venue spaces
+                    }
+                }
+                
                 updateSwitchBoxList(switchFilteredList);
+                updatePatchPanelBoxList(patchPanelFilteredList);
+
+                updateFormControls("venueSpace");
+
             }
             else
             {
                 switchBox.Enabled = false;
+                PPBox.Enabled = false;
+                switchPortBox.Enabled = false;
+                PPPortBox.Enabled = false;
             }
+        }
+
+        private void switchBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<SwitchPort> switchPortFilteredList = new List<SwitchPort>();
+
+            foreach (Switch sw in switchList)
+            {
+                if (sw.switchNameDNS == switchBox.SelectedValue.ToString())
+                {
+                    fs.sw = sw; //add to FormSelection object
+                }
+            }
+
+            if (switchBox.SelectedValue.ToString() != "")
+            {
+                switchPortBox.Enabled = true;
+
+                foreach (SwitchPort swp in switchPortList)
+                {
+                    if (swp.switchID == fs.sw.switchID)
+                    {
+                        switchPortFilteredList.Add(swp); //relevant list of venue spaces
+                    }
+                }
+                
+                updateSwitchPortBoxList(switchPortFilteredList);
+            }
+            else
+            {
+                switchBox.Enabled = false;
+                PPBox.Enabled = false;
+                switchPortBox.Enabled = false;
+                PPPortBox.Enabled = false;
+            }
+        }
+
+        public void updateFormControls(string cbUpdated)
+        {
+            List<string> emptyList = new List<string>();
+
+            switch (cbUpdated)
+            {
+                case "venue":
+                    {
+                        idfBox.DataSource = emptyList;
+                        switchBox.DataSource = emptyList;
+                        PPBox.DataSource = emptyList;
+                        switchPortBox.DataSource = emptyList;
+                        PPPortBox.DataSource = emptyList;
+
+                        idfBox.Enabled = false;
+                        switchBox.Enabled = false;
+                        PPBox.Enabled = false;
+                        switchPortBox.Enabled = false;
+                        PPPortBox.Enabled = false;
+                    }
+                    break;
+
+                case "venueSpace":
+                    {
+                        switchBox.DataSource = emptyList;
+                        PPBox.DataSource = emptyList;
+                        switchPortBox.DataSource = emptyList;
+                        PPPortBox.DataSource = emptyList;
+
+                        switchBox.Enabled = false;
+                        PPBox.Enabled = false;
+                        switchPortBox.Enabled = false;
+                        PPPortBox.Enabled = false;
+                    }
+                    break;
+
+                case "idf":
+                    {
+                        switchPortBox.DataSource = emptyList;
+                        PPPortBox.DataSource = emptyList;
+
+                        switchPortBox.Enabled = false;
+                        PPPortBox.Enabled = false;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+           
+            
         }
 
         public void updateVenueBoxList(List<Venue> v)
@@ -301,5 +450,35 @@ namespace PhoneSystemInventoryManager
             }
             switchBox.DataSource = switchNameList;
         }
+
+        public void updatePatchPanelBoxList(List<PatchPanel> patchPanelFilteredList)
+        {
+            List<string> patchPanelNameList = new List<string>();
+            patchPanelNameList.Add("");
+
+            foreach (PatchPanel pp in patchPanelFilteredList)
+            {
+                patchPanelNameList.Add(pp.patchPanelName);
+            }
+            PPBox.DataSource = patchPanelNameList;
+        }
+
+        public void updateSwitchPortBoxList(List<SwitchPort> switchPortFilteredList)
+        {
+            List<string> switchPortNumList = new List<string>();
+            switchPortNumList.Add("");
+
+            foreach (SwitchPort swp in switchPortFilteredList)
+            {
+                switchPortNumList.Add(swp.switchPortNum.ToString());
+            }
+            switchPortBox.DataSource = switchPortNumList;
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+
     }    
 }

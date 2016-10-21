@@ -33,7 +33,7 @@
             this.idfBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.PPBox = new System.Windows.Forms.ComboBox();
-            this.PPPort = new System.Windows.Forms.ComboBox();
+            this.PPPortBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.switchBox = new System.Windows.Forms.ComboBox();
@@ -57,7 +57,7 @@
             this.venueBox.Name = "venueBox";
             this.venueBox.Size = new System.Drawing.Size(121, 21);
             this.venueBox.TabIndex = 0;
-            this.venueBox.SelectedIndexChanged += new System.EventHandler(this.venueBox_SelectedIndexChanged);
+            this.venueBox.SelectedIndexChanged += new System.EventHandler(this.venueBox_SelectedValueChanged);
             // 
             // label1
             // 
@@ -77,7 +77,7 @@
             this.idfBox.Name = "idfBox";
             this.idfBox.Size = new System.Drawing.Size(121, 21);
             this.idfBox.TabIndex = 0;
-            this.idfBox.SelectedIndexChanged += new System.EventHandler(this.idfBox_SelectedIndexChanged);
+            this.idfBox.SelectedIndexChanged += new System.EventHandler(this.idfBox_SelectedValueChanged);
             // 
             // label2
             // 
@@ -91,25 +91,27 @@
             // PPBox
             // 
             this.PPBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PPBox.Enabled = false;
             this.PPBox.FormattingEnabled = true;
             this.PPBox.Location = new System.Drawing.Point(6, 19);
             this.PPBox.Name = "PPBox";
             this.PPBox.Size = new System.Drawing.Size(121, 21);
             this.PPBox.TabIndex = 0;
             // 
-            // PPPort
+            // PPPortBox
             // 
-            this.PPPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PPPort.FormattingEnabled = true;
-            this.PPPort.Location = new System.Drawing.Point(133, 19);
-            this.PPPort.Name = "PPPort";
-            this.PPPort.Size = new System.Drawing.Size(34, 21);
-            this.PPPort.TabIndex = 0;
+            this.PPPortBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PPPortBox.Enabled = false;
+            this.PPPortBox.FormattingEnabled = true;
+            this.PPPortBox.Location = new System.Drawing.Point(133, 19);
+            this.PPPortBox.Name = "PPPortBox";
+            this.PPPortBox.Size = new System.Drawing.Size(34, 21);
+            this.PPPortBox.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.PPBox);
-            this.groupBox1.Controls.Add(this.PPPort);
+            this.groupBox1.Controls.Add(this.PPPortBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 128);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(174, 48);
@@ -131,15 +133,18 @@
             // switchBox
             // 
             this.switchBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.switchBox.Enabled = false;
             this.switchBox.FormattingEnabled = true;
             this.switchBox.Location = new System.Drawing.Point(46, 19);
             this.switchBox.Name = "switchBox";
             this.switchBox.Size = new System.Drawing.Size(121, 21);
             this.switchBox.TabIndex = 0;
+            this.switchBox.SelectedIndexChanged += new System.EventHandler(this.switchBox_SelectedIndexChanged);
             // 
             // switchPortBox
             // 
             this.switchPortBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.switchPortBox.Enabled = false;
             this.switchPortBox.FormattingEnabled = true;
             this.switchPortBox.Location = new System.Drawing.Point(6, 19);
             this.switchPortBox.Name = "switchPortBox";
@@ -165,7 +170,7 @@
             this.venueSpaceBox.Name = "venueSpaceBox";
             this.venueSpaceBox.Size = new System.Drawing.Size(121, 21);
             this.venueSpaceBox.TabIndex = 0;
-            this.venueSpaceBox.SelectedIndexChanged += new System.EventHandler(this.venueSpaceBox_SelectedIndexChanged);
+            this.venueSpaceBox.SelectedIndexChanged += new System.EventHandler(this.venueSpaceBox_SelectedValueChanged);
             // 
             // label3
             // 
@@ -202,6 +207,7 @@
             this.clearBtn.TabIndex = 5;
             this.clearBtn.Text = "Clear";
             this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // PatchToSwitchForm
             // 
@@ -237,7 +243,7 @@
         private System.Windows.Forms.ComboBox idfBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox PPBox;
-        private System.Windows.Forms.ComboBox PPPort;
+        private System.Windows.Forms.ComboBox PPPortBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox switchBox;
