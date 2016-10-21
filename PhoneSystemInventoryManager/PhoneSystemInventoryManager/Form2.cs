@@ -247,8 +247,6 @@ namespace PhoneSystemInventoryManager
 
             if (venueSpaceBox.SelectedValue.ToString() != "")
             {
-                idfBox.Enabled = true;
-
                 foreach (IDF idf in idfList)
                 {
                     if (idf.venueSpaceID == fs.vs.venueSpaceID)
@@ -260,6 +258,8 @@ namespace PhoneSystemInventoryManager
                 updateIDFBoxList(idfFilteredList);
 
                 updateFormControls("venueSpace");
+
+                idfBox.Enabled = true;
             }
             else
             {
@@ -282,9 +282,6 @@ namespace PhoneSystemInventoryManager
 
             if (idfBox.SelectedValue.ToString() != "")
             {
-                switchBox.Enabled = true;
-                PPBox.Enabled = true;
-
                 foreach (Switch sw in switchList)
                 {
                     if (sw.idfID == fs.idf.idfID)
@@ -292,6 +289,7 @@ namespace PhoneSystemInventoryManager
                         switchFilteredList.Add(sw); //relevant list of venue spaces
                     }
                 }
+
                 foreach (PatchPanel pp in PPList)
                 {
                     if (pp.idfID == fs.idf.idfID)
@@ -299,12 +297,13 @@ namespace PhoneSystemInventoryManager
                         patchPanelFilteredList.Add(pp); //relevant list of venue spaces
                     }
                 }
-                
                 updateSwitchBoxList(switchFilteredList);
                 updatePatchPanelBoxList(patchPanelFilteredList);
 
-                updateFormControls("venueSpace");
+                updateFormControls("idf");
 
+                switchBox.Enabled = true;
+                PPBox.Enabled = true;
             }
             else
             {
@@ -315,7 +314,7 @@ namespace PhoneSystemInventoryManager
             }
         }
 
-        private void switchBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void switchBox_SelectedValueChanged(object sender, EventArgs e)
         {
             List<SwitchPort> switchPortFilteredList = new List<SwitchPort>();
 
@@ -442,7 +441,6 @@ namespace PhoneSystemInventoryManager
         public void updateSwitchBoxList(List<Switch> switchFilteredList)
         {
             List<string> switchNameList = new List<string>();
-            switchNameList.Add("");
 
             foreach (Switch sw in switchFilteredList)
             {
@@ -454,7 +452,6 @@ namespace PhoneSystemInventoryManager
         public void updatePatchPanelBoxList(List<PatchPanel> patchPanelFilteredList)
         {
             List<string> patchPanelNameList = new List<string>();
-            patchPanelNameList.Add("");
 
             foreach (PatchPanel pp in patchPanelFilteredList)
             {
@@ -466,7 +463,6 @@ namespace PhoneSystemInventoryManager
         public void updateSwitchPortBoxList(List<SwitchPort> switchPortFilteredList)
         {
             List<string> switchPortNumList = new List<string>();
-            switchPortNumList.Add("");
 
             foreach (SwitchPort swp in switchPortFilteredList)
             {

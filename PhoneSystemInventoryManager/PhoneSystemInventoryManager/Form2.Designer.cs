@@ -95,7 +95,7 @@
             this.PPBox.FormattingEnabled = true;
             this.PPBox.Location = new System.Drawing.Point(6, 19);
             this.PPBox.Name = "PPBox";
-            this.PPBox.Size = new System.Drawing.Size(121, 21);
+            this.PPBox.Size = new System.Drawing.Size(110, 21);
             this.PPBox.TabIndex = 0;
             // 
             // PPPortBox
@@ -103,9 +103,9 @@
             this.PPPortBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PPPortBox.Enabled = false;
             this.PPPortBox.FormattingEnabled = true;
-            this.PPPortBox.Location = new System.Drawing.Point(133, 19);
+            this.PPPortBox.Location = new System.Drawing.Point(122, 19);
             this.PPPortBox.Name = "PPPortBox";
-            this.PPPortBox.Size = new System.Drawing.Size(34, 21);
+            this.PPPortBox.Size = new System.Drawing.Size(45, 21);
             this.PPPortBox.TabIndex = 0;
             // 
             // groupBox1
@@ -135,11 +135,11 @@
             this.switchBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.switchBox.Enabled = false;
             this.switchBox.FormattingEnabled = true;
-            this.switchBox.Location = new System.Drawing.Point(46, 19);
+            this.switchBox.Location = new System.Drawing.Point(57, 19);
             this.switchBox.Name = "switchBox";
-            this.switchBox.Size = new System.Drawing.Size(121, 21);
+            this.switchBox.Size = new System.Drawing.Size(110, 21);
             this.switchBox.TabIndex = 0;
-            this.switchBox.SelectedIndexChanged += new System.EventHandler(this.switchBox_SelectedIndexChanged);
+            this.switchBox.SelectedIndexChanged += new System.EventHandler(this.switchBox_SelectedValueChanged);
             // 
             // switchPortBox
             // 
@@ -148,7 +148,7 @@
             this.switchPortBox.FormattingEnabled = true;
             this.switchPortBox.Location = new System.Drawing.Point(6, 19);
             this.switchPortBox.Name = "switchPortBox";
-            this.switchPortBox.Size = new System.Drawing.Size(34, 21);
+            this.switchPortBox.Size = new System.Drawing.Size(45, 21);
             this.switchPortBox.TabIndex = 0;
             // 
             // connectBtn
