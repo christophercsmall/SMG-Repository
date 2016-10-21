@@ -303,12 +303,12 @@ namespace PhoneSystemInventoryManager
                 updateFormControls("idf");
 
                 switchBox.Enabled = true;
-                PPBox.Enabled = true;
+                patchPanelBox.Enabled = true;
             }
             else
             {
                 switchBox.Enabled = false;
-                PPBox.Enabled = false;
+                patchPanelBox.Enabled = false;
                 switchPortBox.Enabled = false;
                 PPPortBox.Enabled = false;
             }
@@ -326,27 +326,66 @@ namespace PhoneSystemInventoryManager
                 }
             }
 
-            if (switchBox.SelectedValue.ToString() != "")
+            foreach (SwitchPort swp in switchPortList)
             {
-                switchPortBox.Enabled = true;
-
-                foreach (SwitchPort swp in switchPortList)
+                if (swp.switchID == fs.sw.switchID)
                 {
-                    if (swp.switchID == fs.sw.switchID)
-                    {
-                        switchPortFilteredList.Add(swp); //relevant list of venue spaces
-                    }
+                    switchPortFilteredList.Add(swp); //relevant list of venue spaces
                 }
-                
-                updateSwitchPortBoxList(switchPortFilteredList);
             }
-            else
+
+            updateSwitchPortBoxList(switchPortFilteredList);
+
+            switchPortBox.Enabled = true;
+
+            //if (switchBox.SelectedValue.ToString() != "")
+            //{
+
+            //}
+            //else
+            //{
+            //    switchBox.Enabled = false;
+            //    patchPanelBox.Enabled = false;
+            //    switchPortBox.Enabled = false;
+            //    PPPortBox.Enabled = false;
+            //}
+        }
+
+        private void patchPanelBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            List<PatchPanelPort> patchPanelPortFilteredList = new List<PatchPanelPort>();
+
+            foreach (PatchPanel pp in PPList)
             {
-                switchBox.Enabled = false;
-                PPBox.Enabled = false;
-                switchPortBox.Enabled = false;
-                PPPortBox.Enabled = false;
+                if (pp.patchPanelName == patchPanelBox.SelectedValue.ToString())
+                {
+                    fs.pp = pp; //add to FormSelection object
+                }
             }
+
+            foreach (PatchPanelPort ppp in PPPList)
+            {
+                if (ppp.patchPanelID == fs.pp.patchPanelID)
+                {
+                    patchPanelPortFilteredList.Add(ppp); //relevant list of venue spaces
+                }
+            }
+
+            updatePatchPanelPortBoxList(patchPanelPortFilteredList);
+
+            PPPortBox.Enabled = true;
+
+            //if (patchPanelBox.SelectedValue.ToString() != "")
+            //{
+
+            //}
+            //else
+            //{
+            //    switchBox.Enabled = false;
+            //    patchPanelBox.Enabled = false;
+            //    switchPortBox.Enabled = false;
+            //    PPPortBox.Enabled = false;
+            //}
         }
 
         public void updateFormControls(string cbUpdated)
@@ -359,13 +398,13 @@ namespace PhoneSystemInventoryManager
                     {
                         idfBox.DataSource = emptyList;
                         switchBox.DataSource = emptyList;
-                        PPBox.DataSource = emptyList;
+                        patchPanelBox.DataSource = emptyList;
                         switchPortBox.DataSource = emptyList;
                         PPPortBox.DataSource = emptyList;
 
                         idfBox.Enabled = false;
                         switchBox.Enabled = false;
-                        PPBox.Enabled = false;
+                        patchPanelBox.Enabled = false;
                         switchPortBox.Enabled = false;
                         PPPortBox.Enabled = false;
                     }
@@ -374,12 +413,12 @@ namespace PhoneSystemInventoryManager
                 case "venueSpace":
                     {
                         switchBox.DataSource = emptyList;
-                        PPBox.DataSource = emptyList;
+                        patchPanelBox.DataSource = emptyList;
                         switchPortBox.DataSource = emptyList;
                         PPPortBox.DataSource = emptyList;
 
                         switchBox.Enabled = false;
-                        PPBox.Enabled = false;
+                        patchPanelBox.Enabled = false;
                         switchPortBox.Enabled = false;
                         PPPortBox.Enabled = false;
                     }
@@ -398,8 +437,6 @@ namespace PhoneSystemInventoryManager
                 default:
                     break;
             }
-           
-            
         }
 
         public void updateVenueBoxList(List<Venue> v)
@@ -457,7 +494,7 @@ namespace PhoneSystemInventoryManager
             {
                 patchPanelNameList.Add(pp.patchPanelName);
             }
-            PPBox.DataSource = patchPanelNameList;
+            patchPanelBox.DataSource = patchPanelNameList;
         }
 
         public void updateSwitchPortBoxList(List<SwitchPort> switchPortFilteredList)
@@ -471,10 +508,21 @@ namespace PhoneSystemInventoryManager
             switchPortBox.DataSource = switchPortNumList;
         }
 
+        public void updatePatchPanelPortBoxList(List<PatchPanelPort> patchPanelPortFilteredList)
+        {
+            List<string> patchPanelPortNumList = new List<string>();
+
+            foreach (PatchPanelPort ppp in patchPanelPortFilteredList)
+            {
+                patchPanelPortNumList.Add(ppp.patchPanelPortNum.ToString());
+            }
+            PPPortBox.DataSource = patchPanelPortNumList;
+        }
+
         private void clearBtn_Click(object sender, EventArgs e)
         {
         }
 
-
+        
     }    
 }

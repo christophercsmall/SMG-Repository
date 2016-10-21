@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.idfBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.PPBox = new System.Windows.Forms.ComboBox();
+            this.patchPanelBox = new System.Windows.Forms.ComboBox();
             this.PPPortBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -88,15 +88,16 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "IDF";
             // 
-            // PPBox
+            // patchPanelBox
             // 
-            this.PPBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PPBox.Enabled = false;
-            this.PPBox.FormattingEnabled = true;
-            this.PPBox.Location = new System.Drawing.Point(6, 19);
-            this.PPBox.Name = "PPBox";
-            this.PPBox.Size = new System.Drawing.Size(110, 21);
-            this.PPBox.TabIndex = 0;
+            this.patchPanelBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.patchPanelBox.Enabled = false;
+            this.patchPanelBox.FormattingEnabled = true;
+            this.patchPanelBox.Location = new System.Drawing.Point(6, 19);
+            this.patchPanelBox.Name = "patchPanelBox";
+            this.patchPanelBox.Size = new System.Drawing.Size(110, 21);
+            this.patchPanelBox.TabIndex = 0;
+            this.patchPanelBox.SelectedValueChanged += new System.EventHandler(this.patchPanelBox_SelectedValueChanged);
             // 
             // PPPortBox
             // 
@@ -110,7 +111,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.PPBox);
+            this.groupBox1.Controls.Add(this.patchPanelBox);
             this.groupBox1.Controls.Add(this.PPPortBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 128);
             this.groupBox1.Name = "groupBox1";
@@ -242,7 +243,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox idfBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox PPBox;
+        private System.Windows.Forms.ComboBox patchPanelBox;
         private System.Windows.Forms.ComboBox PPPortBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
