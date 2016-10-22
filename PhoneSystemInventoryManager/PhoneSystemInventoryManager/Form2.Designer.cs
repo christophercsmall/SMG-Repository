@@ -161,6 +161,7 @@
             this.connectBtn.TabIndex = 3;
             this.connectBtn.Text = "|---->      <----|";
             this.connectBtn.UseVisualStyleBackColor = true;
+            this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
             // 
             // venueSpaceBox
             // 

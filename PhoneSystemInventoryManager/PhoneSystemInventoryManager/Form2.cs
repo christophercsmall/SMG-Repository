@@ -19,9 +19,9 @@ namespace PhoneSystemInventoryManager
             public VenueSpace vs;
             public IDF idf;
             public Switch sw;
-            public int switchPort;
+            public SwitchPort switchPort;
             public PatchPanel pp;
-            public int patchPanelPort;
+            public PatchPanelPort patchPanelPort;
         }
 
         public class Venue
@@ -98,8 +98,8 @@ namespace PhoneSystemInventoryManager
             string idfQuery = "SELECT IDF.IDFID, IDF.IDFName, IDF.VenueSpaceID FROM [IDF];";
             string ppQuery = "SELECT PatchPanel.PatchPanelID, PatchPanel.PatchPanelName, PatchPanel.IDFID FROM [PatchPanel];";
             string switchQuery = "SELECT Switch.SwitchID, Switch.DNSName, Switch.IDFID FROM [Switch];";
-            string ppPortQuery = "SELECT PatchPanelPort.PatchPanelPortID, PatchPanelPort.PatchPanelPortNum, PatchPanelPort.PatchPanelID FROM [PatchPanelPort];";
-            string switchPortQuery = "SELECT SwitchPort.SwitchPortID, SwitchPort.SwitchPortNum, SwitchPort.SwitchID FROM [SwitchPort];";
+            string ppPortQuery = "SELECT PatchPanelPort.PatchPanelPortID, PatchPanelPort.PatchPanelPortNum, PatchPanelPort.PatchPanelID FROM [PatchPanelPort] WHERE PatchPanelPort.SwitchPortID IS NULL;";
+            string switchPortQuery = "SELECT SwitchPort.SwitchPortID, SwitchPort.SwitchPortNum, SwitchPort.SwitchID FROM [SwitchPort] WHERE SwitchPort.PatchPanelPortID IS NULL;";
 
             DataSet venDS = getDataSet(venueQuery);
             DataSet vsDS = getDataSet(venueSpaceQuery);
@@ -334,21 +334,10 @@ namespace PhoneSystemInventoryManager
                 }
             }
 
-            updateSwitchPortBoxList(switchPortFilteredList);
+            updateSwitchPortBoxList(switchPortFilteredList);  
+            //HERE add selected port object to fs.          
 
-            switchPortBox.Enabled = true;
-
-            //if (switchBox.SelectedValue.ToString() != "")
-            //{
-
-            //}
-            //else
-            //{
-            //    switchBox.Enabled = false;
-            //    patchPanelBox.Enabled = false;
-            //    switchPortBox.Enabled = false;
-            //    PPPortBox.Enabled = false;
-            //}
+            switchPortBox.Enabled = true;            
         }
 
         private void patchPanelBox_SelectedValueChanged(object sender, EventArgs e)
@@ -372,20 +361,9 @@ namespace PhoneSystemInventoryManager
             }
 
             updatePatchPanelPortBoxList(patchPanelPortFilteredList);
+            //HERE add selected port object to fs.
 
-            PPPortBox.Enabled = true;
-
-            //if (patchPanelBox.SelectedValue.ToString() != "")
-            //{
-
-            //}
-            //else
-            //{
-            //    switchBox.Enabled = false;
-            //    patchPanelBox.Enabled = false;
-            //    switchPortBox.Enabled = false;
-            //    PPPortBox.Enabled = false;
-            //}
+            PPPortBox.Enabled = true;           
         }
 
         public void updateFormControls(string cbUpdated)
@@ -523,6 +501,31 @@ namespace PhoneSystemInventoryManager
         {
         }
 
-        
+        private void connectBtn_Click(object sender, EventArgs e)
+        {
+            string updateSwitchPortQuery = "UPDATE [SwitchPort] SET SwitchPort.PatchPanelPortID = " + (int)PPPortBox.SelectedValue + " WHERE SwitchPort.SwitchPortID = " + fs.switchPort.switchPortID + ";";
+            string updatePatchPanelPortQuery = "UPDATE [PatchPanelPort] SET PatchPanelPort.SwitchPortID = " + (int)switchPortBox.SelectedValue + " WHERE PatchPanelPort.PatchPanelPortID = " + fs.patchPanelPort.patchPanelPortID + ";";
+
+            mf.dbConnect();
+
+            OleDbCommand updateSwitchPortDA = new OleDbCommand(updateSwitchPortQuery, MainForm.dbConnection.conn);
+            OleDbCommand updatePatchPanelPortDA = new OleDbCommand(updatePatchPanelPortQuery, MainForm.dbConnection.conn);
+
+            if (MainForm.connected)
+            {
+                try
+                {
+                    var x = updateSwitchPortDA.ExecuteNonQuery();
+                    var y = updatePatchPanelPortDA.ExecuteNonQuery();
+
+                    connectBtn.Enabled = false;
+                }
+                catch (OleDbException exp)
+                {
+                    MessageBox.Show("Database Error:" + exp.Message.ToString());
+                }
+            }
+            mf.dbClose();
+        }
     }    
 }
