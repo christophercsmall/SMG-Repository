@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.venueBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.idfBox = new System.Windows.Forms.ComboBox();
@@ -44,6 +45,7 @@
             this.connectLabel = new System.Windows.Forms.Label();
             this.connectedLabel = new System.Windows.Forms.Label();
             this.clearBtn = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +110,7 @@
             this.PPPortBox.Name = "PPPortBox";
             this.PPPortBox.Size = new System.Drawing.Size(45, 21);
             this.PPPortBox.TabIndex = 0;
+            this.PPPortBox.SelectedIndexChanged += new System.EventHandler(this.PPPortBox_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -151,10 +154,10 @@
             this.switchPortBox.Name = "switchPortBox";
             this.switchPortBox.Size = new System.Drawing.Size(45, 21);
             this.switchPortBox.TabIndex = 0;
+            this.switchPortBox.SelectedIndexChanged += new System.EventHandler(this.switchPortBox_SelectedIndexChanged);
             // 
             // connectBtn
             // 
-            this.connectBtn.Enabled = false;
             this.connectBtn.Location = new System.Drawing.Point(192, 144);
             this.connectBtn.Name = "connectBtn";
             this.connectBtn.Size = new System.Drawing.Size(75, 24);
@@ -200,6 +203,7 @@
             this.connectedLabel.Size = new System.Drawing.Size(59, 13);
             this.connectedLabel.TabIndex = 4;
             this.connectedLabel.Text = "Connected";
+            this.connectedLabel.Visible = false;
             // 
             // clearBtn
             // 
@@ -210,6 +214,10 @@
             this.clearBtn.Text = "Clear";
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // PatchToSwitchForm
             // 
@@ -256,5 +264,6 @@
         private System.Windows.Forms.Label connectLabel;
         private System.Windows.Forms.Label connectedLabel;
         private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.Timer timer1;
     }
 }
