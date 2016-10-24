@@ -46,8 +46,10 @@
             this.connectedLabel = new System.Windows.Forms.Label();
             this.clearBtn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.PatchToSwitchDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PatchToSwitchDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // venueBox
@@ -219,11 +221,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // PatchToSwitchDataGridView
+            // 
+            this.PatchToSwitchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PatchToSwitchDataGridView.Location = new System.Drawing.Point(12, 187);
+            this.PatchToSwitchDataGridView.Name = "PatchToSwitchDataGridView";
+            this.PatchToSwitchDataGridView.Size = new System.Drawing.Size(435, 333);
+            this.PatchToSwitchDataGridView.TabIndex = 6;
+            // 
             // PatchToSwitchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 190);
+            this.ClientSize = new System.Drawing.Size(460, 532);
+            this.Controls.Add(this.PatchToSwitchDataGridView);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.connectedLabel);
             this.Controls.Add(this.connectLabel);
@@ -241,6 +252,7 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PatchToSwitchDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +277,6 @@
         private System.Windows.Forms.Label connectedLabel;
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView PatchToSwitchDataGridView;
     }
 }

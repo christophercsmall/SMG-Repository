@@ -642,6 +642,12 @@ namespace PhoneSystemInventoryManager
             }
         }
 
+        private void updateDataGridView()
+        {
+            string query = "SELECT Switch.DNSName, SwitchPort.SwitchPortNum, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [SwitchPort] WHERE SwitchPort.PatchPanelPortID IS NULL;";
+
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             connectLabel.Visible = false;
