@@ -177,6 +177,7 @@ namespace PhoneSystemInventoryManager
             }
 
             updateVenueBoxList(venueList);
+            updateDataGridView();
         }
 
         public DataSet getDataSet(string query)
@@ -579,6 +580,7 @@ namespace PhoneSystemInventoryManager
                 mf.dbClose();
 
                 refreshPortLists();
+                updateDataGridView();
             }
         }
 
@@ -644,8 +646,12 @@ namespace PhoneSystemInventoryManager
 
         private void updateDataGridView()
         {
-            string query = "SELECT Switch.DNSName, SwitchPort.SwitchPortNum, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [SwitchPort] WHERE SwitchPort.PatchPanelPortID IS NULL;";
+            string query = "SELECT Switch.DNSName, SwitchPort.SwitchPortNum, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [Switch], [SwitchPort], [PatchPanel], [PatchPanelPort] WHERE Switch.IDFID = PatchPanel.IDFID AND Switch.SwitchID = SwitchPort.SwitchID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND SwitchPort.SwitchPortID = PatchPanelPort.SwitchPortID AND PatchPanelPort.PatchPanelPortID = SwitchPort.PatchPanelPortID AND SwitchPort.SwitchPortID IS NOT NULL AND PatchPanelPort.PatchPanelPortID IS NOT NULL;";
 
+            DataSet ds = getDataSet(query);
+
+            PatchToSwitchDataGridView.DataSource = ds.Tables[0];
+            //recordsCountLabel.Text = dataGridView1.Rows.Count.ToString();          
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -662,6 +668,30 @@ namespace PhoneSystemInventoryManager
                 connectedLabel.Visible = false;
                 connectLabel.Visible = true;
             }
+        }
+
+        private void PatchToSwitchDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            contextMenuStrip1.Items.Clear();
+
+            string switchDNSName = PatchToSwitchDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+            string query = "SELECT Venue.VenueName, VenueSpace.VenueSpaceName, IDF.IDFName FROM [Venue], [VenueSpace], [IDF], [Switch] WHERE IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID AND Switch.DNSName = " + "'" + switchDNSName + "'" + " AND Switch.IDFID = IDF.IDFID;";
+            string venueName = "", venueSpaceName = "", idfName = "";
+
+            DataSet ds = getDataSet(query);
+            
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                venueName = dr.ItemArray.GetValue(0).ToString();
+                venueSpaceName = dr.ItemArray.GetValue(1).ToString();
+                idfName = dr.ItemArray.GetValue(2).ToString();                          
+            }
+
+            contextMenuStrip1.Items.Add(venueName);
+            contextMenuStrip1.Items.Add(venueSpaceName);
+            contextMenuStrip1.Items.Add(idfName);
+
+            contextMenuStrip1.Show(Cursor.Position);
         }
     }    
 }

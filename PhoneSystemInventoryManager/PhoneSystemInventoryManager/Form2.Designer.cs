@@ -47,6 +47,7 @@
             this.clearBtn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PatchToSwitchDataGridView = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatchToSwitchDataGridView)).BeginInit();
@@ -118,7 +119,7 @@
             // 
             this.groupBox1.Controls.Add(this.patchPanelBox);
             this.groupBox1.Controls.Add(this.PPPortBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 128);
+            this.groupBox1.Location = new System.Drawing.Point(12, 100);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(174, 48);
             this.groupBox1.TabIndex = 2;
@@ -129,7 +130,7 @@
             // 
             this.groupBox2.Controls.Add(this.switchBox);
             this.groupBox2.Controls.Add(this.switchPortBox);
-            this.groupBox2.Location = new System.Drawing.Point(273, 128);
+            this.groupBox2.Location = new System.Drawing.Point(273, 100);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(174, 48);
             this.groupBox2.TabIndex = 2;
@@ -160,7 +161,7 @@
             // 
             // connectBtn
             // 
-            this.connectBtn.Location = new System.Drawing.Point(192, 144);
+            this.connectBtn.Location = new System.Drawing.Point(192, 116);
             this.connectBtn.Name = "connectBtn";
             this.connectBtn.Size = new System.Drawing.Size(75, 24);
             this.connectBtn.TabIndex = 3;
@@ -191,7 +192,7 @@
             // connectLabel
             // 
             this.connectLabel.AutoSize = true;
-            this.connectLabel.Location = new System.Drawing.Point(206, 128);
+            this.connectLabel.Location = new System.Drawing.Point(206, 100);
             this.connectLabel.Name = "connectLabel";
             this.connectLabel.Size = new System.Drawing.Size(47, 13);
             this.connectLabel.TabIndex = 4;
@@ -200,7 +201,7 @@
             // connectedLabel
             // 
             this.connectedLabel.AutoSize = true;
-            this.connectedLabel.Location = new System.Drawing.Point(200, 171);
+            this.connectedLabel.Location = new System.Drawing.Point(200, 143);
             this.connectedLabel.Name = "connectedLabel";
             this.connectedLabel.Size = new System.Drawing.Size(59, 13);
             this.connectedLabel.TabIndex = 4;
@@ -209,9 +210,9 @@
             // 
             // clearBtn
             // 
-            this.clearBtn.Location = new System.Drawing.Point(373, 12);
+            this.clearBtn.Location = new System.Drawing.Point(327, 12);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(75, 23);
+            this.clearBtn.Size = new System.Drawing.Size(121, 23);
             this.clearBtn.TabIndex = 5;
             this.clearBtn.Text = "Clear";
             this.clearBtn.UseVisualStyleBackColor = true;
@@ -223,17 +224,35 @@
             // 
             // PatchToSwitchDataGridView
             // 
+            this.PatchToSwitchDataGridView.AllowUserToAddRows = false;
+            this.PatchToSwitchDataGridView.AllowUserToDeleteRows = false;
+            this.PatchToSwitchDataGridView.AllowUserToOrderColumns = true;
+            this.PatchToSwitchDataGridView.AllowUserToResizeRows = false;
+            this.PatchToSwitchDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PatchToSwitchDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PatchToSwitchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PatchToSwitchDataGridView.Location = new System.Drawing.Point(12, 187);
+            this.PatchToSwitchDataGridView.ContextMenuStrip = this.contextMenuStrip1;
+            this.PatchToSwitchDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PatchToSwitchDataGridView.Location = new System.Drawing.Point(0, 159);
+            this.PatchToSwitchDataGridView.MultiSelect = false;
             this.PatchToSwitchDataGridView.Name = "PatchToSwitchDataGridView";
-            this.PatchToSwitchDataGridView.Size = new System.Drawing.Size(435, 333);
+            this.PatchToSwitchDataGridView.ReadOnly = true;
+            this.PatchToSwitchDataGridView.RowHeadersWidth = 30;
+            this.PatchToSwitchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PatchToSwitchDataGridView.Size = new System.Drawing.Size(460, 238);
             this.PatchToSwitchDataGridView.TabIndex = 6;
+            this.PatchToSwitchDataGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PatchToSwitchDataGridView_RowHeaderMouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 26);
             // 
             // PatchToSwitchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 532);
+            this.ClientSize = new System.Drawing.Size(460, 397);
             this.Controls.Add(this.PatchToSwitchDataGridView);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.connectedLabel);
@@ -247,7 +266,10 @@
             this.Controls.Add(this.idfBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.venueBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "PatchToSwitchForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Create New Patch To Switch";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
@@ -278,5 +300,6 @@
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridView PatchToSwitchDataGridView;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
