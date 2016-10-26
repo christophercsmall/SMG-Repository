@@ -22,7 +22,7 @@ namespace PhoneSystemInventoryManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            errorProvider1.SetError(textBox5, "Extenion already assigned.");
+            errorProvider1.SetError(extBox, "Extenion already assigned.");
         }
     }
 }
