@@ -173,7 +173,7 @@ namespace PhoneSystemInventoryManager
 
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateForm newForm = new CreateForm(this);
+            CreateForm newForm = new CreateForm(this, sender);
             newForm.ShowDialog();
         }
     }
