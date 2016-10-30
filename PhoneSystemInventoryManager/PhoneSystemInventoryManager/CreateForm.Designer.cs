@@ -37,7 +37,6 @@
             this.compBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.extBox = new System.Windows.Forms.TextBox();
             this.createTabControl = new System.Windows.Forms.TabControl();
             this.userTab = new System.Windows.Forms.TabPage();
             this.createUserBtn = new System.Windows.Forms.Button();
@@ -101,6 +100,7 @@
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.createDdataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.extBox = new System.Windows.Forms.TextBox();
             this.createTabControl.SuspendLayout();
             this.userTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -188,16 +188,6 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Extension";
             // 
-            // extBox
-            // 
-            this.extBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.extBox.Location = new System.Drawing.Point(73, 113);
-            this.extBox.Name = "extBox";
-            this.extBox.Size = new System.Drawing.Size(100, 20);
-            this.extBox.TabIndex = 0;
-            this.extBox.TextChanged += new System.EventHandler(this.extBox_TextChanged);
-            this.extBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.extBox_KeyPress);
-            // 
             // createTabControl
             // 
             this.createTabControl.Controls.Add(this.userTab);
@@ -226,9 +216,9 @@
             this.userTab.Controls.Add(this.label3);
             this.userTab.Controls.Add(this.fNameBox);
             this.userTab.Controls.Add(this.label4);
-            this.userTab.Controls.Add(this.extBox);
             this.userTab.Controls.Add(this.label5);
             this.userTab.Controls.Add(this.label2);
+            this.userTab.Controls.Add(this.extBox);
             this.userTab.Controls.Add(this.depBox);
             this.userTab.Controls.Add(this.compBox);
             this.userTab.Location = new System.Drawing.Point(4, 22);
@@ -877,6 +867,15 @@
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
+            // extBox
+            // 
+            this.extBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extBox.Location = new System.Drawing.Point(73, 113);
+            this.extBox.Name = "extBox";
+            this.extBox.Size = new System.Drawing.Size(100, 20);
+            this.extBox.TabIndex = 0;
+            this.extBox.TextChanged += new System.EventHandler(this.extBox_TextChanged_1);
+            // 
             // CreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -922,7 +921,6 @@
         private System.Windows.Forms.TextBox compBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox extBox;
         private System.Windows.Forms.TabControl createTabControl;
         private System.Windows.Forms.TabPage userTab;
         private System.Windows.Forms.TabPage tabPage2;
@@ -986,5 +984,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox depBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox extBox;
     }
 }

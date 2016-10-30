@@ -90,17 +90,17 @@ namespace PhoneSystemInventoryManager
             return ds;
         }
 
-        private void insert(string query)
+        private void executeDbComm(string query)
         {
             mf.dbConnect();
 
-            OleDbCommand insertDbComm = new OleDbCommand(query, MainForm.dbConnection.conn);
+            OleDbCommand executeDbComm = new OleDbCommand(query, MainForm.dbConnection.conn);
 
             if (MainForm.connected)
             {
                 try
                 {
-                    var x = insertDbComm.ExecuteNonQuery();                   
+                    var x = executeDbComm.ExecuteNonQuery();                   
                 }
                 catch (OleDbException exp)
                 {
@@ -156,7 +156,27 @@ namespace PhoneSystemInventoryManager
             }
         }
 
-        private void extBox_TextChanged(object sender, EventArgs e)
+        private void createUserBtn_Click(object sender, EventArgs e)
+        {
+            string userIdQuery = "SELECT User.UserID FROM [User];";
+            int newUserID = getUnusedID(userIdQuery);
+            string insertQuery = "INSERT INTO [User] (UserID, FName, LName, Company, Department, ExtensionNum) VALUES (" + newUserID + ", '" + fNameBox.Text + "'" + ", '" + lNameBox.Text + "'" + ", '" + compBox.Text + "'" + ", '" + depBox.Text + "'" + ", " + extBox.Text + ");";
+            
+            if(errorProvider1.GetError(extBox) != null)
+            {
+                MessageBox.Show("Pending errors must be resolved.");
+            }
+            else if(extBox.Text == "")
+            {
+                MessageBox.Show("User records require valid Extension Number");
+            }
+            else
+            {
+                executeDbComm(insertQuery);
+            }
+        }
+
+        private void extBox_TextChanged_1(object sender, EventArgs e)
         {
             errorProvider1.SetError(extBox, string.Empty);
 
@@ -178,25 +198,12 @@ namespace PhoneSystemInventoryManager
                     errorProvider1.SetError(extBox, "Extenion already assigned.");
                 }
             }
+
+            if (!extBox.Text.All(Char.IsDigit))
+            {
+                errorProvider1.SetError(extBox, "Extension must be 4 digit number.");
+            }
         }
-
-        private void createUserBtn_Click(object sender, EventArgs e)
-        {
-            string userIdQuery = "SELECT User.UserID FROM [User];";
-            int newUserID = getUnusedID(userIdQuery);
-            string insertQuery = "INSERT INTO [User] (UserID, FName, LName, Company, Department, ExtensionNum) VALUES (" + newUserID + ", '" + fNameBox.Text + "'" + ", '" + lNameBox.Text + "'" + ", '" + compBox.Text + "'" + ", '" + depBox.Text + "'" + ", " + extBox.Text + ");";
-            
-
-
-            insert(insertQuery);
-
-        }
-
-        private void extBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar);
-        }
-
 
         //endUserTab
 
