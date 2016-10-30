@@ -44,7 +44,72 @@ namespace PhoneSystemInventoryManager
                     }
             }
         }
-        
+
+        private int getUnusedID(string idQuery)
+        {
+            int newID = 0, i = 0;
+            List<int> idList = new List<int>();
+
+            DataSet ds = getDataSet(idQuery);
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                idList.Add((int)dr.ItemArray.GetValue(0));
+            }
+            idList.Sort();
+
+            while (idList.Contains(i))
+            {
+                i++;
+            }
+            newID = i;
+
+            return newID;
+        }
+
+        public DataSet getDataSet(string query)
+        {
+            mf.dbConnect();
+
+            OleDbDataAdapter da = new OleDbDataAdapter(query, MainForm.dbConnection.conn);
+            DataSet ds = new DataSet();
+
+            if (MainForm.connected)
+            {
+                try
+                {
+                    da.Fill(ds);
+                }
+                catch (OleDbException exp)
+                {
+                    MessageBox.Show("Database Error:" + exp.Message.ToString());
+                }
+            }
+            mf.dbClose();
+
+            return ds;
+        }
+
+        private void insert(string query)
+        {
+            mf.dbConnect();
+
+            OleDbCommand insertDbComm = new OleDbCommand(query, MainForm.dbConnection.conn);
+
+            if (MainForm.connected)
+            {
+                try
+                {
+                    var x = insertDbComm.ExecuteNonQuery();                   
+                }
+                catch (OleDbException exp)
+                {
+                    MessageBox.Show("Database Error:" + exp.Message.ToString());
+                }
+            }
+            mf.dbClose();
+        }
+
         private void createTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentTabIndex = createTabControl.SelectedIndex;
@@ -74,46 +139,68 @@ namespace PhoneSystemInventoryManager
             }
         }
 
-        private void loadUserTab()
+//startUserTab
+        private void loadUserTab() 
         {
-            string query = "SELECT User.LName, User.FName, User. FROM [User];";
+            List<string> extNums = new List<string>();
 
-            DataSet ds = getDataSet(query);
+            string userQuery = "SELECT User.LName, User.FName, User.Company, User.Department, User.ExtensionNum FROM [User];";
+
+            DataSet ds = getDataSet(userQuery);
 
             createDdataGridView.DataSource = ds.Tables[0];
 
-            //foreach (DataRow dr in ds.Tables[0].Rows)
-            //{
-
-            //}
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                extNums.Add(dr.ItemArray.GetValue(4).ToString());
+            }
         }
 
-        public DataSet getDataSet(string query)
+        private void extBox_TextChanged(object sender, EventArgs e)
         {
-            mf.dbConnect();
+            errorProvider1.SetError(extBox, string.Empty);
 
-            OleDbDataAdapter da = new OleDbDataAdapter(query, MainForm.dbConnection.conn);
-            DataSet ds = new DataSet();
+            List<string> extNums = new List<string>();
 
-            if (MainForm.connected)
+            string extQuery = "SELECT User.ExtensionNum FROM [User];";
+
+            DataSet ds = getDataSet(extQuery);
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                try
+                extNums.Add(dr.ItemArray.GetValue(0).ToString());
+            }
+
+            foreach (string n in extNums)
+            {
+                if (n.ToString() == extBox.Text)
                 {
-                    da.Fill(ds);
-                }
-                catch (OleDbException exp)
-                {
-                    MessageBox.Show("Database Error:" + exp.Message.ToString());
+                    errorProvider1.SetError(extBox, "Extenion already assigned.");
                 }
             }
-            mf.dbClose();
-
-            return ds;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void createUserBtn_Click(object sender, EventArgs e)
         {
-            errorProvider1.SetError(extBox, "Extenion already assigned.");
+            string userIdQuery = "SELECT User.UserID FROM [User];";
+            int newUserID = getUnusedID(userIdQuery);
+            string insertQuery = "INSERT INTO [User] (UserID, FName, LName, Company, Department, ExtensionNum) VALUES (" + newUserID + ", '" + fNameBox.Text + "'" + ", '" + lNameBox.Text + "'" + ", '" + compBox.Text + "'" + ", '" + depBox.Text + "'" + ", " + extBox.Text + ");";
+            
+
+
+            insert(insertQuery);
+
         }
+
+        private void extBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar);
+        }
+
+
+        //endUserTab
+
+
+
     }
 }

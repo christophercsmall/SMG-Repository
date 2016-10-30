@@ -41,6 +41,7 @@
             this.createTabControl = new System.Windows.Forms.TabControl();
             this.userTab = new System.Windows.Forms.TabPage();
             this.createUserBtn = new System.Windows.Forms.Button();
+            this.depBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBox12 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -100,7 +101,6 @@
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.createDdataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.depBox = new System.Windows.Forms.TextBox();
             this.createTabControl.SuspendLayout();
             this.userTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -195,6 +195,8 @@
             this.extBox.Name = "extBox";
             this.extBox.Size = new System.Drawing.Size(100, 20);
             this.extBox.TabIndex = 0;
+            this.extBox.TextChanged += new System.EventHandler(this.extBox_TextChanged);
+            this.extBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.extBox_KeyPress);
             // 
             // createTabControl
             // 
@@ -211,7 +213,7 @@
             this.createTabControl.Location = new System.Drawing.Point(0, 0);
             this.createTabControl.Name = "createTabControl";
             this.createTabControl.SelectedIndex = 0;
-            this.createTabControl.Size = new System.Drawing.Size(453, 170);
+            this.createTabControl.Size = new System.Drawing.Size(723, 170);
             this.createTabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.createTabControl.TabIndex = 2;
             this.createTabControl.SelectedIndexChanged += new System.EventHandler(this.createTabControl_SelectedIndexChanged);
@@ -232,20 +234,28 @@
             this.userTab.Location = new System.Drawing.Point(4, 22);
             this.userTab.Name = "userTab";
             this.userTab.Padding = new System.Windows.Forms.Padding(3);
-            this.userTab.Size = new System.Drawing.Size(445, 144);
+            this.userTab.Size = new System.Drawing.Size(715, 144);
             this.userTab.TabIndex = 0;
             this.userTab.Text = "User";
             this.userTab.UseVisualStyleBackColor = true;
             // 
             // createUserBtn
             // 
-            this.createUserBtn.Location = new System.Drawing.Point(339, 113);
+            this.createUserBtn.Location = new System.Drawing.Point(609, 113);
             this.createUserBtn.Name = "createUserBtn";
             this.createUserBtn.Size = new System.Drawing.Size(100, 25);
             this.createUserBtn.TabIndex = 2;
             this.createUserBtn.Text = "Create";
             this.createUserBtn.UseVisualStyleBackColor = true;
-            this.createUserBtn.Click += new System.EventHandler(this.button2_Click);
+            this.createUserBtn.Click += new System.EventHandler(this.createUserBtn_Click);
+            // 
+            // depBox
+            // 
+            this.depBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.depBox.Location = new System.Drawing.Point(73, 87);
+            this.depBox.Name = "depBox";
+            this.depBox.Size = new System.Drawing.Size(100, 20);
+            this.depBox.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -263,7 +273,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(445, 144);
+            this.tabPage2.Size = new System.Drawing.Size(715, 144);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Phone";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -391,7 +401,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(445, 144);
+            this.tabPage5.Size = new System.Drawing.Size(715, 144);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Office Jack";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -503,7 +513,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(445, 144);
+            this.tabPage3.Size = new System.Drawing.Size(715, 144);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Switch";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -608,7 +618,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(445, 144);
+            this.tabPage4.Size = new System.Drawing.Size(715, 144);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Patch Panel";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -688,7 +698,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(445, 144);
+            this.tabPage6.Size = new System.Drawing.Size(715, 144);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "IDF";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -749,7 +759,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(445, 144);
+            this.tabPage7.Size = new System.Drawing.Size(715, 144);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Venue Space";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -808,7 +818,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(445, 144);
+            this.tabPage8.Size = new System.Drawing.Size(715, 144);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Venue";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -842,31 +852,36 @@
             // 
             // createDdataGridView
             // 
+            this.createDdataGridView.AllowUserToAddRows = false;
+            this.createDdataGridView.AllowUserToDeleteRows = false;
+            this.createDdataGridView.AllowUserToOrderColumns = true;
+            this.createDdataGridView.AllowUserToResizeRows = false;
+            this.createDdataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.createDdataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.createDdataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.createDdataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.createDdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.createDdataGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.createDdataGridView.Location = new System.Drawing.Point(0, 170);
+            this.createDdataGridView.MultiSelect = false;
             this.createDdataGridView.Name = "createDdataGridView";
-            this.createDdataGridView.Size = new System.Drawing.Size(453, 208);
+            this.createDdataGridView.ReadOnly = true;
+            this.createDdataGridView.RowHeadersVisible = false;
+            this.createDdataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.createDdataGridView.Size = new System.Drawing.Size(723, 208);
             this.createDdataGridView.TabIndex = 3;
             // 
             // errorProvider1
             // 
+            this.errorProvider1.BlinkRate = 0;
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
-            // 
-            // depBox
-            // 
-            this.depBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.depBox.Location = new System.Drawing.Point(73, 87);
-            this.depBox.Name = "depBox";
-            this.depBox.Size = new System.Drawing.Size(100, 20);
-            this.depBox.TabIndex = 0;
             // 
             // CreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 379);
+            this.ClientSize = new System.Drawing.Size(723, 379);
             this.Controls.Add(this.createDdataGridView);
             this.Controls.Add(this.createTabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -937,7 +952,6 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox textBox36;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label8;
@@ -971,5 +985,6 @@
         private System.Windows.Forms.ComboBox comboBox12;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox depBox;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
