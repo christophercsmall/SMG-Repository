@@ -40,6 +40,7 @@
             this.createTabControl = new System.Windows.Forms.TabControl();
             this.userTab = new System.Windows.Forms.TabPage();
             this.createUserBtn = new System.Windows.Forms.Button();
+            this.extBox = new System.Windows.Forms.TextBox();
             this.depBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBox12 = new System.Windows.Forms.ComboBox();
@@ -100,7 +101,6 @@
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.createDdataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.extBox = new System.Windows.Forms.TextBox();
             this.createTabControl.SuspendLayout();
             this.userTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -158,7 +158,7 @@
             this.fNameBox.Location = new System.Drawing.Point(73, 35);
             this.fNameBox.Name = "fNameBox";
             this.fNameBox.Size = new System.Drawing.Size(100, 20);
-            this.fNameBox.TabIndex = 0;
+            this.fNameBox.TabIndex = 1;
             // 
             // compBox
             // 
@@ -166,7 +166,7 @@
             this.compBox.Location = new System.Drawing.Point(73, 61);
             this.compBox.Name = "compBox";
             this.compBox.Size = new System.Drawing.Size(100, 20);
-            this.compBox.TabIndex = 0;
+            this.compBox.TabIndex = 2;
             // 
             // label4
             // 
@@ -234,10 +234,19 @@
             this.createUserBtn.Location = new System.Drawing.Point(609, 113);
             this.createUserBtn.Name = "createUserBtn";
             this.createUserBtn.Size = new System.Drawing.Size(100, 25);
-            this.createUserBtn.TabIndex = 2;
+            this.createUserBtn.TabIndex = 5;
             this.createUserBtn.Text = "Create";
             this.createUserBtn.UseVisualStyleBackColor = true;
             this.createUserBtn.Click += new System.EventHandler(this.createUserBtn_Click);
+            // 
+            // extBox
+            // 
+            this.extBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extBox.Location = new System.Drawing.Point(73, 113);
+            this.extBox.Name = "extBox";
+            this.extBox.Size = new System.Drawing.Size(100, 20);
+            this.extBox.TabIndex = 4;
+            this.extBox.TextChanged += new System.EventHandler(this.extBox_TextChanged_1);
             // 
             // depBox
             // 
@@ -245,7 +254,7 @@
             this.depBox.Location = new System.Drawing.Point(73, 87);
             this.depBox.Name = "depBox";
             this.depBox.Size = new System.Drawing.Size(100, 20);
-            this.depBox.TabIndex = 0;
+            this.depBox.TabIndex = 3;
             // 
             // tabPage2
             // 
@@ -866,15 +875,6 @@
             this.errorProvider1.BlinkRate = 0;
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
-            // 
-            // extBox
-            // 
-            this.extBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.extBox.Location = new System.Drawing.Point(73, 113);
-            this.extBox.Name = "extBox";
-            this.extBox.Size = new System.Drawing.Size(100, 20);
-            this.extBox.TabIndex = 0;
-            this.extBox.TextChanged += new System.EventHandler(this.extBox_TextChanged_1);
             // 
             // CreateForm
             // 

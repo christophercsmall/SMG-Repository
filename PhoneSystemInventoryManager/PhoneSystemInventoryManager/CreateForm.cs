@@ -16,6 +16,7 @@ namespace PhoneSystemInventoryManager
         private MainForm mf;
         private object sndr;
         private int currentTabIndex;
+        private bool errorsPending = true;
 
         public CreateForm(MainForm mainform, object sender)
         {
@@ -162,23 +163,46 @@ namespace PhoneSystemInventoryManager
             int newUserID = getUnusedID(userIdQuery);
             string insertQuery = "INSERT INTO [User] (UserID, FName, LName, Company, Department, ExtensionNum) VALUES (" + newUserID + ", '" + fNameBox.Text + "'" + ", '" + lNameBox.Text + "'" + ", '" + compBox.Text + "'" + ", '" + depBox.Text + "'" + ", " + extBox.Text + ");";
             
-            if(errorProvider1.GetError(extBox) != null)
-            {
-                MessageBox.Show("Pending errors must be resolved.");
-            }
-            else if(extBox.Text == "")
+            if (extBox.Text == "")
             {
                 MessageBox.Show("User records require valid Extension Number");
             }
             else
             {
-                executeDbComm(insertQuery);
+                if (errorsPending)
+                {
+                    MessageBox.Show("Pending errors must be resolved.");
+                }
+                else
+                {
+                    executeDbComm(insertQuery);
+                    loadUserTab();
+                }
             }
         }
 
         private void extBox_TextChanged_1(object sender, EventArgs e)
         {
             errorProvider1.SetError(extBox, string.Empty);
+            errorsPending = false;
+
+            if (extentionExists(extBox.Text))
+            {
+                errorProvider1.SetError(extBox, "Extenion already assigned.");
+                errorsPending = true;
+            }
+
+            if (!extBox.Text.All(Char.IsDigit))
+            {
+                errorProvider1.SetError(extBox, "Extension must be 4 digit number.");
+                errorsPending = true;
+            }
+
+        }
+
+        private bool extentionExists(string ext)
+        {
+            bool isValid = false;
 
             List<string> extNums = new List<string>();
 
@@ -193,19 +217,15 @@ namespace PhoneSystemInventoryManager
 
             foreach (string n in extNums)
             {
-                if (n.ToString() == extBox.Text)
+                if (n.ToString() == ext)
                 {
-                    errorProvider1.SetError(extBox, "Extenion already assigned.");
+                    isValid = true;
                 }
             }
 
-            if (!extBox.Text.All(Char.IsDigit))
-            {
-                errorProvider1.SetError(extBox, "Extension must be 4 digit number.");
-            }
+            return isValid;
         }
-
-        //endUserTab
+//endUserTab
 
 
 
