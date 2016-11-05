@@ -43,16 +43,16 @@
             this.extBox = new System.Windows.Forms.TextBox();
             this.depBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.userComboBox = new System.Windows.Forms.ComboBox();
+            this.regComboBox = new System.Windows.Forms.ComboBox();
+            this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.macBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.jackBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
@@ -258,16 +258,16 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.comboBox12);
-            this.tabPage2.Controls.Add(this.comboBox3);
-            this.tabPage2.Controls.Add(this.comboBox2);
+            this.tabPage2.Controls.Add(this.userComboBox);
+            this.tabPage2.Controls.Add(this.regComboBox);
+            this.tabPage2.Controls.Add(this.typeComboBox);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.macBox);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.textBox9);
+            this.tabPage2.Controls.Add(this.jackBox);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -277,37 +277,37 @@
             this.tabPage2.Text = "Phone";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // comboBox12
+            // userComboBox
             // 
-            this.comboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Items.AddRange(new object[] {
+            this.userComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.userComboBox.FormattingEnabled = true;
+            this.userComboBox.Items.AddRange(new object[] {
             "YES",
             "NO"});
-            this.comboBox12.Location = new System.Drawing.Point(73, 116);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(100, 21);
-            this.comboBox12.TabIndex = 15;
+            this.userComboBox.Location = new System.Drawing.Point(73, 116);
+            this.userComboBox.Name = "userComboBox";
+            this.userComboBox.Size = new System.Drawing.Size(100, 21);
+            this.userComboBox.TabIndex = 15;
             // 
-            // comboBox3
+            // regComboBox
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.regComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.regComboBox.FormattingEnabled = true;
+            this.regComboBox.Items.AddRange(new object[] {
             "YES",
             "NO"});
-            this.comboBox3.Location = new System.Drawing.Point(74, 62);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(99, 21);
-            this.comboBox3.TabIndex = 15;
+            this.regComboBox.Location = new System.Drawing.Point(74, 62);
+            this.regComboBox.Name = "regComboBox";
+            this.regComboBox.Size = new System.Drawing.Size(99, 21);
+            this.regComboBox.TabIndex = 15;
             // 
-            // comboBox2
+            // typeComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(73, 35);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(100, 21);
-            this.comboBox2.TabIndex = 14;
+            this.typeComboBox.FormattingEnabled = true;
+            this.typeComboBox.Location = new System.Drawing.Point(73, 35);
+            this.typeComboBox.Name = "typeComboBox";
+            this.typeComboBox.Size = new System.Drawing.Size(100, 21);
+            this.typeComboBox.TabIndex = 14;
             // 
             // button1
             // 
@@ -339,13 +339,13 @@
             this.label19.TabIndex = 9;
             this.label19.Text = "User";
             // 
-            // textBox6
+            // macBox
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(73, 9);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 3;
+            this.macBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.macBox.Location = new System.Drawing.Point(73, 9);
+            this.macBox.Name = "macBox";
+            this.macBox.Size = new System.Drawing.Size(100, 20);
+            this.macBox.TabIndex = 3;
             // 
             // label7
             // 
@@ -367,13 +367,13 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Jack Info.";
             // 
-            // textBox9
+            // jackBox
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(73, 89);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(238, 20);
-            this.textBox9.TabIndex = 6;
+            this.jackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jackBox.Location = new System.Drawing.Point(73, 89);
+            this.jackBox.Name = "jackBox";
+            this.jackBox.Size = new System.Drawing.Size(238, 20);
+            this.jackBox.TabIndex = 6;
             // 
             // label10
             // 
@@ -934,7 +934,7 @@
         private System.Windows.Forms.Button createUserBtn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox macBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label16;
@@ -953,14 +953,14 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox jackBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox typeComboBox;
+        private System.Windows.Forms.ComboBox regComboBox;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label15;
@@ -980,7 +980,7 @@
         private System.Windows.Forms.ComboBox comboBox11;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox12;
+        private System.Windows.Forms.ComboBox userComboBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox depBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
