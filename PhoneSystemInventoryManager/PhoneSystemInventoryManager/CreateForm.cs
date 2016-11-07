@@ -122,6 +122,7 @@ namespace PhoneSystemInventoryManager
                     loadUserTab();
                     break;
                 case 1:
+                    loadPhoneTab();
                     break;
                 case 2:
                     break;
@@ -225,13 +226,44 @@ namespace PhoneSystemInventoryManager
 
             return isValid;
         }
-//endUserTab
+        //endUserTab
 
 //beginPhoneTab
 
+        private void loadPhoneTab()
+        {
+            List<string> users = new List<string>();
+            List<string> phoneTypes = new List<string>();
+            List<string> distinctTypes = new List<string>();
 
+            string userQuery = "SELECT User.LName, User.FName, User.ExtensionNum FROM [User];";
+            string phoneQuery = "SELECT Phone.MAC, Phone.Type, Phone.Registered, Phone.JackInfo FROM [Phone];";
 
-//endPhoneTab
+            DataSet phoneDS = getDataSet(phoneQuery);
+            DataSet UserDS = getDataSet(userQuery);
+
+            createDdataGridView.DataSource = phoneDS.Tables[0];
+
+            foreach (DataRow dr in phoneDS.Tables[0].Rows)
+            {
+                phoneTypes.Add(dr.ItemArray.GetValue(1).ToString());
+            }
+
+            foreach (DataRow dr in UserDS.Tables[0].Rows)
+            {
+                users.Add(dr.ItemArray.GetValue(0).ToString() + " ," + dr.ItemArray.GetValue(1).ToString() + " - " + dr.ItemArray.GetValue(2).ToString());
+            }
+
+            distinctTypes.AddRange(phoneTypes.Distinct());
+            distinctTypes.Sort();
+            users.Sort();
+            distinctTypes.Insert(0, "");
+            users.Insert(0, "");
+            typeComboBox.DataSource = distinctTypes;
+            userComboBox.DataSource = users;
+        }
+
+        //endPhoneTab
 
 
     }

@@ -119,7 +119,7 @@
             this.lNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lNameBox.Location = new System.Drawing.Point(73, 9);
             this.lNameBox.Name = "lNameBox";
-            this.lNameBox.Size = new System.Drawing.Size(100, 20);
+            this.lNameBox.Size = new System.Drawing.Size(234, 20);
             this.lNameBox.TabIndex = 0;
             // 
             // label1
@@ -157,7 +157,7 @@
             this.fNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fNameBox.Location = new System.Drawing.Point(73, 35);
             this.fNameBox.Name = "fNameBox";
-            this.fNameBox.Size = new System.Drawing.Size(100, 20);
+            this.fNameBox.Size = new System.Drawing.Size(234, 20);
             this.fNameBox.TabIndex = 1;
             // 
             // compBox
@@ -165,7 +165,7 @@
             this.compBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.compBox.Location = new System.Drawing.Point(73, 61);
             this.compBox.Name = "compBox";
-            this.compBox.Size = new System.Drawing.Size(100, 20);
+            this.compBox.Size = new System.Drawing.Size(234, 20);
             this.compBox.TabIndex = 2;
             // 
             // label4
@@ -244,7 +244,7 @@
             this.extBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extBox.Location = new System.Drawing.Point(73, 113);
             this.extBox.Name = "extBox";
-            this.extBox.Size = new System.Drawing.Size(100, 20);
+            this.extBox.Size = new System.Drawing.Size(234, 20);
             this.extBox.TabIndex = 4;
             this.extBox.TextChanged += new System.EventHandler(this.extBox_TextChanged_1);
             // 
@@ -253,7 +253,7 @@
             this.depBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.depBox.Location = new System.Drawing.Point(73, 87);
             this.depBox.Name = "depBox";
-            this.depBox.Size = new System.Drawing.Size(100, 20);
+            this.depBox.Size = new System.Drawing.Size(234, 20);
             this.depBox.TabIndex = 3;
             // 
             // tabPage2
@@ -286,7 +286,7 @@
             "NO"});
             this.userComboBox.Location = new System.Drawing.Point(73, 116);
             this.userComboBox.Name = "userComboBox";
-            this.userComboBox.Size = new System.Drawing.Size(100, 21);
+            this.userComboBox.Size = new System.Drawing.Size(530, 21);
             this.userComboBox.TabIndex = 15;
             // 
             // regComboBox
@@ -298,7 +298,7 @@
             "NO"});
             this.regComboBox.Location = new System.Drawing.Point(74, 62);
             this.regComboBox.Name = "regComboBox";
-            this.regComboBox.Size = new System.Drawing.Size(99, 21);
+            this.regComboBox.Size = new System.Drawing.Size(232, 21);
             this.regComboBox.TabIndex = 15;
             // 
             // typeComboBox
@@ -306,12 +306,12 @@
             this.typeComboBox.FormattingEnabled = true;
             this.typeComboBox.Location = new System.Drawing.Point(73, 35);
             this.typeComboBox.Name = "typeComboBox";
-            this.typeComboBox.Size = new System.Drawing.Size(100, 21);
+            this.typeComboBox.Size = new System.Drawing.Size(233, 21);
             this.typeComboBox.TabIndex = 14;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(339, 113);
+            this.button1.Location = new System.Drawing.Point(609, 113);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 25);
             this.button1.TabIndex = 13;
@@ -344,7 +344,7 @@
             this.macBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.macBox.Location = new System.Drawing.Point(73, 9);
             this.macBox.Name = "macBox";
-            this.macBox.Size = new System.Drawing.Size(100, 20);
+            this.macBox.Size = new System.Drawing.Size(233, 20);
             this.macBox.TabIndex = 3;
             // 
             // label7
@@ -372,7 +372,7 @@
             this.jackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jackBox.Location = new System.Drawing.Point(73, 89);
             this.jackBox.Name = "jackBox";
-            this.jackBox.Size = new System.Drawing.Size(238, 20);
+            this.jackBox.Size = new System.Drawing.Size(530, 20);
             this.jackBox.TabIndex = 6;
             // 
             // label10
@@ -444,7 +444,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(339, 113);
+            this.button2.Location = new System.Drawing.Point(609, 113);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 25);
             this.button2.TabIndex = 25;
@@ -565,7 +565,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(73, 9);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(234, 20);
             this.textBox1.TabIndex = 15;
             // 
             // label11
@@ -583,7 +583,7 @@
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(73, 35);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(234, 20);
             this.textBox2.TabIndex = 16;
             // 
             // label12
@@ -778,7 +778,7 @@
             this.comboBox11.FormattingEnabled = true;
             this.comboBox11.Location = new System.Drawing.Point(73, 35);
             this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(100, 21);
+            this.comboBox11.Size = new System.Drawing.Size(231, 21);
             this.comboBox11.TabIndex = 14;
             // 
             // label31
@@ -796,7 +796,7 @@
             this.textBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox31.Location = new System.Drawing.Point(73, 9);
             this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(100, 20);
+            this.textBox31.Size = new System.Drawing.Size(231, 20);
             this.textBox31.TabIndex = 3;
             // 
             // label35
@@ -846,7 +846,7 @@
             this.textBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox36.Location = new System.Drawing.Point(73, 9);
             this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(100, 20);
+            this.textBox36.Size = new System.Drawing.Size(233, 20);
             this.textBox36.TabIndex = 3;
             // 
             // createDdataGridView
