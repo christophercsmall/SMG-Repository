@@ -55,6 +55,7 @@ namespace PhoneSystemInventoryManager
                 dbConnection.connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data" + " Source=" + dbConnection.dbFilePath + ";";
                 dbConnection.conn = new OleDbConnection(dbConnection.connectionString);
                 createNewToolStripMenuItem1.Enabled = true;
+                assignToolStripMenuItem.Enabled = true;
                 dbConnect();
                 dbClose();
             }
@@ -165,16 +166,24 @@ namespace PhoneSystemInventoryManager
             }
         }
 
-        private void patchToSwitchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreatePatchToSwitchForm newForm = new CreatePatchToSwitchForm(this);            
-            newForm.ShowDialog();
-        }
-
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateForm newForm = new CreateForm(this, sender);
             newForm.ShowDialog();
         }
+
+        private void phoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm newForm = new CreateForm(this, sender);
+            newForm.ShowDialog();
+        }
+
+        private void patchToSwitchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreatePatchToSwitchForm newForm = new CreatePatchToSwitchForm(this);
+            newForm.ShowDialog();
+        }
+
+       
     }
 }

@@ -29,20 +29,62 @@ namespace PhoneSystemInventoryManager
                 case "User":
                     {                        
                         createTabControl.SelectTab(0);
-                        currentTabIndex = createTabControl.SelectedIndex;
-                        loadUserTab();
+                        currentTabIndex = 0;                 
                         break;
                     }
                 case "Phone":
                     {
                         createTabControl.SelectTab(1);
-                        currentTabIndex = createTabControl.SelectedIndex;
+                        currentTabIndex = 1;
                         break;
                     }
                 default:
                     {
                         break;
                     }
+            }
+
+            openTab(currentTabIndex);
+        }
+
+        private void createTabControl_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void createTabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            currentTabIndex = createTabControl.SelectedIndex;
+            openTab(currentTabIndex);
+        }
+
+
+        private void openTab(int tabIndex)
+        {
+            //clearTabs();
+
+            switch (tabIndex)
+            {
+                case 0:
+                    loadUserTab();
+                    break;
+                case 1:
+                    loadPhoneTab();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -111,35 +153,7 @@ namespace PhoneSystemInventoryManager
             mf.dbClose();
         }
 
-        private void createTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            currentTabIndex = createTabControl.SelectedIndex;
-            //clearTabs();
-
-            switch (currentTabIndex)
-            {
-                case 0:
-                    loadUserTab();
-                    break;
-                case 1:
-                    loadPhoneTab();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                default:
-                    break;
-            }
-        }
+        
 
 //startUserTab
         private void loadUserTab() 
@@ -236,11 +250,11 @@ namespace PhoneSystemInventoryManager
             List<string> phoneTypes = new List<string>();
             List<string> distinctTypes = new List<string>();
 
-            string userQuery = "SELECT User.LName, User.FName, User.ExtensionNum FROM [User];";
+            //string userQuery = "SELECT User.LName, User.FName, User.ExtensionNum FROM [User];";
             string phoneQuery = "SELECT Phone.MAC, Phone.Type, Phone.Registered, Phone.JackInfo FROM [Phone];";
 
             DataSet phoneDS = getDataSet(phoneQuery);
-            DataSet UserDS = getDataSet(userQuery);
+            //DataSet UserDS = getDataSet(userQuery);
 
             createDdataGridView.DataSource = phoneDS.Tables[0];
 
@@ -249,19 +263,52 @@ namespace PhoneSystemInventoryManager
                 phoneTypes.Add(dr.ItemArray.GetValue(1).ToString());
             }
 
-            foreach (DataRow dr in UserDS.Tables[0].Rows)
-            {
-                users.Add(dr.ItemArray.GetValue(0).ToString() + " ," + dr.ItemArray.GetValue(1).ToString() + " - " + dr.ItemArray.GetValue(2).ToString());
-            }
+            //foreach (DataRow dr in UserDS.Tables[0].Rows)
+            //{
+            //    users.Add(dr.ItemArray.GetValue(0).ToString() + ", " + dr.ItemArray.GetValue(1).ToString() + " - " + dr.ItemArray.GetValue(2).ToString());
+            //}
 
             distinctTypes.AddRange(phoneTypes.Distinct());
             distinctTypes.Sort();
-            users.Sort();
+            //users.Sort();
             distinctTypes.Insert(0, "");
-            users.Insert(0, "");
+            //users.Insert(0, "");
             typeComboBox.DataSource = distinctTypes;
-            userComboBox.DataSource = users;
+            //userComboBox.DataSource = users;
         }
+
+        private void macBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLower(e.KeyChar))
+            {
+                e.KeyChar = char.ToUpper(e.KeyChar);
+            }
+        }
+
+        private void createPhoneBtn_Click(object sender, EventArgs e)
+        {
+            string mac = macBox.Text;
+            string type = typeComboBox.Text;
+            bool registered = false;
+            string jackInfo = jackBox.Text;
+
+            string phoneIdQuery = "SELECT Phone.PhoneID FROM [Phone];";
+            int newphoneID = getUnusedID(phoneIdQuery);
+            string insertQuery = "INSERT INTO [Phone] (PhoneID, MAC, Type, Registered, JackInfo) VALUES (" + newphoneID + ", '" + mac + "'" + ", '" + type + "'" + ", '" + registered + "'" + ", '" + jackInfo + "'" + ");";
+
+            if (regComboBox.Text == "YES")
+            {
+                registered = true;
+            }
+            else if (regComboBox.Text == "NO")
+            {
+                registered = false;
+            }
+            
+        }
+
+       
+
 
         //endPhoneTab
 

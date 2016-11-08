@@ -43,11 +43,25 @@
             this.createNewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.phoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.officeJackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.switchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patchPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.officeJackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.patchToSwitchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iDFToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.venueSpaceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.venueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.assignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.patchToSwitchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.phoneToUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patchToSwitchToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -60,18 +74,6 @@
             this.dbLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.recordsCountLabel = new System.Windows.Forms.Label();
-            this.venueSpaceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.venueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -153,19 +155,20 @@
             // createNewToolStripMenuItem
             // 
             this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.createNewToolStripMenuItem.Text = "Create New";
             // 
             // runToolStripMenuItem
             // 
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.runToolStripMenuItem.Text = "Run...";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createNewToolStripMenuItem1,
+            this.assignToolStripMenuItem,
             this.toolStripMenuItem2,
             this.deleteToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
@@ -182,8 +185,7 @@
             this.patchPanelToolStripMenuItem,
             this.iDFToolStripMenuItem1,
             this.venueSpaceToolStripMenuItem1,
-            this.venueToolStripMenuItem1,
-            this.patchToSwitchToolStripMenuItem});
+            this.venueToolStripMenuItem1});
             this.createNewToolStripMenuItem1.Enabled = false;
             this.createNewToolStripMenuItem1.Name = "createNewToolStripMenuItem1";
             this.createNewToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
@@ -192,33 +194,62 @@
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.userToolStripMenuItem.Text = "User";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // phoneToolStripMenuItem
             // 
             this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
-            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.phoneToolStripMenuItem.Text = "Phone";
+            this.phoneToolStripMenuItem.Click += new System.EventHandler(this.phoneToolStripMenuItem_Click);
+            // 
+            // officeJackToolStripMenuItem
+            // 
+            this.officeJackToolStripMenuItem.Name = "officeJackToolStripMenuItem";
+            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.officeJackToolStripMenuItem.Text = "Office Jack";
             // 
             // switchToolStripMenuItem
             // 
             this.switchToolStripMenuItem.Name = "switchToolStripMenuItem";
-            this.switchToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.switchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.switchToolStripMenuItem.Text = "Switch";
             // 
             // patchPanelToolStripMenuItem
             // 
             this.patchPanelToolStripMenuItem.Name = "patchPanelToolStripMenuItem";
-            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.patchPanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.patchPanelToolStripMenuItem.Text = "Patch Panel";
             // 
-            // officeJackToolStripMenuItem
+            // iDFToolStripMenuItem1
             // 
-            this.officeJackToolStripMenuItem.Name = "officeJackToolStripMenuItem";
-            this.officeJackToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.officeJackToolStripMenuItem.Text = "Office Jack";
+            this.iDFToolStripMenuItem1.Name = "iDFToolStripMenuItem1";
+            this.iDFToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.iDFToolStripMenuItem1.Text = "IDF";
+            // 
+            // venueSpaceToolStripMenuItem1
+            // 
+            this.venueSpaceToolStripMenuItem1.Name = "venueSpaceToolStripMenuItem1";
+            this.venueSpaceToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.venueSpaceToolStripMenuItem1.Text = "Venue Space";
+            // 
+            // venueToolStripMenuItem1
+            // 
+            this.venueToolStripMenuItem1.Name = "venueToolStripMenuItem1";
+            this.venueToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.venueToolStripMenuItem1.Text = "Venue";
+            // 
+            // assignToolStripMenuItem
+            // 
+            this.assignToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.patchToSwitchToolStripMenuItem,
+            this.phoneToUserToolStripMenuItem});
+            this.assignToolStripMenuItem.Enabled = false;
+            this.assignToolStripMenuItem.Name = "assignToolStripMenuItem";
+            this.assignToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.assignToolStripMenuItem.Text = "Assign";
             // 
             // patchToSwitchToolStripMenuItem
             // 
@@ -227,11 +258,82 @@
             this.patchToSwitchToolStripMenuItem.Text = "Patch To Switch";
             this.patchToSwitchToolStripMenuItem.Click += new System.EventHandler(this.patchToSwitchToolStripMenuItem_Click);
             // 
-            // iDFToolStripMenuItem1
+            // phoneToUserToolStripMenuItem
             // 
-            this.iDFToolStripMenuItem1.Name = "iDFToolStripMenuItem1";
-            this.iDFToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-            this.iDFToolStripMenuItem1.Text = "IDF";
+            this.phoneToUserToolStripMenuItem.Name = "phoneToUserToolStripMenuItem";
+            this.phoneToUserToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.phoneToUserToolStripMenuItem.Text = "Phone To User";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8,
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem10,
+            this.toolStripMenuItem11});
+            this.toolStripMenuItem2.Enabled = false;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Text = "Edit";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem3.Text = "User";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem4.Text = "Phone";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem5.Text = "Office Jack";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem6.Text = "Switch";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem7.Text = "Patch Panel";
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem8.Text = "IDF";
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem9.Text = "Venue Space";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem10.Text = "Venue";
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem11.Text = "Patch To Switch";
             // 
             // deleteToolStripMenuItem
             // 
@@ -359,89 +461,6 @@
             this.recordsCountLabel.Size = new System.Drawing.Size(0, 13);
             this.recordsCountLabel.TabIndex = 11;
             // 
-            // venueSpaceToolStripMenuItem1
-            // 
-            this.venueSpaceToolStripMenuItem1.Name = "venueSpaceToolStripMenuItem1";
-            this.venueSpaceToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-            this.venueSpaceToolStripMenuItem1.Text = "Venue Space";
-            // 
-            // venueToolStripMenuItem1
-            // 
-            this.venueToolStripMenuItem1.Name = "venueToolStripMenuItem1";
-            this.venueToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-            this.venueToolStripMenuItem1.Text = "Venue";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8,
-            this.toolStripMenuItem9,
-            this.toolStripMenuItem10,
-            this.toolStripMenuItem11});
-            this.toolStripMenuItem2.Enabled = false;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem2.Text = "Edit";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem3.Text = "User";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem4.Text = "Phone";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem5.Text = "Office Jack";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem6.Text = "Switch";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem7.Text = "Patch Panel";
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem8.Text = "IDF";
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem9.Text = "Venue Space";
-            // 
-            // toolStripMenuItem10
-            // 
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem10.Text = "Venue";
-            // 
-            // toolStripMenuItem11
-            // 
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(158, 22);
-            this.toolStripMenuItem11.Text = "Patch To Switch";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,7 +515,6 @@
         private System.Windows.Forms.ToolStripMenuItem phoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem switchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem patchPanelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem patchToSwitchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem officeJackToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label connectedLabel;
@@ -518,6 +536,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripMenuItem assignToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem patchToSwitchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem phoneToUserToolStripMenuItem;
     }
 }
 

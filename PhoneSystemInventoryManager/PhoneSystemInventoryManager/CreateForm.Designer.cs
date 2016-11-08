@@ -43,13 +43,11 @@
             this.extBox = new System.Windows.Forms.TextBox();
             this.depBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.userComboBox = new System.Windows.Forms.ComboBox();
+            this.macBox = new System.Windows.Forms.MaskedTextBox();
             this.regComboBox = new System.Windows.Forms.ComboBox();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.createPhoneBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.macBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.jackBox = new System.Windows.Forms.TextBox();
@@ -206,7 +204,8 @@
             this.createTabControl.Size = new System.Drawing.Size(723, 170);
             this.createTabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.createTabControl.TabIndex = 2;
-            this.createTabControl.SelectedIndexChanged += new System.EventHandler(this.createTabControl_SelectedIndexChanged);
+            this.createTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.createTabControl_Selected);
+            this.createTabControl.TabIndexChanged += new System.EventHandler(this.createTabControl_TabIndexChanged);
             // 
             // userTab
             // 
@@ -258,13 +257,11 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.userComboBox);
+            this.tabPage2.Controls.Add(this.macBox);
             this.tabPage2.Controls.Add(this.regComboBox);
             this.tabPage2.Controls.Add(this.typeComboBox);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.createPhoneBtn);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.macBox);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.jackBox);
@@ -277,17 +274,21 @@
             this.tabPage2.Text = "Phone";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // userComboBox
+            // macBox
             // 
-            this.userComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.userComboBox.FormattingEnabled = true;
-            this.userComboBox.Items.AddRange(new object[] {
-            "YES",
-            "NO"});
-            this.userComboBox.Location = new System.Drawing.Point(73, 116);
-            this.userComboBox.Name = "userComboBox";
-            this.userComboBox.Size = new System.Drawing.Size(530, 21);
-            this.userComboBox.TabIndex = 15;
+            this.macBox.AllowPromptAsInput = false;
+            this.macBox.AsciiOnly = true;
+            this.macBox.Location = new System.Drawing.Point(73, 9);
+            this.macBox.Mask = "AA : AA : AA : AA : AA : AA";
+            this.macBox.Name = "macBox";
+            this.macBox.ResetOnPrompt = false;
+            this.macBox.ResetOnSpace = false;
+            this.macBox.Size = new System.Drawing.Size(233, 20);
+            this.macBox.SkipLiterals = false;
+            this.macBox.TabIndex = 16;
+            this.macBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.macBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.macBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.macBox_KeyPress);
             // 
             // regComboBox
             // 
@@ -309,14 +310,15 @@
             this.typeComboBox.Size = new System.Drawing.Size(233, 21);
             this.typeComboBox.TabIndex = 14;
             // 
-            // button1
+            // createPhoneBtn
             // 
-            this.button1.Location = new System.Drawing.Point(609, 113);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 25);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Create";
-            this.button1.UseVisualStyleBackColor = true;
+            this.createPhoneBtn.Location = new System.Drawing.Point(609, 113);
+            this.createPhoneBtn.Name = "createPhoneBtn";
+            this.createPhoneBtn.Size = new System.Drawing.Size(100, 25);
+            this.createPhoneBtn.TabIndex = 13;
+            this.createPhoneBtn.Text = "Create";
+            this.createPhoneBtn.UseVisualStyleBackColor = true;
+            this.createPhoneBtn.Click += new System.EventHandler(this.createPhoneBtn_Click);
             // 
             // label6
             // 
@@ -328,24 +330,6 @@
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 8;
             this.label6.Text = "MAC Addr.";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(38, 119);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(29, 13);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "User";
-            // 
-            // macBox
-            // 
-            this.macBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.macBox.Location = new System.Drawing.Point(73, 9);
-            this.macBox.Name = "macBox";
-            this.macBox.Size = new System.Drawing.Size(233, 20);
-            this.macBox.TabIndex = 3;
             // 
             // label7
             // 
@@ -932,9 +916,8 @@
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.DataGridView createDdataGridView;
         private System.Windows.Forms.Button createUserBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button createPhoneBtn;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox macBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label16;
@@ -980,10 +963,9 @@
         private System.Windows.Forms.ComboBox comboBox11;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox userComboBox;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox depBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox extBox;
+        private System.Windows.Forms.MaskedTextBox macBox;
     }
 }
