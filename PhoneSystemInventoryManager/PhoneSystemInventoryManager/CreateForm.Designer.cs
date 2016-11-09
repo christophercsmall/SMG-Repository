@@ -301,6 +301,7 @@
             this.regComboBox.Name = "regComboBox";
             this.regComboBox.Size = new System.Drawing.Size(232, 21);
             this.regComboBox.TabIndex = 15;
+            this.regComboBox.SelectedIndexChanged += new System.EventHandler(this.regComboBox_SelectedIndexChanged);
             // 
             // typeComboBox
             // 

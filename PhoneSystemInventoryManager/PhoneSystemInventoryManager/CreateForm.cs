@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -110,6 +111,11 @@ namespace PhoneSystemInventoryManager
             return newID;
         }
 
+        public static string removeSpecialCharacters(string str)
+        {
+            return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+        }
+
         public DataSet getDataSet(string query)
         {
             mf.dbConnect();
@@ -180,7 +186,8 @@ namespace PhoneSystemInventoryManager
             
             if (extBox.Text == "")
             {
-                MessageBox.Show("User records require valid Extension Number");
+                errorProvider1.SetError(extBox, "User records require valid Extension Number");
+                errorsPending = true;
             }
             else
             {
@@ -243,18 +250,15 @@ namespace PhoneSystemInventoryManager
         //endUserTab
 
 //beginPhoneTab
-
         private void loadPhoneTab()
         {
             List<string> users = new List<string>();
             List<string> phoneTypes = new List<string>();
             List<string> distinctTypes = new List<string>();
 
-            //string userQuery = "SELECT User.LName, User.FName, User.ExtensionNum FROM [User];";
             string phoneQuery = "SELECT Phone.MAC, Phone.Type, Phone.Registered, Phone.JackInfo FROM [Phone];";
 
             DataSet phoneDS = getDataSet(phoneQuery);
-            //DataSet UserDS = getDataSet(userQuery);
 
             createDdataGridView.DataSource = phoneDS.Tables[0];
 
@@ -270,15 +274,15 @@ namespace PhoneSystemInventoryManager
 
             distinctTypes.AddRange(phoneTypes.Distinct());
             distinctTypes.Sort();
-            //users.Sort();
             distinctTypes.Insert(0, "");
-            //users.Insert(0, "");
             typeComboBox.DataSource = distinctTypes;
-            //userComboBox.DataSource = users;
         }
 
         private void macBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            errorsPending = false;
+            errorProvider1.SetError(macBox, string.Empty);
+
             if (char.IsLower(e.KeyChar))
             {
                 e.KeyChar = char.ToUpper(e.KeyChar);
@@ -289,25 +293,88 @@ namespace PhoneSystemInventoryManager
         {
             string mac = macBox.Text;
             string type = typeComboBox.Text;
-            bool registered = false;
+            string registered = regComboBox.Text;
             string jackInfo = jackBox.Text;
+            bool reg = false;
 
             string phoneIdQuery = "SELECT Phone.PhoneID FROM [Phone];";
             int newphoneID = getUnusedID(phoneIdQuery);
-            string insertQuery = "INSERT INTO [Phone] (PhoneID, MAC, Type, Registered, JackInfo) VALUES (" + newphoneID + ", '" + mac + "'" + ", '" + type + "'" + ", '" + registered + "'" + ", '" + jackInfo + "'" + ");";
+            string insertQuery = "INSERT INTO [Phone] (PhoneID, MAC, Type, Registered, JackInfo) VALUES (" + newphoneID + ", '" + mac + "'" + ", '" + type + "'" + ", '" + reg + "'" + ", '" + jackInfo + "'" + ");";
 
-            if (regComboBox.Text == "YES")
+            bool isValid = phoneTabValid(mac, registered, type);            
+
+            if (isValid && !errorsPending)
             {
-                registered = true;
+                executeDbComm(insertQuery);
             }
-            else if (regComboBox.Text == "NO")
+            else
             {
-                registered = false;
-            }
-            
+                MessageBox.Show("Pending errors must be resolved.");
+            }           
         }
 
-       
+        private void regComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(regComboBox, string.Empty);
+
+        }
+
+        private bool phoneTabValid(string mac, string registered, string type)
+        {
+            errorsPending = false;
+            bool macValid, regValid, typeValid, isValid = false;
+
+            mac = removeSpecialCharacters(mac);
+            type = removeSpecialCharacters(type);
+
+            if (mac == "" || mac.Length < 12)
+            {
+                macValid = false;
+                errorProvider1.SetError(macBox, "MAC must contain 12 alphanumeric characters.");
+                errorsPending = true;
+            }
+            else
+            {                
+                macValid = true;
+            }
+
+            if (registered != "YES" && registered != "NO")
+            {
+                regValid = false;
+                errorProvider1.SetError(regComboBox, "Registered field cannot be empty.");
+                errorsPending = true;
+            }
+            else
+            {
+                regValid = true;
+            }
+
+            if (type == "")
+            {
+                typeValid = false;
+                errorProvider1.SetError(typeComboBox, "Phone Type field cannot be empty.");
+                errorsPending = true;
+            }
+            else
+            {
+                typeValid = true;
+            }           
+
+            if (macValid && regValid && typeValid && !errorsPending)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        
+
 
 
         //endPhoneTab
