@@ -301,7 +301,8 @@ namespace PhoneSystemInventoryManager
             int newphoneID = getUnusedID(phoneIdQuery);
             string insertQuery = "INSERT INTO [Phone] (PhoneID, MAC, Type, Registered, JackInfo) VALUES (" + newphoneID + ", '" + mac + "'" + ", '" + type + "'" + ", '" + reg + "'" + ", '" + jackInfo + "'" + ");";
 
-            bool isValid = phoneTabValid(mac, registered, type);            
+            bool isValid = phoneTabValid(mac, registered, type);
+            jackInfo = removeSpecialCharacters(jackInfo);          
 
             if (isValid && !errorsPending)
             {
@@ -342,7 +343,7 @@ namespace PhoneSystemInventoryManager
             if (registered != "YES" && registered != "NO")
             {
                 regValid = false;
-                errorProvider1.SetError(regComboBox, "Registered field cannot be empty.");
+                errorProvider1.SetError(regComboBox, "Registered field must be YES or NO.");
                 errorsPending = true;
             }
             else
@@ -373,9 +374,11 @@ namespace PhoneSystemInventoryManager
             return isValid;
         }
 
-        
-
-
+        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(typeComboBox, string.Empty);
+        }
 
         //endPhoneTab
 

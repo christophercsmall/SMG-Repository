@@ -310,6 +310,7 @@
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(233, 21);
             this.typeComboBox.TabIndex = 14;
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
             // 
             // createPhoneBtn
             // 
