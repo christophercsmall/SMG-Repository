@@ -73,6 +73,7 @@ namespace PhoneSystemInventoryManager
                     loadPhoneTab();
                     break;
                 case 2:
+                    loadOfficeJackTab();
                     break;
                 case 3:
                     break;
@@ -170,7 +171,7 @@ namespace PhoneSystemInventoryManager
 
             DataSet ds = getDataSet(userQuery);
 
-            createDdataGridView.DataSource = ds.Tables[0];
+            createDataGridView.DataSource = ds.Tables[0];
 
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
@@ -260,7 +261,7 @@ namespace PhoneSystemInventoryManager
 
             DataSet phoneDS = getDataSet(phoneQuery);
 
-            createDdataGridView.DataSource = phoneDS.Tables[0];
+            createDataGridView.DataSource = phoneDS.Tables[0];
 
             foreach (DataRow dr in phoneDS.Tables[0].Rows)
             {
@@ -381,6 +382,63 @@ namespace PhoneSystemInventoryManager
         }
 
         //endPhoneTab
+
+//beginOfficeJackTab
+
+        public class OfficeJack
+        {
+            public string mac;
+            public string patchPanelPort;
+            public string patchPanelName;
+            public string idfName;
+            public string venueName;
+        }
+
+        private void loadOfficeJackTab()
+        {
+            List<OfficeJack> officeJacks = new List<OfficeJack>();
+            List<string> availablePatchPanelList = new List<string>();
+            List<string> macs = new List<string>();
+
+            //find list of available phones
+            //find list of availiable patchpanels with available patchpanelports
+            
+            string unassignedPhonesQuery = "SELECT Phone.MAC FROM [Phone] WHERE Phone.PhoneID NOT IN(SELECT OfficeJack.PhoneID FROM [OfficeJack]);";
+            string assignedPhonesQuery = "SELECT Phone.MAC, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [Phone], [PatchPanel], [PatchPanelPort], [OfficeJack] WHERE OfficeJack.PatchPanelPortID = PatchPanelPort.PatchPanelPortID AND Phone.PhoneID = OfficeJack.PhoneID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID;";
+
+            DataSet unassignedPhonesDS = getDataSet(unassignedPhonesQuery);
+            DataSet assignedPhonesDS = getDataSet(assignedPhonesQuery);
+
+            createDataGridView.DataSource = assignedPhonesDS.Tables[0];
+
+            foreach (DataRow dr in unassignedPhonesDS.Tables[0].Rows)
+            {
+                macs.Add(dr.ItemArray.GetValue(0).ToString());
+            }
+
+            //foreach (DataRow dr in assignedPhonesDS.Tables[0].Rows)
+            //{
+            //    OfficeJack oj = new OfficeJack();
+            //    oj.mac = dr.ItemArray.GetValue(0).ToString();
+            //    oj.patchPanelPort = dr.ItemArray.GetValue(1).ToString();
+            //    oj.patchPanelName = dr.ItemArray.GetValue(2).ToString();
+            //    oj.idfName = dr.ItemArray.GetValue(3).ToString();
+            //    oj.venueName = dr.ItemArray.GetValue(4).ToString();
+            //}
+
+            macs.Sort();
+
+            //foreach (OfficeJack oj in officeJacks)
+            //{
+            //    availablePatchPanelList.Add(oj.venueName + ", " + oj.idfName + " - " + oj.patchPanelName);
+            //}
+
+            //distinctTypes.AddRange(phoneTypes.Distinct());
+            //distinctTypes.Sort();
+            //distinctTypes.Insert(0, "");
+            macComboBox.DataSource = macs;
+
+        }
 
 
     }

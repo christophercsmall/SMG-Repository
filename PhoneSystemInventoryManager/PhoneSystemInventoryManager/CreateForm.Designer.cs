@@ -58,7 +58,7 @@
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.macComboBox = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -97,7 +97,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.textBox36 = new System.Windows.Forms.TextBox();
-            this.createDdataGridView = new System.Windows.Forms.DataGridView();
+            this.createDataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.createTabControl.SuspendLayout();
             this.userTab.SuspendLayout();
@@ -108,7 +108,7 @@
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.createDdataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.createDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -378,7 +378,7 @@
             this.tabPage5.Controls.Add(this.comboBox5);
             this.tabPage5.Controls.Add(this.label14);
             this.tabPage5.Controls.Add(this.button2);
-            this.tabPage5.Controls.Add(this.comboBox8);
+            this.tabPage5.Controls.Add(this.macComboBox);
             this.tabPage5.Controls.Add(this.comboBox1);
             this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Controls.Add(this.label13);
@@ -437,14 +437,14 @@
             this.button2.Text = "Create";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // comboBox8
+            // macComboBox
             // 
-            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(73, 9);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(234, 21);
-            this.comboBox8.TabIndex = 24;
+            this.macComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.macComboBox.FormattingEnabled = true;
+            this.macComboBox.Location = new System.Drawing.Point(73, 9);
+            this.macComboBox.Name = "macComboBox";
+            this.macComboBox.Size = new System.Drawing.Size(234, 21);
+            this.macComboBox.TabIndex = 24;
             // 
             // comboBox1
             // 
@@ -835,26 +835,26 @@
             this.textBox36.Size = new System.Drawing.Size(233, 20);
             this.textBox36.TabIndex = 3;
             // 
-            // createDdataGridView
+            // createDataGridView
             // 
-            this.createDdataGridView.AllowUserToAddRows = false;
-            this.createDdataGridView.AllowUserToDeleteRows = false;
-            this.createDdataGridView.AllowUserToOrderColumns = true;
-            this.createDdataGridView.AllowUserToResizeRows = false;
-            this.createDdataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.createDdataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.createDdataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.createDdataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.createDdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.createDdataGridView.Dock = System.Windows.Forms.DockStyle.Top;
-            this.createDdataGridView.Location = new System.Drawing.Point(0, 170);
-            this.createDdataGridView.MultiSelect = false;
-            this.createDdataGridView.Name = "createDdataGridView";
-            this.createDdataGridView.ReadOnly = true;
-            this.createDdataGridView.RowHeadersVisible = false;
-            this.createDdataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.createDdataGridView.Size = new System.Drawing.Size(723, 208);
-            this.createDdataGridView.TabIndex = 3;
+            this.createDataGridView.AllowUserToAddRows = false;
+            this.createDataGridView.AllowUserToDeleteRows = false;
+            this.createDataGridView.AllowUserToOrderColumns = true;
+            this.createDataGridView.AllowUserToResizeRows = false;
+            this.createDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.createDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.createDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.createDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.createDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.createDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.createDataGridView.Location = new System.Drawing.Point(0, 170);
+            this.createDataGridView.MultiSelect = false;
+            this.createDataGridView.Name = "createDataGridView";
+            this.createDataGridView.ReadOnly = true;
+            this.createDataGridView.RowHeadersVisible = false;
+            this.createDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.createDataGridView.Size = new System.Drawing.Size(723, 208);
+            this.createDataGridView.TabIndex = 3;
             // 
             // errorProvider1
             // 
@@ -867,7 +867,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 379);
-            this.Controls.Add(this.createDdataGridView);
+            this.Controls.Add(this.createDataGridView);
             this.Controls.Add(this.createTabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -891,7 +891,7 @@
             this.tabPage7.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.createDdataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.createDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
@@ -916,7 +916,7 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.DataGridView createDdataGridView;
+        private System.Windows.Forms.DataGridView createDataGridView;
         private System.Windows.Forms.Button createUserBtn;
         private System.Windows.Forms.Button createPhoneBtn;
         private System.Windows.Forms.Label label6;
@@ -951,7 +951,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox macComboBox;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox comboBox9;
