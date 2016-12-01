@@ -404,7 +404,7 @@ namespace PhoneSystemInventoryManager
             //find list of availiable patchpanels with available patchpanelports
             
             string unassignedPhonesQuery = "SELECT Phone.MAC FROM [Phone] WHERE Phone.PhoneID NOT IN(SELECT OfficeJack.PhoneID FROM [OfficeJack]);";
-            string assignedPhonesQuery = "SELECT Phone.MAC, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [Phone], [PatchPanel], [PatchPanelPort], [OfficeJack] WHERE OfficeJack.PatchPanelPortID = PatchPanelPort.PatchPanelPortID AND Phone.PhoneID = OfficeJack.PhoneID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID;";
+            string assignedPhonesQuery = "SELECT Phone.MAC, IDF.IDFName, Venue.VenueName, VenueSpace.VenueSpaceName, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [Phone], [IDF], [Venue], [VenueSpace], [PatchPanel], [PatchPanelPort], [OfficeJack] WHERE OfficeJack.PatchPanelPortID = PatchPanelPort.PatchPanelPortID AND Phone.PhoneID = OfficeJack.PhoneID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = PatchPanel.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
 
             DataSet unassignedPhonesDS = getDataSet(unassignedPhonesQuery);
             DataSet assignedPhonesDS = getDataSet(assignedPhonesQuery);
@@ -440,6 +440,25 @@ namespace PhoneSystemInventoryManager
 
         }
 
+        public class PatchPanel
+        {
+            public int id;
+            public string name;
+            public List<int> openPorts;
+            public int idfID;
+            public string idfName;
+            public int venueSpaceID;
+            public string venueSpaceName;
+            public int venueID;
+            public string venueName;
+        }
 
+        private void patchPanelComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+
+            var mac = patchPanelComboBox.SelectedValue;
+        }
+
+//beginOfficeJackTab
     }
 }

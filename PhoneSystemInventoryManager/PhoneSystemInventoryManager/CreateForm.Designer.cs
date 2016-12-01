@@ -59,7 +59,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.macComboBox = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.patchPanelComboBox = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -379,7 +379,7 @@
             this.tabPage5.Controls.Add(this.label14);
             this.tabPage5.Controls.Add(this.button2);
             this.tabPage5.Controls.Add(this.macComboBox);
-            this.tabPage5.Controls.Add(this.comboBox1);
+            this.tabPage5.Controls.Add(this.patchPanelComboBox);
             this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Controls.Add(this.label13);
             this.tabPage5.Controls.Add(this.label25);
@@ -446,14 +446,15 @@
             this.macComboBox.Size = new System.Drawing.Size(234, 21);
             this.macComboBox.TabIndex = 24;
             // 
-            // comboBox1
+            // patchPanelComboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(73, 36);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(234, 21);
-            this.comboBox1.TabIndex = 23;
+            this.patchPanelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.patchPanelComboBox.FormattingEnabled = true;
+            this.patchPanelComboBox.Location = new System.Drawing.Point(73, 36);
+            this.patchPanelComboBox.Name = "patchPanelComboBox";
+            this.patchPanelComboBox.Size = new System.Drawing.Size(234, 21);
+            this.patchPanelComboBox.TabIndex = 23;
+            this.patchPanelComboBox.SelectedIndexChanged += new System.EventHandler(this.patchPanelComboBox_SelectedIndexChanged);
             // 
             // label21
             // 
@@ -952,7 +953,7 @@
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox macComboBox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox patchPanelComboBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox comboBox9;
         private System.Windows.Forms.Label label17;
