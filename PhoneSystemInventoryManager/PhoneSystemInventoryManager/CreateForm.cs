@@ -39,8 +39,14 @@ namespace PhoneSystemInventoryManager
                         currentTabIndex = 1;
                         break;
                     }
-                default:
+                case "OfficeJack":
                     {
+                        createTabControl.SelectTab(2);
+                        currentTabIndex = 2;
+                        break;
+                    }
+                default:
+                    {                       
                         break;
                     }
             }
@@ -394,20 +400,34 @@ namespace PhoneSystemInventoryManager
             public string venueName;
         }
 
+        public class PatchPanel
+        {
+            public int patchPanelID;
+            public string patchPanelName;
+            public List<int> openPorts;
+            public int idfID;
+            public string idfName;
+            public int venueSpaceID;
+            public string venueSpaceName;
+            public int venueID;
+            public string venueName;
+        }
+
         private void loadOfficeJackTab()
         {
             List<OfficeJack> officeJacks = new List<OfficeJack>();
             List<string> availablePatchPanelList = new List<string>();
             List<string> macs = new List<string>();
 
-            //find list of available phones
             //find list of availiable patchpanels with available patchpanelports
             
             string unassignedPhonesQuery = "SELECT Phone.MAC FROM [Phone] WHERE Phone.PhoneID NOT IN(SELECT OfficeJack.PhoneID FROM [OfficeJack]);";
             string assignedPhonesQuery = "SELECT Phone.MAC, IDF.IDFName, Venue.VenueName, VenueSpace.VenueSpaceName, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [Phone], [IDF], [Venue], [VenueSpace], [PatchPanel], [PatchPanelPort], [OfficeJack] WHERE OfficeJack.PatchPanelPortID = PatchPanelPort.PatchPanelPortID AND Phone.PhoneID = OfficeJack.PhoneID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = PatchPanel.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
-
             DataSet unassignedPhonesDS = getDataSet(unassignedPhonesQuery);
             DataSet assignedPhonesDS = getDataSet(assignedPhonesQuery);
+
+            string patchPanelsQuery = "SELECT PatchPanel.PatchPanelName, IDF.IDFName, VenueSpace.VenueSpaceName, Venue.VenueName FROM [PatchPanel], [IDF], [VenueSpace], [Venue] WHERE PatchPanel.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            DataSet patchPanelsDS = getDataSet(patchPanelsQuery);
 
             createDataGridView.DataSource = assignedPhonesDS.Tables[0];
 
@@ -416,6 +436,10 @@ namespace PhoneSystemInventoryManager
                 macs.Add(dr.ItemArray.GetValue(0).ToString());
             }
 
+            foreach (DataRow dr in patchPanelsDS.Tables[0].Rows)
+            {
+                var patchPaenel
+            }
             //foreach (DataRow dr in assignedPhonesDS.Tables[0].Rows)
             //{
             //    OfficeJack oj = new OfficeJack();
@@ -440,23 +464,14 @@ namespace PhoneSystemInventoryManager
 
         }
 
-        public class PatchPanel
-        {
-            public int id;
-            public string name;
-            public List<int> openPorts;
-            public int idfID;
-            public string idfName;
-            public int venueSpaceID;
-            public string venueSpaceName;
-            public int venueID;
-            public string venueName;
-        }
+        
 
         private void patchPanelComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-
+        {
             var mac = patchPanelComboBox.SelectedValue;
+
+
+
         }
 
 //beginOfficeJackTab
