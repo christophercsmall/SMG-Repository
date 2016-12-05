@@ -184,6 +184,10 @@ namespace PhoneSystemInventoryManager
             newForm.ShowDialog();
         }
 
-       
+        private void officeJackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm newForm = new CreateForm(this, sender);
+            newForm.ShowDialog();
+        }
     }
 }

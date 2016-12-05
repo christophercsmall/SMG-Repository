@@ -19,6 +19,22 @@ namespace PhoneSystemInventoryManager
         private int currentTabIndex;
         private bool errorsPending = true;
 
+        public class PatchPanel
+        {
+            public int patchPanelID;
+            public string patchPanelName;
+            public List<int> openPorts;
+            public int idfID;
+            public string idfName;
+            public int venueSpaceID;
+            public string venueSpaceName;
+            public int venueID;
+            public string venueName;
+            public string patchPanelRecord;
+        }
+
+        public static List<PatchPanel> availablePatchPanelList = new List<PatchPanel>();
+
         public CreateForm(MainForm mainform, object sender)
         {
             InitializeComponent();
@@ -39,7 +55,7 @@ namespace PhoneSystemInventoryManager
                         currentTabIndex = 1;
                         break;
                     }
-                case "OfficeJack":
+                case "Office Jack":
                     {
                         createTabControl.SelectTab(2);
                         currentTabIndex = 2;
@@ -398,25 +414,12 @@ namespace PhoneSystemInventoryManager
             public string patchPanelName;
             public string idfName;
             public string venueName;
-        }
-
-        public class PatchPanel
-        {
-            public int patchPanelID;
-            public string patchPanelName;
-            public List<int> openPorts;
-            public int idfID;
-            public string idfName;
-            public int venueSpaceID;
-            public string venueSpaceName;
-            public int venueID;
-            public string venueName;
-        }
+        }       
 
         private void loadOfficeJackTab()
         {
             List<OfficeJack> officeJacks = new List<OfficeJack>();
-            List<string> availablePatchPanelList = new List<string>();
+            List<string> patchPanelRecords = new List<string>();
             List<string> macs = new List<string>();
 
             //find list of availiable patchpanels with available patchpanelports
@@ -426,7 +429,7 @@ namespace PhoneSystemInventoryManager
             DataSet unassignedPhonesDS = getDataSet(unassignedPhonesQuery);
             DataSet assignedPhonesDS = getDataSet(assignedPhonesQuery);
 
-            string patchPanelsQuery = "SELECT PatchPanel.PatchPanelName, IDF.IDFName, VenueSpace.VenueSpaceName, Venue.VenueName FROM [PatchPanel], [IDF], [VenueSpace], [Venue] WHERE PatchPanel.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            string patchPanelsQuery = "SELECT PatchPanel.PatchPanelID, PatchPanel.PatchPanelName, IDF.IDFID, IDF.IDFName, VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, Venue.VenueID, Venue.VenueName FROM [PatchPanel], [IDF], [VenueSpace], [Venue] WHERE PatchPanel.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
             DataSet patchPanelsDS = getDataSet(patchPanelsQuery);
 
             createDataGridView.DataSource = assignedPhonesDS.Tables[0];
@@ -438,7 +441,17 @@ namespace PhoneSystemInventoryManager
 
             foreach (DataRow dr in patchPanelsDS.Tables[0].Rows)
             {
-                var patchPaenel
+                PatchPanel pp = new PatchPanel();
+                pp.patchPanelID = (int)dr.ItemArray.GetValue(0);
+                pp.patchPanelName = dr.ItemArray.GetValue(1).ToString();
+                pp.idfID = (int)dr.ItemArray.GetValue(2);
+                pp.idfName = dr.ItemArray.GetValue(3).ToString();
+                pp.venueSpaceID = (int)dr.ItemArray.GetValue(4);
+                pp.venueSpaceName = dr.ItemArray.GetValue(5).ToString();
+                pp.venueID = (int)dr.ItemArray.GetValue(6);
+                pp.venueName = dr.ItemArray.GetValue(7).ToString();
+                pp.patchPanelRecord = pp.patchPanelName + ", " + pp.idfName + ", " + pp.venueSpaceName + ", " + pp.venueName;
+                availablePatchPanelList.Add(pp);
             }
             //foreach (DataRow dr in assignedPhonesDS.Tables[0].Rows)
             //{
@@ -451,6 +464,13 @@ namespace PhoneSystemInventoryManager
             //}
 
             macs.Sort();
+            macs.Insert(0, "");
+            availablePatchPanelList.OrderBy(p => p.venueName).ToList();
+            foreach (PatchPanel pp in availablePatchPanelList)
+            {
+                patchPanelRecords.Add(pp.patchPanelRecord);
+            }
+            patchPanelRecords.Insert(0, "");
 
             //foreach (OfficeJack oj in officeJacks)
             //{
@@ -460,18 +480,22 @@ namespace PhoneSystemInventoryManager
             //distinctTypes.AddRange(phoneTypes.Distinct());
             //distinctTypes.Sort();
             //distinctTypes.Insert(0, "");
-            macComboBox.DataSource = macs;
 
+            macComboBox.DataSource = macs;            
+            patchPanelComboBox.DataSource = patchPanelRecords;
         }
-
         
-
         private void patchPanelComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var mac = patchPanelComboBox.SelectedValue;
+            string patchPanelString = patchPanelComboBox.SelectedValue.ToString();
 
-
-
+            foreach (PatchPanel pp in availablePatchPanelList)
+            {
+                if (pp.patchPanelRecord == patchPanelString)
+                {
+                    MessageBox.Show(pp.patchPanelID.ToString());
+                }
+            }
         }
 
 //beginOfficeJackTab
