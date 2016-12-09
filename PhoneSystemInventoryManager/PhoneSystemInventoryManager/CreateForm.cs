@@ -19,19 +19,7 @@ namespace PhoneSystemInventoryManager
         private int currentTabIndex;
         private bool errorsPending = true;
 
-        public class PatchPanel
-        {
-            public int patchPanelID;
-            public string patchPanelName;
-            public List<int> openPorts;
-            public int idfID;
-            public string idfName;
-            public int venueSpaceID;
-            public string venueSpaceName;
-            public int venueID;
-            public string venueName;
-            public string patchPanelRecord;
-        }
+        
 
         public static List<PatchPanel> availablePatchPanelList = new List<PatchPanel>();
 
@@ -414,7 +402,22 @@ namespace PhoneSystemInventoryManager
             public string patchPanelName;
             public string idfName;
             public string venueName;
-        }       
+        }
+
+        public class PatchPanel
+        {
+            public string portTotal;
+            public int patchPanelID;
+            public string patchPanelName;
+            public List<int> openPorts;
+            public int idfID;
+            public string idfName;
+            public int venueSpaceID;
+            public string venueSpaceName;
+            public int venueID;
+            public string venueName;
+            public string patchPanelRecord;
+        }
 
         private void loadOfficeJackTab()
         {
@@ -451,17 +454,14 @@ namespace PhoneSystemInventoryManager
                 pp.venueID = (int)dr.ItemArray.GetValue(6);
                 pp.venueName = dr.ItemArray.GetValue(7).ToString();
                 pp.patchPanelRecord = pp.patchPanelName + ", " + pp.idfName + ", " + pp.venueSpaceName + ", " + pp.venueName;
+
+                string portCountQuery = "SELECT COUNT(PatchPanelPort.PatchPanelID) FROM [PatchPanelPort] WHERE PatchPanelPort.PatchPanelID = " + pp.patchPanelID + ";";
+                DataSet portCountDS = getDataSet(portCountQuery);
+
+                pp.portTotal = portCountDS.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+
                 availablePatchPanelList.Add(pp);
             }
-            //foreach (DataRow dr in assignedPhonesDS.Tables[0].Rows)
-            //{
-            //    OfficeJack oj = new OfficeJack();
-            //    oj.mac = dr.ItemArray.GetValue(0).ToString();
-            //    oj.patchPanelPort = dr.ItemArray.GetValue(1).ToString();
-            //    oj.patchPanelName = dr.ItemArray.GetValue(2).ToString();
-            //    oj.idfName = dr.ItemArray.GetValue(3).ToString();
-            //    oj.venueName = dr.ItemArray.GetValue(4).ToString();
-            //}
 
             macs.Sort();
             macs.Insert(0, "");
@@ -471,15 +471,6 @@ namespace PhoneSystemInventoryManager
                 patchPanelRecords.Add(pp.patchPanelRecord);
             }
             patchPanelRecords.Insert(0, "");
-
-            //foreach (OfficeJack oj in officeJacks)
-            //{
-            //    availablePatchPanelList.Add(oj.venueName + ", " + oj.idfName + " - " + oj.patchPanelName);
-            //}
-
-            //distinctTypes.AddRange(phoneTypes.Distinct());
-            //distinctTypes.Sort();
-            //distinctTypes.Insert(0, "");
 
             macComboBox.DataSource = macs;            
             patchPanelComboBox.DataSource = patchPanelRecords;
@@ -493,9 +484,19 @@ namespace PhoneSystemInventoryManager
             {
                 if (pp.patchPanelRecord == patchPanelString)
                 {
-                    MessageBox.Show(pp.patchPanelID.ToString());
+                    List<int> openPorts =  getPatchPanelOpenPortsList(pp.patchPanelID);
                 }
             }
+        }
+
+        private List<int> getPatchPanelOpenPortsList(int ppID)
+        {
+            List<int> openPorts = new List<int>();
+
+            string openPatchPanelPortsQuery = "SELECT PatchPanelPort.PatchPanelPortID, PatchPanelPort.PatchPanelPortNum FROM [PatchPanelPort] WHERE PatchPanelPort.SwitchPortID IS NULL AND PatchPanelPort.PatchPanelID = " + ppID + ";";
+            DataSet openPatchPanelPortsDS = getDataSet(openPatchPanelPortsQuery);
+
+            return openPorts;
         }
 
 //beginOfficeJackTab
