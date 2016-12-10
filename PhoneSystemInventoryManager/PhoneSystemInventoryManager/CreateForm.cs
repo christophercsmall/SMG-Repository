@@ -505,6 +505,17 @@ namespace PhoneSystemInventoryManager
             return openPatchPanelPortsDS;
         }
 
-//beginOfficeJackTab
+        private void createOfficeJackBtn_Click(object sender, EventArgs e)
+        {
+            var mac = macComboBox.SelectedValue; //get phoneID
+            var patchPanelString = patchPanelComboBox.SelectedValue; //get patchPanelID
+            var openPatchPanelPortNum = patchPanelPortComboBox.SelectedValue; //get patchPanelPortID
+            var officeJackDetails = removeSpecialCharacters(officeJackDetailsBox.Text); //officeJackDetails
+
+
+
+        }
+
+        //beginOfficeJackTab
     }
 }

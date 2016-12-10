@@ -54,10 +54,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.officeJackDetailsBox = new System.Windows.Forms.TextBox();
             this.patchPanelPortComboBox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.createOfficeJackBtn = new System.Windows.Forms.Button();
             this.macComboBox = new System.Windows.Forms.ComboBox();
             this.patchPanelComboBox = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -116,7 +116,7 @@
             // 
             this.lNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lNameBox.Location = new System.Drawing.Point(97, 11);
-            this.lNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lNameBox.Margin = new System.Windows.Forms.Padding(4);
             this.lNameBox.Name = "lNameBox";
             this.lNameBox.Size = new System.Drawing.Size(311, 23);
             this.lNameBox.TabIndex = 0;
@@ -158,7 +158,7 @@
             // 
             this.fNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fNameBox.Location = new System.Drawing.Point(97, 43);
-            this.fNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fNameBox.Margin = new System.Windows.Forms.Padding(4);
             this.fNameBox.Name = "fNameBox";
             this.fNameBox.Size = new System.Drawing.Size(311, 23);
             this.fNameBox.TabIndex = 1;
@@ -167,7 +167,7 @@
             // 
             this.compBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.compBox.Location = new System.Drawing.Point(97, 75);
-            this.compBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.compBox.Margin = new System.Windows.Forms.Padding(4);
             this.compBox.Name = "compBox";
             this.compBox.Size = new System.Drawing.Size(311, 23);
             this.compBox.TabIndex = 2;
@@ -207,7 +207,7 @@
             this.createTabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.createTabControl.HotTrack = true;
             this.createTabControl.Location = new System.Drawing.Point(0, 0);
-            this.createTabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.createTabControl.Margin = new System.Windows.Forms.Padding(4);
             this.createTabControl.Name = "createTabControl";
             this.createTabControl.SelectedIndex = 0;
             this.createTabControl.Size = new System.Drawing.Size(964, 209);
@@ -230,9 +230,9 @@
             this.userTab.Controls.Add(this.depBox);
             this.userTab.Controls.Add(this.compBox);
             this.userTab.Location = new System.Drawing.Point(4, 25);
-            this.userTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.userTab.Margin = new System.Windows.Forms.Padding(4);
             this.userTab.Name = "userTab";
-            this.userTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.userTab.Padding = new System.Windows.Forms.Padding(4);
             this.userTab.Size = new System.Drawing.Size(956, 180);
             this.userTab.TabIndex = 0;
             this.userTab.Text = "User";
@@ -241,7 +241,7 @@
             // createUserBtn
             // 
             this.createUserBtn.Location = new System.Drawing.Point(812, 139);
-            this.createUserBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.createUserBtn.Margin = new System.Windows.Forms.Padding(4);
             this.createUserBtn.Name = "createUserBtn";
             this.createUserBtn.Size = new System.Drawing.Size(133, 31);
             this.createUserBtn.TabIndex = 5;
@@ -253,7 +253,7 @@
             // 
             this.extBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extBox.Location = new System.Drawing.Point(97, 139);
-            this.extBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.extBox.Margin = new System.Windows.Forms.Padding(4);
             this.extBox.Name = "extBox";
             this.extBox.Size = new System.Drawing.Size(311, 23);
             this.extBox.TabIndex = 4;
@@ -263,7 +263,7 @@
             // 
             this.depBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.depBox.Location = new System.Drawing.Point(97, 107);
-            this.depBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.depBox.Margin = new System.Windows.Forms.Padding(4);
             this.depBox.Name = "depBox";
             this.depBox.Size = new System.Drawing.Size(311, 23);
             this.depBox.TabIndex = 3;
@@ -280,9 +280,9 @@
             this.tabPage2.Controls.Add(this.jackBox);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(956, 180);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Phone";
@@ -293,7 +293,7 @@
             this.macBox.AllowPromptAsInput = false;
             this.macBox.AsciiOnly = true;
             this.macBox.Location = new System.Drawing.Point(97, 11);
-            this.macBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.macBox.Margin = new System.Windows.Forms.Padding(4);
             this.macBox.Mask = "AA : AA : AA : AA : AA : AA";
             this.macBox.Name = "macBox";
             this.macBox.ResetOnPrompt = false;
@@ -313,7 +313,7 @@
             "YES",
             "NO"});
             this.regComboBox.Location = new System.Drawing.Point(99, 76);
-            this.regComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.regComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.regComboBox.Name = "regComboBox";
             this.regComboBox.Size = new System.Drawing.Size(308, 24);
             this.regComboBox.TabIndex = 15;
@@ -323,7 +323,7 @@
             // 
             this.typeComboBox.FormattingEnabled = true;
             this.typeComboBox.Location = new System.Drawing.Point(97, 43);
-            this.typeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.typeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(309, 24);
             this.typeComboBox.TabIndex = 14;
@@ -332,7 +332,7 @@
             // createPhoneBtn
             // 
             this.createPhoneBtn.Location = new System.Drawing.Point(812, 139);
-            this.createPhoneBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.createPhoneBtn.Margin = new System.Windows.Forms.Padding(4);
             this.createPhoneBtn.Name = "createPhoneBtn";
             this.createPhoneBtn.Size = new System.Drawing.Size(133, 31);
             this.createPhoneBtn.TabIndex = 13;
@@ -378,7 +378,7 @@
             // 
             this.jackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jackBox.Location = new System.Drawing.Point(97, 110);
-            this.jackBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.jackBox.Margin = new System.Windows.Forms.Padding(4);
             this.jackBox.Name = "jackBox";
             this.jackBox.Size = new System.Drawing.Size(705, 23);
             this.jackBox.TabIndex = 6;
@@ -397,19 +397,19 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.label18);
-            this.tabPage5.Controls.Add(this.textBox3);
+            this.tabPage5.Controls.Add(this.officeJackDetailsBox);
             this.tabPage5.Controls.Add(this.patchPanelPortComboBox);
             this.tabPage5.Controls.Add(this.label14);
-            this.tabPage5.Controls.Add(this.button2);
+            this.tabPage5.Controls.Add(this.createOfficeJackBtn);
             this.tabPage5.Controls.Add(this.macComboBox);
             this.tabPage5.Controls.Add(this.patchPanelComboBox);
             this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Controls.Add(this.label13);
             this.tabPage5.Controls.Add(this.label25);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage5.Size = new System.Drawing.Size(956, 180);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Office Jack";
@@ -426,21 +426,21 @@
             this.label18.TabIndex = 29;
             this.label18.Text = "Details";
             // 
-            // textBox3
+            // officeJackDetailsBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(97, 111);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(316, 23);
-            this.textBox3.TabIndex = 28;
+            this.officeJackDetailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.officeJackDetailsBox.Location = new System.Drawing.Point(97, 111);
+            this.officeJackDetailsBox.Margin = new System.Windows.Forms.Padding(4);
+            this.officeJackDetailsBox.Name = "officeJackDetailsBox";
+            this.officeJackDetailsBox.Size = new System.Drawing.Size(316, 23);
+            this.officeJackDetailsBox.TabIndex = 28;
             // 
             // patchPanelPortComboBox
             // 
             this.patchPanelPortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.patchPanelPortComboBox.FormattingEnabled = true;
             this.patchPanelPortComboBox.Location = new System.Drawing.Point(97, 78);
-            this.patchPanelPortComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patchPanelPortComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.patchPanelPortComboBox.Name = "patchPanelPortComboBox";
             this.patchPanelPortComboBox.Size = new System.Drawing.Size(71, 24);
             this.patchPanelPortComboBox.TabIndex = 27;
@@ -456,22 +456,23 @@
             this.label14.TabIndex = 26;
             this.label14.Text = "Port #";
             // 
-            // button2
+            // createOfficeJackBtn
             // 
-            this.button2.Location = new System.Drawing.Point(812, 139);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(133, 31);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "Create";
-            this.button2.UseVisualStyleBackColor = true;
+            this.createOfficeJackBtn.Location = new System.Drawing.Point(812, 139);
+            this.createOfficeJackBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.createOfficeJackBtn.Name = "createOfficeJackBtn";
+            this.createOfficeJackBtn.Size = new System.Drawing.Size(133, 31);
+            this.createOfficeJackBtn.TabIndex = 25;
+            this.createOfficeJackBtn.Text = "Create";
+            this.createOfficeJackBtn.UseVisualStyleBackColor = true;
+            this.createOfficeJackBtn.Click += new System.EventHandler(this.createOfficeJackBtn_Click);
             // 
             // macComboBox
             // 
             this.macComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.macComboBox.FormattingEnabled = true;
             this.macComboBox.Location = new System.Drawing.Point(97, 11);
-            this.macComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.macComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.macComboBox.Name = "macComboBox";
             this.macComboBox.Size = new System.Drawing.Size(311, 24);
             this.macComboBox.TabIndex = 24;
@@ -481,7 +482,7 @@
             this.patchPanelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.patchPanelComboBox.FormattingEnabled = true;
             this.patchPanelComboBox.Location = new System.Drawing.Point(97, 44);
-            this.patchPanelComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patchPanelComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.patchPanelComboBox.Name = "patchPanelComboBox";
             this.patchPanelComboBox.Size = new System.Drawing.Size(311, 24);
             this.patchPanelComboBox.TabIndex = 23;
@@ -531,9 +532,9 @@
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage3.Size = new System.Drawing.Size(956, 180);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Switch";
@@ -548,7 +549,7 @@
             "24",
             "48"});
             this.comboBox6.Location = new System.Drawing.Point(97, 75);
-            this.comboBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox6.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(71, 24);
             this.comboBox6.TabIndex = 21;
@@ -558,7 +559,7 @@
             this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(97, 111);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(311, 24);
             this.comboBox4.TabIndex = 21;
@@ -590,7 +591,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(97, 11);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(311, 23);
             this.textBox1.TabIndex = 15;
@@ -610,7 +611,7 @@
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(97, 43);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(311, 23);
             this.textBox2.TabIndex = 16;
@@ -629,7 +630,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(452, 139);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(133, 31);
             this.button3.TabIndex = 14;
@@ -646,9 +647,9 @@
             this.tabPage4.Controls.Add(this.textBox16);
             this.tabPage4.Controls.Add(this.label20);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage4.Size = new System.Drawing.Size(956, 180);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Patch Panel";
@@ -659,7 +660,7 @@
             this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox9.FormattingEnabled = true;
             this.comboBox9.Location = new System.Drawing.Point(97, 76);
-            this.comboBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox9.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(71, 24);
             this.comboBox9.TabIndex = 25;
@@ -680,7 +681,7 @@
             this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Location = new System.Drawing.Point(97, 43);
-            this.comboBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox7.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(311, 24);
             this.comboBox7.TabIndex = 22;
@@ -688,7 +689,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(452, 139);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(133, 31);
             this.button4.TabIndex = 14;
@@ -710,7 +711,7 @@
             // 
             this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox16.Location = new System.Drawing.Point(97, 11);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox16.Margin = new System.Windows.Forms.Padding(4);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(132, 23);
             this.textBox16.TabIndex = 3;
@@ -734,9 +735,9 @@
             this.tabPage6.Controls.Add(this.label30);
             this.tabPage6.Controls.Add(this.textBox30);
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage6.Size = new System.Drawing.Size(956, 180);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "IDF";
@@ -745,7 +746,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(452, 139);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(133, 31);
             this.button5.TabIndex = 26;
@@ -757,7 +758,7 @@
             this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox10.FormattingEnabled = true;
             this.comboBox10.Location = new System.Drawing.Point(97, 43);
-            this.comboBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox10.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox10.Name = "comboBox10";
             this.comboBox10.Size = new System.Drawing.Size(311, 24);
             this.comboBox10.TabIndex = 22;
@@ -788,7 +789,7 @@
             // 
             this.textBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox30.Location = new System.Drawing.Point(97, 11);
-            this.textBox30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox30.Margin = new System.Windows.Forms.Padding(4);
             this.textBox30.Name = "textBox30";
             this.textBox30.Size = new System.Drawing.Size(132, 23);
             this.textBox30.TabIndex = 7;
@@ -801,9 +802,9 @@
             this.tabPage7.Controls.Add(this.textBox31);
             this.tabPage7.Controls.Add(this.label35);
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage7.Size = new System.Drawing.Size(956, 180);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Venue Space";
@@ -812,7 +813,7 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(452, 139);
-            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(133, 31);
             this.button6.TabIndex = 27;
@@ -824,7 +825,7 @@
             this.comboBox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox11.FormattingEnabled = true;
             this.comboBox11.Location = new System.Drawing.Point(97, 43);
-            this.comboBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox11.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(307, 24);
             this.comboBox11.TabIndex = 14;
@@ -844,7 +845,7 @@
             // 
             this.textBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox31.Location = new System.Drawing.Point(97, 11);
-            this.textBox31.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox31.Margin = new System.Windows.Forms.Padding(4);
             this.textBox31.Name = "textBox31";
             this.textBox31.Size = new System.Drawing.Size(307, 23);
             this.textBox31.TabIndex = 3;
@@ -866,9 +867,9 @@
             this.tabPage8.Controls.Add(this.label36);
             this.tabPage8.Controls.Add(this.textBox36);
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
-            this.tabPage8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage8.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage8.Size = new System.Drawing.Size(956, 180);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Venue";
@@ -877,7 +878,7 @@
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(452, 139);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(133, 31);
             this.button7.TabIndex = 27;
@@ -899,7 +900,7 @@
             // 
             this.textBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox36.Location = new System.Drawing.Point(97, 11);
-            this.textBox36.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox36.Margin = new System.Windows.Forms.Padding(4);
             this.textBox36.Name = "textBox36";
             this.textBox36.Size = new System.Drawing.Size(309, 23);
             this.textBox36.TabIndex = 3;
@@ -917,7 +918,7 @@
             this.createDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.createDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.createDataGridView.Location = new System.Drawing.Point(0, 209);
-            this.createDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.createDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.createDataGridView.MultiSelect = false;
             this.createDataGridView.Name = "createDataGridView";
             this.createDataGridView.ReadOnly = true;
@@ -940,7 +941,7 @@
             this.Controls.Add(this.createDataGridView);
             this.Controls.Add(this.createTabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "CreateForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -1021,7 +1022,7 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button createOfficeJackBtn;
         private System.Windows.Forms.ComboBox macComboBox;
         private System.Windows.Forms.ComboBox patchPanelComboBox;
         private System.Windows.Forms.Label label13;
@@ -1030,7 +1031,7 @@
         private System.Windows.Forms.ComboBox patchPanelPortComboBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox officeJackDetailsBox;
         private System.Windows.Forms.ComboBox comboBox10;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ComboBox comboBox11;
