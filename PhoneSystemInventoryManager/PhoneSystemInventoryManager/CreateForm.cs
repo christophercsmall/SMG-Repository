@@ -479,24 +479,30 @@ namespace PhoneSystemInventoryManager
         private void patchPanelComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string patchPanelString = patchPanelComboBox.SelectedValue.ToString();
+            List<string> openPortsList = new List<string>();
 
             foreach (PatchPanel pp in availablePatchPanelList)
             {
                 if (pp.patchPanelRecord == patchPanelString)
                 {
-                    List<int> openPorts =  getPatchPanelOpenPortsList(pp.patchPanelID);
+                    DataSet openPortsDataSet =  getPatchPanelOpenPortsDataSet(pp.patchPanelID);
+                    foreach(DataRow dr in openPortsDataSet.Tables[0].Rows)
+                    {                        
+                        openPortsList.Add(dr.ItemArray.GetValue(1).ToString());
+                    }
                 }
             }
+            openPortsList.OrderBy(p => p).ToList();
+            openPortsList.Insert(0, "");
+            patchPanelPortComboBox.DataSource = openPortsList;
         }
 
-        private List<int> getPatchPanelOpenPortsList(int ppID)
+        private DataSet getPatchPanelOpenPortsDataSet(int ppID)
         {
-            List<int> openPorts = new List<int>();
-
             string openPatchPanelPortsQuery = "SELECT PatchPanelPort.PatchPanelPortID, PatchPanelPort.PatchPanelPortNum FROM [PatchPanelPort] WHERE PatchPanelPort.SwitchPortID IS NULL AND PatchPanelPort.PatchPanelID = " + ppID + ";";
-            DataSet openPatchPanelPortsDS = getDataSet(openPatchPanelPortsQuery);
+            DataSet openPatchPanelPortsDS = getDataSet(openPatchPanelPortsQuery);            
 
-            return openPorts;
+            return openPatchPanelPortsDS;
         }
 
 //beginOfficeJackTab
