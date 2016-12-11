@@ -19,8 +19,6 @@ namespace PhoneSystemInventoryManager
         private int currentTabIndex;
         private bool errorsPending = true;
 
-        
-
         public static List<PatchPanel> availablePatchPanelList = new List<PatchPanel>();
 
         public CreateForm(MainForm mainform, object sender)
@@ -318,6 +316,7 @@ namespace PhoneSystemInventoryManager
             if (isValid && !errorsPending)
             {
                 executeDbComm(insertQuery);
+                loadPhoneTab();
             }
             else
             {
@@ -394,16 +393,7 @@ namespace PhoneSystemInventoryManager
         //endPhoneTab
 
 //beginOfficeJackTab
-
-        public class OfficeJack
-        {
-            public string mac;
-            public string patchPanelPort;
-            public string patchPanelName;
-            public string idfName;
-            public string venueName;
-        }
-
+        
         public class PatchPanel
         {
             public string portTotal;
@@ -421,7 +411,7 @@ namespace PhoneSystemInventoryManager
 
         private void loadOfficeJackTab()
         {
-            List<OfficeJack> officeJacks = new List<OfficeJack>();
+            availablePatchPanelList.Clear();
             List<string> patchPanelRecords = new List<string>();
             List<string> macs = new List<string>();
 
@@ -478,6 +468,9 @@ namespace PhoneSystemInventoryManager
         
         private void patchPanelComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            errorsPending = false;
+            errorProvider1.SetError(patchPanelComboBox, string.Empty);
+
             string patchPanelString = patchPanelComboBox.SelectedValue.ToString();
             List<string> openPortsList = new List<string>();
 
@@ -499,7 +492,7 @@ namespace PhoneSystemInventoryManager
 
         private DataSet getPatchPanelOpenPortsDataSet(int ppID)
         {
-            string openPatchPanelPortsQuery = "SELECT PatchPanelPort.PatchPanelPortID, PatchPanelPort.PatchPanelPortNum FROM [PatchPanelPort] WHERE PatchPanelPort.SwitchPortID IS NULL AND PatchPanelPort.PatchPanelID = " + ppID + ";";
+            string openPatchPanelPortsQuery = "SELECT PatchPanelPort.PatchPanelPortID, PatchPanelPort.PatchPanelPortNum FROM [PatchPanelPort] WHERE PatchPanelPort.PatchPanelID = " + ppID + " AND PatchPanelPort.PatchPanelPortID NOT IN (SELECT OfficeJack.PatchPanelPortID FROM [OfficeJack]);";
             DataSet openPatchPanelPortsDS = getDataSet(openPatchPanelPortsQuery);            
 
             return openPatchPanelPortsDS;
@@ -507,15 +500,111 @@ namespace PhoneSystemInventoryManager
 
         private void createOfficeJackBtn_Click(object sender, EventArgs e)
         {
-            var mac = macComboBox.SelectedValue; //get phoneID
-            var patchPanelString = patchPanelComboBox.SelectedValue; //get patchPanelID
-            var openPatchPanelPortNum = patchPanelPortComboBox.SelectedValue; //get patchPanelPortID
-            var officeJackDetails = removeSpecialCharacters(officeJackDetailsBox.Text); //officeJackDetails
+            string mac = macComboBox.SelectedValue.ToString();
+            string patchPanelString = patchPanelComboBox.SelectedValue.ToString();
+            string openPatchPanelPortNum = patchPanelPortComboBox.SelectedValue.ToString(); //get patchPanelPortID      
+            bool isValid = officeJackTabValid(mac, patchPanelString, openPatchPanelPortNum);
+           
+            if (isValid && !errorsPending)
+            {
+                int jackID = -1;
+                int phoneID = -1;
+                int ppPortID = -1;
+                int ppID = -1;
+                string officeJackDetails = removeSpecialCharacters(officeJackDetailsBox.Text);
 
+                string officeJackIDQuery = "SELECT OfficeJack.JackID FROM [OfficeJack];";
+                jackID = getUnusedID(officeJackIDQuery);
 
+                string phoneIDQuery = "SELECT Phone.PhoneID FROM [Phone] WHERE Phone.MAC = '" + mac + "';";
+                DataSet phoneIDDS = getDataSet(phoneIDQuery);
+                phoneID = (int)phoneIDDS.Tables[0].Rows[0].ItemArray.GetValue(0);
 
+                foreach (PatchPanel pp in availablePatchPanelList)
+                {
+                    if (pp.patchPanelRecord == patchPanelString)
+                    {
+                        ppID = pp.patchPanelID;
+                    }
+                }
+
+                string ppPortIDQuery = "SELECT PatchPanelPort.PatchPanelPortID FROM [PatchPanelPort] WHERE PatchPanelPort.PatchPanelPortNum = " + openPatchPanelPortNum + " AND PatchPanelPort.PatchPanelID = " + ppID + ";";
+                DataSet ppPortIDDS = getDataSet(ppPortIDQuery);
+                ppPortID = (int)ppPortIDDS.Tables[0].Rows[0].ItemArray.GetValue(0);
+
+                string insertQuery = "INSERT INTO [OfficeJack] (JackID, PhoneID, PatchPanelPortID, Details) VALUES (" + jackID + ", " + phoneID + ", " + ppPortID + ", '" + officeJackDetails + "');";
+                
+                executeDbComm(insertQuery);
+                loadOfficeJackTab();
+            }
+            else
+            {
+                MessageBox.Show("Pending errors must be resolved.");
+            }            
         }
 
-        //beginOfficeJackTab
+        private bool officeJackTabValid(string mac, string pp, string ppPort)
+        {
+            errorsPending = false;
+            bool macValid, ppValid, ppPortValid, isValid = false;
+
+            if (macComboBox.SelectedValue.ToString() == "")
+            {
+                macValid = false;
+                errorProvider1.SetError(macComboBox, "Phone MAC must be selected.");
+                errorsPending = true;
+            }
+            else
+            {
+                macValid = true;
+            }
+
+            if (patchPanelComboBox.SelectedValue.ToString() == "")
+            {
+                ppValid = false;
+                errorProvider1.SetError(patchPanelComboBox, "Patch Panel must be selected.");
+                errorsPending = true;
+            }
+            else
+            {
+                ppValid = true;
+            }
+
+            if (patchPanelPortComboBox.SelectedValue.ToString() == "")
+            {
+                ppPortValid = false;
+                errorProvider1.SetError(patchPanelPortComboBox, "Port must be selected.");
+                errorsPending = true;
+            }
+            else
+            {
+                ppPortValid = true;
+            }
+
+            if (macValid && ppValid && ppPortValid && !errorsPending)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        private void macComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(macComboBox, string.Empty);
+        }
+
+        private void patchPanelPortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(patchPanelPortComboBox, string.Empty);
+        }
+
+        //endOfficeJackTab
     }
 }
