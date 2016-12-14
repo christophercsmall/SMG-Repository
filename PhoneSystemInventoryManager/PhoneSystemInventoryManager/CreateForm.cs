@@ -261,6 +261,10 @@ namespace PhoneSystemInventoryManager
 //beginPhoneTab
         private void loadPhoneTab()
         {
+            macBox.Clear();
+            jackBox.Clear();
+            regComboBox.SelectedIndex = 0;
+
             List<string> users = new List<string>();
             List<string> phoneTypes = new List<string>();
             List<string> distinctTypes = new List<string>();
@@ -305,6 +309,11 @@ namespace PhoneSystemInventoryManager
             string registered = regComboBox.Text;
             string jackInfo = jackBox.Text;
             bool reg = false;
+
+            if (registered == "YES")
+            {
+                reg = true;
+            }
 
             string phoneIdQuery = "SELECT Phone.PhoneID FROM [Phone];";
             int newphoneID = getUnusedID(phoneIdQuery);
