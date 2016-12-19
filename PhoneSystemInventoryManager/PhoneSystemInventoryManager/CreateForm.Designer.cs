@@ -39,10 +39,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.createTabControl = new System.Windows.Forms.TabControl();
             this.userTab = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.createUserBtn = new System.Windows.Forms.Button();
             this.extBox = new System.Windows.Forms.TextBox();
             this.depBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.macBox = new System.Windows.Forms.MaskedTextBox();
             this.regComboBox = new System.Windows.Forms.ComboBox();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
@@ -53,6 +55,7 @@
             this.jackBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.officeJackDetailsBox = new System.Windows.Forms.TextBox();
             this.patchPanelPortComboBox = new System.Windows.Forms.ComboBox();
@@ -64,6 +67,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -72,8 +76,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
@@ -82,23 +86,27 @@
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.textBox31 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.createDataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.createSwitchBtn = new System.Windows.Forms.Button();
             this.createTabControl.SuspendLayout();
             this.userTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -115,7 +123,7 @@
             // lNameBox
             // 
             this.lNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lNameBox.Location = new System.Drawing.Point(73, 9);
+            this.lNameBox.Location = new System.Drawing.Point(73, 35);
             this.lNameBox.Name = "lNameBox";
             this.lNameBox.Size = new System.Drawing.Size(234, 20);
             this.lNameBox.TabIndex = 0;
@@ -124,7 +132,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 12);
+            this.label1.Location = new System.Drawing.Point(9, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 1;
@@ -134,7 +142,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 38);
+            this.label2.Location = new System.Drawing.Point(10, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 1;
@@ -153,10 +161,11 @@
             // fNameBox
             // 
             this.fNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fNameBox.Location = new System.Drawing.Point(73, 35);
+            this.fNameBox.Location = new System.Drawing.Point(73, 9);
             this.fNameBox.Name = "fNameBox";
             this.fNameBox.Size = new System.Drawing.Size(234, 20);
             this.fNameBox.TabIndex = 1;
+            this.fNameBox.TextChanged += new System.EventHandler(this.fNameBox_TextChanged);
             // 
             // compBox
             // 
@@ -209,11 +218,12 @@
             // 
             // userTab
             // 
+            this.userTab.Controls.Add(this.fNameBox);
+            this.userTab.Controls.Add(this.groupBox1);
             this.userTab.Controls.Add(this.createUserBtn);
             this.userTab.Controls.Add(this.label1);
             this.userTab.Controls.Add(this.lNameBox);
             this.userTab.Controls.Add(this.label3);
-            this.userTab.Controls.Add(this.fNameBox);
             this.userTab.Controls.Add(this.label4);
             this.userTab.Controls.Add(this.label5);
             this.userTab.Controls.Add(this.label2);
@@ -228,11 +238,20 @@
             this.userTab.Text = "User";
             this.userTab.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(313, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(396, 101);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Details";
+            // 
             // createUserBtn
             // 
-            this.createUserBtn.Location = new System.Drawing.Point(609, 113);
+            this.createUserBtn.Location = new System.Drawing.Point(313, 113);
             this.createUserBtn.Name = "createUserBtn";
-            this.createUserBtn.Size = new System.Drawing.Size(100, 25);
+            this.createUserBtn.Size = new System.Drawing.Size(396, 25);
             this.createUserBtn.TabIndex = 5;
             this.createUserBtn.Text = "Create";
             this.createUserBtn.UseVisualStyleBackColor = true;
@@ -257,6 +276,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.macBox);
             this.tabPage2.Controls.Add(this.regComboBox);
             this.tabPage2.Controls.Add(this.typeComboBox);
@@ -274,6 +294,15 @@
             this.tabPage2.Text = "Phone";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(313, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(396, 101);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Details";
+            // 
             // macBox
             // 
             this.macBox.AllowPromptAsInput = false;
@@ -283,7 +312,7 @@
             this.macBox.Name = "macBox";
             this.macBox.ResetOnPrompt = false;
             this.macBox.ResetOnSpace = false;
-            this.macBox.Size = new System.Drawing.Size(233, 20);
+            this.macBox.Size = new System.Drawing.Size(234, 20);
             this.macBox.SkipLiterals = false;
             this.macBox.TabIndex = 16;
             this.macBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -300,7 +329,7 @@
             "NO"});
             this.regComboBox.Location = new System.Drawing.Point(74, 62);
             this.regComboBox.Name = "regComboBox";
-            this.regComboBox.Size = new System.Drawing.Size(232, 21);
+            this.regComboBox.Size = new System.Drawing.Size(233, 21);
             this.regComboBox.TabIndex = 15;
             this.regComboBox.SelectedIndexChanged += new System.EventHandler(this.regComboBox_SelectedIndexChanged);
             // 
@@ -309,15 +338,15 @@
             this.typeComboBox.FormattingEnabled = true;
             this.typeComboBox.Location = new System.Drawing.Point(73, 35);
             this.typeComboBox.Name = "typeComboBox";
-            this.typeComboBox.Size = new System.Drawing.Size(233, 21);
+            this.typeComboBox.Size = new System.Drawing.Size(234, 21);
             this.typeComboBox.TabIndex = 14;
             this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
             // 
             // createPhoneBtn
             // 
-            this.createPhoneBtn.Location = new System.Drawing.Point(609, 113);
+            this.createPhoneBtn.Location = new System.Drawing.Point(313, 113);
             this.createPhoneBtn.Name = "createPhoneBtn";
-            this.createPhoneBtn.Size = new System.Drawing.Size(100, 25);
+            this.createPhoneBtn.Size = new System.Drawing.Size(396, 25);
             this.createPhoneBtn.TabIndex = 13;
             this.createPhoneBtn.Text = "Create";
             this.createPhoneBtn.UseVisualStyleBackColor = true;
@@ -359,7 +388,7 @@
             this.jackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jackBox.Location = new System.Drawing.Point(73, 89);
             this.jackBox.Name = "jackBox";
-            this.jackBox.Size = new System.Drawing.Size(530, 20);
+            this.jackBox.Size = new System.Drawing.Size(234, 20);
             this.jackBox.TabIndex = 6;
             // 
             // label10
@@ -374,6 +403,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.groupBox3);
             this.tabPage5.Controls.Add(this.label18);
             this.tabPage5.Controls.Add(this.officeJackDetailsBox);
             this.tabPage5.Controls.Add(this.patchPanelPortComboBox);
@@ -392,29 +422,38 @@
             this.tabPage5.Text = "Office Jack";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Location = new System.Drawing.Point(313, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(396, 101);
+            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Details";
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(28, 93);
+            this.label18.Location = new System.Drawing.Point(13, 39);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 13);
+            this.label18.Size = new System.Drawing.Size(54, 13);
             this.label18.TabIndex = 29;
-            this.label18.Text = "Details";
+            this.label18.Text = "Jack Info.";
             // 
             // officeJackDetailsBox
             // 
             this.officeJackDetailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.officeJackDetailsBox.Location = new System.Drawing.Point(73, 90);
+            this.officeJackDetailsBox.Location = new System.Drawing.Point(73, 36);
             this.officeJackDetailsBox.Name = "officeJackDetailsBox";
-            this.officeJackDetailsBox.Size = new System.Drawing.Size(238, 20);
+            this.officeJackDetailsBox.Size = new System.Drawing.Size(234, 20);
             this.officeJackDetailsBox.TabIndex = 28;
             // 
             // patchPanelPortComboBox
             // 
             this.patchPanelPortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.patchPanelPortComboBox.FormattingEnabled = true;
-            this.patchPanelPortComboBox.Location = new System.Drawing.Point(73, 63);
+            this.patchPanelPortComboBox.Location = new System.Drawing.Point(73, 89);
             this.patchPanelPortComboBox.Name = "patchPanelPortComboBox";
             this.patchPanelPortComboBox.Size = new System.Drawing.Size(54, 21);
             this.patchPanelPortComboBox.TabIndex = 27;
@@ -424,7 +463,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(31, 66);
+            this.label14.Location = new System.Drawing.Point(31, 92);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(36, 13);
             this.label14.TabIndex = 26;
@@ -432,9 +471,9 @@
             // 
             // createOfficeJackBtn
             // 
-            this.createOfficeJackBtn.Location = new System.Drawing.Point(609, 113);
+            this.createOfficeJackBtn.Location = new System.Drawing.Point(313, 113);
             this.createOfficeJackBtn.Name = "createOfficeJackBtn";
-            this.createOfficeJackBtn.Size = new System.Drawing.Size(100, 25);
+            this.createOfficeJackBtn.Size = new System.Drawing.Size(396, 25);
             this.createOfficeJackBtn.TabIndex = 25;
             this.createOfficeJackBtn.Text = "Create";
             this.createOfficeJackBtn.UseVisualStyleBackColor = true;
@@ -454,7 +493,7 @@
             // 
             this.patchPanelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.patchPanelComboBox.FormattingEnabled = true;
-            this.patchPanelComboBox.Location = new System.Drawing.Point(73, 36);
+            this.patchPanelComboBox.Location = new System.Drawing.Point(73, 62);
             this.patchPanelComboBox.Name = "patchPanelComboBox";
             this.patchPanelComboBox.Size = new System.Drawing.Size(234, 21);
             this.patchPanelComboBox.TabIndex = 23;
@@ -473,7 +512,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 39);
+            this.label13.Location = new System.Drawing.Point(3, 65);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 13);
             this.label13.TabIndex = 12;
@@ -491,6 +530,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.createSwitchBtn);
+            this.tabPage3.Controls.Add(this.groupBox4);
             this.tabPage3.Controls.Add(this.comboBox6);
             this.tabPage3.Controls.Add(this.comboBox4);
             this.tabPage3.Controls.Add(this.label9);
@@ -499,7 +540,6 @@
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Controls.Add(this.label12);
-            this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -507,6 +547,15 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Switch";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(313, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(396, 101);
+            this.groupBox4.TabIndex = 22;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Details";
             // 
             // comboBox6
             // 
@@ -587,17 +636,9 @@
             this.label12.TabIndex = 20;
             this.label12.Text = "IP Addr.";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(339, 113);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 25);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Create";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox5);
             this.tabPage4.Controls.Add(this.comboBox9);
             this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.comboBox7);
@@ -612,6 +653,15 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Patch Panel";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Location = new System.Drawing.Point(313, 6);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(396, 101);
+            this.groupBox5.TabIndex = 26;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Details";
             // 
             // comboBox9
             // 
@@ -643,9 +693,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(339, 113);
+            this.button4.Location = new System.Drawing.Point(313, 113);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 25);
+            this.button4.Size = new System.Drawing.Size(396, 25);
             this.button4.TabIndex = 14;
             this.button4.Text = "Create";
             this.button4.UseVisualStyleBackColor = true;
@@ -665,7 +715,7 @@
             this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox16.Location = new System.Drawing.Point(73, 9);
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(100, 20);
+            this.textBox16.Size = new System.Drawing.Size(234, 20);
             this.textBox16.TabIndex = 3;
             // 
             // label20
@@ -680,6 +730,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.groupBox6);
             this.tabPage6.Controls.Add(this.button5);
             this.tabPage6.Controls.Add(this.comboBox10);
             this.tabPage6.Controls.Add(this.label26);
@@ -693,11 +744,20 @@
             this.tabPage6.Text = "IDF";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Location = new System.Drawing.Point(313, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(396, 101);
+            this.groupBox6.TabIndex = 27;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Details";
+            // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(339, 113);
+            this.button5.Location = new System.Drawing.Point(313, 113);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 25);
+            this.button5.Size = new System.Drawing.Size(396, 25);
             this.button5.TabIndex = 26;
             this.button5.Text = "Create";
             this.button5.UseVisualStyleBackColor = true;
@@ -736,11 +796,12 @@
             this.textBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox30.Location = new System.Drawing.Point(73, 9);
             this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(100, 20);
+            this.textBox30.Size = new System.Drawing.Size(234, 20);
             this.textBox30.TabIndex = 7;
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.groupBox7);
             this.tabPage7.Controls.Add(this.button6);
             this.tabPage7.Controls.Add(this.comboBox11);
             this.tabPage7.Controls.Add(this.label31);
@@ -754,11 +815,20 @@
             this.tabPage7.Text = "Venue Space";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Location = new System.Drawing.Point(313, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(396, 101);
+            this.groupBox7.TabIndex = 28;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Details";
+            // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(339, 113);
+            this.button6.Location = new System.Drawing.Point(313, 113);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 25);
+            this.button6.Size = new System.Drawing.Size(396, 25);
             this.button6.TabIndex = 27;
             this.button6.Text = "Create";
             this.button6.UseVisualStyleBackColor = true;
@@ -769,7 +839,7 @@
             this.comboBox11.FormattingEnabled = true;
             this.comboBox11.Location = new System.Drawing.Point(73, 35);
             this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(231, 21);
+            this.comboBox11.Size = new System.Drawing.Size(234, 21);
             this.comboBox11.TabIndex = 14;
             // 
             // label31
@@ -787,7 +857,7 @@
             this.textBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox31.Location = new System.Drawing.Point(73, 9);
             this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(231, 20);
+            this.textBox31.Size = new System.Drawing.Size(234, 20);
             this.textBox31.TabIndex = 3;
             // 
             // label35
@@ -802,6 +872,7 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.groupBox8);
             this.tabPage8.Controls.Add(this.button7);
             this.tabPage8.Controls.Add(this.label36);
             this.tabPage8.Controls.Add(this.textBox36);
@@ -813,11 +884,20 @@
             this.tabPage8.Text = "Venue";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Location = new System.Drawing.Point(313, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(396, 101);
+            this.groupBox8.TabIndex = 28;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Details";
+            // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(339, 113);
+            this.button7.Location = new System.Drawing.Point(313, 113);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 25);
+            this.button7.Size = new System.Drawing.Size(396, 25);
             this.button7.TabIndex = 27;
             this.button7.Text = "Create";
             this.button7.UseVisualStyleBackColor = true;
@@ -837,7 +917,7 @@
             this.textBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox36.Location = new System.Drawing.Point(73, 9);
             this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(233, 20);
+            this.textBox36.Size = new System.Drawing.Size(234, 20);
             this.textBox36.TabIndex = 3;
             // 
             // createDataGridView
@@ -866,6 +946,15 @@
             this.errorProvider1.BlinkRate = 0;
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
+            // 
+            // createSwitchBtn
+            // 
+            this.createSwitchBtn.Location = new System.Drawing.Point(313, 113);
+            this.createSwitchBtn.Name = "createSwitchBtn";
+            this.createSwitchBtn.Size = new System.Drawing.Size(396, 25);
+            this.createSwitchBtn.TabIndex = 15;
+            this.createSwitchBtn.Text = "Create";
+            this.createSwitchBtn.UseVisualStyleBackColor = true;
             // 
             // CreateForm
             // 
@@ -940,7 +1029,6 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox textBox36;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox jackBox;
@@ -974,5 +1062,14 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox extBox;
         private System.Windows.Forms.MaskedTextBox macBox;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button createSwitchBtn;
     }
 }

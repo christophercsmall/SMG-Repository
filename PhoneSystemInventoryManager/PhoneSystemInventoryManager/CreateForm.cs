@@ -173,25 +173,30 @@ namespace PhoneSystemInventoryManager
 //startUserTab
         private void loadUserTab() 
         {
-            List<string> extNums = new List<string>();
+            lNameBox.Clear();
+            fNameBox.Clear();
+            compBox.Clear();
+            depBox.Clear();
+            extBox.Clear();
 
             string userQuery = "SELECT User.LName, User.FName, User.Company, User.Department, User.ExtensionNum FROM [User];";
 
             DataSet ds = getDataSet(userQuery);
 
-            createDataGridView.DataSource = ds.Tables[0];
-
-            foreach (DataRow dr in ds.Tables[0].Rows)
-            {
-                extNums.Add(dr.ItemArray.GetValue(4).ToString());
-            }
+            createDataGridView.DataSource = ds.Tables[0];            
         }
 
         private void createUserBtn_Click(object sender, EventArgs e)
         {
+            string lname = removeSpecialCharacters(lNameBox.Text);
+            string fname = removeSpecialCharacters(fNameBox.Text);
+            string comp = removeSpecialCharacters(compBox.Text);
+            string dep = removeSpecialCharacters(depBox.Text);
+            string ext = removeSpecialCharacters(extBox.Text);
+
             string userIdQuery = "SELECT User.UserID FROM [User];";
             int newUserID = getUnusedID(userIdQuery);
-            string insertQuery = "INSERT INTO [User] (UserID, FName, LName, Company, Department, ExtensionNum) VALUES (" + newUserID + ", '" + fNameBox.Text + "'" + ", '" + lNameBox.Text + "'" + ", '" + compBox.Text + "'" + ", '" + depBox.Text + "'" + ", " + extBox.Text + ");";
+            string insertQuery = "INSERT INTO [User] (UserID, FName, LName, Company, Department, ExtensionNum) VALUES (" + newUserID + ", '" + fname + "'" + ", '" + lname + "'" + ", '" + comp + "'" + ", '" + dep + "'" + ", " + ext + ");";
             
             if (extBox.Text == "")
             {
@@ -279,11 +284,6 @@ namespace PhoneSystemInventoryManager
             {
                 phoneTypes.Add(dr.ItemArray.GetValue(1).ToString());
             }
-
-            //foreach (DataRow dr in UserDS.Tables[0].Rows)
-            //{
-            //    users.Add(dr.ItemArray.GetValue(0).ToString() + ", " + dr.ItemArray.GetValue(1).ToString() + " - " + dr.ItemArray.GetValue(2).ToString());
-            //}
 
             distinctTypes.AddRange(phoneTypes.Distinct());
             distinctTypes.Sort();
@@ -612,6 +612,11 @@ namespace PhoneSystemInventoryManager
         {
             errorsPending = false;
             errorProvider1.SetError(patchPanelPortComboBox, string.Empty);
+        }
+
+        private void fNameBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         //endOfficeJackTab
