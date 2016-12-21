@@ -40,11 +40,13 @@
             this.createTabControl = new System.Windows.Forms.TabControl();
             this.userTab = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.userLabel = new System.Windows.Forms.Label();
             this.createUserBtn = new System.Windows.Forms.Button();
             this.extBox = new System.Windows.Forms.TextBox();
             this.depBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.phoneLabel = new System.Windows.Forms.Label();
             this.macBox = new System.Windows.Forms.MaskedTextBox();
             this.regComboBox = new System.Windows.Forms.ComboBox();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
@@ -56,6 +58,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.officeJackLabel = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.officeJackDetailsBox = new System.Windows.Forms.TextBox();
             this.patchPanelPortComboBox = new System.Windows.Forms.ComboBox();
@@ -67,17 +70,20 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.createSwitchBtn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.switchLabel = new System.Windows.Forms.Label();
             this.portCountComboBox = new System.Windows.Forms.ComboBox();
             this.idfComboBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.dnsNameBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.ipBox = new System.Windows.Forms.TextBox();
+            this.ipBox0 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.patchPanelLabel = new System.Windows.Forms.Label();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
@@ -87,6 +93,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.idfLabel = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -94,6 +101,7 @@
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.venueSpaceLabel = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -101,20 +109,18 @@
             this.label35 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.venueLabel = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.createDataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.userLabel = new System.Windows.Forms.Label();
-            this.phoneLabel = new System.Windows.Forms.Label();
-            this.officeJackLabel = new System.Windows.Forms.Label();
-            this.switchLabel = new System.Windows.Forms.Label();
-            this.patchPanelLabel = new System.Windows.Forms.Label();
-            this.idfLabel = new System.Windows.Forms.Label();
-            this.venueSpaceLabel = new System.Windows.Forms.Label();
-            this.venueLabel = new System.Windows.Forms.Label();
-            this.createSwitchBtn = new System.Windows.Forms.Button();
+            this.ipBox1 = new System.Windows.Forms.TextBox();
+            this.ipBox2 = new System.Windows.Forms.TextBox();
+            this.ipBox3 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.createTabControl.SuspendLayout();
             this.userTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -264,6 +270,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
             // 
+            // userLabel
+            // 
+            this.userLabel.AutoSize = true;
+            this.userLabel.Location = new System.Drawing.Point(6, 16);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(11, 13);
+            this.userLabel.TabIndex = 0;
+            this.userLabel.Text = "*";
+            // 
             // createUserBtn
             // 
             this.createUserBtn.Location = new System.Drawing.Point(313, 113);
@@ -320,6 +335,15 @@
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Details";
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.AutoSize = true;
+            this.phoneLabel.Location = new System.Drawing.Point(6, 16);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(11, 13);
+            this.phoneLabel.TabIndex = 1;
+            this.phoneLabel.Text = "*";
             // 
             // macBox
             // 
@@ -450,6 +474,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Details";
             // 
+            // officeJackLabel
+            // 
+            this.officeJackLabel.AutoSize = true;
+            this.officeJackLabel.Location = new System.Drawing.Point(6, 16);
+            this.officeJackLabel.Name = "officeJackLabel";
+            this.officeJackLabel.Size = new System.Drawing.Size(11, 13);
+            this.officeJackLabel.TabIndex = 1;
+            this.officeJackLabel.Text = "*";
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -557,8 +590,14 @@
             this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.dnsNameBox);
             this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.ipBox);
+            this.tabPage3.Controls.Add(this.ipBox3);
+            this.tabPage3.Controls.Add(this.ipBox2);
+            this.tabPage3.Controls.Add(this.ipBox1);
+            this.tabPage3.Controls.Add(this.ipBox0);
             this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.label19);
+            this.tabPage3.Controls.Add(this.label23);
+            this.tabPage3.Controls.Add(this.label22);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -566,6 +605,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Switch";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // createSwitchBtn
+            // 
+            this.createSwitchBtn.Location = new System.Drawing.Point(313, 113);
+            this.createSwitchBtn.Name = "createSwitchBtn";
+            this.createSwitchBtn.Size = new System.Drawing.Size(396, 25);
+            this.createSwitchBtn.TabIndex = 26;
+            this.createSwitchBtn.Text = "Create";
+            this.createSwitchBtn.UseVisualStyleBackColor = true;
+            this.createSwitchBtn.Click += new System.EventHandler(this.createSwitchBtn_Click);
             // 
             // groupBox4
             // 
@@ -577,10 +626,20 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Details";
             // 
+            // switchLabel
+            // 
+            this.switchLabel.AutoSize = true;
+            this.switchLabel.Location = new System.Drawing.Point(6, 16);
+            this.switchLabel.Name = "switchLabel";
+            this.switchLabel.Size = new System.Drawing.Size(11, 13);
+            this.switchLabel.TabIndex = 1;
+            this.switchLabel.Text = "*";
+            // 
             // portCountComboBox
             // 
             this.portCountComboBox.FormattingEnabled = true;
             this.portCountComboBox.Items.AddRange(new object[] {
+            "",
             "12",
             "16",
             "24",
@@ -594,7 +653,7 @@
             // 
             this.idfComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.idfComboBox.FormattingEnabled = true;
-            this.idfComboBox.Location = new System.Drawing.Point(73, 90);
+            this.idfComboBox.Location = new System.Drawing.Point(73, 88);
             this.idfComboBox.Name = "idfComboBox";
             this.idfComboBox.Size = new System.Drawing.Size(234, 21);
             this.idfComboBox.TabIndex = 21;
@@ -632,19 +691,21 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(43, 93);
+            this.label11.Location = new System.Drawing.Point(43, 91);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(24, 13);
             this.label11.TabIndex = 19;
             this.label11.Text = "IDF";
             // 
-            // ipBox
+            // ipBox0
             // 
-            this.ipBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipBox.Location = new System.Drawing.Point(73, 35);
-            this.ipBox.Name = "ipBox";
-            this.ipBox.Size = new System.Drawing.Size(234, 20);
-            this.ipBox.TabIndex = 16;
+            this.ipBox0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipBox0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipBox0.Location = new System.Drawing.Point(73, 35);
+            this.ipBox0.Name = "ipBox0";
+            this.ipBox0.Size = new System.Drawing.Size(29, 20);
+            this.ipBox0.TabIndex = 16;
+            this.ipBox0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
             // 
@@ -683,6 +744,15 @@
             this.groupBox5.TabIndex = 26;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Details";
+            // 
+            // patchPanelLabel
+            // 
+            this.patchPanelLabel.AutoSize = true;
+            this.patchPanelLabel.Location = new System.Drawing.Point(6, 16);
+            this.patchPanelLabel.Name = "patchPanelLabel";
+            this.patchPanelLabel.Size = new System.Drawing.Size(11, 13);
+            this.patchPanelLabel.TabIndex = 1;
+            this.patchPanelLabel.Text = "*";
             // 
             // comboBox9
             // 
@@ -775,6 +845,15 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Details";
             // 
+            // idfLabel
+            // 
+            this.idfLabel.AutoSize = true;
+            this.idfLabel.Location = new System.Drawing.Point(6, 16);
+            this.idfLabel.Name = "idfLabel";
+            this.idfLabel.Size = new System.Drawing.Size(11, 13);
+            this.idfLabel.TabIndex = 1;
+            this.idfLabel.Text = "*";
+            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(313, 113);
@@ -847,6 +926,15 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Details";
             // 
+            // venueSpaceLabel
+            // 
+            this.venueSpaceLabel.AutoSize = true;
+            this.venueSpaceLabel.Location = new System.Drawing.Point(6, 16);
+            this.venueSpaceLabel.Name = "venueSpaceLabel";
+            this.venueSpaceLabel.Size = new System.Drawing.Size(11, 13);
+            this.venueSpaceLabel.TabIndex = 1;
+            this.venueSpaceLabel.Text = "*";
+            // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(313, 113);
@@ -917,6 +1005,15 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Details";
             // 
+            // venueLabel
+            // 
+            this.venueLabel.AutoSize = true;
+            this.venueLabel.Location = new System.Drawing.Point(6, 16);
+            this.venueLabel.Name = "venueLabel";
+            this.venueLabel.Size = new System.Drawing.Size(11, 13);
+            this.venueLabel.TabIndex = 1;
+            this.venueLabel.Text = "*";
+            // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(313, 113);
@@ -971,87 +1068,65 @@
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
-            // userLabel
+            // ipBox1
             // 
-            this.userLabel.AutoSize = true;
-            this.userLabel.Location = new System.Drawing.Point(6, 16);
-            this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(11, 13);
-            this.userLabel.TabIndex = 0;
-            this.userLabel.Text = "*";
+            this.ipBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipBox1.Location = new System.Drawing.Point(115, 35);
+            this.ipBox1.Name = "ipBox1";
+            this.ipBox1.Size = new System.Drawing.Size(29, 20);
+            this.ipBox1.TabIndex = 16;
+            this.ipBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // phoneLabel
+            // ipBox2
             // 
-            this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(6, 16);
-            this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(11, 13);
-            this.phoneLabel.TabIndex = 1;
-            this.phoneLabel.Text = "*";
+            this.ipBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipBox2.Location = new System.Drawing.Point(158, 35);
+            this.ipBox2.Name = "ipBox2";
+            this.ipBox2.Size = new System.Drawing.Size(29, 20);
+            this.ipBox2.TabIndex = 16;
+            this.ipBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // officeJackLabel
+            // ipBox3
             // 
-            this.officeJackLabel.AutoSize = true;
-            this.officeJackLabel.Location = new System.Drawing.Point(6, 16);
-            this.officeJackLabel.Name = "officeJackLabel";
-            this.officeJackLabel.Size = new System.Drawing.Size(11, 13);
-            this.officeJackLabel.TabIndex = 1;
-            this.officeJackLabel.Text = "*";
+            this.ipBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipBox3.Location = new System.Drawing.Point(201, 35);
+            this.ipBox3.Name = "ipBox3";
+            this.ipBox3.Size = new System.Drawing.Size(29, 20);
+            this.ipBox3.TabIndex = 16;
+            this.ipBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // switchLabel
+            // label19
             // 
-            this.switchLabel.AutoSize = true;
-            this.switchLabel.Location = new System.Drawing.Point(6, 16);
-            this.switchLabel.Name = "switchLabel";
-            this.switchLabel.Size = new System.Drawing.Size(11, 13);
-            this.switchLabel.TabIndex = 1;
-            this.switchLabel.Text = "*";
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(98, 27);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(22, 31);
+            this.label19.TabIndex = 4;
+            this.label19.Text = ".";
             // 
-            // patchPanelLabel
+            // label22
             // 
-            this.patchPanelLabel.AutoSize = true;
-            this.patchPanelLabel.Location = new System.Drawing.Point(6, 16);
-            this.patchPanelLabel.Name = "patchPanelLabel";
-            this.patchPanelLabel.Size = new System.Drawing.Size(11, 13);
-            this.patchPanelLabel.TabIndex = 1;
-            this.patchPanelLabel.Text = "*";
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(141, 27);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(22, 31);
+            this.label22.TabIndex = 4;
+            this.label22.Text = ".";
             // 
-            // idfLabel
+            // label23
             // 
-            this.idfLabel.AutoSize = true;
-            this.idfLabel.Location = new System.Drawing.Point(6, 16);
-            this.idfLabel.Name = "idfLabel";
-            this.idfLabel.Size = new System.Drawing.Size(11, 13);
-            this.idfLabel.TabIndex = 1;
-            this.idfLabel.Text = "*";
-            // 
-            // venueSpaceLabel
-            // 
-            this.venueSpaceLabel.AutoSize = true;
-            this.venueSpaceLabel.Location = new System.Drawing.Point(6, 16);
-            this.venueSpaceLabel.Name = "venueSpaceLabel";
-            this.venueSpaceLabel.Size = new System.Drawing.Size(11, 13);
-            this.venueSpaceLabel.TabIndex = 1;
-            this.venueSpaceLabel.Text = "*";
-            // 
-            // venueLabel
-            // 
-            this.venueLabel.AutoSize = true;
-            this.venueLabel.Location = new System.Drawing.Point(6, 16);
-            this.venueLabel.Name = "venueLabel";
-            this.venueLabel.Size = new System.Drawing.Size(11, 13);
-            this.venueLabel.TabIndex = 1;
-            this.venueLabel.Text = "*";
-            // 
-            // createSwitchBtn
-            // 
-            this.createSwitchBtn.Location = new System.Drawing.Point(313, 113);
-            this.createSwitchBtn.Name = "createSwitchBtn";
-            this.createSwitchBtn.Size = new System.Drawing.Size(396, 25);
-            this.createSwitchBtn.TabIndex = 26;
-            this.createSwitchBtn.Text = "Create";
-            this.createSwitchBtn.UseVisualStyleBackColor = true;
-            this.createSwitchBtn.Click += new System.EventHandler(this.createSwitchBtn_Click);
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(184, 27);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(22, 31);
+            this.label23.TabIndex = 4;
+            this.label23.Text = ".";
             // 
             // CreateForm
             // 
@@ -1148,7 +1223,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox dnsNameBox;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox ipBox;
+        private System.Windows.Forms.TextBox ipBox0;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.ComboBox regComboBox;
@@ -1192,5 +1267,11 @@
         private System.Windows.Forms.Label venueSpaceLabel;
         private System.Windows.Forms.Label venueLabel;
         private System.Windows.Forms.Button createSwitchBtn;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox ipBox3;
+        private System.Windows.Forms.TextBox ipBox2;
+        private System.Windows.Forms.TextBox ipBox1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
     }
 }

@@ -19,7 +19,29 @@ namespace PhoneSystemInventoryManager
         private int currentTabIndex;
         private bool errorsPending = true;
 
-        public static List<PatchPanel> availablePatchPanelList = new List<PatchPanel>();
+        //public static List<PatchPanel> availablePatchPanelList = new List<PatchPanel>();
+        public class IDF
+        {
+            public string name;
+            public string venueSpaceName;
+            public string venueName;
+            public string idfString;
+        }
+
+        public class PatchPanel
+        {
+            public string portTotal;
+            public int patchPanelID;
+            public string patchPanelName;
+            public List<int> openPorts;
+            public int idfID;
+            public string idfName;
+            public int venueSpaceID;
+            public string venueSpaceName;
+            public int venueID;
+            public string venueName;
+            public string patchPanelRecord;
+        }
 
         public CreateForm(MainForm mainform, object sender)
         {
@@ -125,6 +147,61 @@ namespace PhoneSystemInventoryManager
             newID = i;
 
             return newID;
+        }
+
+        private List<IDF> getIDFList()
+        {
+            List<IDF> idfs = new List<IDF>();
+
+            string idfQuery = "SELECT IDF.IDFID, IDF.IDFName, VenueSpace.VenueSpaceName, Venue.VenueName FROM [IDF], [VenueSpace], [Venue] WHERE IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            DataSet idfDS = getDataSet(idfQuery);
+
+            foreach (DataRow dr in idfDS.Tables[0].Rows)
+            {
+                IDF idf = new IDF();
+                idf.idfString = dr.ItemArray.GetValue(0).ToString();
+                idf.name = dr.ItemArray.GetValue(1).ToString();
+                idf.venueSpaceName = dr.ItemArray.GetValue(2).ToString();
+                idf.venueName = dr.ItemArray.GetValue(3).ToString();
+                idf.idfString = idf.name + ", " + idf.venueSpaceName + ", " + idf.venueName;
+                idfs.Add(idf);
+            }
+            idfs.OrderBy(i => i.venueName);
+
+            return idfs;
+        }
+
+        private List<PatchPanel> getPatchPanelList()
+        {
+            List<PatchPanel> patchPanels = new List<PatchPanel>();
+
+            string patchPanelsQuery = "SELECT PatchPanel.PatchPanelID, PatchPanel.PatchPanelName, IDF.IDFID, IDF.IDFName, VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, Venue.VenueID, Venue.VenueName FROM [PatchPanel], [IDF], [VenueSpace], [Venue] WHERE PatchPanel.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            DataSet patchPanelsDS = getDataSet(patchPanelsQuery);
+
+            foreach (DataRow dr in patchPanelsDS.Tables[0].Rows)
+            {
+                PatchPanel pp = new PatchPanel();
+                pp.patchPanelID = (int)dr.ItemArray.GetValue(0);
+                pp.patchPanelName = dr.ItemArray.GetValue(1).ToString();
+                pp.idfID = (int)dr.ItemArray.GetValue(2);
+                pp.idfName = dr.ItemArray.GetValue(3).ToString();
+                pp.venueSpaceID = (int)dr.ItemArray.GetValue(4);
+                pp.venueSpaceName = dr.ItemArray.GetValue(5).ToString();
+                pp.venueID = (int)dr.ItemArray.GetValue(6);
+                pp.venueName = dr.ItemArray.GetValue(7).ToString();
+                pp.patchPanelRecord = pp.patchPanelName + ", " + pp.idfName + ", " + pp.venueSpaceName + ", " + pp.venueName;
+
+                string portCountQuery = "SELECT COUNT(PatchPanelPort.PatchPanelID) FROM [PatchPanelPort] WHERE PatchPanelPort.PatchPanelID = " + pp.patchPanelID + ";";
+                DataSet portCountDS = getDataSet(portCountQuery);
+
+                pp.portTotal = portCountDS.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+
+                patchPanels.Add(pp);
+            }
+
+            patchPanels.OrderBy(p => p.venueName);
+
+            return patchPanels;
         }
 
         public static string removeSpecialCharacters(string str)
@@ -410,26 +487,12 @@ namespace PhoneSystemInventoryManager
 
 //beginOfficeJackTab
         
-        public class PatchPanel
-        {
-            public string portTotal;
-            public int patchPanelID;
-            public string patchPanelName;
-            public List<int> openPorts;
-            public int idfID;
-            public string idfName;
-            public int venueSpaceID;
-            public string venueSpaceName;
-            public int venueID;
-            public string venueName;
-            public string patchPanelRecord;
-        }
-
         private void loadOfficeJackTab()
         {
-            availablePatchPanelList.Clear();
+            //availablePatchPanelList.Clear();
             List<string> patchPanelRecords = new List<string>();
             List<string> macs = new List<string>();
+            List<PatchPanel> patchPanelList = getPatchPanelList();
 
             //find list of availiable patchpanels with available patchpanelports
             
@@ -438,9 +501,6 @@ namespace PhoneSystemInventoryManager
             DataSet unassignedPhonesDS = getDataSet(unassignedPhonesQuery);
             DataSet assignedPhonesDS = getDataSet(assignedPhonesQuery);
 
-            string patchPanelsQuery = "SELECT PatchPanel.PatchPanelID, PatchPanel.PatchPanelName, IDF.IDFID, IDF.IDFName, VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, Venue.VenueID, Venue.VenueName FROM [PatchPanel], [IDF], [VenueSpace], [Venue] WHERE PatchPanel.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
-            DataSet patchPanelsDS = getDataSet(patchPanelsQuery);
-
             createDataGridView.DataSource = assignedPhonesDS.Tables[0];
 
             foreach (DataRow dr in unassignedPhonesDS.Tables[0].Rows)
@@ -448,31 +508,10 @@ namespace PhoneSystemInventoryManager
                 macs.Add(dr.ItemArray.GetValue(0).ToString());
             }
 
-            foreach (DataRow dr in patchPanelsDS.Tables[0].Rows)
-            {
-                PatchPanel pp = new PatchPanel();
-                pp.patchPanelID = (int)dr.ItemArray.GetValue(0);
-                pp.patchPanelName = dr.ItemArray.GetValue(1).ToString();
-                pp.idfID = (int)dr.ItemArray.GetValue(2);
-                pp.idfName = dr.ItemArray.GetValue(3).ToString();
-                pp.venueSpaceID = (int)dr.ItemArray.GetValue(4);
-                pp.venueSpaceName = dr.ItemArray.GetValue(5).ToString();
-                pp.venueID = (int)dr.ItemArray.GetValue(6);
-                pp.venueName = dr.ItemArray.GetValue(7).ToString();
-                pp.patchPanelRecord = pp.patchPanelName + ", " + pp.idfName + ", " + pp.venueSpaceName + ", " + pp.venueName;
-
-                string portCountQuery = "SELECT COUNT(PatchPanelPort.PatchPanelID) FROM [PatchPanelPort] WHERE PatchPanelPort.PatchPanelID = " + pp.patchPanelID + ";";
-                DataSet portCountDS = getDataSet(portCountQuery);
-
-                pp.portTotal = portCountDS.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
-
-                availablePatchPanelList.Add(pp);
-            }
-
             macs.Sort();
             macs.Insert(0, "");
-            availablePatchPanelList.OrderBy(p => p.venueName).ToList();
-            foreach (PatchPanel pp in availablePatchPanelList)
+            //availablePatchPanelList.OrderBy(p => p.venueName).ToList();
+            foreach (PatchPanel pp in patchPanelList)
             {
                 patchPanelRecords.Add(pp.patchPanelRecord);
             }
@@ -489,8 +528,9 @@ namespace PhoneSystemInventoryManager
 
             string patchPanelString = patchPanelComboBox.SelectedValue.ToString();
             List<string> openPortsList = new List<string>();
+            List<PatchPanel> patchPanelList = getPatchPanelList();
 
-            foreach (PatchPanel pp in availablePatchPanelList)
+            foreach (PatchPanel pp in patchPanelList)
             {
                 if (pp.patchPanelRecord == patchPanelString)
                 {
@@ -516,9 +556,10 @@ namespace PhoneSystemInventoryManager
 
         private void createOfficeJackBtn_Click(object sender, EventArgs e)
         {
+            List<PatchPanel> patchPanelList = getPatchPanelList();
             string mac = macComboBox.SelectedValue.ToString();
             string patchPanelString = patchPanelComboBox.SelectedValue.ToString();
-            string openPatchPanelPortNum = patchPanelPortComboBox.SelectedValue.ToString(); //get patchPanelPortID      
+            string openPatchPanelPortNum = patchPanelPortComboBox.SelectedValue.ToString();
             bool isValid = officeJackTabValid(mac, patchPanelString, openPatchPanelPortNum);
            
             if (isValid && !errorsPending)
@@ -536,7 +577,7 @@ namespace PhoneSystemInventoryManager
                 DataSet phoneIDDS = getDataSet(phoneIDQuery);
                 phoneID = (int)phoneIDDS.Tables[0].Rows[0].ItemArray.GetValue(0);
 
-                foreach (PatchPanel pp in availablePatchPanelList)
+                foreach (PatchPanel pp in patchPanelList)
                 {
                     if (pp.patchPanelRecord == patchPanelString)
                     {
@@ -632,18 +673,32 @@ namespace PhoneSystemInventoryManager
         private void loadSwitchTab()
         {
             dnsNameBox.Clear();
-            ipBox.Clear();
+            ipBox0.Clear(); ipBox1.Clear(); ipBox2.Clear(); ipBox3.Clear();
+            portCountComboBox.SelectedIndex = 0;
+
+            List<string> idfStringList = new List<string>();
             
             string switchQuery = "SELECT Switch.DNSName, Switch.IP, IDF.IDFName, VenueSpace.VenueSpaceName, Venue.VenueName FROM [Switch], [IDF], [VenueSpace], [Venue] WHERE Switch.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            DataSet switchDS = getDataSet(switchQuery);
 
-            DataSet ds = getDataSet(switchQuery);
+            List<IDF> idfList = getIDFList();            
 
-            createDataGridView.DataSource = ds.Tables[0];
+            foreach(IDF idf in idfList)
+            {
+                idfStringList.Add(idf.idfString);
+            }
+            idfStringList.Insert(0, "");
+
+            idfComboBox.DataSource = idfStringList;
+
+            createDataGridView.DataSource = switchDS.Tables[0];
         }
 
         private void createSwitchBtn_Click(object sender, EventArgs e)
         {
+            
 
+            loadSwitchTab();
         }
 
         //endSwitchTab
