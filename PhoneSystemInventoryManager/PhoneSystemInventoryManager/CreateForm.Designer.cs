@@ -68,13 +68,13 @@
             this.label25 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.portCountComboBox = new System.Windows.Forms.ComboBox();
+            this.idfComboBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dnsNameBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ipBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -106,16 +106,32 @@
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.createDataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.userLabel = new System.Windows.Forms.Label();
+            this.phoneLabel = new System.Windows.Forms.Label();
+            this.officeJackLabel = new System.Windows.Forms.Label();
+            this.switchLabel = new System.Windows.Forms.Label();
+            this.patchPanelLabel = new System.Windows.Forms.Label();
+            this.idfLabel = new System.Windows.Forms.Label();
+            this.venueSpaceLabel = new System.Windows.Forms.Label();
+            this.venueLabel = new System.Windows.Forms.Label();
             this.createSwitchBtn = new System.Windows.Forms.Button();
             this.createTabControl.SuspendLayout();
             this.userTab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.tabPage8.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.createDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -240,6 +256,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.userLabel);
             this.groupBox1.Location = new System.Drawing.Point(313, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(396, 101);
@@ -296,6 +313,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.phoneLabel);
             this.groupBox2.Location = new System.Drawing.Point(313, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(396, 101);
@@ -424,6 +442,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.officeJackLabel);
             this.groupBox3.Location = new System.Drawing.Point(313, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(396, 101);
@@ -532,13 +551,13 @@
             // 
             this.tabPage3.Controls.Add(this.createSwitchBtn);
             this.tabPage3.Controls.Add(this.groupBox4);
-            this.tabPage3.Controls.Add(this.comboBox6);
-            this.tabPage3.Controls.Add(this.comboBox4);
+            this.tabPage3.Controls.Add(this.portCountComboBox);
+            this.tabPage3.Controls.Add(this.idfComboBox);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.dnsNameBox);
             this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.ipBox);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -550,6 +569,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.switchLabel);
             this.groupBox4.Location = new System.Drawing.Point(313, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(396, 101);
@@ -557,27 +577,27 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Details";
             // 
-            // comboBox6
+            // portCountComboBox
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
+            this.portCountComboBox.FormattingEnabled = true;
+            this.portCountComboBox.Items.AddRange(new object[] {
             "12",
             "16",
             "24",
             "48"});
-            this.comboBox6.Location = new System.Drawing.Point(73, 61);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(54, 21);
-            this.comboBox6.TabIndex = 21;
+            this.portCountComboBox.Location = new System.Drawing.Point(73, 61);
+            this.portCountComboBox.Name = "portCountComboBox";
+            this.portCountComboBox.Size = new System.Drawing.Size(54, 21);
+            this.portCountComboBox.TabIndex = 21;
             // 
-            // comboBox4
+            // idfComboBox
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(73, 90);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(234, 21);
-            this.comboBox4.TabIndex = 21;
+            this.idfComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.idfComboBox.FormattingEnabled = true;
+            this.idfComboBox.Location = new System.Drawing.Point(73, 90);
+            this.idfComboBox.Name = "idfComboBox";
+            this.idfComboBox.Size = new System.Drawing.Size(234, 21);
+            this.idfComboBox.TabIndex = 21;
             // 
             // label9
             // 
@@ -600,13 +620,13 @@
             this.label15.TabIndex = 19;
             this.label15.Text = "Port Count";
             // 
-            // textBox1
+            // dnsNameBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(73, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(234, 20);
-            this.textBox1.TabIndex = 15;
+            this.dnsNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dnsNameBox.Location = new System.Drawing.Point(73, 9);
+            this.dnsNameBox.Name = "dnsNameBox";
+            this.dnsNameBox.Size = new System.Drawing.Size(234, 20);
+            this.dnsNameBox.TabIndex = 15;
             // 
             // label11
             // 
@@ -618,13 +638,13 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "IDF";
             // 
-            // textBox2
+            // ipBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(73, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(234, 20);
-            this.textBox2.TabIndex = 16;
+            this.ipBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipBox.Location = new System.Drawing.Point(73, 35);
+            this.ipBox.Name = "ipBox";
+            this.ipBox.Size = new System.Drawing.Size(234, 20);
+            this.ipBox.TabIndex = 16;
             // 
             // label12
             // 
@@ -656,6 +676,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.patchPanelLabel);
             this.groupBox5.Location = new System.Drawing.Point(313, 6);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(396, 101);
@@ -746,6 +767,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.idfLabel);
             this.groupBox6.Location = new System.Drawing.Point(313, 6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(396, 101);
@@ -785,7 +807,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(16, 38);
+            this.label30.Location = new System.Drawing.Point(19, 38);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(48, 13);
             this.label30.TabIndex = 12;
@@ -817,6 +839,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.venueSpaceLabel);
             this.groupBox7.Location = new System.Drawing.Point(313, 6);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(396, 101);
@@ -886,6 +909,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.venueLabel);
             this.groupBox8.Location = new System.Drawing.Point(313, 6);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(396, 101);
@@ -938,7 +962,7 @@
             this.createDataGridView.ReadOnly = true;
             this.createDataGridView.RowHeadersVisible = false;
             this.createDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.createDataGridView.Size = new System.Drawing.Size(723, 208);
+            this.createDataGridView.Size = new System.Drawing.Size(723, 321);
             this.createDataGridView.TabIndex = 3;
             // 
             // errorProvider1
@@ -947,20 +971,93 @@
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
+            // userLabel
+            // 
+            this.userLabel.AutoSize = true;
+            this.userLabel.Location = new System.Drawing.Point(6, 16);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(11, 13);
+            this.userLabel.TabIndex = 0;
+            this.userLabel.Text = "*";
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.AutoSize = true;
+            this.phoneLabel.Location = new System.Drawing.Point(6, 16);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(11, 13);
+            this.phoneLabel.TabIndex = 1;
+            this.phoneLabel.Text = "*";
+            // 
+            // officeJackLabel
+            // 
+            this.officeJackLabel.AutoSize = true;
+            this.officeJackLabel.Location = new System.Drawing.Point(6, 16);
+            this.officeJackLabel.Name = "officeJackLabel";
+            this.officeJackLabel.Size = new System.Drawing.Size(11, 13);
+            this.officeJackLabel.TabIndex = 1;
+            this.officeJackLabel.Text = "*";
+            // 
+            // switchLabel
+            // 
+            this.switchLabel.AutoSize = true;
+            this.switchLabel.Location = new System.Drawing.Point(6, 16);
+            this.switchLabel.Name = "switchLabel";
+            this.switchLabel.Size = new System.Drawing.Size(11, 13);
+            this.switchLabel.TabIndex = 1;
+            this.switchLabel.Text = "*";
+            // 
+            // patchPanelLabel
+            // 
+            this.patchPanelLabel.AutoSize = true;
+            this.patchPanelLabel.Location = new System.Drawing.Point(6, 16);
+            this.patchPanelLabel.Name = "patchPanelLabel";
+            this.patchPanelLabel.Size = new System.Drawing.Size(11, 13);
+            this.patchPanelLabel.TabIndex = 1;
+            this.patchPanelLabel.Text = "*";
+            // 
+            // idfLabel
+            // 
+            this.idfLabel.AutoSize = true;
+            this.idfLabel.Location = new System.Drawing.Point(6, 16);
+            this.idfLabel.Name = "idfLabel";
+            this.idfLabel.Size = new System.Drawing.Size(11, 13);
+            this.idfLabel.TabIndex = 1;
+            this.idfLabel.Text = "*";
+            // 
+            // venueSpaceLabel
+            // 
+            this.venueSpaceLabel.AutoSize = true;
+            this.venueSpaceLabel.Location = new System.Drawing.Point(6, 16);
+            this.venueSpaceLabel.Name = "venueSpaceLabel";
+            this.venueSpaceLabel.Size = new System.Drawing.Size(11, 13);
+            this.venueSpaceLabel.TabIndex = 1;
+            this.venueSpaceLabel.Text = "*";
+            // 
+            // venueLabel
+            // 
+            this.venueLabel.AutoSize = true;
+            this.venueLabel.Location = new System.Drawing.Point(6, 16);
+            this.venueLabel.Name = "venueLabel";
+            this.venueLabel.Size = new System.Drawing.Size(11, 13);
+            this.venueLabel.TabIndex = 1;
+            this.venueLabel.Text = "*";
+            // 
             // createSwitchBtn
             // 
             this.createSwitchBtn.Location = new System.Drawing.Point(313, 113);
             this.createSwitchBtn.Name = "createSwitchBtn";
             this.createSwitchBtn.Size = new System.Drawing.Size(396, 25);
-            this.createSwitchBtn.TabIndex = 15;
+            this.createSwitchBtn.TabIndex = 26;
             this.createSwitchBtn.Text = "Create";
             this.createSwitchBtn.UseVisualStyleBackColor = true;
+            this.createSwitchBtn.Click += new System.EventHandler(this.createSwitchBtn_Click);
             // 
             // CreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 379);
+            this.ClientSize = new System.Drawing.Size(723, 491);
             this.Controls.Add(this.createDataGridView);
             this.Controls.Add(this.createTabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -971,20 +1068,36 @@
             this.createTabControl.ResumeLayout(false);
             this.userTab.ResumeLayout(false);
             this.userTab.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.createDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -1033,14 +1146,14 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox jackBox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox dnsNameBox;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ipBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.ComboBox regComboBox;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox portCountComboBox;
+        private System.Windows.Forms.ComboBox idfComboBox;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.Button createOfficeJackBtn;
@@ -1070,6 +1183,14 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label userLabel;
+        private System.Windows.Forms.Label phoneLabel;
+        private System.Windows.Forms.Label officeJackLabel;
+        private System.Windows.Forms.Label switchLabel;
+        private System.Windows.Forms.Label patchPanelLabel;
+        private System.Windows.Forms.Label idfLabel;
+        private System.Windows.Forms.Label venueSpaceLabel;
+        private System.Windows.Forms.Label venueLabel;
         private System.Windows.Forms.Button createSwitchBtn;
     }
 }

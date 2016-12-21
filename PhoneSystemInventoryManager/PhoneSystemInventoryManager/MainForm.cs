@@ -189,5 +189,11 @@ namespace PhoneSystemInventoryManager
             CreateForm newForm = new CreateForm(this, sender);
             newForm.ShowDialog();
         }
+
+        private void switchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm newForm = new CreateForm(this, sender);
+            newForm.ShowDialog();
+        }
     }
 }

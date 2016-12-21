@@ -217,6 +217,7 @@
             this.switchToolStripMenuItem.Name = "switchToolStripMenuItem";
             this.switchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.switchToolStripMenuItem.Text = "Switch";
+            this.switchToolStripMenuItem.Click += new System.EventHandler(this.switchToolStripMenuItem_Click);
             // 
             // patchPanelToolStripMenuItem
             // 

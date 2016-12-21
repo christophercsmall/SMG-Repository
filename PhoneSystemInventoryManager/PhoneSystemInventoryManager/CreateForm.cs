@@ -47,6 +47,12 @@ namespace PhoneSystemInventoryManager
                         currentTabIndex = 2;
                         break;
                     }
+                case "Switch":
+                    {
+                        createTabControl.SelectTab(3);
+                        currentTabIndex = 3;
+                        break;
+                    }
                 default:
                     {                       
                         break;
@@ -84,6 +90,7 @@ namespace PhoneSystemInventoryManager
                     loadOfficeJackTab();
                     break;
                 case 3:
+                    loadSwitchTab();
                     break;
                 case 4:
                     break;
@@ -618,7 +625,27 @@ namespace PhoneSystemInventoryManager
         {
 
         }
-
         //endOfficeJackTab
+
+        //beginSwitchTab
+
+        private void loadSwitchTab()
+        {
+            dnsNameBox.Clear();
+            ipBox.Clear();
+            
+            string switchQuery = "SELECT Switch.DNSName, Switch.IP, IDF.IDFName, VenueSpace.VenueSpaceName, Venue.VenueName FROM [Switch], [IDF], [VenueSpace], [Venue] WHERE Switch.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+
+            DataSet ds = getDataSet(switchQuery);
+
+            createDataGridView.DataSource = ds.Tables[0];
+        }
+
+        private void createSwitchBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //endSwitchTab
     }
 }
