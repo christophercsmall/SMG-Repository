@@ -79,8 +79,14 @@
             this.label15 = new System.Windows.Forms.Label();
             this.dnsNameBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.ipBox3 = new System.Windows.Forms.TextBox();
+            this.ipBox2 = new System.Windows.Forms.TextBox();
+            this.ipBox1 = new System.Windows.Forms.TextBox();
             this.ipBox0 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.patchPanelLabel = new System.Windows.Forms.Label();
@@ -115,12 +121,6 @@
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.createDataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ipBox1 = new System.Windows.Forms.TextBox();
-            this.ipBox2 = new System.Windows.Forms.TextBox();
-            this.ipBox3 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.createTabControl.SuspendLayout();
             this.userTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -187,7 +187,6 @@
             this.fNameBox.Name = "fNameBox";
             this.fNameBox.Size = new System.Drawing.Size(234, 20);
             this.fNameBox.TabIndex = 1;
-            this.fNameBox.TextChanged += new System.EventHandler(this.fNameBox_TextChanged);
             // 
             // compBox
             // 
@@ -645,9 +644,12 @@
             "24",
             "48"});
             this.portCountComboBox.Location = new System.Drawing.Point(73, 61);
+            this.portCountComboBox.MaxLength = 2;
             this.portCountComboBox.Name = "portCountComboBox";
             this.portCountComboBox.Size = new System.Drawing.Size(54, 21);
             this.portCountComboBox.TabIndex = 21;
+            this.portCountComboBox.TextChanged += new System.EventHandler(this.portCountComboBox_TextChanged);
+            this.portCountComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.portCountComboBox_KeyPress);
             // 
             // idfComboBox
             // 
@@ -657,6 +659,7 @@
             this.idfComboBox.Name = "idfComboBox";
             this.idfComboBox.Size = new System.Drawing.Size(234, 21);
             this.idfComboBox.TabIndex = 21;
+            this.idfComboBox.SelectedIndexChanged += new System.EventHandler(this.idfComboBox_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -681,11 +684,13 @@
             // 
             // dnsNameBox
             // 
+            this.dnsNameBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.dnsNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dnsNameBox.Location = new System.Drawing.Point(73, 9);
             this.dnsNameBox.Name = "dnsNameBox";
             this.dnsNameBox.Size = new System.Drawing.Size(234, 20);
             this.dnsNameBox.TabIndex = 15;
+            this.dnsNameBox.TextChanged += new System.EventHandler(this.dnsNameBox_TextChanged);
             // 
             // label11
             // 
@@ -697,15 +702,55 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "IDF";
             // 
+            // ipBox3
+            // 
+            this.ipBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipBox3.Location = new System.Drawing.Point(201, 35);
+            this.ipBox3.MaxLength = 3;
+            this.ipBox3.Name = "ipBox3";
+            this.ipBox3.Size = new System.Drawing.Size(29, 20);
+            this.ipBox3.TabIndex = 16;
+            this.ipBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ipBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ipBox3_KeyPress);
+            // 
+            // ipBox2
+            // 
+            this.ipBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipBox2.Location = new System.Drawing.Point(158, 35);
+            this.ipBox2.MaxLength = 3;
+            this.ipBox2.Name = "ipBox2";
+            this.ipBox2.Size = new System.Drawing.Size(29, 20);
+            this.ipBox2.TabIndex = 16;
+            this.ipBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ipBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ipBox2_KeyPress);
+            // 
+            // ipBox1
+            // 
+            this.ipBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipBox1.Location = new System.Drawing.Point(115, 35);
+            this.ipBox1.MaxLength = 3;
+            this.ipBox1.Name = "ipBox1";
+            this.ipBox1.ShortcutsEnabled = false;
+            this.ipBox1.Size = new System.Drawing.Size(29, 20);
+            this.ipBox1.TabIndex = 16;
+            this.ipBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ipBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ipBox1_KeyPress);
+            // 
             // ipBox0
             // 
             this.ipBox0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ipBox0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ipBox0.Location = new System.Drawing.Point(73, 35);
+            this.ipBox0.MaxLength = 3;
             this.ipBox0.Name = "ipBox0";
+            this.ipBox0.ShortcutsEnabled = false;
             this.ipBox0.Size = new System.Drawing.Size(29, 20);
             this.ipBox0.TabIndex = 16;
             this.ipBox0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ipBox0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ipBox0_KeyPress);
             // 
             // label12
             // 
@@ -716,6 +761,36 @@
             this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 20;
             this.label12.Text = "IP Addr.";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(98, 27);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(22, 31);
+            this.label19.TabIndex = 4;
+            this.label19.Text = ".";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(184, 27);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(22, 31);
+            this.label23.TabIndex = 4;
+            this.label23.Text = ".";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(141, 27);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(22, 31);
+            this.label22.TabIndex = 4;
+            this.label22.Text = ".";
             // 
             // tabPage4
             // 
@@ -1067,66 +1142,6 @@
             this.errorProvider1.BlinkRate = 0;
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
-            // 
-            // ipBox1
-            // 
-            this.ipBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ipBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipBox1.Location = new System.Drawing.Point(115, 35);
-            this.ipBox1.Name = "ipBox1";
-            this.ipBox1.Size = new System.Drawing.Size(29, 20);
-            this.ipBox1.TabIndex = 16;
-            this.ipBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ipBox2
-            // 
-            this.ipBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ipBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipBox2.Location = new System.Drawing.Point(158, 35);
-            this.ipBox2.Name = "ipBox2";
-            this.ipBox2.Size = new System.Drawing.Size(29, 20);
-            this.ipBox2.TabIndex = 16;
-            this.ipBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ipBox3
-            // 
-            this.ipBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ipBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipBox3.Location = new System.Drawing.Point(201, 35);
-            this.ipBox3.Name = "ipBox3";
-            this.ipBox3.Size = new System.Drawing.Size(29, 20);
-            this.ipBox3.TabIndex = 16;
-            this.ipBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(98, 27);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(22, 31);
-            this.label19.TabIndex = 4;
-            this.label19.Text = ".";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(141, 27);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(22, 31);
-            this.label22.TabIndex = 4;
-            this.label22.Text = ".";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(184, 27);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(22, 31);
-            this.label23.TabIndex = 4;
-            this.label23.Text = ".";
             // 
             // CreateForm
             // 

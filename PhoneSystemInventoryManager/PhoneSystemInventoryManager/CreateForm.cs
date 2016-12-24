@@ -22,6 +22,7 @@ namespace PhoneSystemInventoryManager
         //public static List<PatchPanel> availablePatchPanelList = new List<PatchPanel>();
         public class IDF
         {
+            public int id;
             public string name;
             public string venueSpaceName;
             public string venueName;
@@ -159,7 +160,7 @@ namespace PhoneSystemInventoryManager
             foreach (DataRow dr in idfDS.Tables[0].Rows)
             {
                 IDF idf = new IDF();
-                idf.idfString = dr.ItemArray.GetValue(0).ToString();
+                idf.id = (int)dr.ItemArray.GetValue(0);
                 idf.name = dr.ItemArray.GetValue(1).ToString();
                 idf.venueSpaceName = dr.ItemArray.GetValue(2).ToString();
                 idf.venueName = dr.ItemArray.GetValue(3).ToString();
@@ -662,10 +663,6 @@ namespace PhoneSystemInventoryManager
             errorProvider1.SetError(patchPanelPortComboBox, string.Empty);
         }
 
-        private void fNameBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         //endOfficeJackTab
 
         //beginSwitchTab
@@ -696,11 +693,234 @@ namespace PhoneSystemInventoryManager
 
         private void createSwitchBtn_Click(object sender, EventArgs e)
         {
-            
+            int idfID = -1;
+            int portCount = -1;
+            string dnsName = removeSpecialCharacters(dnsNameBox.Text);
+            string ip = ipBox0.Text + "." + ipBox1.Text + "." + ipBox2.Text + "." + ipBox3.Text;            
+            string switchIDQuery = "SELECT Switch.SwitchID FROM [Switch];";
+            int id = getUnusedID(switchIDQuery);
 
-            loadSwitchTab();
+            if (portCountComboBox.Text != "")
+            {
+                portCount = Convert.ToInt32(portCountComboBox.Text);
+            }
+
+            bool isValid = switchTabValid(dnsName, ipBox0.Text, ipBox1.Text, ipBox2.Text, ipBox3.Text);
+
+            if(isValid && !errorsPending)
+            {                
+                List<IDF> idfList = getIDFList();
+                foreach (IDF idf in idfList)
+                {
+                    if (idf.idfString == idfComboBox.Text)
+                    {
+                        idfID = idf.id;
+                    }
+                }
+
+                string insertQuery = "INSERT INTO [Switch] (SwitchID, DNSName, IP, IDFID) VALUES (" + id + ", '" + dnsName + "', '" + ip + "', '" + idfID + "');";
+                executeDbComm(insertQuery);
+
+                loadSwitchTab();
+            }
+            else
+            {
+                MessageBox.Show("Pending errors must be resolved.");
+            }
         }
 
+        private bool switchTabValid(string dnsName, string ip0, string ip1, string ip2, string ip3)
+        {
+            errorsPending = false;
+            bool dnsValid = false;
+            bool ipValid = false;
+            bool portCountValid = false;
+            bool idfValid = false;
+            bool dnsNameExists = false;
+            bool isValid = false;
+
+            string dnsNameBoolQuery = "SELECT Switch.DNSName FROM [Switch];";
+            DataSet dnsNameDS = getDataSet(dnsNameBoolQuery);
+
+            foreach(DataRow dr in dnsNameDS.Tables[0].Rows)
+            {
+                if(dr.ItemArray.GetValue(0).ToString() == dnsName)
+                {
+                    dnsNameExists = true;
+                }
+            }
+
+            if (dnsName == "" || dnsNameExists)
+            {
+                dnsValid = false;
+                errorProvider1.SetError(dnsNameBox, "Switch must have a Valid and Unique DNS Name.");
+                errorsPending = true;
+            }
+            else
+            {
+                dnsValid = true;
+            }
+
+            if (ip0 == "" || ip1 == "" || ip2 == "" || ip3 == "")
+            {
+                ipValid = false;
+                errorProvider1.SetError(ipBox3, "Switch must have valid IP Address.");
+                errorsPending = true;
+            }
+            else
+            {
+                ipValid = true;
+            }
+
+            if (portCountComboBox.Text == "")
+            {
+                portCountValid = false;
+                errorProvider1.SetError(portCountComboBox, "Number of Ports must be selected.");
+                errorsPending = true;
+            }
+            else
+            {
+                portCountValid = true;
+            }
+
+            if (idfComboBox.SelectedItem.ToString() == "")
+            {
+                idfValid = false;
+                errorProvider1.SetError(idfComboBox, "IDF must be selected.");
+                errorsPending = true;
+            }
+            else
+            {
+                idfValid = true;
+            }
+
+            if (dnsValid && ipValid && portCountValid && idfValid && !errorsPending)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        private void portCountComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == 8);
+        }
+
+        private void dnsNameBox_TextChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(dnsNameBox, string.Empty);
+        }
+
+        private void portCountComboBox_TextChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(portCountComboBox, string.Empty);
+        }
+
+        private void idfComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(idfComboBox, string.Empty);
+        }
+
+        private void ipBox0_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(ipBox3, string.Empty);
+
+            e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == 8);
+
+            switch (e.KeyChar)
+            {
+                case (char)48: case (char)49: case (char)50: case (char)51: case (char)52: case (char)53: case (char)54: case (char)55: case (char)56: case (char)57:
+                    if (ipBox0.TextLength == 2)
+                    {
+                        ipBox1.Select();
+                    }
+                    break;
+
+                case (char)8:
+                    break;
+            }            
+        }
+
+        private void ipBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(ipBox3, string.Empty);
+
+            e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == 8);
+
+            switch (e.KeyChar)
+            {
+                case (char)48: case (char)49: case (char)50: case (char)51: case (char)52: case (char)53: case (char)54: case (char)55: case (char)56: case (char)57:
+                    if (ipBox1.TextLength == 2)
+                    {
+                        ipBox2.Select();
+                    }
+                    break;
+
+                case (char)8:
+                    if (ipBox1.TextLength <= 1)
+                    {
+                        ipBox0.Select();
+                    }
+                    break;
+            }
+        }
+
+        private void ipBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(ipBox3, string.Empty);
+
+            e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == 8);
+
+            switch (e.KeyChar)
+            {
+                case (char)48: case (char)49: case (char)50: case (char)51: case (char)52: case (char)53: case (char)54: case (char)55: case (char)56: case (char)57:
+                    if (ipBox2.TextLength == 2)
+                    {
+                        ipBox3.Select();
+                    }
+                    break;
+
+                case (char)8:
+                    if (ipBox2.TextLength <= 1)
+                    {
+                        ipBox1.Select();
+                    }
+                    break;
+            }
+        }
+
+        private void ipBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(ipBox3, string.Empty);
+
+            e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == 8);
+
+            switch (e.KeyChar)
+            {
+                case (char)48: case (char)49: case (char)50: case (char)51: case (char)52: case (char)53: case (char)54: case (char)55: case (char)56: case (char)57:                    
+                    break;
+
+                case (char)8:
+                    if (ipBox3.TextLength <= 1)
+                    {
+                        ipBox2.Select();
+                    }
+                    break;
+            }
+        }
+        
         //endSwitchTab
     }
 }
