@@ -972,8 +972,12 @@ namespace PhoneSystemInventoryManager
         //beginPatchPanelTab*************************************************************************************************
         private void loadPatchPanelTab()
         {
+            errorProvider1.Clear();
+            ppNameBox.Clear();
+                        
             List<IDF> idfList = getIDFList();
             List<string> idfStringList = new List<string>();
+            string ppQuery = "SELECT PatchPanel.PatchPanelName, IDF.IDFName, VenueSpace.VenueSpaceName, Venue.VenueName FROM [PatchPanel], [IDF], [VenueSpace], [Venue] WHERE PatchPanel.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
 
             foreach (IDF idf in idfList)
             {
@@ -981,20 +985,105 @@ namespace PhoneSystemInventoryManager
             }
             idfStringList.Insert(0, "");
             ppIDFComboBox.DataSource = idfStringList;
-        }
 
-        private bool patchPanelTabValid()
-        {
-            bool isValid = false;
-
-            return isValid;
+            DataSet ppDS = getDataSet(ppQuery);
+            createDataGridView.DataSource = ppDS.Tables[0];
         }
 
         private void createPatchPanelBtn_Click(object sender, EventArgs e)
         {
+            string ppIDQuery = "SELECT PatchPanel.PatchPanelID from [PatchPanel];";
+            int newPPID = getUnusedID(ppIDQuery);
+            string newPPName = removeSpecialCharacters(ppNameBox.Text);
+            string idfString = ppIDFComboBox.SelectedValue.ToString();
+            int idfID = -1;
+            int portCount = -1;
 
+            List<IDF> idfList = getIDFList();
+            foreach (IDF idf in idfList)
+            {
+                if (idf.idfString == idfString)
+                {
+                    idfID = idf.id;
+                }
+            }
+
+            if (ppPortCountComboBox.Text != "")
+            {
+                portCount = Convert.ToInt32(ppPortCountComboBox.Text);
+            }
+
+            bool isValid = patchPanelTabValid(newPPName, idfID, portCount);
+
+            if (isValid)
+            {
+                string insertQuery = "INSERT INTO [PatchPanel] (PatchPanelID, PatchPanelName, IDFID) VALUES (" + newPPID + ", '" + newPPName + "' " + idfID + ");";
+                executeDbComm(insertQuery);
+
+                //add new records for each patchPanelPort
+
+                loadPatchPanelTab();
+            }
+            else
+            {
+                MessageBox.Show("Pending errors must be resolved.");
+            }
         }
 
+        private bool patchPanelTabValid(string ppName, int idfID, int portCount)
+        {
+            bool isValid = false;
+            bool ppNameValid = false;
+            bool idfValid = false;
+            bool portCountValid = false;
+
+            if (ppName == "")
+            {
+                ppNameValid = false;
+                errorProvider1.SetError(ppNameBox, "Patch Panel name cannot be empty.");
+                errorsPending = true;
+            }
+            else
+            {
+                ppNameValid = true;
+            }
+
+            if (idfID < 0)
+            {
+                idfValid = false;
+                errorProvider1.SetError(ppIDFComboBox, "IDF must be selected.");
+                errorsPending = true;
+            }
+            else
+            {
+                idfValid = true;
+            }
+
+            if (portCount <= 0)
+            {
+                portCountValid = false;
+                errorProvider1.SetError(ppPortCountComboBox, "Port count number must be selected and larger than 0.");
+                errorsPending = true;
+            }
+            else
+            {
+                portCountValid = true;
+            }
+
+
+            if (ppNameValid && idfValid && portCountValid && !errorsPending)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        
         //endPatchPanelTab
 
         //beginIDFTab******************************************************************************************************
