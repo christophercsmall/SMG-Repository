@@ -734,13 +734,16 @@ namespace PhoneSystemInventoryManager
             string ip = ipBox0.Text + "." + ipBox1.Text + "." + ipBox2.Text + "." + ipBox3.Text;            
             string switchIDQuery = "SELECT Switch.SwitchID FROM [Switch];";
             int id = getUnusedID(switchIDQuery);
+            string switchPortIDQuery = "SELECT SwitchPort.SwitchPortID FROM [SwitchPort];";
+            int switchPortID; int switchPortNum;
+            string insertSwitchPortQuery;
 
             if (portCountComboBox.Text != "")
             {
                 portCount = Convert.ToInt32(portCountComboBox.Text);
             }
-
-            bool isValid = switchTabValid(dnsName, ipBox0.Text, ipBox1.Text, ipBox2.Text, ipBox3.Text);
+            
+            bool isValid = switchTabValid(dnsName, ipBox0.Text, ipBox1.Text, ipBox2.Text, ipBox3.Text, portCount);
 
             if(isValid && !errorsPending)
             {                
@@ -756,6 +759,15 @@ namespace PhoneSystemInventoryManager
                 string insertQuery = "INSERT INTO [Switch] (SwitchID, DNSName, IP, IDFID) VALUES (" + id + ", '" + dnsName + "', '" + ip + "', '" + idfID + "');";
                 executeDbComm(insertQuery);
 
+                for (int i = 0; i < portCount; i++)
+                {
+                    switchPortID = getUnusedID(switchPortIDQuery);
+                    switchPortNum = i + 1;
+
+                    insertSwitchPortQuery = "INSERT INTO [SwitchPort] (SwitchPortID, SwitchPortNum, SwitchID, PatchPanelPortID) VALUES (" + switchPortID + ", " + switchPortNum + ", " + id + ", NULL );";
+                    executeDbComm(insertSwitchPortQuery);
+                }
+
                 loadSwitchTab();
             }
             else
@@ -764,7 +776,7 @@ namespace PhoneSystemInventoryManager
             }
         }
 
-        private bool switchTabValid(string dnsName, string ip0, string ip1, string ip2, string ip3)
+        private bool switchTabValid(string dnsName, string ip0, string ip1, string ip2, string ip3, int portCount)
         {
             bool dnsValid = false;
             bool ipValid = false;
@@ -806,7 +818,7 @@ namespace PhoneSystemInventoryManager
                 ipValid = true;
             }
 
-            if (portCountComboBox.Text == "")
+            if (portCount <= 0)
             {
                 portCountValid = false;
                 errorProvider1.SetError(portCountComboBox, "Number of Ports must be selected.");
@@ -960,7 +972,15 @@ namespace PhoneSystemInventoryManager
         //beginPatchPanelTab*************************************************************************************************
         private void loadPatchPanelTab()
         {
+            List<IDF> idfList = getIDFList();
+            List<string> idfStringList = new List<string>();
 
+            foreach (IDF idf in idfList)
+            {
+                idfStringList.Add(idf.idfString);
+            }
+            idfStringList.Insert(0, "");
+            ppIDFComboBox.DataSource = idfStringList;
         }
 
         private bool patchPanelTabValid()
@@ -1020,6 +1040,7 @@ namespace PhoneSystemInventoryManager
 
             return isValid;
         }
+
         //endVenueTab*************************************************************************************************
     }
 }

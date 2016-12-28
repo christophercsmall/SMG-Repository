@@ -644,7 +644,7 @@
             "24",
             "48"});
             this.portCountComboBox.Location = new System.Drawing.Point(73, 61);
-            this.portCountComboBox.MaxLength = 2;
+            this.portCountComboBox.MaxLength = 3;
             this.portCountComboBox.Name = "portCountComboBox";
             this.portCountComboBox.Size = new System.Drawing.Size(54, 21);
             this.portCountComboBox.TabIndex = 21;
@@ -831,8 +831,13 @@
             // 
             // ppPortCountComboBox
             // 
-            this.ppPortCountComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ppPortCountComboBox.FormattingEnabled = true;
+            this.ppPortCountComboBox.Items.AddRange(new object[] {
+            "",
+            "12",
+            "24",
+            "48",
+            "96"});
             this.ppPortCountComboBox.Location = new System.Drawing.Point(73, 62);
             this.ppPortCountComboBox.Name = "ppPortCountComboBox";
             this.ppPortCountComboBox.Size = new System.Drawing.Size(54, 21);
