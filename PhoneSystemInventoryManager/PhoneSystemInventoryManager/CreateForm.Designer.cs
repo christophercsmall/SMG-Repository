@@ -90,12 +90,12 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.patchPanelLabel = new System.Windows.Forms.Label();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.ppPortCountComboBox = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ppIDFComboBox = new System.Windows.Forms.ComboBox();
+            this.createPatchPanelBtn = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.ppNameBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -795,12 +795,12 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.groupBox5);
-            this.tabPage4.Controls.Add(this.comboBox9);
+            this.tabPage4.Controls.Add(this.ppPortCountComboBox);
             this.tabPage4.Controls.Add(this.label17);
-            this.tabPage4.Controls.Add(this.comboBox7);
-            this.tabPage4.Controls.Add(this.button4);
+            this.tabPage4.Controls.Add(this.ppIDFComboBox);
+            this.tabPage4.Controls.Add(this.createPatchPanelBtn);
             this.tabPage4.Controls.Add(this.label16);
-            this.tabPage4.Controls.Add(this.textBox16);
+            this.tabPage4.Controls.Add(this.ppNameBox);
             this.tabPage4.Controls.Add(this.label20);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -829,14 +829,14 @@
             this.patchPanelLabel.TabIndex = 1;
             this.patchPanelLabel.Text = "*";
             // 
-            // comboBox9
+            // ppPortCountComboBox
             // 
-            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(73, 62);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(54, 21);
-            this.comboBox9.TabIndex = 25;
+            this.ppPortCountComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ppPortCountComboBox.FormattingEnabled = true;
+            this.ppPortCountComboBox.Location = new System.Drawing.Point(73, 62);
+            this.ppPortCountComboBox.Name = "ppPortCountComboBox";
+            this.ppPortCountComboBox.Size = new System.Drawing.Size(54, 21);
+            this.ppPortCountComboBox.TabIndex = 25;
             // 
             // label17
             // 
@@ -848,23 +848,24 @@
             this.label17.TabIndex = 24;
             this.label17.Text = "Port Count";
             // 
-            // comboBox7
+            // ppIDFComboBox
             // 
-            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(73, 35);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(234, 21);
-            this.comboBox7.TabIndex = 22;
+            this.ppIDFComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ppIDFComboBox.FormattingEnabled = true;
+            this.ppIDFComboBox.Location = new System.Drawing.Point(73, 35);
+            this.ppIDFComboBox.Name = "ppIDFComboBox";
+            this.ppIDFComboBox.Size = new System.Drawing.Size(234, 21);
+            this.ppIDFComboBox.TabIndex = 22;
             // 
-            // button4
+            // createPatchPanelBtn
             // 
-            this.button4.Location = new System.Drawing.Point(313, 113);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(396, 25);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "Create";
-            this.button4.UseVisualStyleBackColor = true;
+            this.createPatchPanelBtn.Location = new System.Drawing.Point(313, 113);
+            this.createPatchPanelBtn.Name = "createPatchPanelBtn";
+            this.createPatchPanelBtn.Size = new System.Drawing.Size(396, 25);
+            this.createPatchPanelBtn.TabIndex = 14;
+            this.createPatchPanelBtn.Text = "Create";
+            this.createPatchPanelBtn.UseVisualStyleBackColor = true;
+            this.createPatchPanelBtn.Click += new System.EventHandler(this.createPatchPanelBtn_Click);
             // 
             // label16
             // 
@@ -876,13 +877,13 @@
             this.label16.TabIndex = 8;
             this.label16.Text = "PP Name";
             // 
-            // textBox16
+            // ppNameBox
             // 
-            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.Location = new System.Drawing.Point(73, 9);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(234, 20);
-            this.textBox16.TabIndex = 3;
+            this.ppNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ppNameBox.Location = new System.Drawing.Point(73, 9);
+            this.ppNameBox.Name = "ppNameBox";
+            this.ppNameBox.Size = new System.Drawing.Size(234, 20);
+            this.ppNameBox.TabIndex = 3;
             // 
             // label20
             // 
@@ -1220,7 +1221,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox ppNameBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label25;
@@ -1232,7 +1233,7 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox textBox36;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button createPatchPanelBtn;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox jackBox;
         private System.Windows.Forms.Label label9;
@@ -1245,12 +1246,12 @@
         private System.Windows.Forms.ComboBox portCountComboBox;
         private System.Windows.Forms.ComboBox idfComboBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox ppIDFComboBox;
         private System.Windows.Forms.Button createOfficeJackBtn;
         private System.Windows.Forms.ComboBox macComboBox;
         private System.Windows.Forms.ComboBox patchPanelComboBox;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.ComboBox ppPortCountComboBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox patchPanelPortComboBox;
         private System.Windows.Forms.Label label14;

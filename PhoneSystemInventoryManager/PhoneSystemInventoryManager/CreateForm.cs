@@ -76,6 +76,30 @@ namespace PhoneSystemInventoryManager
                         currentTabIndex = 3;
                         break;
                     }
+                case "Patch Panel":
+                    {
+                        createTabControl.SelectTab(4);
+                        currentTabIndex = 4;
+                        break;
+                    }
+                case "IDF":
+                    {
+                        createTabControl.SelectTab(5);
+                        currentTabIndex = 5;
+                        break;
+                    }
+                case "Venue Space":
+                    {
+                        createTabControl.SelectTab(6);
+                        currentTabIndex = 6;
+                        break;
+                    }
+                case "Venue":
+                    {
+                        createTabControl.SelectTab(7);
+                        currentTabIndex = 7;
+                        break;
+                    }
                 default:
                     {                       
                         break;
@@ -116,12 +140,16 @@ namespace PhoneSystemInventoryManager
                     loadSwitchTab();
                     break;
                 case 4:
+                    loadPatchPanelTab();
                     break;
                 case 5:
+                    loadIDFTab();
                     break;
                 case 6:
+                    loadVenueSpaceTab();
                     break;
                 case 7:
+                    loadVenueTab();
                     break;
                 default:
                     break;
@@ -205,6 +233,32 @@ namespace PhoneSystemInventoryManager
             return patchPanels;
         }
 
+        private bool extentionExists(string ext)
+        {
+            bool isValid = false;
+
+            List<string> extNums = new List<string>();
+
+            string extQuery = "SELECT User.ExtensionNum FROM [User];";
+
+            DataSet ds = getDataSet(extQuery);
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                extNums.Add(dr.ItemArray.GetValue(0).ToString());
+            }
+
+            foreach (string n in extNums)
+            {
+                if (n.ToString() == ext)
+                {
+                    isValid = true;
+                }
+            }
+
+            return isValid;
+        }
+
         public static string removeSpecialCharacters(string str)
         {
             return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
@@ -253,11 +307,12 @@ namespace PhoneSystemInventoryManager
             mf.dbClose();
         }
 
-        
 
-//startUserTab
+
+        //startUserTab*************************************************************************************************
         private void loadUserTab() 
         {
+            errorProvider1.Clear();
             lNameBox.Clear();
             fNameBox.Clear();
             compBox.Clear();
@@ -285,14 +340,17 @@ namespace PhoneSystemInventoryManager
             
             if (extBox.Text == "")
             {
-                errorProvider1.SetError(extBox, "User records require valid Extension Number");
+                errorProvider1.SetError(extBox, "User record require Extension Number");
                 errorsPending = true;
+                MessageBox.Show("Pending errors must be resolved.");
             }
             else
             {
-                if (errorsPending)
+                if (extentionExists(ext))
                 {
-                    MessageBox.Show("Pending errors must be resolved.");
+                    errorProvider1.SetError(extBox, "User record require unique Extension Number");
+                    errorsPending = true;
+                    MessageBox.Show("Extension number already assigned.");
                 }
                 else
                 {
@@ -321,36 +379,13 @@ namespace PhoneSystemInventoryManager
 
         }
 
-        private bool extentionExists(string ext)
-        {
-            bool isValid = false;
 
-            List<string> extNums = new List<string>();
-
-            string extQuery = "SELECT User.ExtensionNum FROM [User];";
-
-            DataSet ds = getDataSet(extQuery);
-
-            foreach (DataRow dr in ds.Tables[0].Rows)
-            {
-                extNums.Add(dr.ItemArray.GetValue(0).ToString());
-            }
-
-            foreach (string n in extNums)
-            {
-                if (n.ToString() == ext)
-                {
-                    isValid = true;
-                }
-            }
-
-            return isValid;
-        }
         //endUserTab
 
-//beginPhoneTab
+        //beginPhoneTab*************************************************************************************************
         private void loadPhoneTab()
         {
+            errorProvider1.Clear();
             macBox.Clear();
             jackBox.Clear();
             regComboBox.SelectedIndex = 0;
@@ -486,17 +521,16 @@ namespace PhoneSystemInventoryManager
 
         //endPhoneTab
 
-//beginOfficeJackTab
-        
+        //beginOfficeJackTab*************************************************************************************************
+
         private void loadOfficeJackTab()
         {
-            //availablePatchPanelList.Clear();
+            errorProvider1.Clear();
             List<string> patchPanelRecords = new List<string>();
             List<string> macs = new List<string>();
             List<PatchPanel> patchPanelList = getPatchPanelList();
+            officeJackDetailsBox.Clear();
 
-            //find list of availiable patchpanels with available patchpanelports
-            
             string unassignedPhonesQuery = "SELECT Phone.MAC FROM [Phone] WHERE Phone.PhoneID NOT IN(SELECT OfficeJack.PhoneID FROM [OfficeJack]);";
             string assignedPhonesQuery = "SELECT Phone.MAC, IDF.IDFName, Venue.VenueName, VenueSpace.VenueSpaceName, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [Phone], [IDF], [Venue], [VenueSpace], [PatchPanel], [PatchPanelPort], [OfficeJack] WHERE OfficeJack.PatchPanelPortID = PatchPanelPort.PatchPanelPortID AND Phone.PhoneID = OfficeJack.PhoneID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = PatchPanel.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
             DataSet unassignedPhonesDS = getDataSet(unassignedPhonesQuery);
@@ -511,7 +545,7 @@ namespace PhoneSystemInventoryManager
 
             macs.Sort();
             macs.Insert(0, "");
-            //availablePatchPanelList.OrderBy(p => p.venueName).ToList();
+
             foreach (PatchPanel pp in patchPanelList)
             {
                 patchPanelRecords.Add(pp.patchPanelRecord);
@@ -665,11 +699,12 @@ namespace PhoneSystemInventoryManager
 
         //endOfficeJackTab
 
-        //beginSwitchTab
+        //beginSwitchTab*************************************************************************************************
 
         private void loadSwitchTab()
         {
-            dnsNameBox.Clear();
+            errorProvider1.Clear();
+            dnsNameBox.Clear(); 
             ipBox0.Clear(); ipBox1.Clear(); ipBox2.Clear(); ipBox3.Clear();
             portCountComboBox.SelectedIndex = 0;
 
@@ -731,7 +766,6 @@ namespace PhoneSystemInventoryManager
 
         private bool switchTabValid(string dnsName, string ip0, string ip1, string ip2, string ip3)
         {
-            errorsPending = false;
             bool dnsValid = false;
             bool ipValid = false;
             bool portCountValid = false;
@@ -920,7 +954,72 @@ namespace PhoneSystemInventoryManager
                     break;
             }
         }
-        
+
         //endSwitchTab
+
+        //beginPatchPanelTab*************************************************************************************************
+        private void loadPatchPanelTab()
+        {
+
+        }
+
+        private bool patchPanelTabValid()
+        {
+            bool isValid = false;
+
+            return isValid;
+        }
+
+        private void createPatchPanelBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //endPatchPanelTab
+
+        //beginIDFTab******************************************************************************************************
+
+        private void loadIDFTab()
+        {
+
+        }
+
+        private bool IDFTabValid()
+        {
+            bool isValid = false;
+
+            return isValid;
+        }
+        //endIDFTab
+
+        //beginVenueSpaceTab*************************************************************************************************
+
+        private void loadVenueSpaceTab()
+        {
+
+        }
+
+        private bool venueSpaceTabValid()
+        {
+            bool isValid = false;
+
+            return isValid;
+        }
+        //endVenueSpaceTab
+
+        //beginVenueTab*************************************************************************************************
+
+        private void loadVenueTab()
+        {
+
+        }
+
+        private bool venueTabValid()
+        {
+            bool isValid = false;
+
+            return isValid;
+        }
+        //endVenueTab*************************************************************************************************
     }
 }

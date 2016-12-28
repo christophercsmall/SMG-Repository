@@ -128,7 +128,7 @@ namespace PhoneSystemInventoryManager
             dbClose();
         }   
 
-        private void button1_Click(object sender, EventArgs e)
+        private void searchBtn_Click(object sender, EventArgs e)
         {
             string query = "";
             string filter = searchBox.Text;
@@ -191,6 +191,30 @@ namespace PhoneSystemInventoryManager
         }
 
         private void switchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm newForm = new CreateForm(this, sender);
+            newForm.ShowDialog();
+        }
+
+        private void patchPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm newForm = new CreateForm(this, sender);
+            newForm.ShowDialog();
+        }
+
+        private void iDFToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CreateForm newForm = new CreateForm(this, sender);
+            newForm.ShowDialog();
+        }
+
+        private void venueSpaceToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CreateForm newForm = new CreateForm(this, sender);
+            newForm.ShowDialog();
+        }
+
+        private void venueToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CreateForm newForm = new CreateForm(this, sender);
             newForm.ShowDialog();
