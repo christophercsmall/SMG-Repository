@@ -100,11 +100,11 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.idfLabel = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.createIdfBtn = new System.Windows.Forms.Button();
+            this.idfLocComboBox = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.idfNameBox = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.venueSpaceLabel = new System.Windows.Forms.Label();
@@ -980,11 +980,11 @@
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.groupBox6);
-            this.tabPage6.Controls.Add(this.button5);
-            this.tabPage6.Controls.Add(this.comboBox10);
+            this.tabPage6.Controls.Add(this.createIdfBtn);
+            this.tabPage6.Controls.Add(this.idfLocComboBox);
             this.tabPage6.Controls.Add(this.label26);
             this.tabPage6.Controls.Add(this.label30);
-            this.tabPage6.Controls.Add(this.textBox30);
+            this.tabPage6.Controls.Add(this.idfNameBox);
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
@@ -1016,25 +1016,27 @@
             this.idfLabel.TabIndex = 1;
             this.idfLabel.Text = "*";
             // 
-            // button5
+            // createIdfBtn
             // 
-            this.button5.Location = new System.Drawing.Point(417, 139);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(528, 31);
-            this.button5.TabIndex = 26;
-            this.button5.Text = "Create";
-            this.button5.UseVisualStyleBackColor = true;
+            this.createIdfBtn.Location = new System.Drawing.Point(417, 139);
+            this.createIdfBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.createIdfBtn.Name = "createIdfBtn";
+            this.createIdfBtn.Size = new System.Drawing.Size(528, 31);
+            this.createIdfBtn.TabIndex = 26;
+            this.createIdfBtn.Text = "Create";
+            this.createIdfBtn.UseVisualStyleBackColor = true;
+            this.createIdfBtn.Click += new System.EventHandler(this.createIdfBtn_Click);
             // 
-            // comboBox10
+            // idfLocComboBox
             // 
-            this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(97, 43);
-            this.comboBox10.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(311, 24);
-            this.comboBox10.TabIndex = 22;
+            this.idfLocComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.idfLocComboBox.FormattingEnabled = true;
+            this.idfLocComboBox.Location = new System.Drawing.Point(97, 43);
+            this.idfLocComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.idfLocComboBox.Name = "idfLocComboBox";
+            this.idfLocComboBox.Size = new System.Drawing.Size(311, 24);
+            this.idfLocComboBox.TabIndex = 22;
+            this.idfLocComboBox.SelectedIndexChanged += new System.EventHandler(this.idfLocComboBox_SelectedIndexChanged);
             // 
             // label26
             // 
@@ -1058,14 +1060,15 @@
             this.label30.TabIndex = 12;
             this.label30.Text = "Location";
             // 
-            // textBox30
+            // idfNameBox
             // 
-            this.textBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox30.Location = new System.Drawing.Point(97, 11);
-            this.textBox30.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(311, 23);
-            this.textBox30.TabIndex = 7;
+            this.idfNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idfNameBox.Location = new System.Drawing.Point(97, 11);
+            this.idfNameBox.Margin = new System.Windows.Forms.Padding(4);
+            this.idfNameBox.Name = "idfNameBox";
+            this.idfNameBox.Size = new System.Drawing.Size(311, 23);
+            this.idfNameBox.TabIndex = 7;
+            this.idfNameBox.TextChanged += new System.EventHandler(this.idfNameBox_TextChanged);
             // 
             // tabPage7
             // 
@@ -1336,7 +1339,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox30;
+        private System.Windows.Forms.TextBox idfNameBox;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox textBox31;
         private System.Windows.Forms.Label label35;
@@ -1366,8 +1369,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox officeJackDetailsBox;
-        private System.Windows.Forms.ComboBox comboBox10;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox idfLocComboBox;
+        private System.Windows.Forms.Button createIdfBtn;
         private System.Windows.Forms.ComboBox comboBox11;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;

@@ -1113,7 +1113,23 @@ namespace PhoneSystemInventoryManager
 
         private void loadIDFTab()
         {
+            idfNameBox.Clear();
 
+            List<IDF> idfList = getIDFList();
+            List<string> idfStringList = new List<string>();
+
+            foreach (IDF idf in idfList)
+            {
+                idfStringList.Add(idf.idfString);
+            }
+            idfStringList.Insert(0, "");
+
+            idfLocComboBox.DataSource = idfStringList;
+        }
+
+        private void createIdfBtn_Click(object sender, EventArgs e)
+        {
+            bool isValid = IDFTabValid();
         }
 
         private bool IDFTabValid()
@@ -1128,8 +1144,10 @@ namespace PhoneSystemInventoryManager
 
         private void loadVenueSpaceTab()
         {
-
+            
         }
+
+        
 
         private bool venueSpaceTabValid()
         {
@@ -1137,6 +1155,19 @@ namespace PhoneSystemInventoryManager
 
             return isValid;
         }
+
+        private void idfNameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void idfLocComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
         //endVenueSpaceTab
 
         //beginVenueTab*************************************************************************************************
@@ -1153,7 +1184,11 @@ namespace PhoneSystemInventoryManager
             return isValid;
         }
 
-        
+
+
+
+
+
 
         //endVenueTab*************************************************************************************************
     }
