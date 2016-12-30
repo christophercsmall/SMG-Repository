@@ -974,6 +974,7 @@ namespace PhoneSystemInventoryManager
         {
             errorProvider1.Clear();
             ppNameBox.Clear();
+            ppPortCountComboBox.SelectedIndex = 0;
                         
             List<IDF> idfList = getIDFList();
             List<string> idfStringList = new List<string>();
@@ -1083,7 +1084,29 @@ namespace PhoneSystemInventoryManager
             return isValid;
         }
 
-        
+        private void ppPortCountComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == 8);
+        }
+
+        private void ppPortCountComboBox_TextChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(portCountComboBox, string.Empty);
+        }
+
+        private void ppNameBox_TextChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(ppNameBox, string.Empty);
+        }
+
+        private void ppIDFComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(ppIDFComboBox, string.Empty);
+        }
+
         //endPatchPanelTab
 
         //beginIDFTab******************************************************************************************************
@@ -1129,6 +1152,8 @@ namespace PhoneSystemInventoryManager
 
             return isValid;
         }
+
+        
 
         //endVenueTab*************************************************************************************************
     }
