@@ -1138,6 +1138,16 @@ namespace PhoneSystemInventoryManager
 
             return isValid;
         }
+
+        private void idfNameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void idfLocComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
         //endIDFTab
 
         //beginVenueSpaceTab*************************************************************************************************
@@ -1156,15 +1166,7 @@ namespace PhoneSystemInventoryManager
             return isValid;
         }
 
-        private void idfNameBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void idfLocComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
 
 
