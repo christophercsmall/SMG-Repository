@@ -1116,37 +1116,79 @@ namespace PhoneSystemInventoryManager
             idfNameBox.Clear();
 
             List<IDF> idfList = getIDFList();
-            List<string> idfStringList = new List<string>();
+            List<string> idfLocStringList = new List<string>();
 
             foreach (IDF idf in idfList)
-            {
-                idfStringList.Add(idf.idfString);
+            {                
+                idfLocStringList.Add(idf.venueSpaceName + ", " + idf.venueName);
             }
-            idfStringList.Insert(0, "");
+            idfLocStringList.Insert(0, "");
 
-            idfLocComboBox.DataSource = idfStringList;
+            idfLocComboBox.DataSource = idfLocStringList;
         }
 
         private void createIdfBtn_Click(object sender, EventArgs e)
         {
             bool isValid = IDFTabValid();
+
+            if (isValid && IDFTabValid())
+            {
+                string insertQuery = "INSERT INTO [IDF] ;";
+            }
         }
 
         private bool IDFTabValid()
         {
             bool isValid = false;
+            bool nameBoxValid = false;
+            bool idfLocComboBoxValid = false;
+            string newIdfName = removeSpecialCharacters(idfNameBox.Text);
+            string idfLocation = idfLocComboBox.SelectedValue.ToString();
+
+            if (newIdfName != "")
+            {
+                nameBoxValid = false;
+                errorProvider1.SetError(idfNameBox, "IDF Name cannot be empty.");
+                errorsPending = true;
+            }
+            else
+            {
+                nameBoxValid = true;
+            }
+
+            if (idfLocation != "")
+            {
+                nameBoxValid = false;
+                errorProvider1.SetError(idfLocComboBox, "IDF location must be selected.");
+                errorsPending = true;
+            }
+            else
+            {
+                idfLocComboBoxValid = true;
+            }
+
+            if (!errorsPending && nameBoxValid && idfLocComboBoxValid)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
 
             return isValid;
         }
 
         private void idfNameBox_TextChanged(object sender, EventArgs e)
         {
-
+            errorsPending = false;
+            errorProvider1.SetError(idfNameBox, string.Empty);
         }
 
         private void idfLocComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            errorsPending = false;
+            errorProvider1.SetError(idfLocComboBox, string.Empty);
         }
         //endIDFTab
 
