@@ -20,6 +20,15 @@ namespace PhoneSystemInventoryManager
         private bool errorsPending = true;
 
         //public static List<PatchPanel> availablePatchPanelList = new List<PatchPanel>();
+
+        public class VenueSpace
+        {
+            public int id;
+            public string name;
+            public string venueName;
+            public string venueSpaceString;            
+        }        
+
         public class IDF
         {
             public int id;
@@ -156,6 +165,11 @@ namespace PhoneSystemInventoryManager
             }
         }
 
+        /// <summary>
+        /// Pass string argument as SQL query selecting all IDs. (SELECT X.XID FROM [X];)
+        /// </summary>
+        /// <param name="idQuery"></param>
+        /// <returns></returns>
         private int getUnusedID(string idQuery)
         {
             int newID = 0, i = 0;
@@ -176,6 +190,27 @@ namespace PhoneSystemInventoryManager
             newID = i;
 
             return newID;
+        }
+
+        private List<VenueSpace> getVenueSpaceList()
+        {
+            List<VenueSpace> vsList = new List<VenueSpace>();
+
+            string vsQuery = "SELECT VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, Venue.VenueName FROM [VenueSpace], [Venue] WHERE VenueSpace.VenueID = Venue.VenueID;";
+            DataSet vsDS = getDataSet(vsQuery);
+
+            foreach (DataRow dr in vsDS.Tables[0].Rows)
+            {
+                VenueSpace vs = new VenueSpace();
+                vs.id = (int)dr.ItemArray.GetValue(0);
+                vs.name = dr.ItemArray.GetValue(1).ToString();
+                vs.venueName = dr.ItemArray.GetValue(2).ToString();
+                vs.venueSpaceString = vs.name + ", " + vs.venueName;
+                vsList.Add(vs);
+            }
+            vsList.OrderBy(i => i.venueName);
+
+            return vsList;
         }
 
         private List<IDF> getIDFList()
@@ -1016,7 +1051,7 @@ namespace PhoneSystemInventoryManager
 
             bool isValid = patchPanelTabValid(newPPName, idfID, portCount);
 
-            if (isValid)
+            if (isValid && !errorsPending)
             {
                 string insertQuery = "INSERT INTO [PatchPanel] (PatchPanelID, PatchPanelName, IDFID) VALUES (" + newPPID + ", '" + newPPName + "' " + idfID + ");";
                 executeDbComm(insertQuery);
@@ -1113,27 +1148,51 @@ namespace PhoneSystemInventoryManager
 
         private void loadIDFTab()
         {
+            errorProvider1.Clear();
             idfNameBox.Clear();
 
-            List<IDF> idfList = getIDFList();
+            List<VenueSpace> vsList = getVenueSpaceList();
             List<string> idfLocStringList = new List<string>();
 
-            foreach (IDF idf in idfList)
+            foreach (VenueSpace vs in vsList)
             {                
-                idfLocStringList.Add(idf.venueSpaceName + ", " + idf.venueName);
+                idfLocStringList.Add(vs.venueSpaceString);
             }
             idfLocStringList.Insert(0, "");
-
             idfLocComboBox.DataSource = idfLocStringList;
+
+            string idfQuery = "SELECT IDF.IDFName, VenueSpace.VenueSpaceName, Venue.VenueName FROM [IDF], [VenueSpace], [Venue] WHERE IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            DataSet idfDS = getDataSet(idfQuery);
+            createDataGridView.DataSource = idfDS.Tables[0];
         }
 
         private void createIdfBtn_Click(object sender, EventArgs e)
         {
             bool isValid = IDFTabValid();
 
-            if (isValid && IDFTabValid())
+            if (isValid && !errorsPending)
             {
-                string insertQuery = "INSERT INTO [IDF] ;";
+                string idfQuery = "SELECT IDF.IDFID FROM [IDF];";
+                int newIDFID = getUnusedID(idfQuery);
+                string newIDFName = removeSpecialCharacters(idfNameBox.Text);
+                int vsID = -1;
+                List<VenueSpace> vsList = getVenueSpaceList();
+                foreach (VenueSpace vs in vsList)
+                {
+                    if (vs.venueSpaceString == idfLocComboBox.SelectedValue.ToString())
+                    {
+                        vsID = vs.id;
+                    }
+                }
+
+                string insertQuery = "INSERT INTO [IDF] (IDFID, IDFName, VenueSpaceID) VALUES (" + newIDFID + ", '" + newIDFName + "', " + vsID + ");";
+                executeDbComm(insertQuery);
+
+                loadIDFTab();
+            }
+            else
+            {
+                MessageBox.Show("Pending errors must be resolved.");
             }
         }
 
@@ -1145,7 +1204,7 @@ namespace PhoneSystemInventoryManager
             string newIdfName = removeSpecialCharacters(idfNameBox.Text);
             string idfLocation = idfLocComboBox.SelectedValue.ToString();
 
-            if (newIdfName != "")
+            if (newIdfName == "")
             {
                 nameBoxValid = false;
                 errorProvider1.SetError(idfNameBox, "IDF Name cannot be empty.");
@@ -1156,7 +1215,7 @@ namespace PhoneSystemInventoryManager
                 nameBoxValid = true;
             }
 
-            if (idfLocation != "")
+            if (idfLocation == "")
             {
                 nameBoxValid = false;
                 errorProvider1.SetError(idfLocComboBox, "IDF location must be selected.");
@@ -1199,18 +1258,12 @@ namespace PhoneSystemInventoryManager
             
         }
 
-        
-
         private bool venueSpaceTabValid()
         {
             bool isValid = false;
 
             return isValid;
         }
-
-        
-
-
 
         //endVenueSpaceTab
 
@@ -1227,12 +1280,6 @@ namespace PhoneSystemInventoryManager
 
             return isValid;
         }
-
-
-
-
-
-
 
         //endVenueTab*************************************************************************************************
     }
