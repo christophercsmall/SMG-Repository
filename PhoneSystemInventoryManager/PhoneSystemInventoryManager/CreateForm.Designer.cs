@@ -116,9 +116,9 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.venueLabel = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.createVenueBtn = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
-            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.venueBox = new System.Windows.Forms.TextBox();
             this.createDataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.createTabControl.SuspendLayout();
@@ -1075,9 +1075,9 @@
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.groupBox8);
-            this.tabPage8.Controls.Add(this.button7);
+            this.tabPage8.Controls.Add(this.createVenueBtn);
             this.tabPage8.Controls.Add(this.label36);
-            this.tabPage8.Controls.Add(this.textBox36);
+            this.tabPage8.Controls.Add(this.venueBox);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
@@ -1105,14 +1105,15 @@
             this.venueLabel.TabIndex = 1;
             this.venueLabel.Text = "*";
             // 
-            // button7
+            // createVenueBtn
             // 
-            this.button7.Location = new System.Drawing.Point(313, 113);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(396, 25);
-            this.button7.TabIndex = 27;
-            this.button7.Text = "Create";
-            this.button7.UseVisualStyleBackColor = true;
+            this.createVenueBtn.Location = new System.Drawing.Point(313, 113);
+            this.createVenueBtn.Name = "createVenueBtn";
+            this.createVenueBtn.Size = new System.Drawing.Size(396, 25);
+            this.createVenueBtn.TabIndex = 27;
+            this.createVenueBtn.Text = "Create";
+            this.createVenueBtn.UseVisualStyleBackColor = true;
+            this.createVenueBtn.Click += new System.EventHandler(this.createVenueBtn_Click);
             // 
             // label36
             // 
@@ -1124,13 +1125,15 @@
             this.label36.TabIndex = 8;
             this.label36.Text = "Name";
             // 
-            // textBox36
+            // venueBox
             // 
-            this.textBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox36.Location = new System.Drawing.Point(73, 9);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(234, 20);
-            this.textBox36.TabIndex = 3;
+            this.venueBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.venueBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.venueBox.Location = new System.Drawing.Point(73, 9);
+            this.venueBox.Name = "venueBox";
+            this.venueBox.Size = new System.Drawing.Size(234, 20);
+            this.venueBox.TabIndex = 3;
+            this.venueBox.TextChanged += new System.EventHandler(this.venueBox_TextChanged);
             // 
             // createDataGridView
             // 
@@ -1247,7 +1250,7 @@
         private System.Windows.Forms.TextBox vsBox;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox36;
+        private System.Windows.Forms.TextBox venueBox;
         private System.Windows.Forms.Button createPatchPanelBtn;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox jackBox;
@@ -1276,7 +1279,7 @@
         private System.Windows.Forms.Button createIdfBtn;
         private System.Windows.Forms.ComboBox venueComboBox;
         private System.Windows.Forms.Button createVenueSpaceBtn;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button createVenueBtn;
         private System.Windows.Forms.TextBox depBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox extBox;

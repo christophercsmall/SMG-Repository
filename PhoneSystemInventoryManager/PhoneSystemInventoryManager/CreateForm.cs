@@ -1078,7 +1078,7 @@ namespace PhoneSystemInventoryManager
 
             if (isValid && !errorsPending)
             {
-                string insertQuery = "INSERT INTO [PatchPanel] (PatchPanelID, PatchPanelName, IDFID) VALUES (" + newPPID + ", '" + newPPName + "' " + idfID + ");";
+                string insertQuery = "INSERT INTO [PatchPanel] (PatchPanelID, PatchPanelName, IDFID) VALUES (" + newPPID + ", '" + newPPName + "', " + idfID + ");";
                 executeDbComm(insertQuery);
 
                 //add new records for each patchPanelPort
@@ -1388,18 +1388,80 @@ namespace PhoneSystemInventoryManager
 
         private void loadVenueTab()
         {
+            errorProvider1.Clear();
+            venueBox.Clear();
 
+            string venueQuery = "SELECT Venue.VenueName FROM [Venue];";
+            DataSet venueDS = getDataSet(venueQuery);
+            createDataGridView.DataSource = venueDS.Tables[0];
+        }
+
+        private void createVenueBtn_Click(object sender, EventArgs e)
+        {
+            bool isValid = venueTabValid();
+
+            if (isValid && !errorsPending)
+            {
+                string venueIDQuery = "SELECT Venue.VenueID FROM [Venue];";
+                int newVenueID = getUnusedID(venueIDQuery);
+                string newVenueName = removeSpecialCharacters(venueBox.Text);
+                
+                string insertQuery = "INSERT INTO [Venue] (VenueID, VenueName) VALUES (" + newVenueID + ", '" + newVenueName + "');";
+                executeDbComm(insertQuery);
+
+                loadVenueTab();
+            }
+            else
+            {
+                MessageBox.Show("Pending errors must be resolved.");
+            }
         }
 
         private bool venueTabValid()
         {
             bool isValid = false;
+            bool venueNameValid = false;
+            bool venueNameExists = false;
+            string newVenueName = removeSpecialCharacters(venueBox.Text);
+            
+            List<Venue> venueList = getVenueList();
+            foreach (Venue v in venueList)
+            {
+                if (newVenueName == v.name)
+                {
+                    venueNameExists = true;
+                }                
+            }
+
+            if (newVenueName == "" || venueNameExists)
+            {
+                venueNameValid = false;
+                errorProvider1.SetError(venueBox, "Venue name cannot be empty and must be unique.");
+                errorsPending = true;
+            }
+            else
+            {
+                venueNameValid = true;
+            }
+
+            if (!errorsPending && venueNameValid)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
 
             return isValid;
         }
 
-        
-
+        private void venueBox_TextChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(venueBox, string.Empty);
+        }
+                
         //endVenueTab*************************************************************************************************
     }
 }
