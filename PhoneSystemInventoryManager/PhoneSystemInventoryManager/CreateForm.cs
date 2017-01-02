@@ -21,6 +21,12 @@ namespace PhoneSystemInventoryManager
 
         //public static List<PatchPanel> availablePatchPanelList = new List<PatchPanel>();
 
+        public class Venue
+        {
+            public int id;
+            public string name;            
+        }
+
         public class VenueSpace
         {
             public int id;
@@ -190,6 +196,25 @@ namespace PhoneSystemInventoryManager
             newID = i;
 
             return newID;
+        }
+
+        private List<Venue> getVenueList()
+        {
+            List<Venue> vList = new List<Venue>();
+
+            string vQuery = "SELECT Venue.VenueID, Venue.VenueName FROM [Venue];";
+            DataSet vDS = getDataSet(vQuery);
+
+            foreach (DataRow dr in vDS.Tables[0].Rows)
+            {
+                Venue ven = new Venue();
+                ven.id = (int)dr.ItemArray.GetValue(0);
+                ven.name = dr.ItemArray.GetValue(1).ToString();                
+                vList.Add(ven);
+            }
+            vList.OrderBy(i => i.name);
+
+            return vList;
         }
 
         private List<VenueSpace> getVenueSpaceList()
@@ -1255,16 +1280,108 @@ namespace PhoneSystemInventoryManager
 
         private void loadVenueSpaceTab()
         {
-            
+            errorProvider1.Clear();
+            vsBox.Clear();
+
+            List<Venue> vList = getVenueList();
+            List<string> venueNameList = new List<string>();
+
+            foreach (Venue ven in vList)
+            {
+                venueNameList.Add(ven.name);
+            }
+            venueNameList.Insert(0, "");
+            venueComboBox.DataSource = venueNameList;
+
+            string vsQuery = "SELECT VenueSpace.VenueSpaceName, Venue.VenueName FROM [VenueSpace], [Venue] WHERE VenueSpace.VenueID = Venue.VenueID;";
+            DataSet vsDS = getDataSet(vsQuery);
+            createDataGridView.DataSource = vsDS.Tables[0];
+        }
+
+        private void createVenueSpaceBtn_Click(object sender, EventArgs e)
+        {
+            bool isValid = venueSpaceTabValid();
+
+            if (isValid && !errorsPending)
+            {
+                string vsQuery = "SELECT VenueSpace.VenueSpaceID FROM [VenueSpace];";
+                int newVenueSpaceID = getUnusedID(vsQuery);
+                string newVenueSpaceName = removeSpecialCharacters(vsBox.Text);
+                int venueID = -1;
+                List<Venue> venueList = getVenueList();
+                foreach (Venue ven in venueList)
+                {
+                    if (ven.name == venueComboBox.SelectedValue.ToString())
+                    {
+                        venueID = ven.id;
+                    }
+                }
+
+                string insertQuery = "INSERT INTO [VenueSpace] (VenueSpaceID, VenueSpaceName, VenueID) VALUES (" + newVenueSpaceID + ", '" + newVenueSpaceName + "', " + venueID + ");";
+                executeDbComm(insertQuery);
+
+                loadVenueSpaceTab();
+            }
+            else
+            {
+                MessageBox.Show("Pending errors must be resolved.");
+            }
         }
 
         private bool venueSpaceTabValid()
         {
             bool isValid = false;
+            bool vsBoxValid = false;
+            bool venueComboBoxValid = false;
+            string newVenueSpaceName = removeSpecialCharacters(vsBox.Text);
+            string venueName = venueComboBox.SelectedValue.ToString();
+
+            if (newVenueSpaceName == "")
+            {
+                vsBoxValid = false;
+                errorProvider1.SetError(vsBox, "Venue Space Name cannot be empty.");
+                errorsPending = true;
+            }
+            else
+            {
+                vsBoxValid = true;
+            }
+
+            if (venueName == "")
+            {
+                venueComboBoxValid = false;
+                errorProvider1.SetError(venueComboBox, "Venue must be selected.");
+                errorsPending = true;
+            }
+            else
+            {
+                venueComboBoxValid = true;
+            }
+
+            if (!errorsPending && vsBoxValid && venueComboBoxValid)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
 
             return isValid;
         }
+                
+        private void vsBox_TextChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(vsBox, string.Empty);
+        }
 
+        private void venueComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorsPending = false;
+            errorProvider1.SetError(venueComboBox, string.Empty);
+        }
+        
         //endVenueSpaceTab
 
         //beginVenueTab*************************************************************************************************
@@ -1280,6 +1397,8 @@ namespace PhoneSystemInventoryManager
 
             return isValid;
         }
+
+        
 
         //endVenueTab*************************************************************************************************
     }
