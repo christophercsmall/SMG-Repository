@@ -59,6 +59,21 @@ namespace PhoneSystemInventoryManager
             public string patchPanelRecord;
         }
 
+        public class Switch
+        {
+            public string portTotal;
+            public int id;
+            public string dnsName;
+            public string ip;
+            public int idfID;
+            public string idfName;
+            public int venueSpaceID;
+            public string venueSpaceName;
+            public int venueID;
+            public string venueName;
+            public string switchString;
+        }
+
         public CreateForm(MainForm mainform, object sender)
         {
             InitializeComponent();
@@ -293,9 +308,42 @@ namespace PhoneSystemInventoryManager
             return patchPanels;
         }
 
+        private List<Switch> getSwitchList()
+        {
+            List<Switch> switchList = new List<Switch>();
+
+            string switchQuery = "SELECT Switch.SwitchID, Switch.DNSName, Switch.IP, IDF.IDFID, IDF.IDFName, VenueSpace.VenueSpaceID, VenueSpace.VenueSpaceName, Venue.VenueID, Venue.VenueName FROM [Switch], [IDF], [VenueSpace], [Venue] WHERE Switch.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            DataSet switchDS = getDataSet(switchQuery);
+
+            foreach (DataRow dr in switchDS.Tables[0].Rows)
+            {
+                Switch sw = new Switch();
+                sw.id = (int)dr.ItemArray.GetValue(0);
+                sw.dnsName = dr.ItemArray.GetValue(1).ToString();
+                sw.ip = dr.ItemArray.GetValue(2).ToString();
+                sw.idfID = (int)dr.ItemArray.GetValue(3);                
+                sw.idfName = dr.ItemArray.GetValue(4).ToString();
+                sw.venueSpaceID = (int)dr.ItemArray.GetValue(5);
+                sw.venueSpaceName = dr.ItemArray.GetValue(6).ToString();
+                sw.venueID = (int)dr.ItemArray.GetValue(7);
+                sw.venueName = dr.ItemArray.GetValue(8).ToString();
+
+                string portCountQuery = "SELECT COUNT(SwitchPort.SwitchID) FROM [SwitchPort] WHERE SwitchPort.SwitchID = " + sw.id + ";";
+                DataSet portCountDS = getDataSet(portCountQuery);
+
+                sw.portTotal = portCountDS.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+
+                switchList.Add(sw);
+            }
+
+            switchList.OrderBy(sw => sw.venueName);
+
+            return switchList;
+        }
+
         private bool extentionExists(string ext)
         {
-            bool isValid = false;
+            bool result = false;
 
             List<string> extNums = new List<string>();
 
@@ -312,11 +360,28 @@ namespace PhoneSystemInventoryManager
             {
                 if (n.ToString() == ext)
                 {
-                    isValid = true;
+                    result = true;
                 }
             }
 
-            return isValid;
+            return result;
+        }
+
+        private bool ipExists(string ip)
+        {
+            bool result = false;
+
+            List<Switch> switchList = getSwitchList();
+
+            foreach (Switch sw in switchList)
+            {
+                if (sw.ip == ip)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
         }
 
         public static string removeSpecialCharacters(string str)
@@ -844,6 +909,7 @@ namespace PhoneSystemInventoryManager
             bool idfValid = false;
             bool dnsNameExists = false;
             bool isValid = false;
+            string ip = ip0 + "." + ip1 + "." + ip2 + "." + ip3;
 
             string dnsNameBoolQuery = "SELECT Switch.DNSName FROM [Switch];";
             DataSet dnsNameDS = getDataSet(dnsNameBoolQuery);
@@ -867,10 +933,10 @@ namespace PhoneSystemInventoryManager
                 dnsValid = true;
             }
 
-            if (ip0 == "" || ip1 == "" || ip2 == "" || ip3 == "")
+            if (ip0 == "" || ip1 == "" || ip2 == "" || ip3 == "" || ipExists(ip))
             {
                 ipValid = false;
-                errorProvider1.SetError(ipBox3, "Switch must have valid IP Address.");
+                errorProvider1.SetError(ipBox3, "Switch must have valid and unique IP Address.");
                 errorsPending = true;
             }
             else
