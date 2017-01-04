@@ -386,7 +386,11 @@ namespace PhoneSystemInventoryManager
 
         public static string removeSpecialCharacters(string str)
         {
-            return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+            //string regex = "^[a-zA-Z0-9_.]+( [a-zA-Z0-9_.]+)*$";
+            Regex regex = new Regex("[;\\\\/:*?\"<>|&']+");
+            string result = regex.Replace(str, "");
+            result = result.Trim();
+            return result;
         }
 
         public DataSet getDataSet(string query)
@@ -1120,7 +1124,10 @@ namespace PhoneSystemInventoryManager
         private void createPatchPanelBtn_Click(object sender, EventArgs e)
         {
             string ppIDQuery = "SELECT PatchPanel.PatchPanelID from [PatchPanel];";
+            string ppPortIDQuery = "SELECT PatchPanelPort.PatchPanelPortID FROM [PatchPanelPort];";
+            string insertPatchPanelPortQuery;
             int newPPID = getUnusedID(ppIDQuery);
+            int newPPPortID; int newPPPortNum;
             string newPPName = removeSpecialCharacters(ppNameBox.Text);
             string idfString = ppIDFComboBox.SelectedValue.ToString();
             int idfID = -1;
@@ -1147,7 +1154,14 @@ namespace PhoneSystemInventoryManager
                 string insertQuery = "INSERT INTO [PatchPanel] (PatchPanelID, PatchPanelName, IDFID) VALUES (" + newPPID + ", '" + newPPName + "', " + idfID + ");";
                 executeDbComm(insertQuery);
 
-                //add new records for each patchPanelPort
+                for (int i = 0; i < portCount; i++)
+                {
+                    newPPPortID = getUnusedID(ppPortIDQuery);
+                    newPPPortNum = i + 1;
+
+                    insertPatchPanelPortQuery = "INSERT INTO [PatchPanelPort] (PatchPanelPortID, PatchPanelPortNum, PatchPanelID, SwitchPortID) VALUES (" + newPPPortID + ", " + newPPPortNum + ", " + newPPID + ", NULL );";
+                    executeDbComm(insertPatchPanelPortQuery);
+                }
 
                 loadPatchPanelTab();
             }
