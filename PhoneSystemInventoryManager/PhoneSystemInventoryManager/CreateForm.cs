@@ -386,7 +386,6 @@ namespace PhoneSystemInventoryManager
 
         public static string removeSpecialCharacters(string str)
         {
-            //string regex = "^[a-zA-Z0-9_.]+( [a-zA-Z0-9_.]+)*$";
             Regex regex = new Regex("[;\\\\/:*?\"<>|&']+");
             string result = regex.Replace(str, "");
             result = result.Trim();
@@ -465,7 +464,6 @@ namespace PhoneSystemInventoryManager
 
             string userIdQuery = "SELECT User.UserID FROM [User];";
             int newUserID = getUnusedID(userIdQuery);
-            string insertQuery = "INSERT INTO [User] (UserID, FName, LName, Company, Department, ExtensionNum) VALUES (" + newUserID + ", '" + fname + "'" + ", '" + lname + "'" + ", '" + comp + "'" + ", '" + dep + "'" + ", " + ext + ");";
             
             if (extBox.Text == "")
             {
@@ -867,7 +865,7 @@ namespace PhoneSystemInventoryManager
             int switchPortID; int switchPortNum;
             string insertSwitchPortQuery;
 
-            if (portCountComboBox.Text != "")
+            if (portCountComboBox.Text != "" && Regex.IsMatch(portCountComboBox.Text, @"^\d+$"))
             {
                 portCount = Convert.ToInt32(portCountComboBox.Text);
             }
@@ -1142,7 +1140,7 @@ namespace PhoneSystemInventoryManager
                 }
             }
 
-            if (ppPortCountComboBox.Text != "")
+            if (ppPortCountComboBox.Text != "" && Regex.IsMatch(portCountComboBox.Text, @"^\d+$"))
             {
                 portCount = Convert.ToInt32(ppPortCountComboBox.Text);
             }
