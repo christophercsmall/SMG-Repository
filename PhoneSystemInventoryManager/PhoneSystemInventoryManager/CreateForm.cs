@@ -464,6 +464,7 @@ namespace PhoneSystemInventoryManager
 
             string userIdQuery = "SELECT User.UserID FROM [User];";
             int newUserID = getUnusedID(userIdQuery);
+            string insertQuery = "INSERT INTO [User] (UserID, FName, LName, Company, Department, ExtensionNum) VALUES (" + newUserID + ", '" + fname + "'" + ", '" + lname + "'" + ", '" + comp + "'" + ", '" + dep + "'" + ", '" + ext + "');";
             
             if (extBox.Text == "")
             {
