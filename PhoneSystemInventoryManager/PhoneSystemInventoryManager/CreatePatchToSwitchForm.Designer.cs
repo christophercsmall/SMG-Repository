@@ -124,7 +124,7 @@
             this.groupBox1.Size = new System.Drawing.Size(174, 48);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Patch Panel Port";
+            this.groupBox1.Text = "Patch Panel";
             // 
             // groupBox2
             // 
@@ -135,7 +135,7 @@
             this.groupBox2.Size = new System.Drawing.Size(174, 48);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Switch Port";
+            this.groupBox2.Text = "Switch";
             // 
             // switchBox
             // 
@@ -247,7 +247,7 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // PatchToSwitchForm
+            // CreatePatchToSwitchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -267,7 +267,7 @@
             this.Controls.Add(this.venueBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "PatchToSwitchForm";
+            this.Name = "CreatePatchToSwitchForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Create New Patch To Switch";
             this.Load += new System.EventHandler(this.Form2_Load);
