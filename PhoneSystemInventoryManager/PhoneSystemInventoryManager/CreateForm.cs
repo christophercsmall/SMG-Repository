@@ -515,14 +515,13 @@ namespace PhoneSystemInventoryManager
         {
             errorProvider1.Clear();
             macBox.Clear();
-            jackBox.Clear();
             regComboBox.SelectedIndex = 0;
 
             List<string> users = new List<string>();
             List<string> phoneTypes = new List<string>();
             List<string> distinctTypes = new List<string>();
 
-            string phoneQuery = "SELECT Phone.MAC, Phone.Type, Phone.Registered, Phone.JackInfo FROM [Phone];";
+            string phoneQuery = "SELECT Phone.MAC, Phone.Type, Phone.Registered FROM [Phone];";
 
             DataSet phoneDS = getDataSet(phoneQuery);
 
@@ -555,7 +554,6 @@ namespace PhoneSystemInventoryManager
             string mac = macBox.Text;
             string type = typeComboBox.Text;
             string registered = regComboBox.Text;
-            string jackInfo = jackBox.Text;
             bool reg = false;
 
             if (registered == "YES")
@@ -565,10 +563,9 @@ namespace PhoneSystemInventoryManager
 
             string phoneIdQuery = "SELECT Phone.PhoneID FROM [Phone];";
             int newphoneID = getUnusedID(phoneIdQuery);
-            string insertQuery = "INSERT INTO [Phone] (PhoneID, MAC, Type, Registered, JackInfo) VALUES (" + newphoneID + ", '" + mac + "'" + ", '" + type + "'" + ", '" + reg + "'" + ", '" + jackInfo + "'" + ");";
+            string insertQuery = "INSERT INTO [Phone] (PhoneID, MAC, Type, Registered) VALUES (" + newphoneID + ", '" + mac + "'" + ", '" + type + "'" + ", '" + reg + "');";
 
             bool isValid = phoneTabValid(mac, registered, type);
-            jackInfo = removeSpecialCharacters(jackInfo);          
 
             if (isValid && !errorsPending)
             {
@@ -655,24 +652,17 @@ namespace PhoneSystemInventoryManager
         {
             errorProvider1.Clear();
             List<string> patchPanelRecords = new List<string>();
-            List<string> macs = new List<string>();
             List<PatchPanel> patchPanelList = getPatchPanelList();
             officeJackDetailsBox.Clear();
 
-            string unassignedPhonesQuery = "SELECT Phone.MAC FROM [Phone] WHERE Phone.PhoneID NOT IN(SELECT OfficeJack.PhoneID FROM [OfficeJack]);";
-            string assignedPhonesQuery = "SELECT Phone.MAC, IDF.IDFName, Venue.VenueName, VenueSpace.VenueSpaceName, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [Phone], [IDF], [Venue], [VenueSpace], [PatchPanel], [PatchPanelPort], [OfficeJack] WHERE OfficeJack.PatchPanelPortID = PatchPanelPort.PatchPanelPortID AND Phone.PhoneID = OfficeJack.PhoneID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = PatchPanel.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
-            DataSet unassignedPhonesDS = getDataSet(unassignedPhonesQuery);
-            DataSet assignedPhonesDS = getDataSet(assignedPhonesQuery);
+            string officeJackQuery = "SELECT Venue.VenueName, VenueSpace.VenueSpaceName, IDF.IDFName, PatchPanel.PatchPanelName, PatchPanelPort.PatchPanelPortNum, OfficeJack.JackInfo FROM [Venue], [VenueSpace], [IDF], [PatchPanel], [PatchPanelPort], [OfficeJack] WHERE OfficeJack.PatchPanelPortID = PatchPanelPort.PatchPanelPortID AND PatchPanelPort.PatchPanelID = PatchPanel.PatchPanelID AND PatchPanel.IDFID = IDF.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            DataSet officeJackDS = getDataSet(officeJackQuery);
+            //string unassignedPhonesQuery = "SELECT Phone.MAC FROM [Phone] WHERE Phone.PhoneID NOT IN(SELECT OfficeJack.PhoneID FROM [OfficeJack]);";
+            //string assignedPhonesQuery = "SELECT Phone.MAC, IDF.IDFName, Venue.VenueName, VenueSpace.VenueSpaceName, PatchPanelPort.PatchPanelPortNum, PatchPanel.PatchPanelName FROM [Phone], [IDF], [Venue], [VenueSpace], [PatchPanel], [PatchPanelPort], [OfficeJack] WHERE OfficeJack.PatchPanelPortID = PatchPanelPort.PatchPanelPortID AND Phone.PhoneID = OfficeJack.PhoneID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = PatchPanel.IDFID AND IDF.VenueSpaceID = VenueSpace.VenueSpaceID AND VenueSpace.VenueID = Venue.VenueID;";
+            //DataSet unassignedPhonesDS = getDataSet(unassignedPhonesQuery);
+            //DataSet assignedPhonesDS = getDataSet(assignedPhonesQuery);
 
-            createDataGridView.DataSource = assignedPhonesDS.Tables[0];
-
-            foreach (DataRow dr in unassignedPhonesDS.Tables[0].Rows)
-            {
-                macs.Add(dr.ItemArray.GetValue(0).ToString());
-            }
-
-            macs.Sort();
-            macs.Insert(0, "");
+            createDataGridView.DataSource = officeJackDS.Tables[0];
 
             foreach (PatchPanel pp in patchPanelList)
             {
@@ -680,7 +670,6 @@ namespace PhoneSystemInventoryManager
             }
             patchPanelRecords.Insert(0, "");
 
-            macComboBox.DataSource = macs;            
             patchPanelComboBox.DataSource = patchPanelRecords;
         }
         
@@ -720,25 +709,19 @@ namespace PhoneSystemInventoryManager
         private void createOfficeJackBtn_Click(object sender, EventArgs e)
         {
             List<PatchPanel> patchPanelList = getPatchPanelList();
-            string mac = macComboBox.SelectedValue.ToString();
             string patchPanelString = patchPanelComboBox.SelectedValue.ToString();
             string openPatchPanelPortNum = patchPanelPortComboBox.SelectedValue.ToString();
-            bool isValid = officeJackTabValid(mac, patchPanelString, openPatchPanelPortNum);
+            bool isValid = officeJackTabValid(patchPanelString, openPatchPanelPortNum);
            
             if (isValid && !errorsPending)
             {
                 int jackID = -1;
-                int phoneID = -1;
                 int ppPortID = -1;
                 int ppID = -1;
                 string officeJackDetails = removeSpecialCharacters(officeJackDetailsBox.Text);
 
                 string officeJackIDQuery = "SELECT OfficeJack.JackID FROM [OfficeJack];";
                 jackID = getUnusedID(officeJackIDQuery);
-
-                string phoneIDQuery = "SELECT Phone.PhoneID FROM [Phone] WHERE Phone.MAC = '" + mac + "';";
-                DataSet phoneIDDS = getDataSet(phoneIDQuery);
-                phoneID = (int)phoneIDDS.Tables[0].Rows[0].ItemArray.GetValue(0);
 
                 foreach (PatchPanel pp in patchPanelList)
                 {
@@ -752,7 +735,7 @@ namespace PhoneSystemInventoryManager
                 DataSet ppPortIDDS = getDataSet(ppPortIDQuery);
                 ppPortID = (int)ppPortIDDS.Tables[0].Rows[0].ItemArray.GetValue(0);
 
-                string insertQuery = "INSERT INTO [OfficeJack] (JackID, PhoneID, PatchPanelPortID, Details) VALUES (" + jackID + ", " + phoneID + ", " + ppPortID + ", '" + officeJackDetails + "');";
+                string insertQuery = "INSERT INTO [OfficeJack] (JackID, PatchPanelPortID, JackInfo) VALUES (" + jackID + ", " + ppPortID + ", '" + officeJackDetails + "');";
                 
                 executeDbComm(insertQuery);
                 loadOfficeJackTab();
@@ -763,21 +746,10 @@ namespace PhoneSystemInventoryManager
             }            
         }
 
-        private bool officeJackTabValid(string mac, string pp, string ppPort)
+        private bool officeJackTabValid(string pp, string ppPort)
         {
             errorsPending = false;
-            bool macValid, ppValid, ppPortValid, isValid = false;
-
-            if (macComboBox.SelectedValue.ToString() == "")
-            {
-                macValid = false;
-                errorProvider1.SetError(macComboBox, "Phone MAC must be selected.");
-                errorsPending = true;
-            }
-            else
-            {
-                macValid = true;
-            }
+            bool ppValid, ppPortValid, isValid = false;
 
             if (patchPanelComboBox.SelectedValue.ToString() == "")
             {
@@ -801,7 +773,7 @@ namespace PhoneSystemInventoryManager
                 ppPortValid = true;
             }
 
-            if (macValid && ppValid && ppPortValid && !errorsPending)
+            if (ppValid && ppPortValid && !errorsPending)
             {
                 isValid = true;
             }
@@ -811,12 +783,6 @@ namespace PhoneSystemInventoryManager
             }
 
             return isValid;
-        }
-
-        private void macComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            errorsPending = false;
-            errorProvider1.SetError(macComboBox, string.Empty);
         }
 
         private void patchPanelPortComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -1540,7 +1506,7 @@ namespace PhoneSystemInventoryManager
             errorsPending = false;
             errorProvider1.SetError(venueBox, string.Empty);
         }
-                
+
         //endVenueTab*************************************************************************************************
     }
 }

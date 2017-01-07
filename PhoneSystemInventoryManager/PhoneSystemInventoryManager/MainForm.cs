@@ -139,16 +139,16 @@ namespace PhoneSystemInventoryManager
                 {
                     case "ALL":
                         {
-                            query = "SELECT User.FName, User.LName, User.Company, User.ExtensionNum, Phone.MAC, Phone.Type, IDF.IDFName, Switch.DNSName, SwitchPort.SwitchPortNum, PatchPanel.PatchPanelName, PatchPanelPort.PatchPanelPortNum FROM [User], [Phone], [UserPhone], [IDF], [Switch], [SwitchPort], [PatchPanel], [PatchPanelPort], [PatchToSwitch], [OfficeJack] WHERE User.ExtensionNum = UserPhone.ExtensionNum AND Phone.PhoneID = UserPhone.PhoneID AND Switch.SwitchID = SwitchPort.SwitchID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = Switch.IDFID AND IDF.IDFID = PatchPanel.IDFID AND UserPhone.PhoneID = OfficeJack.PhoneID AND SwitchPort.SwitchPortID = PatchToSwitch.SwitchPortID AND PatchPanelPort.PatchPanelPortID = PatchToSwitch.PatchPanelPortID AND Switch.SwitchID = SwitchPort.SwitchID;";
+                            query = "SELECT User.FName, User.LName, User.Company, User.ExtensionNum, Phone.MAC, Phone.Type, IDF.IDFName, Switch.DNSName, SwitchPort.SwitchPortNum, PatchPanel.PatchPanelName, PatchPanelPort.PatchPanelPortNum FROM [User], [Phone], [UserPhone], [IDF], [Switch], [SwitchPort], [PatchPanel], [PatchPanelPort], [PatchToSwitch] WHERE User.ExtensionNum = UserPhone.ExtensionNum AND Phone.PhoneID = UserPhone.PhoneID AND Switch.SwitchID = SwitchPort.SwitchID AND PatchPanel.PatchPanelID = PatchPanelPort.PatchPanelID AND IDF.IDFID = Switch.IDFID AND IDF.IDFID = PatchPanel.IDFID AND SwitchPort.SwitchPortID = PatchToSwitch.SwitchPortID AND PatchPanelPort.PatchPanelPortID = PatchToSwitch.PatchPanelPortID AND Switch.SwitchID = SwitchPort.SwitchID;";
                             break;
                         }
                     case "Phone MAC":
                         {
-                            query = "SELECT Phone.MAC, Phone.Type, Phone.Registered, Phone.JackInfo FROM [Phone], [UserPhone], [OfficeJack] WHERE Phone.PhoneID = UserPhone.PhoneID AND Phone.PhoneID = OfficeJack.PhoneID";
+                            query = "SELECT Phone.MAC, Phone.Type, Phone.Registered FROM [Phone]";
 
                             if (searchBox.Text != "")
                             {
-                                query += " AND Phone.MAC = " + "'" + filter + "'" + ";";
+                                query += " WHERE Phone.MAC = " + "'" + filter + "'" + ";";
                             }
                             break;
                         }
@@ -175,12 +175,6 @@ namespace PhoneSystemInventoryManager
         private void phoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateForm newForm = new CreateForm(this, sender);
-            newForm.ShowDialog();
-        }
-
-        private void patchToSwitchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreatePatchToSwitchForm newForm = new CreatePatchToSwitchForm(this);
             newForm.ShowDialog();
         }
 
@@ -217,6 +211,12 @@ namespace PhoneSystemInventoryManager
         private void venueToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CreateForm newForm = new CreateForm(this, sender);
+            newForm.ShowDialog();
+        }
+
+        private void patchPanelPortToSwitchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreatePatchToSwitchForm newForm = new CreatePatchToSwitchForm(this);
             newForm.ShowDialog();
         }
     }
