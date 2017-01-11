@@ -37,19 +37,21 @@
             this.connectBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.venueSpaceBox = new System.Windows.Forms.ComboBox();
-            this.switchBox = new System.Windows.Forms.ComboBox();
+            this.selMacComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.PPPortBox = new System.Windows.Forms.ComboBox();
+            this.selJackBox = new System.Windows.Forms.TextBox();
+            this.PPPortComboBox = new System.Windows.Forms.ComboBox();
             this.PatchToSwitchDataGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.idfBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.venueBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ppComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatchToSwitchDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,19 +116,19 @@
             this.venueSpaceBox.Size = new System.Drawing.Size(121, 21);
             this.venueSpaceBox.TabIndex = 7;
             // 
-            // switchBox
+            // selMacComboBox
             // 
-            this.switchBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.switchBox.Enabled = false;
-            this.switchBox.FormattingEnabled = true;
-            this.switchBox.Location = new System.Drawing.Point(6, 19);
-            this.switchBox.Name = "switchBox";
-            this.switchBox.Size = new System.Drawing.Size(161, 21);
-            this.switchBox.TabIndex = 0;
+            this.selMacComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.selMacComboBox.Enabled = false;
+            this.selMacComboBox.FormattingEnabled = true;
+            this.selMacComboBox.Location = new System.Drawing.Point(6, 19);
+            this.selMacComboBox.Name = "selMacComboBox";
+            this.selMacComboBox.Size = new System.Drawing.Size(161, 21);
+            this.selMacComboBox.TabIndex = 0;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.switchBox);
+            this.groupBox2.Controls.Add(this.selMacComboBox);
             this.groupBox2.Location = new System.Drawing.Point(273, 147);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(174, 48);
@@ -136,6 +138,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.selJackBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 147);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(174, 48);
@@ -143,16 +146,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Office Jack";
             // 
-            // PPPortBox
+            // selJackBox
             // 
-            this.PPPortBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PPPortBox.Enabled = false;
-            this.PPPortBox.FormattingEnabled = true;
-            this.PPPortBox.Location = new System.Drawing.Point(100, 120);
-            this.PPPortBox.Name = "PPPortBox";
-            this.PPPortBox.Size = new System.Drawing.Size(347, 21);
-            this.PPPortBox.TabIndex = 0;
-            this.PPPortBox.SelectedIndexChanged += new System.EventHandler(this.PPPortBox_SelectedIndexChanged);
+            this.selJackBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.selJackBox.Location = new System.Drawing.Point(6, 19);
+            this.selJackBox.Name = "selJackBox";
+            this.selJackBox.ReadOnly = true;
+            this.selJackBox.Size = new System.Drawing.Size(162, 20);
+            this.selJackBox.TabIndex = 0;
+            // 
+            // PPPortComboBox
+            // 
+            this.PPPortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PPPortComboBox.Enabled = false;
+            this.PPPortComboBox.FormattingEnabled = true;
+            this.PPPortComboBox.Location = new System.Drawing.Point(100, 120);
+            this.PPPortComboBox.Name = "PPPortComboBox";
+            this.PPPortComboBox.Size = new System.Drawing.Size(347, 21);
+            this.PPPortComboBox.TabIndex = 0;
             // 
             // PatchToSwitchDataGridView
             // 
@@ -220,15 +231,15 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Patch Panel";
             // 
-            // comboBox1
+            // ppComboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(100, 93);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
+            this.ppComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ppComboBox.Enabled = false;
+            this.ppComboBox.FormattingEnabled = true;
+            this.ppComboBox.Location = new System.Drawing.Point(100, 93);
+            this.ppComboBox.Name = "ppComboBox";
+            this.ppComboBox.Size = new System.Drawing.Size(121, 21);
+            this.ppComboBox.TabIndex = 8;
             // 
             // label5
             // 
@@ -244,7 +255,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 446);
-            this.Controls.Add(this.PPPortBox);
+            this.Controls.Add(this.PPPortComboBox);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.connectedLabel);
             this.Controls.Add(this.connectLabel);
@@ -257,13 +268,15 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.ppComboBox);
             this.Controls.Add(this.idfBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.venueBox);
             this.Name = "CreatePhoneToOfficeJackForm";
             this.Text = "CreatePhoneToOfficeJackForm";
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatchToSwitchDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -280,17 +293,18 @@
         private System.Windows.Forms.Button connectBtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox venueSpaceBox;
-        private System.Windows.Forms.ComboBox switchBox;
+        private System.Windows.Forms.ComboBox selMacComboBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox PPPortBox;
+        private System.Windows.Forms.ComboBox PPPortComboBox;
         private System.Windows.Forms.DataGridView PatchToSwitchDataGridView;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox idfBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox venueBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox ppComboBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox selJackBox;
     }
 }
