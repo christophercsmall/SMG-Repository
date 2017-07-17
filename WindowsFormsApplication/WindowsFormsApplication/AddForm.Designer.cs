@@ -60,7 +60,7 @@
             this.brandComboBox.Location = new System.Drawing.Point(95, 185);
             this.brandComboBox.Name = "brandComboBox";
             this.brandComboBox.Size = new System.Drawing.Size(159, 21);
-            this.brandComboBox.TabIndex = 3;
+            this.brandComboBox.TabIndex = 4;
             // 
             // locComboBox
             // 
@@ -89,7 +89,7 @@
             this.modelComboBox.Location = new System.Drawing.Point(95, 225);
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(159, 21);
-            this.modelComboBox.TabIndex = 4;
+            this.modelComboBox.TabIndex = 5;
             // 
             // invComboBox
             // 
@@ -121,7 +121,7 @@
             this.serialNumBox.Location = new System.Drawing.Point(95, 146);
             this.serialNumBox.Name = "serialNumBox";
             this.serialNumBox.Size = new System.Drawing.Size(159, 20);
-            this.serialNumBox.TabIndex = 2;
+            this.serialNumBox.TabIndex = 3;
             this.serialNumBox.TextChanged += new System.EventHandler(this.serialNumBox_TextChanged);
             // 
             // notesBox
@@ -130,7 +130,7 @@
             this.notesBox.Location = new System.Drawing.Point(95, 342);
             this.notesBox.Name = "notesBox";
             this.notesBox.Size = new System.Drawing.Size(159, 20);
-            this.notesBox.TabIndex = 7;
+            this.notesBox.TabIndex = 8;
             // 
             // label1
             // 
@@ -218,7 +218,7 @@
             this.addButton.Location = new System.Drawing.Point(12, 411);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(161, 61);
-            this.addButton.TabIndex = 9;
+            this.addButton.TabIndex = 10;
             this.addButton.Text = "Add to Inventory";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -229,7 +229,7 @@
             this.addAnotherCheckBox.Location = new System.Drawing.Point(12, 388);
             this.addAnotherCheckBox.Name = "addAnotherCheckBox";
             this.addAnotherCheckBox.Size = new System.Drawing.Size(84, 17);
-            this.addAnotherCheckBox.TabIndex = 8;
+            this.addAnotherCheckBox.TabIndex = 9;
             this.addAnotherCheckBox.Text = "Add another";
             this.addAnotherCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -239,7 +239,7 @@
             this.idBox.Location = new System.Drawing.Point(95, 265);
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(159, 20);
-            this.idBox.TabIndex = 5;
+            this.idBox.TabIndex = 6;
             // 
             // userNameBox
             // 
@@ -247,14 +247,14 @@
             this.userNameBox.Location = new System.Drawing.Point(95, 302);
             this.userNameBox.Name = "userNameBox";
             this.userNameBox.Size = new System.Drawing.Size(159, 20);
-            this.userNameBox.TabIndex = 6;
+            this.userNameBox.TabIndex = 7;
             // 
             // closeButton
             // 
             this.closeButton.Location = new System.Drawing.Point(179, 411);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 61);
-            this.closeButton.TabIndex = 10;
+            this.closeButton.TabIndex = 11;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -265,7 +265,7 @@
             this.areaBox.Location = new System.Drawing.Point(95, 105);
             this.areaBox.Name = "areaBox";
             this.areaBox.Size = new System.Drawing.Size(159, 20);
-            this.areaBox.TabIndex = 7;
+            this.areaBox.TabIndex = 2;
             // 
             // label7
             // 

@@ -47,7 +47,7 @@ namespace WindowsFormsApplication
             string idQry = "UPDATE [INVENTORY$] SET SMG_ID = '" + idBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
             string userQry = "UPDATE [INVENTORY$] SET USER_NAME = '" + userNameBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
             string notesQry = "UPDATE [INVENTORY$] SET NOTES = '" + notesBox.Text + "' WHERE SERIAL_NUMBER = '" + sn + "'";
-            string updateQry = "UPDATE [INVENTORY$] SET LAST_UPDATE = '" + DateTime.Now + "' WHERE SERIAL_NUMBER = '" + sn + "'";
+            string updateQry = "UPDATE [INVENTORY$] SET LAST_UPDATE = '" + DateTime.Now.ToShortDateString() + "' WHERE SERIAL_NUMBER = '" + sn + "'";
 
             try
             {

@@ -31,7 +31,7 @@ namespace WindowsFormsApplication
             string id = idBox.Text;
             string user = userNameBox.Text;
             string notes = notesBox.Text;
-            string query = "INSERT INTO [INVENTORY$] ([INVENTORY], [LOCATION], [AREA], [SERIAL_NUMBER], [BRAND], [MODEL_NUMBER], [SMG_ID], [USER_NAME], [NOTES], [LAST_UPDATE]) VALUES('" + inv + "', '"+loc+"', '"+area+"', '"+sn+"', '"+brand+"', '"+model+"', '"+id+"', '"+user+"', '"+notes+"', '"+DateTime.Now+"')";
+            string query = "INSERT INTO [INVENTORY$] ([INVENTORY], [LOCATION], [AREA], [SERIAL_NUMBER], [BRAND], [MODEL_NUMBER], [SMG_ID], [USER_NAME], [NOTES], [LAST_UPDATE]) VALUES('" + inv + "', '"+loc+"', '"+area+"', '"+sn+"', '"+brand+"', '"+model+"', '"+id+"', '"+user+"', '"+notes+"', '"+DateTime.Now.ToShortDateString()+"')";
 
             //String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;ReadOnly=False;HDR=Yes;\"";
             String connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Form1.filePath + ";Extended Properties=\"Excel 12.0;HDR=YES;IMEX=0;MAXSCANROWS=10;READONLY=FALSE;\""; //IMEX=0;MAXSCANROWS=10;

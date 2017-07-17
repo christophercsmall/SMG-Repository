@@ -328,16 +328,16 @@ namespace WindowsFormsApplication
                     var notes = dataGridView1.Rows[selectedrowindex].Cells[8].Value.ToString();
 
                     string selectedRecordString = "[" + inv + "] " + "[" + loc + "] " + "[" + area + "] " + "[" + sn + "] " + "[" + brand + "] " + "[" + model + "] " + "[" + id + "] " + "[" + user + "] " + "[" + notes + "] ";
-                    string invQry = "UPDATE [INVENTORY$] SET INVENTORY = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string locQry = "UPDATE [INVENTORY$] SET LOCATION = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string areaQry = "UPDATE [INVENTORY$] SET AREA = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string snQry = "UPDATE [INVENTORY$] SET SERIAL_NUMBER = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string brandQry = "UPDATE [INVENTORY$] SET BRAND = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string modelQry = "UPDATE [INVENTORY$] SET MODEL_NUMBER = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string idQry = "UPDATE [INVENTORY$] SET SMG_ID = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string userQry = "UPDATE [INVENTORY$] SET USER_NAME = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string notesQry = "UPDATE [INVENTORY$] SET NOTES = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
-                    string updateQry = "UPDATE [INVENTORY$] SET LAST_UPDATE = '-' WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string invQry = "UPDATE [INVENTORY$] SET INVENTORY = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string locQry = "UPDATE [INVENTORY$] SET LOCATION = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string areaQry = "UPDATE [INVENTORY$] SET AREA = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string snQry = "UPDATE [INVENTORY$] SET SERIAL_NUMBER = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string brandQry = "UPDATE [INVENTORY$] SET BRAND = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string modelQry = "UPDATE [INVENTORY$] SET MODEL_NUMBER = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string idQry = "UPDATE [INVENTORY$] SET SMG_ID = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string userQry = "UPDATE [INVENTORY$] SET USER_NAME = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string notesQry = "UPDATE [INVENTORY$] SET NOTES = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
+                    string updateQry = "UPDATE [INVENTORY$] SET LAST_UPDATE = NULL WHERE SERIAL_NUMBER = '" + sn + "'";
 
                     this.Enabled = false;
 
