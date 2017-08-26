@@ -1,0 +1,23 @@
+(function () {
+
+var sStart, sEnd, result;
+var dStart, dEnd, diff;
+
+sStart = this.getField("Beginning").valueAsString;
+sEnd = this.getField("Ending").valueAsString;
+result = false;
+
+if(this.getField("Beginning").valueAsString){
+result == true;
+}
+
+if(sStart && sEnd && result) {
+dStart = util.scand("mm/dd/yyyy", sStart);
+dEnd = util.scand("mm/dd/yyyy", sEnd);
+diff = dEnd.getTime() - dStart.getTime();
+event.value = Math.floor(diff / 864e5);
+} else {
+event.value = "";
+}
+
+})();
