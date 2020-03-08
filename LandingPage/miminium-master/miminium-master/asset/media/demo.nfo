@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<movie>
+  <plot>Three students embark on their end of year Media Studies project unaware of the horrific and unspeakable fate that awaits them. What starts as a seemingly simple mystery soon turns into a claustrophobic and hellish nightmare.</plot>
+  <outline />
+  <lockdata>false</lockdata>
+  <dateadded>2016-04-12 23:09:58</dateadded>
+  <title>Media Studies</title>
+  <originaltitle>Media Studies</originaltitle>
+  <director>Warren Dudley</director>
+  <trailer>plugin://plugin.video.youtube/?action=play_video&amp;videoid=XGXuSa93lwg</trailer>
+  <rating>4.7</rating>
+  <year>2017</year>
+  <imdbid>tt7083740</imdbid>
+  <tmdbid>465480</tmdbid>
+  <premiered>2017-07-10</premiered>
+  <releasedate>2017-07-10</releasedate>
+  <runtime>1</runtime>
+  <country>United States of America</country>
+  <genre>Horror</genre>
+  <art>
+    <poster>https://image.tmdb.org/t/p/original/8riOna4GK6P8KE6wkGapBoteG4E.jpg</poster>
+  </art>
+  <actor>
+    <name>Lydia Orange</name>
+    <role>Jess</role>
+    <type>Actor</type>
+  </actor>
+  <actor>
+    <name>Parry Glasspool</name>
+    <role>Raz</role>
+    <type>Actor</type>
+  </actor>
+  <actor>
+    <name>TJ Herbert</name>
+    <role>Mark Kallis</role>
+    <type>Actor</type>
+  </actor>
+  <actor>
+    <name>Lucy-Jane Quinlan</name>
+    <role>Charlie</role>
+    <type>Actor</type>
+    <thumb>https://image.tmdb.org/t/p/original/64QaGwihTFqDe6iyPqcsQqK9N7Q.jpg</thumb>
+  </actor>
+  <id>tt7083740</id>
+  <fileinfo>
+    <streamdetails>
+      <video>
+        <codec>h264</codec>
+        <micodec>h264</micodec>
+        <bitrate>100072</bitrate>
+        <width>1366</width>
+        <height>768</height>
+        <aspect>16:9</aspect>
+        <aspectratio>16:9</aspectratio>
+        <framerate>30</framerate>
+        <language>und</language>
+        <scantype>progressive</scantype>
+        <default>True</default>
+        <forced>False</forced>
+        <duration>0</duration>
+        <durationinseconds>38</durationinseconds>
+      </video>
+      <audio>
+        <codec>vorbis</codec>
+        <micodec>vorbis</micodec>
+        <bitrate>344</bitrate>
+        <language>und</language>
+        <scantype>progressive</scantype>
+        <channels>2</channels>
+        <samplingrate>44100</samplingrate>
+        <default>True</default>
+        <forced>False</forced>
+      </audio>
+    </streamdetails>
+  </fileinfo>
+</movie>
