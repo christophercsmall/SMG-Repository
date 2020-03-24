@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{A5BF5E2C-6E09-4811-8EFE-B98DB3150272}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PhoneSystemInventoryManager/MainForm.Designer.cs">
+    <Files>
+      <File FileName="PhoneSystemInventoryManager/MainForm.Designer.cs" Line="417" Column="1" />
+      <File FileName="PhoneSystemInventoryManager/MainForm.Designer.cs" Line="419" Column="41" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PhoneSystemInventoryManager" expanded="True">
+            <Node name="PhoneSystemInventoryManager" expanded="True">
+              <Node name="MainForm.cs" expanded="True">
+                <Node name="MainForm.Designer.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.PhoneSystemInventoryManager PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

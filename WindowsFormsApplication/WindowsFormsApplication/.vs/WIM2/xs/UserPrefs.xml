@@ -4,7 +4,9 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIM2" expanded="True">
-            <Node name="WIM2" expanded="True" selected="True" />
+            <Node name="WIM2" expanded="True">
+              <Node name="Form1.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
